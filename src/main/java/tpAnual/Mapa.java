@@ -8,14 +8,14 @@ public class Mapa {
 	
 	public int altitud, latitud;
 	
-	private List<Poi> listaPois = new ArrayList<Poi>();
+	private List<Poi> pois = new ArrayList<Poi>();
 	
 	
 	
-	public void buscarPoi(String clave){
-		listarPantalla( this.listaPois
+	public void buscarPoi(String tag){
+		mostrar( pois
 				.stream()
-				.filter(poi -> poi.tieneTag(clave))
+				.filter(poi -> poi.tieneTag(tag))
 				.collect(Collectors.toList()) ); 
 	}
 	
@@ -27,22 +27,27 @@ public class Mapa {
 		return poi.estaDisponible();
 	}
 	
+	public boolean estaDisponible(Poi poi, String tramite)
+	{
+		return poi.estaDisponible(tramite);
+	}
+	
 	
 	
 	//Manejo de lista
 	public void agregarPoi(Poi poi){
-		listaPois.add(poi);
+		pois.add(poi);
 	}
 	
 	public void sacarPoi(Poi poi){
-		listaPois.remove(poi);
+		pois.remove(poi);
 	}
 	
 	public int cantidadPois(){
-		return listaPois.size();
+		return pois.size();
 	}
 	
-	public void listarPantalla(List<Poi> list){
+	public void mostrar(List<Poi> list){
 		//list.forEach(System.out.println();); Imprimir en pantalla la lista que quedo con los tags
 	}
 	
