@@ -1,6 +1,7 @@
 package tpAnual;
 
 import java.util.List;
+import org.uqbar.geodds.Point;
 
 public class Banco extends TipoPoi{
 
@@ -24,7 +25,7 @@ public class Banco extends TipoPoi{
 	}
 
 	@Override
-	public boolean estaCerca(int altitud, int latitud, int altitudPoi, int latitudPoi) {
+	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		// TODO Auto-generated method stub
 		return false;
 	}

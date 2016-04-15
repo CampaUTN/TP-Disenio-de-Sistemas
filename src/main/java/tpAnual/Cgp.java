@@ -2,6 +2,7 @@ package tpAnual;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.uqbar.geodds.*;
 
 public class Cgp extends TipoPoi  {
 	
@@ -14,7 +15,7 @@ public class Cgp extends TipoPoi  {
 	}
 
 	@Override
-	public boolean estaCerca(int altitud, int latitud, int altitudPoi, int latitudPoi) {
+	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		// TODO Auto-generated method stub
 		return false;
 	}

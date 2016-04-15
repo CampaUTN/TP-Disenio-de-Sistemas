@@ -1,11 +1,16 @@
 package tpAnual;
+import org.uqbar.geodds.*;
 
 
 public abstract class TipoPoi {
 	
 	public abstract boolean estaDisponible();
 
-	public abstract boolean estaCerca(int altitud, int latitud, int altitudPoi, int latitudPoi);
+	public boolean estaCerca(Point unPunto, Point puntoPoi){
+		
+			Double distancia = unPunto.distance(puntoPoi);
+			return distancia <= 0.5;
+	}
 
 	public boolean brinda(String servicio)
 	{

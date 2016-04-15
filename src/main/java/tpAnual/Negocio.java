@@ -1,7 +1,11 @@
 package tpAnual;
 
+import org.uqbar.geodds.*;
+
 public class Negocio extends TipoPoi {
 
+	private int radio;
+	
 	@Override
 	public boolean estaDisponible() {
 		//TODO 
@@ -9,9 +13,10 @@ public class Negocio extends TipoPoi {
 	}
 
 	@Override
-	public boolean estaCerca(int altitud, int latitud, int altitudPoi, int latitudPoi) {
-		//TODO
-		return false;
+	public boolean estaCerca(Point unPunto, Point puntoPoi) {
+		
+		Double distancia = puntoPoi.distance(unPunto);
+		return distancia < radio;
 	}
 
 }

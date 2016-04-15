@@ -2,7 +2,7 @@ package tpAnual;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.uqbar.geodds.Point;
 
 public class Mapa {
 	
@@ -25,8 +25,8 @@ public class Mapa {
 		return buscador.BuscameSegunTags(tags, pois);
 	}
 	
-	public boolean estaCerca(Poi poi, int altitud, int latitud){
-		return poi.estaCerca(altitud,latitud);
+	public boolean estaCerca(Poi poi, Point unPunto){
+		return poi.estaCerca(unPunto);
 	}
 	
 	public boolean estaDisponible(Poi poi){

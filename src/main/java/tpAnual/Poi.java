@@ -1,10 +1,11 @@
 package tpAnual;
 
 import java.util.*;
+import org.uqbar.geodds.Point;
 
 public class Poi {
 	
-	private int altitudPoi, latitudPoi; //TODO
+	Point ubicacion;
 	@SuppressWarnings("unused")
 	private String nombre;
 	private TipoPoi tipo;
@@ -29,8 +30,8 @@ public class Poi {
 	}
 	
 	// Distancia:
-	public boolean estaCerca(int altitud, int latitud) {
-		return tipo.estaCerca(altitud,latitud,altitudPoi,latitudPoi); 
+	public boolean estaCerca(Point unPunto) {
+		return tipo.estaCerca(unPunto, this.ubicacion); 
 	}//TODO Ver si cambiar por una clase que agrupe los datos
 
 	

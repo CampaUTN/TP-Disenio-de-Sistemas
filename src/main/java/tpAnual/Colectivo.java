@@ -1,5 +1,5 @@
 package tpAnual;
-
+import org.uqbar.geodds.Point;
 
 public class Colectivo extends TipoPoi {
 	
@@ -9,9 +9,10 @@ public class Colectivo extends TipoPoi {
 	}
 
 	@Override
-	public boolean estaCerca(int altitud, int latitud, int altitudPoi, int latitudPoi) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean estaCerca(Point unPunto, Point puntoPoi) {
+		Double distancia = unPunto.distance(puntoPoi);
+		
+		return distancia < 0.1; // 0.1 km = 100 m = 1 cuadra;
 	}
 	
 }
