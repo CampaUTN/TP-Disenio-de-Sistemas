@@ -6,11 +6,15 @@ import java.util.stream.Collectors;
 
 public class Mapa {
 	
-	public int altitud, latitud;
+	//private int altitud, latitud; //TODO! Lo comento asi no tira warnings molesto
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	
-	
+	public Mapa(List<Poi> pois)
+	{
+		this.pois=pois;
+		//TODO falta lat y long. Leer comentario identico en tipoPoi
+	}
 	
 	public void buscarPoi(String tag){
 		mostrar( pois
@@ -27,9 +31,9 @@ public class Mapa {
 		return poi.estaDisponible();
 	}
 	
-	public boolean estaDisponible(Poi poi, String tramite)
+	public boolean estaDisponible(Poi poi, String servicio)
 	{
-		return poi.estaDisponible(tramite);
+		return poi.estaDisponible(servicio);
 	}
 	
 	

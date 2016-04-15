@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Cgp extends TipoPoi  {
 	
+	private List<Servicio> servicios;
+	
 	@Override
 	public boolean estaDisponible() {
 		// TODO Auto-generated method stub

@@ -1,6 +1,11 @@
 package tpAnual;
 
 public class Servicio {
-	String nombre;
+	private String nombre;
 	//TODO horarios
+	
+	public boolean es(String unNombre)
+	{
+		return nombre.equals(unNombre);
+	} //para poder seleccionar el servicio pedido y luego preguntarle la hora, al buscarlo en una lista de servicios.
 }
