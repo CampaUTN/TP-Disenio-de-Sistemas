@@ -11,8 +11,8 @@ public class TestBuscador {
 	private Colectivo tipo = new Colectivo();
 	private Poi poi = new Poi(tipo, "107", tags);
 	private Poi poi2 = new Poi(tipo, "108", tags);
-	List<Poi> listaPois = new ArrayList<Poi>();
-	Mapa mapa = new Mapa();
+	private Mapa mapa = new Mapa();
+	
 	@Before
 	public void init(){
 		poi.agregarTag("107");
@@ -23,19 +23,19 @@ public class TestBuscador {
 		poi2.agregarTag("colectivo");
 		mapa.agregarPoi(poi2);
 	}
+	
 	@Test
 	public void buscaColecEnVezDeColectivoYSonDos(){
-		int i = mapa.buscarPoi("colec").size();
-		Assert.assertEquals(2,i);
+		Assert.assertEquals(2,mapa.buscarPoi("colec").size());
 	}
+	
 	@Test
 	public void busca10EnVezDe107y108YEncuentraDos(){
-		int i = mapa.buscarPoi("10").size();
-		Assert.assertEquals(2,i);
+		Assert.assertEquals(2,mapa.buscarPoi("10").size());
 	}
+	
 	@Test
 	public void siNoContienenTagNoEncuentra(){
-		int i = mapa.buscarPoi("colectivos").size();
-		Assert.assertEquals(0,i);
+		Assert.assertEquals(0,mapa.buscarPoi("colectivos").size());
 	}
 }
