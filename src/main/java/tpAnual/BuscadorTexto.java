@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 public class BuscadorTexto {
 		
-		//VARIABLES
-		public LevenshteinDistance Buscador = new LevenshteinDistance();
 		
 		//METODOS
 		

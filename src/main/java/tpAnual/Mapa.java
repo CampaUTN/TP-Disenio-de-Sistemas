@@ -2,13 +2,18 @@ package tpAnual;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class Mapa {
 	
 	//private int altitud, latitud; //TODO! Lo comento asi no tira warnings molesto
 	
+	private BuscadorTexto buscador = new BuscadorTexto();	
 	private List<Poi> pois = new ArrayList<Poi>();
+	
+	public Mapa(){
+		
+	}
 	
 	public Mapa(List<Poi> pois)
 	{
@@ -16,11 +21,8 @@ public class Mapa {
 		//TODO falta lat y long. Leer comentario identico en tipoPoi
 	}
 	
-	public void buscarPoi(String tag){
-		mostrar( pois
-				.stream()
-				.filter(poi -> poi.tieneTag(tag))
-				.collect(Collectors.toList()) ); 
+	public List<Poi> buscarPoi(String tags){
+		return buscador.BuscameSegunTags(tags, pois);
 	}
 	
 	public boolean estaCerca(Poi poi, int altitud, int latitud){
