@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Set;
 import org.junit.*;
 
-import tpAnual.*;
-
 public class TestBuscador {
 	private Set<String> tags = new HashSet<String>();
 	private Colectivo tipo = new Colectivo();
