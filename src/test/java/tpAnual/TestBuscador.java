@@ -10,6 +10,7 @@ public class TestBuscador {
 	private Set<String> tags = new HashSet<String>();
 	private Colectivo tipo = new Colectivo();
 	private Poi poi = new Poi(tipo, "107", tags);
+	private Poi poi2 = new Poi(tipo, "108", tags);
 	List<Poi> listaPois = new ArrayList<Poi>();
 	Mapa mapa = new Mapa();
 	@Before
@@ -17,19 +18,23 @@ public class TestBuscador {
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
 		mapa.agregarPoi(poi);
+		
+		poi2.agregarTag("108");
+		poi2.agregarTag("colectivo");
+		mapa.agregarPoi(poi2);
 	}
 	@Test
-	public void buscaColecEnVezDeColectivo(){
+	public void buscaColecEnVezDeColectivoYSonDos(){
 		int i = mapa.buscarPoi("colec").size();
-		Assert.assertEquals(1,i);
+		Assert.assertEquals(2,i);
 	}
 	@Test
-	public void busca10EnVezDe101(){
+	public void busca10EnVezDe107y108YEncuentraDos(){
 		int i = mapa.buscarPoi("10").size();
-		Assert.assertEquals(1,i);
+		Assert.assertEquals(2,i);
 	}
 	@Test
-	public void buscaMal(){
+	public void siNoContienenTagNoEncuentra(){
 		int i = mapa.buscarPoi("colectivos").size();
 		Assert.assertEquals(0,i);
 	}
