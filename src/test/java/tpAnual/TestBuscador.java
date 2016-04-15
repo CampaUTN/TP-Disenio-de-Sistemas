@@ -25,8 +25,8 @@ public class TestBuscador {
 	}
 	
 	@Test
-	public void buscaColecEnVezDeColectivoYSonDos(){
-		Assert.assertEquals(2,mapa.buscarPoi("colec").size());
+	public void buscaEsUnColecEnVezDeColectivoYSonDos(){
+		Assert.assertEquals(2,mapa.buscarPoi("es un colec").size());
 	}
 	
 	@Test
