@@ -19,7 +19,6 @@ public abstract class TipoPoi {
 	
 	public boolean estaDisponible(String servicio)
 	{
-		
 		// como banco y GCP manejan distinto los tramites, implementan de diferente forma este metodo
 		// entoces cada una de esas subclases lo redefine a gusto. Las demas, por default, tiran excepcion, porque no tienen tramites.
 		return false; //TODO

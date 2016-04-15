@@ -6,19 +6,17 @@ import org.uqbar.geodds.Point;
 
 public class Mapa {
 	
-	//private int altitud, latitud; //TODO! Lo comento asi no tira warnings molesto
-	
 	private BuscadorTexto buscador = new BuscadorTexto();	
 	private List<Poi> pois = new ArrayList<Poi>();
 	
-	public Mapa(){
+	public Mapa()
+	{
 		
 	}
 	
 	public Mapa(List<Poi> pois)
 	{
 		this.pois=pois;
-		//TODO falta lat y long. Leer comentario identico en tipoPoi
 	}
 	
 	public List<Poi> buscarPoi(String tags){

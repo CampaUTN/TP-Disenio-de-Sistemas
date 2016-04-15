@@ -16,12 +16,9 @@ public class BuscadorTexto {
 		
 		public List<Poi> BuscameSegunTags (String listaTagsIngresados, List<Poi> listaPois){
 			List<String> palabras = SeparaLaBusqueda(listaTagsIngresados);
-			List<Poi> poisAceptados = listaPois.stream()
+			return listaPois.stream()
 					   .filter(poi->hayInterseccionOInclusion(palabras,poi))
 					   .collect(Collectors.toList());
-			
-			return poisAceptados;
-			
 		}
 
 		public boolean hayInterseccionOInclusion(List<String> palabras, Poi poi) {

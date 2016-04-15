@@ -5,7 +5,7 @@ import org.uqbar.geodds.Point;
 
 public class Poi {
 	
-	Point ubicacion;
+	private Point ubicacion;
 	@SuppressWarnings("unused")
 	private String nombre;
 	private TipoPoi tipo;
@@ -37,7 +37,8 @@ public class Poi {
 	
 	// Tags:
 	public boolean tieneTag(String clave) {
-		return tags.stream().anyMatch(tag->tag.toLowerCase().contains(clave.toLowerCase()));
+		return tags.stream()
+				.anyMatch(tag->tag.toLowerCase().contains(clave.toLowerCase()));
 	}
 	
 	public void agregarTag(String nuevoTag){
