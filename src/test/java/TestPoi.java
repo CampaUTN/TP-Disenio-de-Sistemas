@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
 
-import tpAnual.*;
+import tpAnual.*; //TODO mover esta clase al paquete tpAnual. Borrarlo y crear un archivo identico no me parece copado :(
 
 public class TestPoi {
 

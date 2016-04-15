@@ -4,6 +4,10 @@ public class Servicio {
 	private String nombre;
 	//TODO horarios
 	
+	public Servicio(String nombre)
+	{
+		this.nombre=nombre;
+	}
 	public boolean es(String unNombre)
 	{
 		return nombre.equals(unNombre);
