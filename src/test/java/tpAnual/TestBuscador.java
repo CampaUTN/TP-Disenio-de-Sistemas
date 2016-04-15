@@ -19,8 +19,18 @@ public class TestBuscador {
 		mapa.agregarPoi(poi);
 	}
 	@Test
-	public void busca107SegunLibre(){
-		int i = mapa.buscarPoi("107").size();
+	public void buscaColecEnVezDeColectivo(){
+		int i = mapa.buscarPoi("colec").size();
 		Assert.assertEquals(1,i);
+	}
+	@Test
+	public void busca10EnVezDe101(){
+		int i = mapa.buscarPoi("10").size();
+		Assert.assertEquals(1,i);
+	}
+	@Test
+	public void buscaMal(){
+		int i = mapa.buscarPoi("colectivos").size();
+		Assert.assertEquals(0,i);
 	}
 }

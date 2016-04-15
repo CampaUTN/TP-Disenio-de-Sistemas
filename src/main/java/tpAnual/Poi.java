@@ -36,7 +36,7 @@ public class Poi {
 	
 	// Tags:
 	public boolean tieneTag(String clave) {
-		return tags.contains(clave);
+		return tags.stream().anyMatch(tag->tag.toLowerCase().contains(clave.toLowerCase()));
 	}
 	
 	public void agregarTag(String nuevoTag){
