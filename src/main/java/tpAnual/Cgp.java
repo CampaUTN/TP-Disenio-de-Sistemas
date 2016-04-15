@@ -5,10 +5,10 @@ import java.util.List;
 import org.uqbar.geodds.*;
 
 @SuppressWarnings("unused")
-public class Cgp extends TipoPoi  {
-	
+public class Cgp extends TipoPoi {
+
 	private List<Servicio> servicios;
-	
+
 	@Override
 	public boolean estaDisponible() {
 		// TODO Auto-generated method stub
@@ -20,5 +20,5 @@ public class Cgp extends TipoPoi  {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

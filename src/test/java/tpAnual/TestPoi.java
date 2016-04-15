@@ -3,12 +3,14 @@ package tpAnual;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
+import org.uqbar.geodds.Point;
 
 public class TestPoi {
 
 	private Set<String> tags = new HashSet<String>();
 	private Colectivo tipo = new Colectivo();
-	private Poi poi = new Poi(tipo, "107", tags);
+	private Point ubicacion = new Point(54, 10);
+	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
 	
 	@Before
 	public void init()
