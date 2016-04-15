@@ -1,7 +1,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>nombre-proyecto</groupId>
-  <artifactId>nombre-proyecto</artifactId>
+  <groupId>TPAnual</groupId>
+  <artifactId>TPAnual</artifactId>
   <version>1</version>
   <build>
     <plugins>
