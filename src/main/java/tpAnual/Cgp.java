@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.*;
 
+@SuppressWarnings("unused")
 public class Cgp extends TipoPoi  {
 	
 	private List<Servicio> servicios;
