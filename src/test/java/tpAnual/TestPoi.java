@@ -38,4 +38,9 @@ public class TestPoi {
 		poi.agregarTag("transporte");
 		Assert.assertTrue(poi.tieneTag("transporte"));
 	}
+	
+	@Test 
+	public void colectivoSiempreDisponible(){
+		Assert.assertTrue(poi.estaDisponible());
+	}
 }
