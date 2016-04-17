@@ -8,14 +8,17 @@ import org.uqbar.geodds.*;
 
 public class Cgp extends TipoPoi {
 
-	private Polygon comuna = new Polygon(); //Se puede definir aca, o en Poi. Si fuese en Poi habria que hacer una sobrecarga de metodos, que permita enviar la comuna a TipoPoi para saber si esta cerca, pero generar en todos los tipoPoi un excepcion por si se manda mal
+private Polygon comuna;
 	
 	public Cgp(Point puntoA, Point puntoB, Point puntoC){ //Pedimos 3 puntos al constructor para generar al menos un triangulo como una comuna
-		comuna.add(puntoA);
-		comuna.add(puntoB);
-		comuna.add(puntoC);
+		List<Point> puntosComu = new ArrayList<Point>();
+		puntosComu.add(puntoA);
+		puntosComu.add(puntoB);
+		puntosComu.add(puntoC);
+		
+		comuna = new Polygon(puntosComu); 
 	}
-
+	
 	private List<Servicio> servicios;
 
 	@Override
@@ -28,5 +31,4 @@ public class Cgp extends TipoPoi {
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return comuna.isInside(puntoPoi) && comuna.isInside(unPunto);
 	}
-
 }
