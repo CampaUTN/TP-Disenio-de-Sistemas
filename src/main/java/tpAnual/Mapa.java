@@ -3,9 +3,10 @@ package tpAnual;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
+import org.uqbar.geodds.Polygon;
 
 public class Mapa {
-
+	
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
 

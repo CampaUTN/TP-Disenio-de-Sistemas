@@ -24,10 +24,5 @@ public class Banco extends TipoPoi{
 		return this.brinda(servicio) && this.estaDisponible();
 	}
 
-	@Override
-	public boolean estaCerca(Point unPunto, Point puntoPoi) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	//El metodo de estaCerca de banco corresponde al default de 5 cuadras definido en TipoPoi
 }
