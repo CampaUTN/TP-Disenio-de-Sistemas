@@ -7,9 +7,7 @@ public abstract class TipoPoi {
 	public abstract boolean estaDisponible();
 
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
-
-		Double distancia = unPunto.distance(puntoPoi);
-		return distancia <= 0.5;
+		return unPunto.distance(puntoPoi) <= 0.5;
 	}
 
 	public boolean brinda(String servicio) {
