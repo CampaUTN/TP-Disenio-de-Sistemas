@@ -12,10 +12,12 @@ public class Horario  {
 	
 	public boolean estaEnFranjaHoraria(DayOfWeek dia,LocalTime hora){
 		
-		 boolean cumpleDia = (dia.getValue() >= diaDesde.getValue()) && (dia.getValue() <= diaHasta.getValue()); //esta entre el diaDesde y el diaHasta
+		 boolean cumpleRango = (dia.getValue() >= diaDesde.getValue()) && (dia.getValue() <= diaHasta.getValue());//esta entre el diaDesde y el diaHasta
+		 boolean cumpleDia = dia.getValue() == diaDesde.getValue();
+		 
 		 
 		 boolean estaEnHorario = (hora.isAfter(this.desde) && hora.isBefore(this.hasta));  //estaDentro del horario especificado
-		 return cumpleDia && estaEnHorario;
+		 return (cumpleDia || cumpleRango) && estaEnHorario;
 	}
 
 	Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){ //se usa si es un rango de dias
