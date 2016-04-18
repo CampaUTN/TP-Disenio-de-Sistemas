@@ -2,11 +2,12 @@
 TP 2016 del Grupo 7 del curso K3001
 
 ------------OpeningHours nueva:
-MAVEN: " <dependency>
-    	<groupId>com.google.maps</groupId>
-	<artifactId>google-maps-services</artifactId>
-   	<version>0.1.12</version>
-      </dependency> "
+MAVEN: 
+<dependency>
+<groupId>com.google.maps</groupId>
+<artifactId>google-maps-services</artifactId>
+<version>0.1.12</version>
+</dependency> 
       
 CLASE: import com.google.maps.model.OpeningHours;
 
