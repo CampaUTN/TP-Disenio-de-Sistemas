@@ -2,6 +2,7 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -16,7 +17,6 @@ import tpAnual.Servicio;
 
 public class TestDisponibilidad {
 
-
 	DayOfWeek lunes = DayOfWeek.MONDAY;
 	DayOfWeek martes = DayOfWeek.TUESDAY;
 	DayOfWeek miercoles = DayOfWeek.WEDNESDAY;
@@ -25,27 +25,22 @@ public class TestDisponibilidad {
 	DayOfWeek sabado = DayOfWeek.SATURDAY;
 	DayOfWeek domingo = DayOfWeek.SUNDAY;
 	
-	
 	Banco frances= new Banco();
 
-	private Point puntoComunaA = new Point(0,0);
-	private Point puntoComunaB = new Point(20,60);
-	private Point puntoComunaC = new Point(50,0);
-	
-	private Cgp centro = new Cgp(puntoComunaA,puntoComunaB,puntoComunaC);
+	Cgp centro;
 	
 	Servicio rentas = new Servicio("Rentas");
-		
+	Servicio creditos = new Servicio("Creditos");
+	
 	Horario horarioManana = new Horario(lunes, viernes, "10:00", "12:00");
 	Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
-	
-	
-	Servicio creditos = new Servicio("Creditos");
 	Horario horarioUnico = new Horario(miercoles,"09:00","12:00");
 	
 	@Before
 	public void init()
 	{
+		centro = new Cgp(null);
+		
 		rentas.agregarHorario(horarioManana);
 		rentas.agregarHorario(horarioTarde);
 		rentas.agregarHorario(horarioUnico);

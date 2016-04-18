@@ -8,16 +8,11 @@ import org.uqbar.geodds.*;
 
 public class Cgp extends TipoPoi {
 
-private Polygon comuna;
-
+	private Polygon comuna;
 	private List<Servicio> servicios = new ArrayList<>();
 	
 	// Constructor
-	public Cgp(Point puntoA, Point puntoB, Point puntoC){ //Pedimos 3 puntos al constructor para generar al menos un triangulo como una comuna
-		List<Point> puntosComu = new ArrayList<Point>();
-		puntosComu.add(puntoA);
-		puntosComu.add(puntoB);
-		puntosComu.add(puntoC);
+	public Cgp(List<Point> puntosComu){ //Pedimos una lista de n puntos al constructor para definir la comuna
 		comuna = new Polygon(puntosComu); 
 	}
 

@@ -3,16 +3,14 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
-import org.uqbar.geodds.Point;
 
 public class Banco extends TipoPoi{
 
 	private List<String> servicios;
 	private Horario horarioAtencion;
 	
-	public Banco()
-	{
-		this.horarioAtencion =new Horario(DayOfWeek.MONDAY,DayOfWeek.FRIDAY,"10:00", "17:00");
+	public Banco(){
+		this.horarioAtencion = new Horario(DayOfWeek.MONDAY,DayOfWeek.FRIDAY,"10:00", "17:00");
 	}
 	
 	// Disponibilidad
@@ -25,14 +23,9 @@ public class Banco extends TipoPoi{
 		return this.brinda(servicio) && this.estaDisponible(dia,hora);
 	}
 	
-	/*public boolean estaEnFranjaHoraria(DayOfWeek dia,LocalTime hora){
-		return horarioAtencion.estaEnFranjaHoraria(dia, hora);
-	}*/
-	
 	// Servicios
 	
-	public boolean brinda(String servicio)
-	{
+	public boolean brinda(String servicio){
 		return servicios.contains(servicio);
 	}
 	

@@ -7,9 +7,8 @@ import org.uqbar.geodds.Point;
 public class Poi {
 
 	private Point ubicacion;
-	@SuppressWarnings("unused")
-	private String nombre;
-	private TipoPoi tipo;
+	public String nombre;
+	public TipoPoi tipo;
 	private Set<String> tags = new HashSet<String>();
 
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
