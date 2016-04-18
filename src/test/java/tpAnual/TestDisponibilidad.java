@@ -36,7 +36,7 @@ public class TestDisponibilidad {
 	
 	Servicio rentas = new Servicio("Rentas");
 		
-	Horario horarioMañana = new Horario(lunes, viernes, "10:00", "12:00");
+	Horario horarioManana = new Horario(lunes, viernes, "10:00", "12:00");
 	Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
 	
 	
@@ -46,7 +46,7 @@ public class TestDisponibilidad {
 	@Before
 	public void init()
 	{
-		rentas.agregarHorario(horarioMañana);
+		rentas.agregarHorario(horarioManana);
 		rentas.agregarHorario(horarioTarde);
 		rentas.agregarHorario(horarioUnico);
 		
@@ -64,7 +64,7 @@ public class TestDisponibilidad {
 	
 	@Test
 	public void estaEnElDiaUnico()	{
-		Assert.assertTrue(centro.estaDisponible("Creditos",miercoles,"09;43"));
+		Assert.assertTrue(centro.estaDisponible("Creditos",miercoles,"09:43"));
 	}
 	
 	@Test
