@@ -22,7 +22,7 @@ public class Horario  {
 		this.diaHasta = fin;
 		this.diaDesde = inicio;
 		this.desde= LocalTime.parse(desde);
-		this.hasta= LocalTime.parse(hasta);
+		this.hasta= LocalTime.parse(hasta); 
 	}
 	
 	
