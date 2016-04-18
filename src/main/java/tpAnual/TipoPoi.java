@@ -1,10 +1,13 @@
 package tpAnual;
 
 import java.time.DayOfWeek;
+import java.util.List;
 
 import org.uqbar.geodds.*;
 
 public abstract class TipoPoi {
+	
+	private List <Horario> horarios; 
 
 	public abstract boolean estaDisponible(DayOfWeek dia,String hora);
 

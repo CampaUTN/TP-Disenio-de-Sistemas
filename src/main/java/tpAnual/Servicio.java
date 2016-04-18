@@ -23,10 +23,7 @@ public class Servicio {
 	
 	
 	public boolean servicioDisponible(String nombre, DayOfWeek dia,LocalTime hora){
-		boolean a = es(nombre);
-		boolean b= estaDentroDelHorario(dia, hora);
-		
-		return a && b;
+		return es(nombre) && estaDentroDelHorario(dia, hora);
 	}
 	
 	public boolean estaDentroDelHorario(DayOfWeek dia,LocalTime hora){

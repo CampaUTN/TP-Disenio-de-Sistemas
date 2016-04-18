@@ -9,39 +9,37 @@ import org.uqbar.geodds.*;
 public class Cgp extends TipoPoi {
 
 private Polygon comuna;
+
+	private List<Servicio> servicios = new ArrayList<>();
 	
+	// Constructor
 	public Cgp(Point puntoA, Point puntoB, Point puntoC){ //Pedimos 3 puntos al constructor para generar al menos un triangulo como una comuna
 		List<Point> puntosComu = new ArrayList<Point>();
 		puntosComu.add(puntoA);
 		puntosComu.add(puntoB);
 		puntosComu.add(puntoC);
-		
 		comuna = new Polygon(puntosComu); 
 	}
-	
-	private List<Servicio> servicios = new ArrayList<>();
 
-	@Override
+	// Disponibilidad 
 	public boolean estaDisponible(DayOfWeek dia,String hora) {
 		LocalTime horaComp = LocalTime.parse(hora);
-		
 		return servicios.stream().anyMatch(unServicio -> unServicio.estaDentroDelHorario(dia, horaComp));
-	}//este es si NO se ingresa el nombre del servicio
+	}//No se ingresa el nombre del servicio y se verifica que haya al menos uno abierto
 	
 	
 	public boolean estaDisponible(String servicio, DayOfWeek dia,String hora) {
-		
 		LocalTime horaComp = LocalTime.parse(hora);
-		
 		return servicios.stream().anyMatch(unServicio -> unServicio.servicioDisponible(servicio,dia,horaComp));
-	}//Este es si se ingresa un servicio (no se si no hace falta pasarle la hora o si con la hora actual alcanza
+	}//Se ingresa el nombre del servicio y se verifica la disponibilidad del mismo
 	
 		
-	@Override
+	// Cercania
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return comuna.isInside(puntoPoi) && comuna.isInside(unPunto);
 	}
 	
+	// Otros
 	public void agregarServicio(Servicio servicio){
 		servicios.add(servicio);
 	}
