@@ -24,5 +24,9 @@ public class Banco extends TipoPoi{
 		return this.brinda(servicio) && this.estaDisponible();
 	}
 
+	public void agregarServicio(String servicio){
+		servicios.add(servicio);
+	}	
+	
 	//El metodo de estaCerca de banco corresponde al default de 5 cuadras definido en TipoPoi
 }

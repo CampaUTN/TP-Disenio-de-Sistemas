@@ -31,4 +31,8 @@ private Polygon comuna;
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return comuna.isInside(puntoPoi) && comuna.isInside(unPunto);
 	}
+	
+	public void agregarServicio(Servicio servicio){
+		servicios.add(servicio);
+	}
 }
