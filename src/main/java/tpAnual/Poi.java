@@ -1,5 +1,6 @@
 package tpAnual;
 
+import java.time.DayOfWeek;
 import java.util.*;
 import org.uqbar.geodds.Point;
 
@@ -20,12 +21,12 @@ public class Poi {
 	}
 
 	// Disponibilidad:
-	public boolean estaDisponible() {
-		return tipo.estaDisponible();
+	public boolean estaDisponible(DayOfWeek dia,String hora) {
+		return tipo.estaDisponible(dia, hora);
 	}
 
-	public boolean estaDisponible(String servicio) {
-		return tipo.estaDisponible(servicio);
+	public boolean estaDisponible(String servicio,DayOfWeek dia,String hora) {
+		return tipo.estaDisponible(servicio, dia, hora);
 	}
 
 	// Distancia:

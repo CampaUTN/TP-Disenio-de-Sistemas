@@ -1,5 +1,6 @@
 package tpAnual;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
@@ -18,12 +19,12 @@ public class Mapa {
 		return poi.estaCerca(unPunto);
 	}
 
-	public boolean estaDisponible(Poi poi) {
-		return poi.estaDisponible();
+	public boolean estaDisponible(Poi poi,DayOfWeek dia,String hora) {
+		return poi.estaDisponible(dia, hora);
 	}
 
-	public boolean estaDisponible(Poi poi, String servicio) {
-		return poi.estaDisponible(servicio);
+	public boolean estaDisponible(Poi poi, String servicio,DayOfWeek dia,String hora) {
+		return poi.estaDisponible(servicio,dia,hora);
 	}
 
 	// Manejo de lista

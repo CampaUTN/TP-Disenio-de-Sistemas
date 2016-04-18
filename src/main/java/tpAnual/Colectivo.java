@@ -1,11 +1,13 @@
 package tpAnual;
 
+import java.time.DayOfWeek;
+
 import org.uqbar.geodds.Point;
 
 public class Colectivo extends TipoPoi {
 
 	@Override
-	public boolean estaDisponible() {
+	public boolean estaDisponible(DayOfWeek dia,String hora) {
 		return true;
 	}
 
