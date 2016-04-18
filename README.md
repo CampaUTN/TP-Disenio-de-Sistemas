@@ -16,12 +16,8 @@ PAGINA CON LOS METODOS EXPLICACION DEFICIENTE: http://googlemaps.github.io/googl
 
 ------------Clase loca que encontre de la version anterior de OpeningHours
 
-package tpAnual;
-
 import org.joda.time.DateTime;
-
 import java.lang.Object.*;
-import com.google.maps.model.OpeningHours;
 
 public class Horario {
 	
@@ -81,3 +77,33 @@ public class Horario {
 
 		}
 	}
+
+-----------TEST PARA PROBAR EL ULTIMO CODIGO QUE MANDE, ANTES HAY QUE HACER PUBLIC UN PAR DE ATRIBUTOS DE POI Y TIPOPOI
+-----------EL TEST DA ERROR, NO FAILURE Y NOSE PORQUE!! CIERRA TODO REDONDO
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.*;
+
+import org.joda.time.DateTime;
+import org.junit.Assert;
+import org.uqbar.geodds.Point;
+
+public class TestHorarios {
+	
+	DateTime dateToCheck = new DateTime(2016, 4, 17, 8, 30, 0, 0);
+	DateTime hora = new DateTime();
+
+	private Point ubicacionPoi = new Point(20, 10);
+	private Set<String> tags = new HashSet<String>();
+	private Banco banco = new Banco();
+
+	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
+
+	@Test
+	public void estaAbiertoBanco(){
+		Assert.assertTrue(poiBanco.tipo.lunes.isOpen(dateToCheck));
+	}
+	
+}
