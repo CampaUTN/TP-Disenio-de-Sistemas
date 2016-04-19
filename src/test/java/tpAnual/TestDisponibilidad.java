@@ -73,14 +73,5 @@ public class TestDisponibilidad {
 	public void estaFueraPorElDia(){
 		Assert.assertFalse(centro.estaDisponible(domingo, "11:00"));
 	}
-	
-	@Test
-	public void tomaElNombreEnMayuscula(){
-		Assert.assertTrue(rentas.es("RENTAS"));
-	}
-	
-	public void tomaElNombreEnMinuscula(){
-		Assert.assertTrue(rentas.es("rentas"));
-	}
 }
 

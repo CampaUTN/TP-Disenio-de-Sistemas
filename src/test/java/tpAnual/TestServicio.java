@@ -3,13 +3,20 @@ package tpAnual;
 import org.junit.*;
 
 public class TestServicio {
-	private Servicio rentas = new Servicio("rentas");
+	private Servicio rentas = new Servicio("Rentas");
 	
 	@Test
 	public void esElMismoSerivio()
 	{
-		Assert.assertTrue(rentas.es("rentas"));
+		Assert.assertTrue(rentas.es("Rentas"));
 	}
 	
-	// aca irian test de si da el servicio a tal o cual hora en tal o cual dia...
+	@Test
+	public void tomaElNombreEnMayuscula(){
+		Assert.assertTrue(rentas.es("RENTAS"));
+	}
+	
+	public void tomaElNombreEnMinuscula(){
+		Assert.assertTrue(rentas.es("rentas"));
+	}
 }
