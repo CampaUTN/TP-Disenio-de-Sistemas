@@ -1,19 +1,9 @@
 package tpAnual;
 
 import java.time.DayOfWeek;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
-
-import tpAnual.Banco;
-import tpAnual.Cgp;
-import tpAnual.Horario;
-import tpAnual.Servicio;
 
 public class TestDisponibilidad {
 

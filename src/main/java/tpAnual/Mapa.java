@@ -4,7 +4,6 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
-import org.uqbar.geodds.Polygon;
 
 public class Mapa {
 	

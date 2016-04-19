@@ -11,13 +11,16 @@ import org.uqbar.geodds.*;
 public class Negocio extends TipoPoi {
 
 	private int radio;
+	@SuppressWarnings("unused") // Cada poi tiene un nombre y suponemos que
+	// en se va a usar en una futura iteracion.
 	private String nombre;
 	private List <Horario> horarios;
 
 	//Disponibilidad
 	public boolean estaDisponible(DayOfWeek dia,String hora){
 		LocalTime horaComp = LocalTime.parse(hora);
-		return  horarios.stream().anyMatch(horario -> horario.estaEnFranjaHoraria(dia,horaComp));
+		return  horarios.stream()
+				.anyMatch(horario -> horario.estaEnFranjaHoraria(dia,horaComp));
 	}
 
 	public void agregarHorario(Horario unHorario){
@@ -26,9 +29,7 @@ public class Negocio extends TipoPoi {
 	
 	//Cercania
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
-
-		Double distancia = puntoPoi.distance(unPunto);
-		return distancia < radio;
+		return puntoPoi.distance(unPunto) < radio;
 	}
 	
 	public Negocio(){

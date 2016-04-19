@@ -9,26 +9,36 @@ public class Horario  {
 	private LocalTime desde;
 	private LocalTime hasta;
 	
-	
-	public boolean estaEnFranjaHoraria(DayOfWeek dia,LocalTime hora){
-		
-		 boolean cumpleRango = (dia.getValue() >= diaDesde.getValue()) && (dia.getValue() <= diaHasta.getValue());//esta entre el diaDesde y el diaHasta
-		 boolean cumpleDia = dia.getValue() == diaDesde.getValue();
-		 
-		 
-		 boolean estaEnHorario = (hora.isAfter(this.desde) && hora.isBefore(this.hasta));  //estaDentro del horario especificado
-		 return (cumpleDia || cumpleRango) && estaEnHorario;
+	//esta entre el diaDesde y el diaHasta
+	private boolean cumpleRango(DayOfWeek dia, LocalTime hora)
+	{
+		return (dia.getValue() >= diaDesde.getValue()) && 
+				(dia.getValue() <= diaHasta.getValue());
 	}
-
-	Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){ //se usa si es un rango de dias
+	
+	private boolean cumpleDia(DayOfWeek dia){
+		return diaDesde.equals(dia);
+	}
+	
+	//estaDentro del horario especificado
+	private boolean estaEnHorario(LocalTime hora){
+		return (hora.isAfter(desde) && hora.isBefore(hasta));
+	}
+	
+	public boolean estaEnFranjaHoraria(DayOfWeek dia, LocalTime hora){
+		 return (cumpleDia(dia) || cumpleRango(dia,hora)) && estaEnHorario(hora);
+	}
+	
+	//se usa si es un rango de dias
+	Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){
 		this.diaHasta = fin;
 		this.diaDesde = inicio;
 		this.desde= LocalTime.parse(desde);
 		this.hasta= LocalTime.parse(hasta); 
 	}
 	
-	
-	Horario(DayOfWeek inicio, String desde, String hasta){   //se usa por si es un unico dia
+	//se usa por si es un unico dia
+	Horario(DayOfWeek inicio, String desde, String hasta){   
 		this.diaDesde = inicio;
 		this.diaHasta = inicio;
 		this.desde= LocalTime.parse(desde);
