@@ -2,20 +2,22 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.uqbar.geodds.Point;
 
 public class Poi {
-
+	private String nombre;
 	private Point ubicacion;
-	public String nombre;
-	public TipoPoi tipo;
-	private Set<String> tags = new HashSet<String>();
+	private TipoPoi tipo;
+	private Set<String> tagsPoi = new HashSet<String>();
 
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
 		this.ubicacion=ubicacion;
 		this.nombre = nombre;
-		this.tags = tags;
+		this.tagsPoi = tags;
 		tags.add(nombre);
 	}
 
@@ -35,11 +37,22 @@ public class Poi {
 
 	// Tags:
 	public boolean tieneTag(String clave) {
-		return tags.stream()
+		return this.getTags()
+				.stream()
 				.anyMatch(tag -> tag.toLowerCase().contains(clave.toLowerCase()));
 	}
 
 	public void agregarTag(String nuevoTag) {
-		tags.add(nuevoTag);
+		tagsPoi.add(nuevoTag);
+	}
+	
+	// Getters:
+	public String getNombre(){
+		return this.nombre;
+	}
+	
+	private Set<String> getTags(){
+		return Stream.concat(tagsPoi.stream(),tipo.getSerivicios().stream())
+				.collect(Collectors.toSet());
 	}
 }

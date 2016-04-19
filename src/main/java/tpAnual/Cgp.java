@@ -3,7 +3,9 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.Collectors;
+import java.util.*;
+
 import org.uqbar.geodds.*;
 
 public class Cgp extends TipoPoi {
@@ -39,5 +41,12 @@ public class Cgp extends TipoPoi {
 	// Otros
 	public void agregarServicio(Servicio servicio){
 		servicios.add(servicio);
+	}
+	
+	// Getters:
+	public Set<String> getServicios(){
+		return servicios.stream()
+				.map(unServicio -> unServicio.getNombre())
+				.collect(Collectors.toSet());
 	}
 }

@@ -27,4 +27,8 @@ public class Servicio {
 	public void agregarHorario(Horario unHorario){
 		horarios.add(unHorario);
 	}
+	
+	public String getNombre(){
+		return this.nombre;
+	}
 }

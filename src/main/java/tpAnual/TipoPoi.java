@@ -2,6 +2,7 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import org.uqbar.geodds.*;
+import java.util.*;
 
 public abstract class TipoPoi {
 
@@ -13,6 +14,10 @@ public abstract class TipoPoi {
 
 	public boolean brinda(String servicio) {
 		return false;
+	}
+	
+	public Set<String> getSerivicios(){
+		return new HashSet<String>();
 	}
 
 	/*

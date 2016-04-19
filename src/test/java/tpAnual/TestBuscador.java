@@ -8,11 +8,12 @@ import org.uqbar.geodds.Point;
 public class TestBuscador {
 	private Set<String> tags = new HashSet<String>();
 	private Colectivo tipo = new Colectivo();
+	private Banco frances= new Banco();
 	private Point ubicacion = new Point(54, 10);
 	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
 	private Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
 	private Mapa mapa = new Mapa();
-
+	
 	@Before
 	public void init() {
 		poi.agregarTag("107");
@@ -37,5 +38,13 @@ public class TestBuscador {
 	@Test
 	public void siNoContienenTagNoEncuentra() {
 		Assert.assertEquals(0, mapa.buscarPoi("colectivos").size());
+	}
+	
+	@Test
+	public void losServiciosSonTags()
+	{
+		frances.agregarServicio("Rentas");
+		Poi poi3 = new Poi(frances, ubicacion, "108", tags);
+		Assert.assertTrue(poi3.tieneTag("Rentas"));
 	}
 }

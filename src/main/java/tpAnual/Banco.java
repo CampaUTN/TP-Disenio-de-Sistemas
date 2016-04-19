@@ -2,15 +2,16 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.List;
+import java.util.*;
 
 public class Banco extends TipoPoi{
 
-	private List<String> servicios;
+	private Set<String> servicios;
 	private Horario horarioAtencion;
 	
 	public Banco(){
 		this.horarioAtencion = new Horario(DayOfWeek.MONDAY,DayOfWeek.FRIDAY,"10:00", "17:00");
+		this.servicios = new HashSet<String>();
 	}
 	
 	// Disponibilidad
@@ -31,5 +32,10 @@ public class Banco extends TipoPoi{
 	
 	public void agregarServicio(String servicio){
 		servicios.add(servicio);
-	}	
+	}
+	
+	// Getters:
+	public Set<String> getServicios(){
+		return this.servicios;
+	}
 }
