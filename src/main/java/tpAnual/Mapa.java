@@ -47,6 +47,7 @@ public class Mapa {
 		return pois.size();
 	}
 
+	// Cuando hagamos UI esto apareceria en una ventana y no por consola.
 	public void mostrar(List<Poi> list) {
 		list.forEach(poi-> System.out.println(poi.nombre));
 	}

@@ -19,13 +19,15 @@ public class Cgp extends TipoPoi {
 	// Disponibilidad 
 	public boolean estaDisponible(DayOfWeek dia,String hora) {
 		LocalTime horaComp = LocalTime.parse(hora);
-		return servicios.stream().anyMatch(unServicio -> unServicio.estaDentroDelHorario(dia, horaComp));
+		return servicios.stream()
+				.anyMatch(unServicio -> unServicio.disponible(dia, horaComp));
 	}//No se ingresa el nombre del servicio y se verifica que haya al menos uno abierto
 	
 	
-	public boolean estaDisponible(String servicio, DayOfWeek dia,String hora) {
+	public boolean estaDisponible(String nombreServ, DayOfWeek dia,String hora) {
 		LocalTime horaComp = LocalTime.parse(hora);
-		return servicios.stream().anyMatch(unServicio -> unServicio.servicioDisponible(servicio,dia,horaComp));
+		return servicios.stream()
+				.anyMatch(unServicio -> unServicio.es(nombreServ) && unServicio.disponible(dia,horaComp));
 	}//Se ingresa el nombre del servicio y se verifica la disponibilidad del mismo
 	
 		

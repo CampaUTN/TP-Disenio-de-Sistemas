@@ -19,8 +19,8 @@ public class Banco extends TipoPoi{
 		return horarioAtencion.estaEnFranjaHoraria(dia, LocalTime.parse(hora));
 	}
 	
-	public boolean estaDisponible(String servicio,DayOfWeek dia,String hora){
-		return this.brinda(servicio) && this.estaDisponible(dia,hora);
+	public boolean estaDisponible(String nombreServ,DayOfWeek dia,String hora){
+		return this.brinda(nombreServ) && this.estaDisponible(dia,hora);
 	}
 	
 	// Servicios
@@ -32,6 +32,4 @@ public class Banco extends TipoPoi{
 	public void agregarServicio(String servicio){
 		servicios.add(servicio);
 	}	
-	
-	//El metodo de estaCerca de banco corresponde al default de 5 cuadras definido en TipoPoi
 }

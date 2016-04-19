@@ -16,17 +16,11 @@ public class Servicio {
 		this.horarios = new ArrayList<>();
 	}
 
-	public boolean es(String unNombre) {
-		return nombre.equals(unNombre);
-	} // para poder seleccionar el servicio pedido y luego preguntarle la hora,
-		// al buscarlo en una lista de servicios.
-	
-	
-	public boolean servicioDisponible(String nombre, DayOfWeek dia,LocalTime hora){
-		return es(nombre) && estaDentroDelHorario(dia, hora);
+	public boolean es(String nombreServ) {
+		return nombre.toLowerCase().equals(nombreServ.toLowerCase());
 	}
 	
-	public boolean estaDentroDelHorario(DayOfWeek dia,LocalTime hora){
+	public boolean disponible(DayOfWeek dia,LocalTime hora){
 		return  horarios.stream().anyMatch(horario -> horario.estaEnFranjaHoraria(dia,hora));
 	}
 	

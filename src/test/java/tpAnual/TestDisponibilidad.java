@@ -63,6 +63,7 @@ public class TestDisponibilidad {
 		
 		Assert.assertTrue(centro.estaDisponible(lunes, "10:01"));
 	}
+	
 	@Test
 	public void estaFueraPorLaHora(){
 		Assert.assertFalse(centro.estaDisponible("Rentas",miercoles, "12:30"));
@@ -73,5 +74,13 @@ public class TestDisponibilidad {
 		Assert.assertFalse(centro.estaDisponible(domingo, "11:00"));
 	}
 	
+	@Test
+	public void tomaElNombreEnMayuscula(){
+		Assert.assertTrue(rentas.es("RENTAS"));
+	}
+	
+	public void tomaElNombreEnMinuscula(){
+		Assert.assertTrue(rentas.es("rentas"));
+	}
 }
 
