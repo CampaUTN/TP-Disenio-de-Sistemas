@@ -2,6 +2,7 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.geodds.*;
@@ -29,5 +30,10 @@ public class Negocio extends TipoPoi {
 		Double distancia = puntoPoi.distance(unPunto);
 		return distancia < radio;
 	}
+	
+	public Negocio(){
+		horarios = new ArrayList<>();
+	}
+	
 	
 }
