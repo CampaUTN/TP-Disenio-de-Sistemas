@@ -16,17 +16,13 @@ public class Horario  {
 				(dia.getValue() <= diaHasta.getValue());
 	}
 	
-	private boolean cumpleDia(DayOfWeek dia){
-		return diaDesde.equals(dia);
-	}
-	
 	//estaDentro del horario especificado
 	private boolean estaEnHorario(LocalTime hora){
 		return (hora.isAfter(desde) && hora.isBefore(hasta));
 	}
 	
 	public boolean estaEnFranjaHoraria(DayOfWeek dia, LocalTime hora){
-		 return (cumpleDia(dia) || cumpleRango(dia,hora)) && estaEnHorario(hora);
+		 return cumpleRango(dia,hora) && estaEnHorario(hora);
 	}
 	
 	//se usa si es un rango de dias
