@@ -43,11 +43,11 @@ public class Poi {
 	public boolean tieneTag(String clave) {
 		return this.getTags()
 				.stream()
-				.anyMatch(tag -> tag.toLowerCase().contains(clave.toLowerCase()));
+				.anyMatch(tag -> tag.contains(clave.toLowerCase()));
 	}
 
 	public void agregarTag(String nuevoTag) {
-		tagsPoi.add(nuevoTag);
+		tagsPoi.add(nuevoTag.toLowerCase());
 	}
 	
 	// Setters:
@@ -61,8 +61,9 @@ public class Poi {
 	}
 	
 	private Set<String> getTags(){
-		return Stream.concat(tagsPoi.stream(),tipo.getServicios().stream())
-				.collect(Collectors.toSet());
+		return Stream.concat(tagsPoi.stream(),tipo.getServicios()
+										          .stream())
+					 .collect(Collectors.toSet());
 	}
 
 	public Point getUbicacion() {

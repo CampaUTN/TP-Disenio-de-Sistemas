@@ -1,5 +1,6 @@
 package tpAnual;
 
+import java.time.DayOfWeek;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
@@ -11,13 +12,13 @@ public class TestPoi {
 	private Colectivo tipo = new Colectivo();
 	private Point ubicacion = new Point(54, 10);
 	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
-	
 	@Before
 	public void init()
 	{
 		poi.agregarTag("mejor");
 		poi.agregarTag("colectivo");
 	}
+	
 	
 	@Test
 	public void tieneTagsAgregados()

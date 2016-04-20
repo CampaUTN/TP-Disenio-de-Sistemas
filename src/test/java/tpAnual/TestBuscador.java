@@ -13,6 +13,7 @@ public class TestBuscador {
 	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
 	private Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
 	private Mapa mapa = new Mapa();
+	private Servicio servicio = new Servicio("rentas");
 	
 	@Before
 	public void init() {
@@ -43,8 +44,8 @@ public class TestBuscador {
 	@Test
 	public void losServiciosSonTags()
 	{
-		frances.agregarServicio("Rentas");
+		frances.agregarServicio(servicio);
 		Poi poi3 = new Poi(frances, ubicacion, "108", tags);
-		Assert.assertTrue(poi3.tieneTag("Rentas"));
+		Assert.assertTrue(poi3.tieneTag("rentas"));
 	}
 }

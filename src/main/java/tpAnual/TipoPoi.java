@@ -16,20 +16,8 @@ public abstract class TipoPoi {
 		return new HashSet<String>();
 	}
 
-	/*
-	 ** como banco y GCP manejan distinto los tramites, implementan de
-	 ** diferente forma este metodo
-	 ** entoces cada una de esas subclases lo redefine a gusto. Las demas,
-	 ** por default, tiran excepcion, porque no tienen tramites.
-	 */
 	public boolean estaDisponible(String servicio, DayOfWeek dia, String hora) {
 		return false;
 	}
-	
-	/*
-	 ** Idem anterior
-	 */
-	public boolean brinda(String servicio) {
-		return false;
-	}
+	//Este metodo en un futuro se va a cambiar por un throwException
 }
