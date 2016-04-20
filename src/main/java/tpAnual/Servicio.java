@@ -12,7 +12,7 @@ public class Servicio {
 	private List <Horario> horarios; 
 
 	public Servicio(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre.toLowerCase();
 		this.horarios = new ArrayList<>();
 	}
 

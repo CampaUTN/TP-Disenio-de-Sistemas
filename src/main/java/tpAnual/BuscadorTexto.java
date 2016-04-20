@@ -5,9 +5,6 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 public class BuscadorTexto {
-
-	// METODOS
-
 	public List<String> SeparaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}

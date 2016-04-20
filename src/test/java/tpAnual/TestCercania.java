@@ -17,16 +17,20 @@ public class TestCercania {
 	private Set<String> tags = new HashSet<String>();
 	private Point ubicacionPoi = new Point(20, 10);
 	
+	private Mapa mapa = new Mapa();
+	
 	private Banco banco = new Banco();
 	private Colectivo colectivo = new Colectivo();
 	private Cgp cgp;
 	
-	private Poi poiColectivo = new Poi(colectivo,ubicacionPoi,"60",tags);
-	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
-	Poi poiCgp;
-	
 	private Point puntoDeBusqueda = new Point(20.003,10.003);
 	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
+	
+	
+	private Poi poiColectivo = new Poi(colectivo,ubicacionPoi,"60",tags);
+	private Poi poiColectivo2 = new Poi(colectivo,puntoDeBusquedaColect,"47",tags);
+	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
+	private Poi poiCgp;
 	
 	public TestCercania(){
 		puntosComuna.add(puntoComunaA);
@@ -55,4 +59,8 @@ public class TestCercania {
 		Assert.assertTrue(poiColectivo.estaCerca(puntoDeBusquedaColect));
 	}
 	
+	@Test
+	public void cercaniaEntrePois(){
+		Assert.assertTrue(mapa.estaAMenosDe(poiBanco, poiColectivo2, 0.4));
+	}
 }

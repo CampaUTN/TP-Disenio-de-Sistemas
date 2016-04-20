@@ -23,6 +23,13 @@ public class Mapa {
 		return poi.estaCerca(unPunto);
 	}
 	
+	private double distanciaEntrePois(Poi poi1, Poi poi2){
+		return poi1.getUbicacion().distance(poi2.getUbicacion());
+	}
+	
+	public boolean estaAMenosDe(Poi poi1, Poi poi2, double distancia){
+		return distanciaEntrePois(poi1,poi2) < distancia;
+	}
 	
 	// Disponibilidad de poi
 	

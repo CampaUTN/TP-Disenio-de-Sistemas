@@ -17,6 +17,7 @@ public class Negocio extends TipoPoi {
 	private List <Horario> horarios;
 
 	//Disponibilidad
+	@Override
 	public boolean estaDisponible(DayOfWeek dia,String hora){
 		LocalTime horaComp = LocalTime.parse(hora);
 		return  horarios.stream()
@@ -28,6 +29,7 @@ public class Negocio extends TipoPoi {
 	}
 	
 	//Cercania
+	@Override
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return puntoPoi.distance(unPunto) < radio;
 	}

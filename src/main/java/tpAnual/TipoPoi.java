@@ -11,12 +11,8 @@ public abstract class TipoPoi {
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return unPunto.distance(puntoPoi) <= 0.5;
 	}
-
-	public boolean brinda(String servicio) {
-		return false;
-	}
 	
-	public Set<String> getSerivicios(){
+	public Set<String> getServicios(){
 		return new HashSet<String>();
 	}
 
@@ -29,5 +25,11 @@ public abstract class TipoPoi {
 	public boolean estaDisponible(String servicio, DayOfWeek dia, String hora) {
 		return false;
 	}
-
+	
+	/*
+	 ** Idem anterior
+	 */
+	public boolean brinda(String servicio) {
+		return false;
+	}
 }

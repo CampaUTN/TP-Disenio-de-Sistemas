@@ -12,7 +12,11 @@ public class Poi {
 	private Point ubicacion;
 	private TipoPoi tipo;
 	private Set<String> tagsPoi = new HashSet<String>();
-
+	@SuppressWarnings("unused")
+	private String calle;
+	@SuppressWarnings("unused")
+	private Integer direccion;
+	
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
 		this.ubicacion=ubicacion;
@@ -34,7 +38,7 @@ public class Poi {
 	public boolean estaCerca(Point unPunto) {
 		return tipo.estaCerca(unPunto, this.ubicacion);
 	}
-
+	
 	// Tags:
 	public boolean tieneTag(String clave) {
 		return this.getTags()
@@ -46,13 +50,22 @@ public class Poi {
 		tagsPoi.add(nuevoTag);
 	}
 	
+	// Setters:
+	public void agregarDireccion(String calle, Integer direccion){
+		this.calle=calle;
+		this.direccion=direccion;
+	}
 	// Getters:
 	public String getNombre(){
 		return this.nombre;
 	}
 	
 	private Set<String> getTags(){
-		return Stream.concat(tagsPoi.stream(),tipo.getSerivicios().stream())
+		return Stream.concat(tagsPoi.stream(),tipo.getServicios().stream())
 				.collect(Collectors.toSet());
+	}
+
+	public Point getUbicacion() {
+		return ubicacion;
 	}
 }

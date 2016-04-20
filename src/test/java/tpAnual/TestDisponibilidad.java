@@ -22,7 +22,7 @@ public class TestDisponibilidad {
 	Servicio rentas = new Servicio("Rentas");
 	Servicio creditos = new Servicio("Creditos");
 	
-	Horario horarioManana = new Horario(lunes, viernes, "10:00", "12:00");
+	Horario horarioManana = new Horario(lunes, viernes, "10:00:30", "12:00");
 	Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
 	Horario horarioUnico = new Horario(miercoles,"09:00","12:00");
 	
@@ -45,6 +45,11 @@ public class TestDisponibilidad {
 	public void estaDentroDeLaFranjaHoraria(){
 		
 		Assert.assertTrue(centro.estaDisponible("Rentas",lunes, "10:01"));
+	}
+	
+	@Test
+	public void cuentanSegundos(){
+		Assert.assertFalse(centro.estaDisponible("Rentas", lunes, "10:00"));
 	}
 	
 	@Test
