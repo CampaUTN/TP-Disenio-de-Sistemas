@@ -8,7 +8,6 @@ import org.junit.*;
 import org.uqbar.geodds.Point;
 
 public class TestCercania {
-	
 	private Point puntoComunaA = new Point(0,0);
 	private Point puntoComunaB = new Point(20,60);
 	private Point puntoComunaC = new Point(50,0);
@@ -26,22 +25,19 @@ public class TestCercania {
 	private Point puntoDeBusqueda = new Point(20.003,10.003);
 	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
 	
-	
 	private Poi poiColectivo = new Poi(colectivo,ubicacionPoi,"60",tags);
 	private Poi poiColectivo2 = new Poi(colectivo,puntoDeBusquedaColect,"47",tags);
 	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
 	private Poi poiCgp;
 	
-	public TestCercania(){
+	
+	@Before
+	public void init(){
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);
 		puntosComuna.add(puntoComunaC);
 		cgp = new Cgp(puntosComuna);
 		poiCgp = new Poi(cgp, ubicacionPoi, "Asistencia social", tags);
-	}
-	
-	@Before
-	public void init() {
 	}
 
 	@Test

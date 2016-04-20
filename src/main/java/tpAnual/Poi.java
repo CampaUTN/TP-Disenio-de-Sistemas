@@ -19,7 +19,7 @@ public class Poi {
 	
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
-		this.ubicacion=ubicacion;
+		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
 		tags.add(nombre);
@@ -61,8 +61,7 @@ public class Poi {
 	}
 	
 	private Set<String> getTags(){
-		return Stream.concat(tagsPoi.stream(),tipo.getServicios()
-										          .stream())
+		return Stream.concat(tagsPoi.stream(),tipo.getServicios().stream())
 					 .collect(Collectors.toSet());
 	}
 

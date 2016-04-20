@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class PoiConServicio extends TipoPoi{
+public abstract class PoiConServicio extends TipoPoi{
 	protected Set<Servicio> servicios = new HashSet<>();
 	
 	// Disponibilidad sin nombre de servicio
@@ -29,11 +29,11 @@ public class PoiConServicio extends TipoPoi{
 	@Override
 	public Set<String> getServicios(){
 		return servicios.stream()
-							 .map(servicio -> servicio.getNombre())
-							 .collect(Collectors.toSet());
+						.map(servicio -> servicio.getNombre())
+						.collect(Collectors.toSet());
 	}
 	
-		// Otros
+	// Otros
 	public void agregarServicio(Servicio servicio){
 		servicios.add(servicio);
 	}

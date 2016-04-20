@@ -16,8 +16,8 @@ public abstract class TipoPoi {
 		return new HashSet<String>();
 	}
 
+	//Este metodo en un futuro se va a cambiar por un throwException.
 	public boolean estaDisponible(String servicio, DayOfWeek dia, String hora) {
 		return false;
 	}
-	//Este metodo en un futuro se va a cambiar por un throwException
 }

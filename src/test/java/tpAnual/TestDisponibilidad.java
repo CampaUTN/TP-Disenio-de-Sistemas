@@ -7,24 +7,20 @@ import org.junit.Test;
 
 public class TestDisponibilidad {
 
-	DayOfWeek lunes = DayOfWeek.MONDAY;
-	DayOfWeek martes = DayOfWeek.TUESDAY;
-	DayOfWeek miercoles = DayOfWeek.WEDNESDAY;
-	DayOfWeek jueves = DayOfWeek.THURSDAY;
-	DayOfWeek viernes = DayOfWeek.FRIDAY;
-	DayOfWeek sabado = DayOfWeek.SATURDAY;
-	DayOfWeek domingo = DayOfWeek.SUNDAY;
-	
-	Banco frances= new Banco();
+	private DayOfWeek lunes = DayOfWeek.MONDAY;
+	private DayOfWeek miercoles = DayOfWeek.WEDNESDAY;
+	private DayOfWeek viernes = DayOfWeek.FRIDAY;
+	private DayOfWeek domingo = DayOfWeek.SUNDAY;
 
-	Cgp centro;
+	private Cgp centro;
 	
-	Servicio rentas = new Servicio("Rentas");
-	Servicio creditos = new Servicio("Creditos");
+	private Servicio rentas = new Servicio("Rentas");
+	private Servicio creditos = new Servicio("Creditos");
 	
-	Horario horarioManana = new Horario(lunes, viernes, "10:00:30", "12:00");
-	Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
-	Horario horarioUnico = new Horario(miercoles,"09:00","12:00");
+	private Horario horarioManana = new Horario(lunes, viernes, "10:00:30", "12:00");
+	private Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
+	private Horario horarioUnico = new Horario(miercoles,"09:00","12:00");
+	
 	
 	@Before
 	public void init()
