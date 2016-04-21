@@ -14,7 +14,7 @@ public class Mapa {
 	// Busqueda de texto libre de pois
 	
 	public List<Poi> buscarPoi(String tags) {
-		return buscador.BuscameSegunTags(tags, pois);
+		return buscador.buscameSegunTags(tags, pois);
 	}
 
 	// Cercania de poi

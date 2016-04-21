@@ -2,13 +2,7 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 
-import java.util.*;
-
 public class Banco extends PoiConServicio{
-
-	public Banco(){
-		servicios = new HashSet<Servicio>();
-	}
 
 	@Override
 	public void agregarServicio(Servicio servicio){

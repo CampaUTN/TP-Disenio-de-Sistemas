@@ -8,15 +8,15 @@ public class TestServicio {
 	@Test
 	public void esElMismoSerivio()
 	{
-		Assert.assertTrue(rentas.es("Rentas"));
+		Assert.assertTrue(rentas.tienePorNombre("Rentas"));
 	}
 	
 	@Test
 	public void tomaElNombreEnMayuscula(){
-		Assert.assertTrue(rentas.es("RENTAS"));
+		Assert.assertTrue(rentas.tienePorNombre("RENTAS"));
 	}
 	
 	public void tomaElNombreEnMinuscula(){
-		Assert.assertTrue(rentas.es("rentas"));
+		Assert.assertTrue(rentas.tienePorNombre("rentas"));
 	}
 }

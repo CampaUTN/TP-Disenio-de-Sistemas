@@ -16,8 +16,8 @@ public class Servicio {
 		this.horarios = new ArrayList<>();
 	}
 
-	public boolean es(String nombreServ) {
-		return nombre.toLowerCase().equals(nombreServ.toLowerCase());
+	public boolean tienePorNombre(String nombreServ) {
+		return nombre.equals(nombreServ.toLowerCase());
 	}
 	
 	public boolean disponible(DayOfWeek dia,LocalTime hora){

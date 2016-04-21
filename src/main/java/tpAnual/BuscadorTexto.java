@@ -5,12 +5,12 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 public class BuscadorTexto {
-	private List<String> SeparaLaBusqueda(String Busqueda) {
+	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}
 
-	public List<Poi> BuscameSegunTags(String listaTagsIngresados, List<Poi> listaPois) {
-		List<String> palabras = SeparaLaBusqueda(listaTagsIngresados);
+	public List<Poi> buscameSegunTags(String listaTagsIngresados, List<Poi> listaPois) {
+		List<String> palabras = separaLaBusqueda(listaTagsIngresados);
 		return listaPois.stream()
 				.filter(poi -> hayInterseccionOInclusion(palabras, poi))
 				.collect(Collectors.toList());

@@ -22,7 +22,7 @@ public abstract class PoiConServicio extends TipoPoi{
 	public boolean estaDisponible(String nombreServ, DayOfWeek dia,String hora) {
 		LocalTime horaComp = LocalTime.parse(hora);
 		return servicios.stream()
-				.anyMatch(unServicio -> unServicio.es(nombreServ) && unServicio.disponible(dia,horaComp));
+				.anyMatch(unServicio -> unServicio.tienePorNombre(nombreServ) && unServicio.disponible(dia,horaComp));
 	}
 	
 	// Getters:
