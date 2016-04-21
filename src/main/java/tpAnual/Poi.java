@@ -23,7 +23,7 @@ public class Poi {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
-		tags.add(nombre);
+		this.agregarTag(nombre);
 	}
 
 	// Disponibilidad:
@@ -57,6 +57,7 @@ public class Poi {
 	public void agregarDireccion(String calle, Integer direccion){
 		this.calle=calle;
 		this.direccion=direccion;
+		this.agregarTag(calle);
 	}
 	// Getters:
 	public String getNombre(){
