@@ -1,6 +1,6 @@
 package tpAnual;
 
-import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
@@ -33,12 +33,12 @@ public class Mapa {
 	
 	// Disponibilidad de poi
 	
-	public boolean estaDisponible(Poi poi,DayOfWeek dia,String hora) {
-		return poi.estaDisponible(dia, hora);
+	public boolean estaDisponible(Poi poi,LocalDate fecha,String hora) {
+		return poi.estaDisponible(fecha, hora);
 	}
 
-	public boolean estaDisponible(Poi poi, String servicio,DayOfWeek dia,String hora) {
-		return poi.estaDisponible(servicio,dia,hora);
+	public boolean estaDisponible(Poi poi, String servicio,LocalDate fecha,String hora) {
+		return poi.estaDisponible(servicio,fecha,hora);
 	}
 
 	// Manejo de lista de pois

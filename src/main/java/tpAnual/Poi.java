@@ -1,6 +1,7 @@
 package tpAnual;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,11 +27,13 @@ public class Poi {
 	}
 
 	// Disponibilidad:
-	public boolean estaDisponible(DayOfWeek dia,String hora) {
+	public boolean estaDisponible(LocalDate fecha,String hora) {
+		DayOfWeek dia = fecha.getDayOfWeek();
 		return tipo.estaDisponible(dia, hora);
 	}
 
-	public boolean estaDisponible(String servicio,DayOfWeek dia,String hora) {
+	public boolean estaDisponible(String servicio,LocalDate fecha,String hora) {
+		DayOfWeek dia = fecha.getDayOfWeek();
 		return tipo.estaDisponible(servicio, dia, hora);
 	}
 
