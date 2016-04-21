@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.Arrays;
 
 public class BuscadorTexto {
-	public List<String> SeparaLaBusqueda(String Busqueda) {
+	private List<String> SeparaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}
 
@@ -16,7 +16,7 @@ public class BuscadorTexto {
 				.collect(Collectors.toList());
 	}
 
-	public boolean hayInterseccionOInclusion(List<String> palabras, Poi poi) {
+	private boolean hayInterseccionOInclusion(List<String> palabras, Poi poi) {
 		return palabras.stream()
 				.anyMatch(palabra -> poi.tieneTag(palabra));
 	}
