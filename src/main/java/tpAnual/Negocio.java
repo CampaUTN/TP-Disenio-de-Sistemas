@@ -14,6 +14,7 @@ public class Negocio extends TipoPoi {
 	@SuppressWarnings("unused") // Cada poi tiene un nombre y suponemos que
 	// en se va a usar en una futura iteracion.
 	private String nombre;
+	private String rubro;
 	private List <Horario> horarios;
 
 	//Disponibilidad
@@ -34,8 +35,13 @@ public class Negocio extends TipoPoi {
 		return puntoPoi.distance(unPunto) < radio;
 	}
 	
-	public Negocio(){
+	public Negocio(String rubro){
+		this.rubro = rubro;
 		horarios = new ArrayList<>();
+	}
+
+	public String getRubro() {
+		return rubro;
 	}
 	
 	

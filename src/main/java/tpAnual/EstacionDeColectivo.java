@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 
 import org.uqbar.geodds.Point;
 
-public class Colectivo extends TipoPoi {
+public class EstacionDeColectivo extends TipoPoi {
 	
 	@Override
 	public boolean estaDisponible(DayOfWeek dia,String hora) {

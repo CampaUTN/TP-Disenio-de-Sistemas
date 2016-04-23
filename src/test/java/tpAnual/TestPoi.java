@@ -7,7 +7,7 @@ import org.uqbar.geodds.Point;
 
 public class TestPoi {
 	private Set<String> tags = new HashSet<String>();
-	private Colectivo tipo = new Colectivo();
+	private EstacionDeColectivo tipo = new EstacionDeColectivo();
 	private Point ubicacion = new Point(54, 10);
 	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
 

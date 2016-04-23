@@ -25,19 +25,20 @@ public class Horario  {
 		 return cumpleRango(dia,hora) && estaEnHorario(hora);
 	}
 	
-	//se usa si es un rango de dias
-	Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){
+	private Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){
 		this.diaHasta = fin;
 		this.diaDesde = inicio;
 		this.desde= LocalTime.parse(desde);
 		this.hasta= LocalTime.parse(hasta); 
 	}
 	
+	//se usa si es un rango de dias
+	static Horario nuevoHorarioParaFranja(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){   
+		return new Horario(inicio, fin, desde, hasta);
+	}
+	
 	//se usa por si es un unico dia
-	Horario(DayOfWeek inicio, String desde, String hasta){   
-		this.diaDesde = inicio;
-		this.diaHasta = inicio;
-		this.desde= LocalTime.parse(desde);
-		this.hasta= LocalTime.parse(hasta);
+	public static Horario nuevoHorarioParaDia(DayOfWeek inicio, String desde, String hasta){   
+		return new Horario(inicio, inicio, desde, hasta);
 	}
 }

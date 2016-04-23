@@ -19,14 +19,14 @@ public class TestCercania {
 	private Mapa mapa = new Mapa();
 	
 	private Banco banco = new Banco();
-	private Colectivo colectivo = new Colectivo();
+	private EstacionDeColectivo estacionDeColectivo = new EstacionDeColectivo();
 	private Cgp cgp;
 	
 	private Point puntoDeBusqueda = new Point(20.003,10.003);
 	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
 	
-	private Poi poiColectivo = new Poi(colectivo,ubicacionPoi,"60",tags);
-	private Poi poiColectivo2 = new Poi(colectivo,puntoDeBusquedaColect,"47",tags);
+	private Poi poiColectivo = new Poi(estacionDeColectivo,ubicacionPoi,"60",tags);
+	private Poi poiColectivo2 = new Poi(estacionDeColectivo,puntoDeBusquedaColect,"47",tags);
 	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
 	private Poi poiCgp;
 	

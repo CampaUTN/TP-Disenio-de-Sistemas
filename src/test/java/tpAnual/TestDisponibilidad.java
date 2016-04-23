@@ -17,9 +17,9 @@ public class TestDisponibilidad {
 	private Servicio rentas = new Servicio("Rentas");
 	private Servicio creditos = new Servicio("Creditos");
 	
-	private Horario horarioManana = new Horario(lunes, viernes, "10:00:30", "12:00");
-	private Horario horarioTarde = new Horario (lunes, viernes,"14:00","18:00");
-	private Horario horarioUnico = new Horario(miercoles,"09:00","12:00");
+	private Horario horarioManana = Horario.nuevoHorarioParaFranja(lunes,viernes,"10:00:30", "12:00");
+	private Horario horarioTarde = Horario.nuevoHorarioParaFranja(lunes,viernes,"14:00", "18:00");
+	private Horario horarioUnico = Horario.nuevoHorarioParaDia(miercoles,"09:00","12:00");
 	
 	
 	@Before
