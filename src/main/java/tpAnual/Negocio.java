@@ -17,6 +17,14 @@ public class Negocio extends TipoPoi {
 	private String rubro;
 	private List <Horario> horarios;
 
+	
+	//Busqueda
+	
+	public boolean cumpleBusqueda(List<String> palabras){
+		return palabras.stream()
+				.anyMatch(palabra -> palabra == rubro);
+	}
+	
 	//Disponibilidad
 	@Override
 	public boolean estaDisponible(DayOfWeek dia,String hora){

@@ -8,6 +8,8 @@ public abstract class TipoPoi {
 
 	public abstract boolean estaDisponible(DayOfWeek dia, String hora);
 
+	public abstract boolean cumpleBusqueda(List<String> palabras);
+	
 	public boolean estaCerca(Point unPunto, Point puntoPoi) {
 		return unPunto.distance(puntoPoi) <= 0.5;
 	}

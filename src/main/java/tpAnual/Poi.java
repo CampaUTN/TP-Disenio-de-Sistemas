@@ -25,6 +25,10 @@ public class Poi {
 		this.tagsPoi = tags;
 		this.agregarTag(nombre);
 	}
+	
+	public boolean cumpleCondicionBusqueda(List<String> palabras){
+		return this.tieneAlgunTag(palabras) || tipo.cumpleBusqueda(palabras); 
+	}
 
 	// Disponibilidad:
 	public boolean estaDisponible(LocalDate fecha,String hora) {
@@ -43,6 +47,12 @@ public class Poi {
 	}
 	
 	// Tags:
+	
+	public boolean tieneAlgunTag(List<String> palabras){
+		return palabras.stream()
+				.anyMatch(palabra -> this.tieneTag(palabra));
+	}
+	
 	public boolean tieneTag(String clave) {
 		return this.getTags()
 				.stream()

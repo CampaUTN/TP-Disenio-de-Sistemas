@@ -3,11 +3,19 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public abstract class PoiConServicio extends TipoPoi{
 	protected Set<Servicio> servicios = new HashSet<>();
+	
+	//Busqueda
+	
+	public boolean cumpleBusqueda(List<String> palabras){
+		return palabras.stream()
+					.anyMatch(palabra -> this.tieneServicio(palabra));
+	}
 	
 	// Disponibilidad sin nombre de servicio
 	@Override
@@ -31,6 +39,11 @@ public abstract class PoiConServicio extends TipoPoi{
 		return servicios.stream()
 						.map(servicio -> servicio.getNombre())
 						.collect(Collectors.toSet());
+	}
+	
+	private boolean tieneServicio(String palabra){
+		return this.getServicios().stream()
+								.anyMatch(unNombreServicio-> unNombreServicio == palabra);
 	}
 	
 	// Otros

@@ -10,7 +10,8 @@ public class Mapa {
 	
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
-
+	BancoAdapter bancoAdap;
+	CGPAdapter cgpAdap;
 	
 	// Busqueda de texto libre de pois
 	
@@ -44,7 +45,8 @@ public class Mapa {
 	}
 	
 	public List<Poi> buscarPoi(String tags) {
-		return buscador.buscameSegunTags(tags, pois);
+		return buscador.buscarSegunTexto(tags, pois);
+		
 	}
 
 	// Cercania de poi
@@ -81,6 +83,15 @@ public class Mapa {
 	// Cuando hagamos UI esto apareceria en una ventana y no por consola.
 	public void mostrar(List<Poi> list) {
 		list.forEach(poi-> System.out.println(poi.getNombre()));
+	}
+	
+	//Setters
+	
+	public void setBancoAdapter(BancoAdapter bancoAd){
+		bancoAdap = bancoAd;
+	}
+	public void setCgpAdapter(CGPAdapter cgpAd){
+		cgpAdap = cgpAd;
 	}
 
 }
