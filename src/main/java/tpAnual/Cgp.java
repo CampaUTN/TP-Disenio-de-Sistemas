@@ -17,5 +17,4 @@ public class Cgp extends PoiConServicio {
 		return comuna.isInside(unPunto) && comuna.isInside(puntoPoi);
 	}
 	
-	
 }

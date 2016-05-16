@@ -10,9 +10,7 @@ public class Mapa {
 	
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
-	BancoAdapter bancoAdap;
-	CGPAdapter cgpAdap;
-	
+
 	// Busqueda de texto libre de pois
 	
 	public void altaPoi(Poi poi){
@@ -83,15 +81,6 @@ public class Mapa {
 	// Cuando hagamos UI esto apareceria en una ventana y no por consola.
 	public void mostrar(List<Poi> list) {
 		list.forEach(poi-> System.out.println(poi.getNombre()));
-	}
-	
-	//Setters
-	
-	public void setBancoAdapter(BancoAdapter bancoAd){
-		bancoAdap = bancoAd;
-	}
-	public void setCgpAdapter(CGPAdapter cgpAd){
-		cgpAdap = cgpAd;
 	}
 
 }

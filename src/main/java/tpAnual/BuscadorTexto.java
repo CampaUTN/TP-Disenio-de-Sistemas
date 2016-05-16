@@ -25,12 +25,13 @@ public class BuscadorTexto {
 	}
 	
 	public List<Poi> buscarSistemaCgpExterno(List<String> palabras){
-		
+//		cgpAdap.consultar(palabras);
+		// Aca en realidad no consultamos sino que solo recibe??
 		return null; //Provisorio para que compile
 	}
 	
 	public List<Poi> buscarSistemaBancoExterno(List<String> palabras){
-		
+		bancoAdap.consultar(palabras);
 		return null; //Provisorio para que compile
 	}
 	
