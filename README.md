@@ -1,2 +1,7 @@
-# 2016-jm-group-07
-TP 2016 del Grupo 7 del curso K3001
+# Mails
+
+rodrigocampassi@gmail.com
+espositolucas95@gmail.com
+lucasdattoli96@gmail.com
+juanpadilla.jip@gmail.com
+emi.tolaba95@gmail.com

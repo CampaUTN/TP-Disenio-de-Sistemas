@@ -59,6 +59,14 @@ public class Poi {
 		this.direccion=direccion;
 		this.agregarTag(calle);
 	}
+	
+	public void setNombre(String nuevoNombre){
+		this.nombre = nuevoNombre;
+	}
+	
+	public void setUbicacion(Point nuevaUbic){
+		this.ubicacion = nuevaUbic;
+	}
 	// Getters:
 	public String getNombre(){
 		return this.nombre;

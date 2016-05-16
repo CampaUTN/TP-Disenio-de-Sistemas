@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
+import java.util.Scanner;
 
 public class Mapa {
 	
@@ -12,6 +13,31 @@ public class Mapa {
 
 	
 	// Busqueda de texto libre de pois
+	
+	public void altaPoi(Poi poi){
+		pois.add(poi);
+	}
+	
+	public void bajaPoi(Poi poi){
+		pois.remove(poi);
+	}
+	
+	public void modificarPoi(Poi poi){
+		System.out.println("Modificar Poi");
+		
+		System.out.println(poi.getNombre());
+		System.out.println("Ingrese nuevo nombre: ");
+		String input = System.console().readLine();
+		poi.setNombre(input);
+		
+		System.out.println(poi.getUbicacion());
+		System.out.println("Ingrese nueva altitud: ");
+		String altitud = System.console().readLine();
+		System.out.println("Ingrese nueva latitud: ");
+		String latitud = System.console().readLine();
+		Point nuevaUbicacion = new Point(altitud,latitud);
+		poi.setUbicacion = nuevaUbicacion;
+	}
 	
 	public List<Poi> buscarPoi(String tags) {
 		return buscador.buscameSegunTags(tags, pois);
