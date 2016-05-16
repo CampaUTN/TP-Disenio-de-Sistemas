@@ -18,7 +18,7 @@ public class BancoAdapter {
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public Banco consultar(String nombre, String servicio){
-		return this.adaptar(bancoExterno.consultar(nombre, servicio));
+//		return this.adaptar(bancoExterno.consultar(nombre, servicio));
 		return new Banco(); // TODO borrar esta linea
 	}
 }

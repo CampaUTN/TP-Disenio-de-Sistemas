@@ -19,11 +19,11 @@ public class TestBuscador {
 	public void init() {
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
-		mapa.agregarPoi(poi);
+		mapa.altaPoi(poi);
 
 		poi2.agregarTag("108");
 		poi2.agregarTag("colectivo");
-		mapa.agregarPoi(poi2);
+		mapa.altaPoi(poi2);
 	}
 
 	@Test
