@@ -68,13 +68,7 @@ public class Mapa {
 	}
 
 	// Manejo de lista de pois
-	public void agregarPoi(Poi poi) {
-		pois.add(poi);
-	}
 
-	public void sacarPoi(Poi poi) {
-		pois.remove(poi);
-	}
 
 	public int cantidadPois() {
 		return pois.size();
