@@ -32,11 +32,15 @@ public class Mapa {
 		
 		System.out.println(poi.getUbicacion());
 		System.out.println("Ingrese nueva altitud: ");
-		String altitud = System.console().readLine();
+		String altStr = System.console().readLine();
 		System.out.println("Ingrese nueva latitud: ");
-		String latitud = System.console().readLine();
-		Point nuevaUbicacion = new Point(altitud,latitud);
-		poi.setUbicacion = nuevaUbicacion;
+		String latStr = System.console().readLine();
+		int altitud = Integer.parseInt(altStr);
+		int latitud = Integer.parseInt(latStr);
+
+	    Point nuevaUbicacion = new Point(altitud,latitud);
+	    poi.setUbicacion(nuevaUbicacion);
+		
 	}
 	
 	public List<Poi> buscarPoi(String tags) {
