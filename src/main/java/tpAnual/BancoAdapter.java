@@ -16,9 +16,8 @@ public class BancoAdapter {
 	private MockEntidadesBancarias bancoExterno;
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
-	public List<Poi> consultar(String nombre, String servicio){
-		
-		return this.adaptar(bancoExterno.consultar(nombre, servicio));
+	public List<Poi> consultar(List<String> tags){
+		return this.adaptar(bancoExterno.consultar(tags));
 	}
 	
     public List<Poi> adaptar(JSONObject jsonObject){
