@@ -6,8 +6,7 @@ public class TestServicio {
 	private Servicio rentas = new Servicio("Rentas");
 	
 	@Test
-	public void esElMismoSerivio()
-	{
+	public void esElMismoSerivio(){
 		Assert.assertTrue(rentas.tienePorNombre("Rentas"));
 	}
 	

@@ -31,7 +31,7 @@ public class BuscadorTexto {
 	}
 	
 	public List<Poi> buscarSistemaBancoExterno(List<String> palabras){
-		bancoAdap.consultar(palabras);
+//		bancoAdap.consultar(palabras);
 		return null; //Provisorio para que compile
 	}
 	

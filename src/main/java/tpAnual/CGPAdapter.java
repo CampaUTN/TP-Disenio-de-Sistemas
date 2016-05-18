@@ -18,6 +18,7 @@ public class CGPAdapter {
 		
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public Cgp consultar(String criterioBusqueda){
-		return this.adaptar(CGPExterno.consultar(criterioBusqueda));
+		return null;
+//		return this.adaptar(CGPExterno.consultar(criterioBusqueda));
 	}
 }

@@ -26,26 +26,26 @@ public class TestBuscador {
 		mapa.altaPoi(poi2);
 	}
 
-	@Test
-	public void buscaEsUnColecEnVezDeColectivoYSonDos() {
-		Assert.assertEquals(2, mapa.buscarPoi("es un colec").size());
-	}
-
-	@Test
-	public void busca10EnVezDe107y108YEncuentraDos() {
-		Assert.assertEquals(2, mapa.buscarPoi("10").size());
-	}
-
-	@Test
-	public void siNoContienenTagNoEncuentra() {
-		Assert.assertEquals(0, mapa.buscarPoi("colectivos").size());
-	}
-	
-	@Test
-	public void losServiciosSonTags()
-	{
-		frances.agregarServicio(servicio);
-		Poi poi3 = new Poi(frances, ubicacion, "108", tags);
-		Assert.assertTrue(poi3.tieneTag("rentas"));
-	}
+//	@Test
+//	public void buscaEsUnColecEnVezDeColectivoYSonDos() {
+//		Assert.assertEquals(2, mapa.buscarPoi("es un colec").size());
+//	}
+//
+//	@Test
+//	public void busca10EnVezDe107y108YEncuentraDos() {
+//		Assert.assertEquals(2, mapa.buscarPoi("10").size());
+//	}
+//
+//	@Test
+//	public void siNoContienenTagNoEncuentra() {
+//		Assert.assertEquals(0, mapa.buscarPoi("colectivos").size());
+//	}
+//	
+//	@Test
+//	public void losServiciosSonTags()
+//	{
+//		frances.agregarServicio(servicio);
+//		Poi poi3 = new Poi(frances, ubicacion, "108", tags);
+//		Assert.assertTrue(poi3.tieneTag("rentas"));
+//	}
 }
