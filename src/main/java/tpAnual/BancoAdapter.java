@@ -13,17 +13,12 @@ import org.uqbar.geodds.Point;
 
 public class BancoAdapter {
 	
-	private Object bancoExterno; //TODO es un mock, no Object.
+	private MockEntidadesBancarias bancoExterno;
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public Banco consultar(){
-		return null;
 		
-//		listaPois.stream()
-//				.filter(poi-> poi.cumpleCondicionBusqueda(palabras))
-//				.collect(Collectors.toList());
-		
-//		return this.adaptar(bancoExterno.consultar(nombre, servicio));
+		return this.adaptar(bancoExterno.consultar(nombre, servicio));
 	}
 	
     public List<Poi> adaptar(JSONObject jsonObject){
