@@ -43,7 +43,7 @@ public class Mapa {
 	}
 	
 	public List<Poi> buscarPoi(String tags) {
-		return buscador.buscarSegunTexto(tags, pois);
+		return buscador.busquedaTextoLibre(tags, pois);
 		
 	}
 
