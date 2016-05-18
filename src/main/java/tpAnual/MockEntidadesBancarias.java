@@ -9,7 +9,7 @@ public class MockEntidadesBancarias implements EntidadesBancarias {
 	private Object json = null;
 	
 	@Override
-	public JSONObject consultar(List<String> tags){
+	public JSONObject consultar(String palabra){
         try {
         	json = (new JSONParser()).parse(new FileReader("banco.json"));
         } catch (Exception e) {

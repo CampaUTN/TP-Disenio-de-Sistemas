@@ -1,8 +1,10 @@
 package tpAnual;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.json.simple.JSONArray;
@@ -16,8 +18,13 @@ public class BancoAdapter {
 	private MockEntidadesBancarias bancoExterno;
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
-	public List<Poi> consultar(List<String> tags){
-		return this.adaptar(bancoExterno.consultar(tags));
+	public List<Poi> consultar(List<String> palabras){
+		Set<Poi> listaPois = new HashSet<Poi>();
+		palabras.forEach(palabra->listaPois.addAll( this.adaptar(bancoExterno.consultar(palabra)) ));
+		
+		List<Poi> devolver = new ArrayList<Poi>();
+		devolver.addAll(listaPois);
+		return devolver;
 	}
 	
     public List<Poi> adaptar(JSONObject jsonObject){

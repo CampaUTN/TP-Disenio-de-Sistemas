@@ -9,6 +9,4 @@ public class Banco extends PoiConServicio{
 		servicio.agregarHorario(Horario.nuevoHorarioParaFranja(DayOfWeek.MONDAY,DayOfWeek.FRIDAY,"10:00", "15:00"));
 		servicios.add(servicio);
 	}
-	
-	
 }
