@@ -11,6 +11,7 @@ public class MockEntidadesBancarias implements EntidadesBancarias {
 	@Override
 	public JSONObject consultar(String palabra){
         try {
+        	System.out.println("Pase x aca");
         	json = (new JSONParser()).parse(new FileReader("banco.json"));
         } catch (Exception e) {
             e.printStackTrace();
