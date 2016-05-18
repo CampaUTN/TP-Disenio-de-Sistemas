@@ -15,7 +15,7 @@ import org.uqbar.geodds.Point;
 
 public class BancoAdapter {
 	
-	private MockEntidadesBancarias bancoExterno;
+	private MockEntidadesBancarias bancoExterno = new MockEntidadesBancarias();
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public List<Poi> consultar(List<String> palabras){
