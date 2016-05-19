@@ -42,7 +42,7 @@ public class CGPAdapter {
 	private Servicio convertirAServicioCgp(ServicioDTO servDto){
 		LocalTime desde = LocalTime.of(servDto.getHoraD(),servDto.getMinD());		//junta la hora y el minuto en LocalTime
 		LocalTime hasta = LocalTime.of(servDto.getHoraH(),servDto.getMinH());
-		DayOfWeek dia = getDayOfWeek(servDto.getDia());
+		DayOfWeek dia = DayOfWeek.of(servDto.getDia());
 		
 		Horario horario = new Horario(dia,dia,desde,hasta);
 		
