@@ -1,6 +1,8 @@
 package tpAnual;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -12,54 +14,50 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.uqbar.geodds.Point;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 
 public class BancoAdapter {
 	
-	private MockEntidadesBancarias bancoExterno = new MockEntidadesBancarias();
+	private ExternoEntidadesBancarias sistemaBancoExt = new ExternoEntidadesBancarias();
 	
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public List<Poi> consultar(List<String> palabras){
-		Set<Poi> listaPois = new HashSet<Poi>();
-		palabras.forEach(palabra->listaPois.addAll( this.adaptar(bancoExterno.consultar(palabra)) ));
+		List<BancoExterno> bancosExternos = new ArrayList<BancoExterno>();
+		palabras.forEach(palabra->bancosExternos.addAll(this.adaptar(sistemaBancoExt.consultar(palabra))));
 		
-		List<Poi> devolver = new ArrayList<Poi>();
-		devolver.addAll(listaPois);
-		return devolver;
+		return this.convertirAPois(bancosExternos);
 	}
 	
-    public List<Poi> adaptar(JSONObject jsonObject){
-    	
-    	JSONParser parser = new JSONParser();
-    	List<Poi> poisExternos = new ArrayList<Poi>();
-	 
-	     try {
-	 
-	         String banco = (String) jsonObject.get("banco");
-	         String x = (String) jsonObject.get("x");
-	         String y = (String) jsonObject.get("y");
-	         String sucursal = (String) jsonObject.get("sucursal");
-	         String gerente = (String) jsonObject.get("gerente");
-	           
-	         String servicios = (String) jsonObject.get("servicios");
-	            
-	         Integer puntoX = Integer.parseInt(x);
-	         Integer puntoY = Integer.parseInt(y);
+	public Poi convertirUnPoi(BancoExterno bancoExt){
+		Banco banco = new Banco();
+		int posX = Integer.parseInt(bancoExt.getX());
+		int posY = Integer.parseInt(bancoExt.getY());
+		Point ubicacion = new Point(posX,posY);
+		String nombre = bancoExt.getBanco();
+		Set<String> servicios = new HashSet<String>(Arrays.asList(bancoExt.getServicios()));
 	
-	         Banco tipoBanco = new Banco();
-	         Point ubicacion = new Point(puntoX,puntoY);
-	         Poi poiExterno = new Poi(tipoBanco, ubicacion, servicios, null);
-	         poisExternos.add(poiExterno);
+		return new Poi(banco, ubicacion, nombre, servicios);
+	}
 	
-	         JSONArray companyList = (JSONArray) jsonObject.get("Company List");
-	         Iterator<String> iterator = companyList.iterator();
-	         while (iterator.hasNext()) {
-	        	 System.out.println(iterator.next());
-	         }
- 
-        } catch (Exception e) {
+	public List<Poi> convertirAPois(List<BancoExterno> bancosExternos){
+		List<Poi> poisExternos = new ArrayList<Poi>();
+		bancosExternos.forEach(banco-> poisExternos.add( convertirUnPoi(banco)));
+		return poisExternos;
+	}
+	
+    public List<BancoExterno> adaptar(BufferedReader reader){
+    	List<BancoExterno> bancosExternos = new ArrayList<BancoExterno>();
+	    try {
+	    	Gson gson = new Gson();
+	    	bancosExternos = gson.fromJson(reader, new TypeToken<List<BancoExterno>>() {}.getType()); 
+	    	
+	    } catch (Exception e) {
             e.printStackTrace();
         }
-		return poisExternos;
+	    
+	    return bancosExternos;
     }
 
 }

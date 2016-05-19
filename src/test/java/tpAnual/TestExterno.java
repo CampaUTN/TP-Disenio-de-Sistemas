@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import junit.framework.Assert;
 
 public class TestExterno {
-	MockEntidadesBancarias mockBanco = new MockEntidadesBancarias();
+	ExternoEntidadesBancarias mockBanco = new ExternoEntidadesBancarias();
 	BancoAdapter adapterBanco = new BancoAdapter();
 	
 	@SuppressWarnings("deprecation")
@@ -20,6 +20,6 @@ public class TestExterno {
 		
 		List<Poi> bancosExterno = new ArrayList<Poi>();
 		bancosExterno = adapterBanco.consultar(palabras);
-		Assert.assertEquals(bancosExterno.size(),2,0);
+		Assert.assertEquals(3,bancosExterno.size(),0);
 	}
 }

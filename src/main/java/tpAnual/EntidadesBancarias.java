@@ -1,8 +1,10 @@
 package tpAnual;
 
 import org.json.simple.JSONObject;
+
+import java.io.BufferedReader;
 import java.util.List;
 
 public interface EntidadesBancarias {
-	public JSONObject consultar(String tags);
+	public BufferedReader consultar(String tags);
 }
