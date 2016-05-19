@@ -26,6 +26,11 @@ public class TestBuscador {
 		mapa.altaPoi(poi2);
 	}
 
+	@Test
+	public void testUnaBusquedaParaLosTresOrigenes() throws InterruptedException{
+		Assert.assertEquals(7, mapa.buscarPoi("colectivo").size(),0); //2 del init, 3 de bancos, 2 de cpos
+	}
+	
 //	@Test
 //	public void buscaEsUnColecEnVezDeColectivoYSonDos() {
 //		Assert.assertEquals(2, mapa.buscarPoi("es un colec").size());

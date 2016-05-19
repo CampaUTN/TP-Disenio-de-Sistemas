@@ -7,27 +7,25 @@ import java.util.Arrays;
 
 public class BuscadorTexto {
 	
-	BancoAdapter bancoAdap;
-	CGPAdapter cgpAdap;
+	BancoAdapter bancoAdap = new BancoAdapter();
+	CGPAdapter cgpAdap = new CGPAdapter();
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}
 	
-	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois){
+	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois) throws InterruptedException{
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
-		List<Poi> resultado = new ArrayList<Poi>();
+		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		
-		resultado.addAll(buscarEnPoisLocales(palabras, listaPois));
-		resultado.addAll(this.buscarSistemaCgpExterno(palabras));
-		resultado.addAll(this.buscarSistemaBancoExterno(palabras));
-		return resultado;
+		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois));
+		poisDeTodosOrigenes.addAll(this.buscarSistemaBancoExterno(palabras));
+		poisDeTodosOrigenes.addAll(this.buscarSistemaCgpExterno(palabras));
+		return poisDeTodosOrigenes;
 	}
 	
-	public List<Poi> buscarSistemaCgpExterno(List<String> palabras){
-//		cgpAdap.consultar(palabras);
-		// Aca en realidad no consultamos sino que solo recibe??
-		return null; //Provisorio para que compile
+	public List<Poi> buscarSistemaCgpExterno(List<String> palabras) throws InterruptedException{
+		return cgpAdap.consultar(palabras);
 	}
 	
 	public List<Poi> buscarSistemaBancoExterno(List<String> palabras){
