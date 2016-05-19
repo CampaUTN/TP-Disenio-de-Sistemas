@@ -24,19 +24,9 @@ public class BancoExterno
         this.servicios = servicios;
     }
 
-    public String getSucursal ()
-    {
-        return sucursal;
-    }
-
     public void setSucursal (String sucursal)
     {
         this.sucursal = sucursal;
-    }
-
-    public String getGerente ()
-    {
-        return gerente;
     }
 
     public void setGerente (String gerente)

@@ -3,7 +3,7 @@ package tpAnual;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class ExternoEntidadesBancarias{
+public class MockSistemaBancario{
 
 	public BufferedReader consultar(String palabra){
         try {

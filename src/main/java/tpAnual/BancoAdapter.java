@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.uqbar.geodds.Point;
 
 import com.google.gson.Gson;
@@ -13,12 +15,11 @@ import com.google.gson.reflect.TypeToken;
 
 public class BancoAdapter {
 	
-	private ExternoEntidadesBancarias sistemaBancoExt = new ExternoEntidadesBancarias();
+	private MockSistemaBancario sistemaBancoExt = new MockSistemaBancario();
 	
 	public List<Poi> consultar(List<String> palabras){
 		List<BancoExterno> bancosExternos = new ArrayList<BancoExterno>();
 		palabras.forEach(palabra->bancosExternos.addAll(this.adaptar(sistemaBancoExt.consultar(palabra))));
-		
 		return this.convertirAPois(bancosExternos);
 	}
 	
@@ -27,21 +28,20 @@ public class BancoAdapter {
 			try {
 				Gson gson = new Gson();
 				bancosExternos = gson.fromJson(reader, new TypeToken<List<BancoExterno>>() {}.getType()); 
-				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 			return bancosExternos;
 	}
 	
 	public List<Poi> convertirAPois(List<BancoExterno> bancosExternos){
-		List<Poi> poisExternos = new ArrayList<Poi>();
-		bancosExternos.forEach(banco-> poisExternos.add( convertirUnPoi(banco)));
-		return poisExternos;
+		return bancosExternos.
+				stream().
+				map(banco -> bancoExternoToPOI(banco)).
+				collect(Collectors.toList());
 	}
 	
-	public Poi convertirUnPoi(BancoExterno bancoExt){
+	public Poi bancoExternoToPOI(BancoExterno bancoExt){
 		Banco banco = new Banco();
 		Double posX = Double.parseDouble(bancoExt.getX());
 		Double posY = Double.parseDouble(bancoExt.getY());
