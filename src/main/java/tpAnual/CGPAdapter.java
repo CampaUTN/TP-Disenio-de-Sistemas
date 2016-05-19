@@ -28,8 +28,8 @@ public class CGPAdapter {
 	
 	
 	private Poi convertirAPoi(CentroDTO centro){
-		Cgp cgp = new Cgp(null); //ACA HAY QUE HACER ALGO CON LA COMUNA!!
-		Point ubicacion = new Point(1,1); //ACA TMB!
+		Cgp cgp = new Cgp(null); //TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
+		Point ubicacion = new Point(1,1); 
 		String nombre = centro.getDirector();
 		Set<String> tags = centro.getZonas();
 		
