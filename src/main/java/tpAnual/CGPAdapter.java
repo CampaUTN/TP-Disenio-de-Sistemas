@@ -10,14 +10,13 @@ import org.uqbar.geodds.Point;
 
 public class CGPAdapter {
 	
-	private ExternoCPO cpoExterno = new ExternoCPO(); //TODO es un mock, no Object.
+	private ExternoCPO cpoExterno = new ExternoCPO();
 		
 		
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
 	public List<Poi> consultar(List<String> palabras){
 		List<Poi> pois = new ArrayList<Poi>();
 		palabras.forEach(palabra-> pois.addAll(this.adaptar(cpoExterno.consultar(palabra))));
-		
 		return pois;
 	}
 	
@@ -53,34 +52,7 @@ public class CGPAdapter {
 		return servicioCgp;
 	}
 	
-//	@SuppressWarnings("null")
 	private String convertirHorario(int hora, int min){
-		String h = String.valueOf(hora).concat(":"); 
-		String sMinutes = String.format("%02d", min);
-		
-		return h.concat(String.valueOf(sMinutes));
-		
-//		return String.valueOf(hora)+":"+ String.format("%02d",String.valueOf(min));
+		return String.valueOf(hora) + ":" + String.format("%02d", min);
 	}
-	
-	private DayOfWeek getDayOfWeek(int dia){
-		switch(dia){
-	        case 1:
-	        	return DayOfWeek.MONDAY;
-	        case 2:
-	            return DayOfWeek.TUESDAY;
-	        case 3:
-	        	return DayOfWeek.WEDNESDAY;
-	        case 4:
-	        	return DayOfWeek.THURSDAY;
-	        case 5:
-	        	return DayOfWeek.FRIDAY;
-	        case 6:
-	        	return DayOfWeek.SATURDAY;
-	        case 7:
-	        	return DayOfWeek.SUNDAY;
-		}
-		return null;
-	}
-
 }
