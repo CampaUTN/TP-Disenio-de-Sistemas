@@ -35,10 +35,10 @@ public class BancoAdapter {
 	}
 	
 	public List<Poi> convertirAPois(List<BancoExterno> bancosExternos){
-		return bancosExternos.
-				stream().
-				map(banco -> bancoExternoToPOI(banco)).
-				collect(Collectors.toList());
+		return bancosExternos
+				.stream()
+				.map(banco -> bancoExternoToPOI(banco))
+				.collect(Collectors.toList());
 	}
 	
 	public Poi bancoExternoToPOI(BancoExterno bancoExt){

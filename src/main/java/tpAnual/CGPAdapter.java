@@ -5,12 +5,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.uqbar.geodds.Point;
 
 public class CGPAdapter {
 	
-	private ExternoCPO cpoExterno = new ExternoCPO();
+	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
 		
 		
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
@@ -21,13 +22,14 @@ public class CGPAdapter {
 	}
 	
 	private List<Poi> adaptar(List<CentroDTO> centros){
-		List<Poi> pois = new ArrayList<Poi>();
-		centros.forEach(centro -> pois.add(convertirAPoi(centro)));
-		return pois;
+		return centros
+				.stream()
+				.map(centro -> centroToPOI(centro))
+				.collect(Collectors.toList());
 	}
 	
 	
-	private Poi convertirAPoi(CentroDTO centro){
+	private Poi centroToPOI(CentroDTO centro){
 		Cgp cgp = new Cgp(null); //TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
 		Point ubicacion = new Point(1,1); 
 		String nombre = centro.getDirector();
@@ -50,9 +52,5 @@ public class CGPAdapter {
 		servicioCgp.agregarHorario(horario);
 		
 		return servicioCgp;
-	}
-	
-	private String convertirHorario(int hora, int min){
-		return String.valueOf(hora) + ":" + String.format("%02d", min);
 	}
 }
