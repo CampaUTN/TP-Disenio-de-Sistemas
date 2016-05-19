@@ -43,8 +43,8 @@ public class BancoAdapter {
 	
 	public Poi convertirUnPoi(BancoExterno bancoExt){
 		Banco banco = new Banco();
-		Float posX = Float.parseFloat(bancoExt.getX());
-		Float posY = Float.parseFloat(bancoExt.getY());
+		Double posX = Double.parseDouble(bancoExt.getX());
+		Double posY = Double.parseDouble(bancoExt.getY());
 		Point ubicacion = new Point(posX,posY);
 		String nombre = bancoExt.getBanco();
 		Set<String> servicios = new HashSet<String>(Arrays.asList(bancoExt.getServicios()));
