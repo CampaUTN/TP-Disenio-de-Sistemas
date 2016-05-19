@@ -22,8 +22,7 @@ public class BancoAdapter {
 	
 	private ExternoEntidadesBancarias sistemaBancoExt = new ExternoEntidadesBancarias();
 	
-	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
-	public List<Poi> consultar(List<String> palabras){
+		public List<Poi> consultar(List<String> palabras){
 		List<BancoExterno> bancosExternos = new ArrayList<BancoExterno>();
 		palabras.forEach(palabra->bancosExternos.addAll(this.adaptar(sistemaBancoExt.consultar(palabra))));
 		
