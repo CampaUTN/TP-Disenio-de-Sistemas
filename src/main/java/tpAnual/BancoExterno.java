@@ -3,15 +3,8 @@ package tpAnual;
 public class BancoExterno
 {
     private String[] servicios;
-
-    private String sucursal;
-
-    private String gerente;
-
     private String banco;
-
     private String y;
-
     private String x;
 
     public String[] getServicios ()
@@ -22,16 +15,6 @@ public class BancoExterno
     public void setServicios (String[] servicios)
     {
         this.servicios = servicios;
-    }
-
-    public void setSucursal (String sucursal)
-    {
-        this.sucursal = sucursal;
-    }
-
-    public void setGerente (String gerente)
-    {
-        this.gerente = gerente;
     }
 
     public String getBanco ()
@@ -62,11 +45,5 @@ public class BancoExterno
     public void setX (String x)
     {
         this.x = x;
-    }
-
-    @Override
-    public String toString()
-    {
-        return "[servicios = "+servicios+", sucursal = "+sucursal+", gerente = "+gerente+", banco = "+banco+", y = "+y+", x = "+x+"]";
     }
 }
