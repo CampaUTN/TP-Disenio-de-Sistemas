@@ -27,10 +27,9 @@ public class Negocio extends TipoPoi {
 	
 	//Disponibilidad
 	@Override
-	public boolean estaDisponible(DayOfWeek dia,String hora){
-		LocalTime horaComp = LocalTime.parse(hora);
+	public boolean estaDisponible(DayOfWeek dia,LocalTime hora){
 		return  horarios.stream()
-				.anyMatch(horario -> horario.estaEnFranjaHoraria(dia,horaComp));
+				.anyMatch(horario -> horario.estaEnFranjaHoraria(dia,hora));
 	}
 
 	public void agregarHorario(Horario unHorario){

@@ -19,18 +19,16 @@ public abstract class PoiConServicio extends TipoPoi{
 	
 	// Disponibilidad sin nombre de servicio
 	@Override
-	public boolean estaDisponible(DayOfWeek dia,String hora) {
-		LocalTime horaComp = LocalTime.parse(hora);
+	public boolean estaDisponible(DayOfWeek dia,LocalTime hora) {
 		return servicios.stream()
-				.anyMatch(unServicio -> unServicio.disponible(dia, horaComp));
+				.anyMatch(unServicio -> unServicio.disponible(dia, hora));
 	}
 	
 	// Disponibilidad con nombre de servicio
 	@Override
-	public boolean estaDisponible(String nombreServ, DayOfWeek dia,String hora) {
-		LocalTime horaComp = LocalTime.parse(hora);
+	public boolean estaDisponible(String nombreServ, DayOfWeek dia,LocalTime hora) {
 		return servicios.stream()
-				.anyMatch(unServicio -> unServicio.tienePorNombre(nombreServ) && unServicio.disponible(dia,horaComp));
+				.anyMatch(unServicio -> unServicio.tienePorNombre(nombreServ) && unServicio.disponible(dia,hora));
 	}
 	
 	// Getters:

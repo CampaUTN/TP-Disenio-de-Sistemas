@@ -1,6 +1,7 @@
 package tpAnual;
 
 import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -40,8 +41,8 @@ public class CGPAdapter {
 	}
 	
 	private Servicio convertirAServicioCgp(ServicioDTO servDto){
-		String desde = convertirHorario(servDto.getHoraD(),servDto.getMinD());
-		String hasta = convertirHorario(servDto.getHoraH(),servDto.getMinH());
+		LocalTime desde = LocalTime.of(servDto.getHoraD(),servDto.getMinD());		//junta la hora y el minuto en LocalTime
+		LocalTime hasta = LocalTime.of(servDto.getHoraH(),servDto.getMinH());
 		DayOfWeek dia = getDayOfWeek(servDto.getDia());
 		
 		Horario horario = new Horario(dia,dia,desde,hasta);
