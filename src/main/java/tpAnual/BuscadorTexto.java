@@ -14,7 +14,7 @@ public class BuscadorTexto {
 		return Arrays.asList(Busqueda.split(" "));
 	}
 	
-	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois) throws InterruptedException{
+	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois){
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		
@@ -24,7 +24,7 @@ public class BuscadorTexto {
 		return poisDeTodosOrigenes;
 	}
 	
-	public List<Poi> buscarSistemaCgpExterno(List<String> palabras) throws InterruptedException{
+	public List<Poi> buscarSistemaCgpExterno(List<String> palabras){
 		return cgpAdap.consultar(palabras);
 	}
 	

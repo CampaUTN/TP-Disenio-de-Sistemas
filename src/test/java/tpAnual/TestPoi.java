@@ -25,11 +25,6 @@ public class TestPoi {
 	}
 
 	@Test
-	public void suNombreEsUnTag() {
-		Assert.assertTrue(poi.tieneTag("107"));
-	}
-
-	@Test
 	public void losTagsSeAgregan() {
 		poi.agregarTag("transporte");
 		Assert.assertTrue(poi.tieneTag("transporte"));

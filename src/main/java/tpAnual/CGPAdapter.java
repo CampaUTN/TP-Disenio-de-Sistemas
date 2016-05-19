@@ -13,9 +13,8 @@ public class CGPAdapter {
 		
 		
 	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
-	public List<Poi> consultar(List<String> palabras) throws InterruptedException{
+	public List<Poi> consultar(List<String> palabras){
 		List<Poi> pois = new ArrayList<Poi>();
-		Thread.sleep(2000);
 		palabras.forEach(palabra-> pois.addAll(this.adaptar(cpoExterno.consultar(palabra))));
 		
 		return pois;

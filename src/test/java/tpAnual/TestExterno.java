@@ -26,7 +26,7 @@ public class TestExterno {
 	}
 	
 	@Test
-	public void testDevuelveListaExternaCgp() throws InterruptedException{
+	public void testDevuelveListaExternaCgp(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("aasas");
 		

@@ -41,7 +41,7 @@ public class Mapa {
 		
 	}
 	
-	public List<Poi> buscarPoi(String tags) throws InterruptedException {
+	public List<Poi> buscarPoi(String tags){
 		return buscador.buscarSegunTexto(tags, pois);
 		
 	}
