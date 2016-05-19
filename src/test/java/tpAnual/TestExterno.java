@@ -9,10 +9,9 @@ import org.mockito.Mockito;
 import junit.framework.Assert;
 
 public class TestExterno {
-	ExternoEntidadesBancarias mockBanco = new ExternoEntidadesBancarias();
-	BancoAdapter adapterBanco = new BancoAdapter();
-	ExternoCPO externoCpo = new ExternoCPO();
-	CGPAdapter cgpAdapter = new CGPAdapter();
+	private BancoAdapter adapterBanco = new BancoAdapter();
+	private CGPAdapter cgpAdapter = new CGPAdapter();
+	
 	
 	@SuppressWarnings("deprecation")
 	@Test
