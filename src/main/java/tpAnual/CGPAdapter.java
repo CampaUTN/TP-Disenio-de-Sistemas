@@ -19,7 +19,6 @@ public class CGPAdapter {
 		
 		return pois;
 	}
-
 	
 	private List<Poi> adaptar(List<CentroDTO> centros){
 		List<Poi> pois = new ArrayList<Poi>();
@@ -40,8 +39,8 @@ public class CGPAdapter {
 	}
 	
 	private Servicio convertirAServicioCgp(ServicioDTO servDto){
-		String desde = String.valueOf(servDto.getHoraD()).concat(String.valueOf(servDto.getMinD()));
-		String hasta = String.valueOf(servDto.getHoraH()).concat(String.valueOf(servDto.getMinH()));
+		String desde = convertirHorario(servDto.getHoraD(),servDto.getMinD());
+		String hasta = convertirHorario(servDto.getHoraH(),servDto.getMinH());
 		DayOfWeek dia = getDayOfWeek(servDto.getDia());
 		
 		Horario horario = new Horario(dia,dia,desde,hasta);
@@ -50,6 +49,16 @@ public class CGPAdapter {
 		servicioCgp.agregarHorario(horario);
 		
 		return servicioCgp;
+	}
+	
+//	@SuppressWarnings("null")
+	private String convertirHorario(int hora, int min){
+//		String horario = null;
+//		horario.concat(String.valueOf(hora));
+//		horario.concat(":");
+//		horario.concat(String.valueOf(min));
+//		return horario;
+		return String.valueOf(hora)+":"+String.valueOf(min);
 	}
 	
 	private DayOfWeek getDayOfWeek(int dia){
