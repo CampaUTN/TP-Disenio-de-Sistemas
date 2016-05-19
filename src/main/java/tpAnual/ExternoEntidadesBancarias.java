@@ -3,9 +3,8 @@ package tpAnual;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class ExternoEntidadesBancarias implements EntidadesBancarias {
+public class ExternoEntidadesBancarias{
 
-	@Override
 	public BufferedReader consultar(String palabra){
         try {
                 BufferedReader reader = new BufferedReader(new FileReader("bancos.json"));

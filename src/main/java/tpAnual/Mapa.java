@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
-import java.util.Scanner;
 
 public class Mapa {
 	
