@@ -25,7 +25,7 @@ public class Horario  {
 		 return cumpleRango(dia,hora) && estaEnHorario(hora);
 	}
 	
-	private Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){
+	Horario(DayOfWeek inicio,DayOfWeek fin, String desde, String hasta){
 		this.diaHasta = fin;
 		this.diaDesde = inicio;
 		this.desde= LocalTime.parse(desde);
