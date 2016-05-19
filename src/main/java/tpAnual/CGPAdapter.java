@@ -3,6 +3,7 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.uqbar.geodds.Point;
 
@@ -31,10 +32,11 @@ public class CGPAdapter {
 		Cgp cgp = new Cgp(null); //ACA HAY QUE HACER ALGO CON LA COMUNA!!
 		Point ubicacion = new Point(1,1); //ACA TMB!
 		String nombre = centro.getDirector();
+		Set<String> tags = centro.getZonas();
 		
 		centro.getServicios().forEach(servDto-> cgp.agregarServicio( convertirAServicioCgp(servDto)));
 		
-		Poi nuevoPoi = new Poi(cgp,ubicacion,nombre,null);
+		Poi nuevoPoi = new Poi(cgp,ubicacion,nombre,tags);
 		return nuevoPoi;
 	}
 	
@@ -53,12 +55,12 @@ public class CGPAdapter {
 	
 //	@SuppressWarnings("null")
 	private String convertirHorario(int hora, int min){
-//		String horario = null;
-//		horario.concat(String.valueOf(hora));
-//		horario.concat(":");
-//		horario.concat(String.valueOf(min));
-//		return horario;
-		return String.valueOf(hora)+":"+String.valueOf(min);
+		String h = String.valueOf(hora).concat(":"); 
+		String sMinutes = String.format("%02d", min);
+		
+		return h.concat(String.valueOf(sMinutes));
+		
+//		return String.valueOf(hora)+":"+ String.format("%02d",String.valueOf(min));
 	}
 	
 	private DayOfWeek getDayOfWeek(int dia){

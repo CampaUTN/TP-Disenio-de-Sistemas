@@ -1,11 +1,13 @@
 package tpAnual;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class CentroDTO {
 	int numeroComuna;
-	String zonas;
+	Set<String> zonas = new HashSet<String>();
 	String nombreDirector;
 	String domicilio;
 	String telefono;
@@ -27,7 +29,7 @@ public class CentroDTO {
 	public int getNumeroComuna(){
 		return numeroComuna;
 	}
-	public String getZonas(){
+	public Set<String> getZonas(){
 		return zonas;
 	}
 	public String getDomicilio(){

@@ -23,7 +23,6 @@ public class Poi {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
-		this.agregarTag(nombre);
 	}
 	
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
