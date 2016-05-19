@@ -6,6 +6,9 @@ import java.util.List;
 import org.junit.*;
 //import org.mockito.Mockito;
 
+import tpAnual.externo.adapters.BancoAdapter;
+import tpAnual.externo.adapters.CGPAdapter;
+
 public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();

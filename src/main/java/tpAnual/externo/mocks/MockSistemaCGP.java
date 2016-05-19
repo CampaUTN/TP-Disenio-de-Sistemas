@@ -1,7 +1,10 @@
-package tpAnual;
+package tpAnual.externo.mocks;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tpAnual.externo.sistemasExternos.CentroDTO;
+import tpAnual.externo.sistemasExternos.ServicioDTO;
 
 public class MockSistemaCGP {
 	

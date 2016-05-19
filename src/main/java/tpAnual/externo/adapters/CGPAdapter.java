@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.externo.adapters;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -8,6 +8,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.uqbar.geodds.Point;
+
+import tpAnual.Cgp;
+import tpAnual.Horario;
+import tpAnual.Poi;
+import tpAnual.Servicio;
+import tpAnual.externo.mocks.MockSistemaCGP;
+import tpAnual.externo.sistemasExternos.CentroDTO;
+import tpAnual.externo.sistemasExternos.ServicioDTO;
 
 public class CGPAdapter {
 	
@@ -46,7 +54,7 @@ public class CGPAdapter {
 		LocalTime hasta = LocalTime.of(servDto.getHoraH(),servDto.getMinH());
 		DayOfWeek dia = DayOfWeek.of(servDto.getDia());
 		
-		Horario horario = new Horario(dia,dia,desde,hasta);
+		Horario horario = Horario.nuevoHorarioParaDia(dia,desde,hasta);
 		
 		Servicio servicioCgp = new Servicio(servDto.getNombre());
 		servicioCgp.agregarHorario(horario);

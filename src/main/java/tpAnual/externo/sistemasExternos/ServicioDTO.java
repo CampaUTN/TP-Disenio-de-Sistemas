@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.externo.sistemasExternos;
 
 public class ServicioDTO {
 	String nombre;

@@ -25,7 +25,7 @@ public class Horario  {
 		 return cumpleRango(dia,hora) && estaEnHorario(hora);
 	}
 	
-	Horario(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){
+	private Horario(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){
 		this.diaHasta = fin;
 		this.diaDesde = inicio;
 		this.desde= desde;

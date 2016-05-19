@@ -2,6 +2,10 @@ package tpAnual;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import tpAnual.externo.adapters.BancoAdapter;
+import tpAnual.externo.adapters.CGPAdapter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

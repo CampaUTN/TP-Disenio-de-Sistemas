@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.externo.adapters;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +11,11 @@ import org.uqbar.geodds.Point;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import tpAnual.Banco;
+import tpAnual.Poi;
+import tpAnual.externo.mocks.MockSistemaBancario;
+import tpAnual.externo.sistemasExternos.BancoExterno;
 
 
 public class BancoAdapter {
