@@ -14,6 +14,8 @@ emi.tolaba95@gmail.com
 # Waffle
 [![Issues en waffle](https://waffle.io/dds-utn/2016-jm-group-07)](https://waffle.io/dds-utn/2016-jm-group-07)
 
+# Manejo de archivos
+[![Libreria externa para manejar archivos](https://commons.apache.org/proper/commons-io/javadocs/api-2.4/org/apache/commons/io/FileUtils.html)](https://commons.apache.org/proper/commons-io/javadocs/api-2.4/org/apache/commons/io/FileUtils.html)
 
 ## Ver paquetes en forma comoda:
 En eclipse, estando con Package explore, ir a la flechita hacia abajo que aparece arriba de la lista de proyectos -> Package presentation -> Hieranchical
