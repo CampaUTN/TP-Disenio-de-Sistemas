@@ -1,7 +1,5 @@
 package tpAnual;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
@@ -13,36 +11,15 @@ public class Mapa {
 
 	// Busqueda de texto libre de pois
 	
-	public void altaPoi(Poi poi){
+	public void alta(Poi poi){
 		pois.add(poi);
 	}
 	
-	public void bajaPoi(Poi poi){
+	public void baja(Poi poi){
 		pois.remove(poi);
 	}
 	
-	public void modificarPoi(Poi poi){
-		System.out.println("Modificar Poi");
-		
-		System.out.println(poi.getNombre());
-		System.out.println("Ingrese nuevo nombre: ");
-		String input = System.console().readLine();
-		poi.setNombre(input);
-		
-		System.out.println(poi.getUbicacion());
-		System.out.println("Ingrese nueva altitud: ");
-		String altStr = System.console().readLine();
-		System.out.println("Ingrese nueva latitud: ");
-		String latStr = System.console().readLine();
-		int altitud = Integer.parseInt(altStr);
-		int latitud = Integer.parseInt(latStr);
-
-	    Point nuevaUbicacion = new Point(altitud,latitud);
-	    poi.setUbicacion(nuevaUbicacion);
-		
-	}
-	
-	public List<Poi> buscarPoi(String tags){
+	public List<Poi> buscar(String tags){
 		return buscador.buscarSegunTexto(tags, pois);
 		
 	}
@@ -61,26 +38,11 @@ public class Mapa {
 		return distanciaEntrePois(poi1,poi2) < distancia;
 	}
 	
-	// Disponibilidad de poi
-	
-	public boolean estaDisponible(Poi poi,LocalDate fecha,LocalTime hora) {
-		return poi.estaDisponible(fecha, hora);
-	}
-
-	public boolean estaDisponible(Poi poi, String servicio,LocalDate fecha,LocalTime hora) {
-		return poi.estaDisponible(servicio,fecha,hora);
-	}
-
 	// Manejo de lista de pois
 
 
 	public int cantidadPois() {
 		return pois.size();
-	}
-
-	// Cuando hagamos UI esto apareceria en una ventana y no por consola.
-	public void mostrar(List<Poi> list) {
-		list.forEach(poi-> System.out.println(poi.getNombre()));
 	}
 
 }
