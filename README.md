@@ -1,3 +1,7 @@
+#Travis 
+[![Build Status](https://travis-ci.com/dds-utn/2016-jm-group-07.svg?token=WZANzTsTpqeJqzz5zjW8&branch=master)](https://travis-ci.com/dds-utn/2016-jm-group-07)
+
+
 # Mails
 
 
