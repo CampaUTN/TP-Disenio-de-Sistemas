@@ -41,23 +41,23 @@ public class TestDisponibilidad {
 	@Test
 	public void estaDentroDeLaFranjaHoraria(){
 		
-		Assert.assertTrue(centro.estaDisponible("Rentas",lunes, LocalTime.parse("10:01")));
+		Assert.assertTrue(centro.estaDisponibleConServicio("Rentas",lunes, LocalTime.parse("10:01")));
 	}
 	
 	@Test
 	public void cuentanSegundos(){
-		Assert.assertFalse(centro.estaDisponible("Rentas", lunes, LocalTime.parse("10:00")));
+		Assert.assertFalse(centro.estaDisponibleConServicio("Rentas", lunes, LocalTime.parse("10:00")));
 	}
 	
 	@Test
 	public void estaEnElDiaUnico()	{
-		Assert.assertTrue(centro.estaDisponible("Creditos",miercoles,LocalTime.parse("09:43")));
+		Assert.assertTrue(centro.estaDisponibleConServicio("Creditos",miercoles,LocalTime.parse("09:43")));
 	}
 	
 	@Test
 	public void estaDentroDeLaOtraFranjaHoraria(){
 		
-		Assert.assertTrue(centro.estaDisponible("Rentas",lunes, LocalTime.parse("15:01")));
+		Assert.assertTrue(centro.estaDisponibleConServicio("Rentas",lunes, LocalTime.parse("15:01")));
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ public class TestDisponibilidad {
 	
 	@Test
 	public void estaFueraPorLaHora(){
-		Assert.assertFalse(centro.estaDisponible("Rentas",miercoles, LocalTime.parse("12:30")));
+		Assert.assertFalse(centro.estaDisponibleConServicio("Rentas",miercoles, LocalTime.parse("12:30")));
 	}
 	
 	@Test

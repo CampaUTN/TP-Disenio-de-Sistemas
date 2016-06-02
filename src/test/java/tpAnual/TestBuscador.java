@@ -19,16 +19,16 @@ public class TestBuscador {
 	public void init() {
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
-		mapa.altaPoi(poi);
+		mapa.alta(poi);
 
 		poi2.agregarTag("108");
 		poi2.agregarTag("colectivo");
-		mapa.altaPoi(poi2);
+		mapa.alta(poi2);
 	}
 
 	@Test
 	public void testUnaBusquedaParaLosTresOrigenes(){
-		Assert.assertEquals(6, mapa.buscarPoi("colectivo").size(),0); //2 del init, 2 de bancos, 2 de cpos
+		Assert.assertEquals(6, mapa.buscar("colectivo").size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
 	
 //	@Test
