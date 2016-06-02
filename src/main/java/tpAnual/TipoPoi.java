@@ -21,7 +21,7 @@ public abstract class TipoPoi {
 	}
 
 	//Este metodo en un futuro se va a cambiar por un throwException.
-	public boolean estaDisponible(String servicio, DayOfWeek dia, LocalTime hora) {
+	public boolean estaDisponibleConServicio(String servicio, DayOfWeek dia, LocalTime hora) {
 		return false;
 	}
 }

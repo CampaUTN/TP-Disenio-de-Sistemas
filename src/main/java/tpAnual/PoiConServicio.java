@@ -26,7 +26,7 @@ public abstract class PoiConServicio extends TipoPoi{
 	
 	// Disponibilidad con nombre de servicio
 	@Override
-	public boolean estaDisponible(String nombreServ, DayOfWeek dia,LocalTime hora) {
+	public boolean estaDisponibleConServicio(String nombreServ, DayOfWeek dia,LocalTime hora) {
 		return servicios.stream()
 				.anyMatch(unServicio -> unServicio.tienePorNombre(nombreServ) && unServicio.disponible(dia,hora));
 	}
@@ -48,5 +48,4 @@ public abstract class PoiConServicio extends TipoPoi{
 	public void agregarServicio(Servicio servicio){
 		servicios.add(servicio);
 	}
-	
 }	

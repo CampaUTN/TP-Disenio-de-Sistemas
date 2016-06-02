@@ -36,9 +36,9 @@ public class Poi {
 		return tipo.estaDisponible(dia, hora);
 	}
 
-	public boolean estaDisponible(String servicio,LocalDate fecha,LocalTime hora) {
+	public boolean estaDisponibleConServicio(String servicio,LocalDate fecha,LocalTime hora) {
 		DayOfWeek dia = fecha.getDayOfWeek();
-		return tipo.estaDisponible(servicio, dia, hora);
+		return tipo.estaDisponibleConServicio(servicio, dia, hora);
 	}
 
 	// Distancia:
