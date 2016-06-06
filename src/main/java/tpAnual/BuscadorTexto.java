@@ -11,8 +11,8 @@ import java.util.Arrays;
 
 public class BuscadorTexto {
 	
-	BancoAdapter bancoAdap = new BancoAdapter();
-	CGPAdapter cgpAdap = new CGPAdapter();
+	BancoAdapter bancoAdapter = new BancoAdapter();
+	CGPAdapter cgpAdater = new CGPAdapter();
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
@@ -29,11 +29,11 @@ public class BuscadorTexto {
 	}
 	
 	public List<Poi> buscarSistemaCgpExterno(List<String> palabras){
-		return cgpAdap.consultar(palabras);
+		return cgpAdater.consultar(palabras);
 	}
 	
 	public List<Poi> buscarSistemaBancoExterno(List<String> palabras){
-		return bancoAdap.consultar(palabras);
+		return bancoAdapter.consultar(palabras);
 	}
 	
 	public List<Poi> buscarEnPoisLocales(List<String> palabras, List<Poi> listaPois){
@@ -45,11 +45,11 @@ public class BuscadorTexto {
 	
 	//Setters
 	
-		public void setBancoAdapter(BancoAdapter bancoAd){
-			bancoAdap = bancoAd;
+		public void setBancoAdapter(BancoAdapter adapter){
+			bancoAdapter = adapter;
 		}
-		public void setCgpAdapter(CGPAdapter cgpAd){
-			cgpAdap = cgpAd;
+		public void setCgpAdapter(CGPAdapter adapter){
+			cgpAdater = adapter;
 		}
 
 	
