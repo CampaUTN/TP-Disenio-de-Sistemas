@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.com.EmailSenderBusqueda;
-
 public class RegistroBusqueda {
 	
 	List<String> palabrasUtilizadas = new ArrayList<String>();
@@ -17,7 +15,6 @@ public class RegistroBusqueda {
 		palabrasUtilizadas.addAll(palabras);
 		cantidadEncontrada = pois.size();
 		tiempoBusqueda = tiempo;
-		new EmailSenderBusqueda().enviarMensajePorDemora(tiempo);
 		fecha = LocalDate.now();
 	}
 	

@@ -6,7 +6,7 @@ import org.uqbar.geodds.Point;
 
 public class Mapa {
 	
-	public BuscadorTexto buscador = new BuscadorTexto();
+	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
 	
 	// Busqueda de texto libre de pois
@@ -23,6 +23,9 @@ public class Mapa {
 		return buscador.buscarSegunTexto(tags, pois);
 	}
 
+	public BuscadorTexto getBuscador(){
+		return buscador;
+	}
 	// Cercania de poi
 	
 	public boolean estaCerca(Poi poi, Point unPunto) {
