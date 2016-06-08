@@ -12,15 +12,15 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-    private static String para = "destinationemail@gmail.com";
-    private static String de = "grupo7-noreply@gmail.com";
-    final String username = "grupo7";
-    final String password = "******";
-    // Assuming you are sending email through relay.jangosmtp.net
-    private static String host = "relay.jangosmtp.net";
-    private Properties propiedades = this.crearPropiedades();
-    Session sesion = this.crearSesion();
-    
+	private String mailAdministrador;
+	private String de = "grupo7-noreply@gmail.com";
+	private String usuario = "grupo7";
+	private String contrasenia = "******";
+	private String host = "pois.gob.ar";
+	// Si cambian habria que tocar el codigo de todas formas, asi que los declaro final
+	private final Properties propiedades = this.crearPropiedades();
+	private final Session sesion = this.crearSesion();
+
 	public void enviarMensaje(String titulo, String contenido) {
 		try {
 			Transport.send(crearMensaje(titulo, contenido));
@@ -28,23 +28,28 @@ public class EmailSender {
 			throw new RuntimeException(e);
 		}
 	}
-   
-   // Constructores
-   // Estos constructores están aca porque no tiene sentido hacer una clase para que solo haga esto.
-   private Properties crearPropiedades(){
-	      Properties propiedades = new Properties();
-	      propiedades.put("mail.smtp.auth", "true");
-	      propiedades.put("mail.smtp.starttls.enable", "true");
-	      propiedades.put("mail.smtp.host", host);
-	      propiedades.put("mail.smtp.port", "25");
-		  return propiedades;
-   }
-   
+
+	public EmailSender(String mailAdministrador) {
+		this.mailAdministrador = mailAdministrador;
+	}
+
+	// Constructores varios
+	// Estos constructores están aca porque no tiene sentido hacer una clase
+	// para que solo haga esto.
+	private Properties crearPropiedades() {
+		Properties propiedades = new Properties();
+		propiedades.put("mail.smtp.auth", "true");
+		propiedades.put("mail.smtp.starttls.enable", "true");
+		propiedades.put("mail.smtp.host", host);
+		propiedades.put("mail.smtp.port", "25");
+		return propiedades;
+	}
+
 	private Message crearMensaje(String titulo, String contenido) {
 		Message mensaje = new MimeMessage(sesion);
 		try {
 			mensaje.setFrom(new InternetAddress(de));
-			mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(para));
+			mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailAdministrador));
 			mensaje.setSubject(titulo);
 			mensaje.setText(contenido);
 		} catch (AddressException e) {
@@ -54,12 +59,17 @@ public class EmailSender {
 		}
 		return mensaje;
 	}
-   
-   private Session crearSesion(){
-	   return Session.getInstance(propiedades, new javax.mail.Authenticator() {
-	        protected PasswordAuthentication getPasswordAuthentication() {
-	           return new PasswordAuthentication(username, password);
-	   }
-	     });
-   }
+
+	private Session crearSesion() {
+		return Session.getInstance(propiedades, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(usuario, contrasenia);
+			}
+		});
+	}
+
+	// Setters
+	public void setMailAdministrador(String mailAdministrador) {
+		this.mailAdministrador = mailAdministrador;
+	}
 }
