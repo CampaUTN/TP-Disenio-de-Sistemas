@@ -9,6 +9,18 @@ public class Mapa {
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
 	
+	public void main(){
+		Mapa mapa = new Mapa();
+		
+		Negocio negocio = new Negocio("mueble");
+		Poi poi = new Poi(negocio,new Point(1,1),"A",null);
+		mapa.alta(poi);
+		mapa.buscador.buscarSegunTexto("mueble", mapa.pois, new Terminal(1));
+		
+		ReporteFecha reporteFecha = new ReporteFecha();
+		reporteFecha.reportar(mapa.buscador.getRegistros());
+	}
+	
 	// Busqueda de texto libre de pois
 	
 	public void alta(Poi poi){
@@ -19,8 +31,8 @@ public class Mapa {
 		pois.remove(poi);
 	}
 	
-	public List<Poi> buscar(String tags){
-		return buscador.buscarSegunTexto(tags, pois);
+	public List<Poi> buscar(String tags, Terminal terminal){
+		return buscador.buscarSegunTexto(tags, pois, terminal);
 	}
 
 	public BuscadorTexto getBuscador(){

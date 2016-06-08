@@ -60,30 +60,6 @@ public class TestBuscador {
 	
 	@Test
 	public void testUnaBusquedaParaLosTresOrigenes(){
-		Assert.assertEquals(6, mapa.buscar("colectivo").size(),0); //2 del init, 2 de bancos, 2 de cpos
+		Assert.assertEquals(6, mapa.buscar("colectivo",new Terminal(1)).size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
-	
-	
-//	@Test
-//	public void buscaEsUnColecEnVezDeColectivoYSonDos() {
-//		Assert.assertEquals(2, mapa.buscarPoi("es un colec").size());
-//	}
-//
-//	@Test
-//	public void busca10EnVezDe107y108YEncuentraDos() {
-//		Assert.assertEquals(2, mapa.buscarPoi("10").size());
-//	}
-//
-//	@Test
-//	public void siNoContienenTagNoEncuentra() {
-//		Assert.assertEquals(0, mapa.buscarPoi("colectivos").size());
-//	}
-//	
-//	@Test
-//	public void losServiciosSonTags()
-//	{
-//		frances.agregarServicio(servicio);
-//		Poi poi3 = new Poi(frances, ubicacion, "108", tags);
-//		Assert.assertTrue(poi3.tieneTag("rentas"));
-//	}
 }

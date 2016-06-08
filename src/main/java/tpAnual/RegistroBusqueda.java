@@ -10,12 +10,14 @@ public class RegistroBusqueda {
 	Long tiempoBusqueda;
 	LocalDate fecha;
 	Integer cantidadEncontrada;
+	Terminal terminal;
 	
-	public RegistroBusqueda(List<Poi> pois, List<String> palabras, Long tiempo){
+	public RegistroBusqueda(List<Poi> pois, List<String> palabras, Long tiempo, Terminal terminalParam){
 		palabrasUtilizadas.addAll(palabras);
 		cantidadEncontrada = pois.size();
 		tiempoBusqueda = tiempo;
 		fecha = LocalDate.now();
+		terminal = terminalParam;
 	}
 	
 }

@@ -9,7 +9,7 @@ public class Horario  {
 	private LocalTime desde;
 	private LocalTime hasta;
 	
-	//esta entre el diaDesde y el diaHasta
+	//Esta entre el diaDesde y el diaHasta
 	private boolean cumpleRango(DayOfWeek dia, LocalTime hora)
 	{
 		return (dia.getValue() >= diaDesde.getValue()) && 

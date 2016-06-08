@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-//import oracle.javatools.util.Chronometer;
-
 public class BuscadorTexto{
 	private HashSet<Consultora> adapters = new HashSet<Consultora>();
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
@@ -29,7 +27,7 @@ public class BuscadorTexto{
 		}
 	}
 	
-	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois){
+	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
 		Long timerInicio = System.currentTimeMillis();
 
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
@@ -40,7 +38,7 @@ public class BuscadorTexto{
 				
 		Long timerFin = System.currentTimeMillis();
 		
-		registros.add(new RegistroBusqueda(listaPois,palabras,timerFin-timerInicio));
+		registros.add(new RegistroBusqueda(listaPois,palabras,timerFin-timerInicio,terminal));
 		this.informar(timerFin-timerInicio);
 		return poisDeTodosOrigenes;
 	}
