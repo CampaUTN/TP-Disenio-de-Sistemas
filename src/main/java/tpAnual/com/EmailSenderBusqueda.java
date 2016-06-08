@@ -21,12 +21,16 @@ public class EmailSenderBusqueda implements EmailSender {
 	private final Properties propiedades = this.crearPropiedades();
 	private final Session sesion = this.crearSesion();
 
-	public void enviarMensaje(String titulo, String contenido) {
+	private void enviarMensaje(String titulo, String contenido) {
 		try {
 			Transport.send(crearMensaje(titulo, contenido));
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public void enviarMensajePorDemora(int limite){
+		this.enviarMensaje("Busqueda lenta", "La busqueda tardó más de "+limite+" segundos.");
 	}
 
 	
