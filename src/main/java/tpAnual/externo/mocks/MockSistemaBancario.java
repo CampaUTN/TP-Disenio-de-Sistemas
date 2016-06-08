@@ -7,7 +7,7 @@ public class MockSistemaBancario{
 
 	public BufferedReader consultar(String palabra){
         try {
-                BufferedReader reader = new BufferedReader(new FileReader("bancos.json"));
+                BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/bancos.json"));
                 return reader;
                  
         } catch (Exception e) {
