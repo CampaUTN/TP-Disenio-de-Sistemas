@@ -11,14 +11,14 @@ import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 
 public class TestBuscador {
-	private Set<String> tags = new HashSet<String>();
-	private EstacionDeColectivo tipo = new EstacionDeColectivo();
-	private Banco frances= new Banco();
-	private Point ubicacion = new Point(54, 10);
-	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
-	private Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
-	private Mapa mapa = new Mapa();
-	private Servicio servicio = new Servicio("rentas");
+	protected Set<String> tags = new HashSet<String>();
+	protected EstacionDeColectivo tipo = new EstacionDeColectivo();
+	protected Banco frances= new Banco();
+	protected Point ubicacion = new Point(54, 10);
+	protected Poi poi = new Poi(tipo, ubicacion, "107", tags);
+	protected Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
+	protected Mapa mapa = new Mapa();
+	protected Servicio servicio = new Servicio("rentas");
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
@@ -33,13 +33,13 @@ public class TestBuscador {
 		poi2.agregarTag("colectivo");
 		mapa.alta(poi2);
 
-		mapa.buscador.agregarAdapterExterno(bancoAdapter);
-		mapa.buscador.agregarAdapterExterno(cgpAdapter);
+		mapa.getBuscador().agregarAdapterExterno(bancoAdapter);
+		mapa.getBuscador().agregarAdapterExterno(cgpAdapter);
 	}
 
 	@Test 
 	public void elBuscadorAgregaAdaptersPolimorficamente(){
-		Assert.assertEquals(2, mapa.buscador.adapters.size(), 0);
+		Assert.assertEquals(2, mapa.getBuscador().getAdapters().size(), 0);
 	}
 	
 	@Test
