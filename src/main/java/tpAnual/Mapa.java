@@ -8,7 +8,7 @@ public class Mapa {
 	
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
-
+	
 	// Busqueda de texto libre de pois
 	
 	public void alta(Poi poi){
@@ -21,7 +21,6 @@ public class Mapa {
 	
 	public List<Poi> buscar(String tags){
 		return buscador.buscarSegunTexto(tags, pois);
-		
 	}
 
 	// Cercania de poi
