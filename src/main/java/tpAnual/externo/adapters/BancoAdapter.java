@@ -16,9 +16,10 @@ import tpAnual.Banco;
 import tpAnual.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoExterno;
+import tpAnual.externo.sistemasExternos.Consultora;
 
 
-public class BancoAdapter {
+public class BancoAdapter implements Consultora {
 	
 	private MockSistemaBancario sistemaBancoExt = new MockSistemaBancario();
 	
@@ -30,12 +31,10 @@ public class BancoAdapter {
 	
 	public List<BancoExterno> adaptar(BufferedReader reader){
 			List<BancoExterno> bancosExternos = new ArrayList<BancoExterno>();
-			try {
-				Gson gson = new Gson();
-				bancosExternos = gson.fromJson(reader, new TypeToken<List<BancoExterno>>() {}.getType()); 
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			
+			Gson gson = new Gson();
+			bancosExternos = gson.fromJson(reader, new TypeToken<List<BancoExterno>>() {}.getType()); 
+		
 			return bancosExternos;
 	}
 	
@@ -56,6 +55,5 @@ public class BancoAdapter {
 		
 		return new Poi(banco, ubicacion, nombre, servicios);
 	}
-	
 
 }
