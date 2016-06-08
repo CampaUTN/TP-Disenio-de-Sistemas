@@ -15,9 +15,10 @@ import tpAnual.Poi;
 import tpAnual.Servicio;
 import tpAnual.externo.mocks.MockSistemaCGP;
 import tpAnual.externo.sistemasExternos.CentroDTO;
+import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
 
-public class CGPAdapter {
+public class CGPAdapter implements Consultora{
 	
 	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
 		

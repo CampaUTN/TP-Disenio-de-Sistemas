@@ -1,9 +1,14 @@
 package tpAnual;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import org.junit.*;
 import org.uqbar.geodds.Point;
+
+import tpAnual.externo.adapters.BancoAdapter;
+import tpAnual.externo.adapters.CGPAdapter;
 
 public class TestBuscador {
 	private Set<String> tags = new HashSet<String>();
@@ -15,6 +20,9 @@ public class TestBuscador {
 	private Mapa mapa = new Mapa();
 	private Servicio servicio = new Servicio("rentas");
 	
+	private BancoAdapter bancoAdapter = new BancoAdapter();
+	private CGPAdapter cgpAdapter = new CGPAdapter();
+	
 	@Before
 	public void init() {
 		poi.agregarTag("107");
@@ -24,12 +32,37 @@ public class TestBuscador {
 		poi2.agregarTag("108");
 		poi2.agregarTag("colectivo");
 		mapa.alta(poi2);
+
+		mapa.buscador.agregarAdapterExterno(bancoAdapter);
+		mapa.buscador.agregarAdapterExterno(cgpAdapter);
 	}
 
+	@Test 
+	public void elBuscadorAgregaAdaptersPolimorficamente(){
+		Assert.assertEquals(2, mapa.buscador.adapters.size(), 0);
+	}
+	
+	@Test
+	public void elBuscadorTrataAdaptersPolimorficamente(){
+		
+		BuscadorTexto buscador = new BuscadorTexto();
+		buscador.agregarAdapterExterno(bancoAdapter);
+		buscador.agregarAdapterExterno(cgpAdapter);
+		
+		List<String> palabras = new ArrayList<String>();
+		palabras.add("aasas");
+		List<Poi> pois = new ArrayList<>();
+		
+		buscador.buscarEnPoisExternos(palabras, pois);
+		
+		Assert.assertEquals(4, pois.size() ,0);
+	}
+	
 	@Test
 	public void testUnaBusquedaParaLosTresOrigenes(){
 		Assert.assertEquals(6, mapa.buscar("colectivo").size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
+	
 	
 //	@Test
 //	public void buscaEsUnColecEnVezDeColectivoYSonDos() {

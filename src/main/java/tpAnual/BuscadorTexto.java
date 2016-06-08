@@ -1,21 +1,20 @@
 package tpAnual;
 
 import java.util.List;
-import java.util.Timer;
 import java.util.stream.Collectors;
 
-import tpAnual.externo.adapters.BancoAdapter;
-import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.externo.sistemasExternos.Consultora;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 //import oracle.javatools.util.Chronometer;
 
-public class BuscadorTexto {
+public class BuscadorTexto{
+
+	HashSet<Consultora> adapters = new HashSet<Consultora>();
 	
-	BancoAdapter bancoAdapter = new BancoAdapter();
-	CGPAdapter cgpAdater = new CGPAdapter();
 	List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
 
 	private List<String> separaLaBusqueda(String Busqueda) {
@@ -27,11 +26,10 @@ public class BuscadorTexto {
 
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
-		
+				
 		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois));
-		poisDeTodosOrigenes.addAll(this.buscarSistemaBancoExterno(palabras));
-		poisDeTodosOrigenes.addAll(this.buscarSistemaCgpExterno(palabras));
-		
+		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
+				
 		Integer timerFin = (int) System.currentTimeMillis();
 		
 		registros.add(new RegistroBusqueda(listaPois,palabras,timerFin-timerInicio));
@@ -39,14 +37,10 @@ public class BuscadorTexto {
 		return poisDeTodosOrigenes;
 	}
 	
-	public List<Poi> buscarSistemaCgpExterno(List<String> palabras){
-		return cgpAdater.consultar(palabras);
+	public void buscarEnPoisExternos(List<String> palabras, List<Poi> poisDeTodosOrigenes) {
+		adapters.forEach(adapter -> poisDeTodosOrigenes.addAll(adapter.consultar(palabras)));
 	}
-	
-	public List<Poi> buscarSistemaBancoExterno(List<String> palabras){
-		return bancoAdapter.consultar(palabras);
-	}
-	
+
 	public List<Poi> buscarEnPoisLocales(List<String> palabras, List<Poi> listaPois){
 		return listaPois.stream()
 				.filter(poi-> poi.cumpleCondicionBusqueda(palabras))
@@ -54,18 +48,11 @@ public class BuscadorTexto {
 	}
 	
 	//Getters
-	
 	public List<RegistroBusqueda> getRegistros(){
 		return registros;
 	}
 	
-	//Setters
-	
-	public void setBancoAdapter(BancoAdapter adapter){
-		bancoAdapter = adapter;
+	public void agregarAdapterExterno(Consultora adapter){
+		adapters.add(adapter);
 	}
-	public void setCgpAdapter(CGPAdapter adapter){
-		cgpAdater = adapter;
-	}
-	
 }

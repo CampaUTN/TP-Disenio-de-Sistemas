@@ -6,7 +6,7 @@ import org.uqbar.geodds.Point;
 
 public class Mapa {
 	
-	private BuscadorTexto buscador = new BuscadorTexto();
+	public BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
 	
 	// Busqueda de texto libre de pois
@@ -38,7 +38,6 @@ public class Mapa {
 	}
 	
 	// Manejo de lista de pois
-
 
 	public int cantidadPois() {
 		return pois.size();
