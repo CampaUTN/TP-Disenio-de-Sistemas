@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSenderBusqueda implements EmailSender {
-	private String mailAdministrador;
+	private String mailAdministrador="pepe@gmail.com";
 	private String de = "grupo7-noreply@gmail.com";
 	private String usuario = "grupo7";
 	private String contrasenia = "******";
@@ -29,14 +29,8 @@ public class EmailSenderBusqueda implements EmailSender {
 		}
 	}
 	
-	public void enviarMensajePorDemora(int limite){
+	public void enviarMensajePorDemora(Long limite){
 		this.enviarMensaje("Busqueda lenta", "La busqueda tardó más de "+limite+" segundos.");
-	}
-
-	
-	// Constructor
-	public EmailSenderBusqueda(String mailAdministrador) {
-		this.mailAdministrador = mailAdministrador;
 	}
 
 

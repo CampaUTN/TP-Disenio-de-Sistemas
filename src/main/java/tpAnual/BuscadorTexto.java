@@ -22,7 +22,7 @@ public class BuscadorTexto{
 	}
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois){
-		Integer timerInicio = (int) System.currentTimeMillis();
+		Long timerInicio = System.currentTimeMillis();
 
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
@@ -30,7 +30,7 @@ public class BuscadorTexto{
 		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois));
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
-		Integer timerFin = (int) System.currentTimeMillis();
+		Long timerFin = System.currentTimeMillis();
 		
 		registros.add(new RegistroBusqueda(listaPois,palabras,timerFin-timerInicio));
 		
