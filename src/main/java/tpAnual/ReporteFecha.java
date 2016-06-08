@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReporteFecha implements Reporte{ //Ej llamada: generadorReportes.reporteFecha(mapa.buscadorTexto.getRegistros());
+public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.buscadorTexto.getRegistros());
 
 	public void reportar(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();

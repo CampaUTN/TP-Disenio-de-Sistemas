@@ -19,10 +19,6 @@ public class ElementoReporte {
 	public void sumarBusqueda(){
 		cantidadBusquedas++;
 	}
-
-	public void agregarBusquedasDeTerminal(int cantidadEncontrada){
-		cantidadPoisEncontrados += cantidadEncontrada;
-	}
 	
 	public void agregarBusquedasParciales(int cantidadEncontrada){
 		busquedasParciales.add(cantidadEncontrada);

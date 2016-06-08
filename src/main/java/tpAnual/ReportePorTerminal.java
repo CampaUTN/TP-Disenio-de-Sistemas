@@ -3,27 +3,37 @@ package tpAnual;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReportePorTerminalDetallado implements Reporte{
+public class ReportePorTerminal{
 	
-	Reporte reporteConocido;
+	Boolean detalladoActivado=false;
 	
-	public ReportePorTerminalDetallado(){
-		reporteConocido = new ReporteCantidadTotalPorTerminal();
-	}
-	
-	@Override
 	public void reportar(List<RegistroBusqueda> registros) {
-		this.reportarDetallado(registros);
-		reporteConocido.reportar(registros);
+		if(detalladoActivado){
+			this.mostrarDetallado(this.asignarRegistros(registros));
+		}
+		this.mostrarCompleto(this.asignarRegistros(registros));
 	}
 	
-	private void reportarDetallado(List<RegistroBusqueda> registros){
+	//TODO mostrarDetallado muestra la lista elemento por elemento
+	//TODO mostrarCompleto hace antes un sum de de esa lista y la muestra
+	//TODO Falta algo con el tema de guarda el id del terminal y el nombre y mostrarlo por pantalla, revisar
+	
+	private void mostrarDetallado(List<ElementoReporte> reportes){
+		
+	}
+	private void mostrarCompleto(List<ElementoReporte> reportes){
+		
+	}
+
+	private List<ElementoReporte> asignarRegistros(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();
 		
 		registros.forEach(registro->{
 			agregarSiNoEstaTerminal(registro,listadoReporte);
 			buscarElementoYAgregarBusquedas(registro,listadoReporte);
 		});
+		
+		return listadoReporte;
 	}
 	
 	private void buscarElementoYAgregarBusquedas(RegistroBusqueda registro, List<ElementoReporte> listadoReporte){
