@@ -17,14 +17,14 @@ public class ReportePorTerminal{
 	
 	private void mostrarDetallado(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
-			System.out.println(reporte.terminal.getNombre());
+			System.out.println(reporte.getTerminal().getNombre());
 			this.imprimirCantidades(reporte);
 		});
 	}
 	
 	private void mostrarCompleto(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
-			System.out.println(reporte.terminal.getNombre());
+			System.out.println(reporte.getTerminal().getNombre());
 			System.out.println(this.sumatoria(reporte.busquedasParciales));
 		});
 	}
@@ -52,7 +52,7 @@ public class ReportePorTerminal{
 	
 	private void buscarElementoYAgregarBusquedas(RegistroBusqueda registro, List<ElementoReporte> listadoReporte){
 		listadoReporte.stream()
-			.filter(elemento->elemento.terminal.getId() == registro.getTerminal().getId())
+			.filter(elemento->elemento.getTerminal().getId() == registro.getTerminal().getId())
 			.findFirst()
 			.get()
 			.agregarBusquedasParciales(registro.getCantidad());
@@ -61,14 +61,14 @@ public class ReportePorTerminal{
 	private void agregarSiNoEstaTerminal(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		if(!this.estaElTerminal(registro.getTerminal(), listadoReporte)){
 			ElementoReporte elemento = new ElementoReporte();
-			elemento.terminal=registro.getTerminal();
+			elemento.setTerminal(registro.getTerminal());
 			listadoReporte.add(elemento);
 		}
 	}
 	
 	private boolean estaElTerminal(Terminal terminalParam, List<ElementoReporte> listadoReporte){
 		return listadoReporte.stream()
-				.anyMatch(elemento-> elemento.terminal.getId() == (terminalParam.getId())); //no hago el equals pq no es Integer
+				.anyMatch(elemento-> elemento.getTerminal().getId() == (terminalParam.getId())); //no hago el equals pq no es Integer
 	}
 	
 }

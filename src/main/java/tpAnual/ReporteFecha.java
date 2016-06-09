@@ -19,15 +19,15 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 	
 	private void mostrarReporteFecha(List<ElementoReporte> listadoReporte){
 		listadoReporte.forEach(elemento->{
-						System.out.println(elemento.fecha.toString());
-						System.out.println(elemento.cantidadBusquedas);
+						System.out.println(elemento.getfecha().toString());
+						System.out.println(elemento.getCantidadBusquedas());
 					}
 				);
 	}
 	
 	private void buscarElementoYSumarBusqueda(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		listadoReporte.stream()
-				.filter(elemento->elemento.fecha.toString().equals(registro.getFecha().toString()))
+				.filter(elemento->elemento.getfecha().toString().equals(registro.getFecha().toString()))
 				.findFirst()
 				.get()
 				.sumarBusqueda();
@@ -43,7 +43,7 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 	
 	private Boolean estaLaFecha(LocalDate fecha, List<ElementoReporte> listadoReporte){
 		return listadoReporte.stream()
-				.anyMatch(elemento-> elemento.fecha.toString().equals(fecha.toString()));
+				.anyMatch(elemento-> elemento.getfecha().toString().equals(fecha.toString()));
 	}
 	
 }
