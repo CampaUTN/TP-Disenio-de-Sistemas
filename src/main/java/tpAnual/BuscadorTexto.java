@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import tpAnual.com.EmailSender;
+import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
 
 import java.util.ArrayList;
@@ -37,9 +38,11 @@ public class BuscadorTexto{
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
 		Long timerFin = System.currentTimeMillis();
+		Long tiempoEmpleado = timerFin - timerInicio;
 		
-		registros.add(new RegistroBusqueda(listaPois,palabras,timerFin-timerInicio,terminal));
-		this.informar(timerFin-timerInicio);
+		agregarRegistro(listaPois, palabras, tiempoEmpleado, terminal);
+		this.informar(tiempoEmpleado);
+
 		return poisDeTodosOrigenes;
 	}
 	
@@ -53,6 +56,17 @@ public class BuscadorTexto{
 				.collect(Collectors.toList());
 	}
 	
+	private void agregarRegistro(List<Poi> listaPois,List<String> palabras,Long tiempoEmpleado, Terminal terminal){
+		registros.add(new RegistroBusqueda(listaPois,palabras,tiempoEmpleado,terminal));
+	}
+	
+	public List<Poi> obtenerCGPsConServicioExternos(String servicio){
+		
+		List <String> palabras = Arrays.asList(servicio.split(" "));
+		return (new CGPAdapter()).consultar(palabras);
+	}
+	
+
 	//Setters
 	public void setLimite(Long limite) {
 		this.limite = limite;

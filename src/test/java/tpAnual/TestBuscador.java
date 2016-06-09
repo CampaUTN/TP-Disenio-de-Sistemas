@@ -62,4 +62,12 @@ public class TestBuscador {
 	public void testUnaBusquedaParaLosTresOrigenes(){
 		Assert.assertEquals(6, mapa.buscar("colectivo",null).size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
+	
+	@Test
+	public void testFiltroSoloCGPs(){
+				
+		List<Poi> pois = mapa.getBuscador().obtenerCGPsConServicioExternos("Cheques");
+		Assert.assertEquals(2,pois.size(),0);
+		
+	}
 }
