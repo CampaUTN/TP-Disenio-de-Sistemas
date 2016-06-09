@@ -21,16 +21,18 @@ public class ReportePorTerminal{
 			this.imprimirCantidades(reporte);
 		});
 	}
+	
 	private void mostrarCompleto(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
 			System.out.println(reporte.terminal.nombre);
 			System.out.println(this.sumatoria(reporte.busquedasParciales));
-//			System.out.println(IntStream.of(reporte.busquedasParciales).sum());
 		});
 	}
+	
 	private void imprimirCantidades(ElementoReporte reporte){
 		reporte.busquedasParciales.forEach(unaCantidad->System.out.println(unaCantidad));
 	}
+	
 	private int sumatoria(List<Integer> lista){
 		contador=0;
 		lista.forEach(elem->contador=contador+elem);
