@@ -40,7 +40,7 @@ public class CGPAdapter implements Consultora{
 	
 	private Poi centroToPOI(CentroDTO centro){
 		Cgp cgp = new Cgp(null); //TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
-		Point ubicacion = new Point(1,1); 
+		Point ubicacion = new Point(-35.9345681,72.344546); 
 		String nombre = centro.getDirector();
 		Set<String> tags = centro.getZonas();
 		

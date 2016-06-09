@@ -3,6 +3,7 @@ package tpAnual;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
+import org.uqbar.geodds.Point;
 
 import org.junit.*;
 //import org.mockito.Mockito;
@@ -97,10 +98,15 @@ public class TestExterno {
 		
 		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 		
-		String ubicacion = cgpsExternos.get(0).getUbicacion().toString();
-		String ubicacioncita = "x: " + 1 + ", y: " + 1 + "";
-		Assert.assertTrue(ubicacioncita.equals(ubicacion));
-		//Assert.assertEquals(ubicacioncita, ubicacion, 0);
+		Point ubicacion = cgpsExternos.get(0).getUbicacion();
+		Double posX = -35.9345681;
+		Double posY = 72.344546;
+		Point ubicacionEsperada = new Point(posX,posY);
+		Assert.assertEquals(ubicacionEsperada.longitude(), ubicacion.longitude(),0);
+		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0);
+
+		
+		//Assert.assertEquals(ubicacionEsperada, ubicacion, 0);
 		
 	}
 		
@@ -112,11 +118,11 @@ public class TestExterno {
 		palabras.add("Banco de la Plaza");
 		servicioEsperado.add("tramites");
 		servicioEsperado.add("cheques");
+		
 	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 	    servicios = cgpsExternos.get(0).getTags();
 		Assert.assertEquals(servicioEsperado, servicios);
-	    //Assert.assertTrue(servicioEsperado.equals(servicios));
-			
+
 		}		
 
 
