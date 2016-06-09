@@ -55,28 +55,30 @@ public class TestExterno {
 //		
 //    }
 		
-//	@Test PROBLEMAS CON LISTAS (TILDES)
-//	public void testBancoMismoServicios(){
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("Banco de la Plaza");
-//
-//
-//		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
-//		Set<String> servicios = bancosExterno.get(0).getTags();
-//		String servicitos = "[, extracciones, transferencias, cobro cheques, depÃ³sitos, crÃ©ditos]";
-//		//Assert.assertEquals(servicitos , servicios, 0);
-//		Assert.assertTrue(servicitos.equals(servicios));
-//		
-//	}	
-
+	@Test
+	public void testBancoMismoServicios(){
+		List<String> palabras = new ArrayList<String>();
+		palabras.add("Banco de la Plaza");
+		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
+		Set<String> servicios = bancosExterno.get(0).getTags();
+		
+		Set<String> serviciosEsperados = new HashSet<String>();
+		serviciosEsperados.add("");
+		serviciosEsperados.add("extracciones");
+		serviciosEsperados.add("transferencias");
+		serviciosEsperados.add("cobro cheques");
+		serviciosEsperados.add("depósitos");
+		serviciosEsperados.add("créditos");
+		
+		Assert.assertEquals(serviciosEsperados,servicios);
+		
+	}	
 	
 	@Test
 	public void testDevuelveListaExternaCgp(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("aasas");
-		
 		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-		
 		Assert.assertEquals(2,cgpsExternos.size(),0);
 	}
 		
@@ -97,17 +99,15 @@ public class TestExterno {
 		palabras.add("Banco de la Plaza");
 		
 		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-		
+	
 		Point ubicacion = cgpsExternos.get(0).getUbicacion();
 		Double posX = -35.9345681;
 		Double posY = 72.344546;
+		
 		Point ubicacionEsperada = new Point(posX,posY);
 		Assert.assertEquals(ubicacionEsperada.longitude(), ubicacion.longitude(),0);
 		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0);
-
-		
-		//Assert.assertEquals(ubicacionEsperada, ubicacion, 0);
-		
+	
 	}
 		
 	@Test
@@ -123,7 +123,5 @@ public class TestExterno {
 	    servicios = cgpsExternos.get(0).getTags();
 		Assert.assertEquals(servicioEsperado, servicios);
 
-		}		
-
-
+		}
 }
