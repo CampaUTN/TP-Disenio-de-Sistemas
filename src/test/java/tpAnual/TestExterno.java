@@ -39,21 +39,19 @@ public class TestExterno {
 	}
 	
 	
-//	@Test PROBLEMA CON POSICIONES 
-//	public void testBancoMismaUbicacion(){
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("Banco de la Plaza");
-//		
-//		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
-//		
-//		String ubicacion = bancosExterno.get(0).getUbicacion().toString();
-//		
-//		String ubicacioncita = "x: " + -35.9338321999999976696926751174032688140869140625
-//				+ ", y: " + 72.348353000000003021341399289667606353759765625 + "";
-//		//Assert.assertTrue(ubicacioncita.equals(ubicacion));
-//		Assert.assertEquals(ubicacioncita, ubicacion, 0);
-//		
-//    }
+	@Test
+	public void testBancoMismaUbicacion(){
+		List<String> palabras = new ArrayList<String>();
+		palabras.add("Banco de la Plaza");
+		
+		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
+		
+		Point ubicacion = bancosExterno.get(0).getUbicacion();
+		Point ubicacionEsperada = new Point(-35.9338322,72.348353);
+		Assert.assertEquals(ubicacionEsperada.longitude(), ubicacion.longitude(),0.1);
+		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0.1);
+		
+    }
 		
 	@Test
 	public void testBancoMismoServicios(){
