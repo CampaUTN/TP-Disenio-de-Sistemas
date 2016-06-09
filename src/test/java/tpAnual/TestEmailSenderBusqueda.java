@@ -18,26 +18,18 @@ public class TestEmailSenderBusqueda extends TestBuscador{
 	}
 	
 	@Test
-	public void testearAlgo(){
+	public void testearMailPorDemora(){
 		// Testeo con 0 como limite porque es imposible que tarde menos que 0.
 		mapa.getBuscador().setLimite((long) 0);
-<<<<<<< HEAD
 		mapa.buscar("colectivo",null);
-=======
-		mapa.buscar("colectivo",terminal);
->>>>>>> 30bc869988045b65da32432db6c9ed2f0802a984
 		Mockito.verify(sender).enviarMensajePorDemora((long) 0);
 	}
 	
 	@Test
-	public void adssd(){
+	public void testMail(){
 		// Por default no deberia tardar, porque los test usan mocks asi que no hay mas retardo que el de
 		// la maquina donde se corran, y el limite por defecto esta seteado en un valor altisimo.
-<<<<<<< HEAD
 		mapa.buscar("colectivo",null);
-=======
-		mapa.buscar("colectivo",terminal);
->>>>>>> 30bc869988045b65da32432db6c9ed2f0802a984
 		Mockito.verifyNoMoreInteractions(sender);
 	}
 }
