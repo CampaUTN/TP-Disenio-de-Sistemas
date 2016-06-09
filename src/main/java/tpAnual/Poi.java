@@ -82,7 +82,7 @@ public class Poi {
 		return this.nombre;
 	}
 	
-	private Set<String> getTags(){
+	public Set<String> getTags(){
 		return Stream.concat(tagsPoi.stream(),tipo.getServicios().stream())
 					 .collect(Collectors.toSet());
 	}

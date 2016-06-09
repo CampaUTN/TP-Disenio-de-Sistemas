@@ -2,6 +2,7 @@ package tpAnual;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.*;
 
 import org.junit.*;
 //import org.mockito.Mockito;
@@ -103,18 +104,20 @@ public class TestExterno {
 		
 	}
 		
-//	@Test PROBLEMA CON LISTAS
-//	public void testCgpMismoServicios(){
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("Banco de la Plaza");
-//			
-//	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-//	    Set<String> servicios = cgpsExternos.get(0).getTags();
-//		String servicitos = "["+"tramites"+", "+ "cheques"+"]";
-//		Assert.assertEquals(servicitos, servicios, 0);
-//	    //Assert.assertTrue(servicitos.equals(servicios));
-//			
-//		}		
+	@Test
+	public void testCgpMismoServicios(){
+		List<String> palabras = new ArrayList<String>();
+		Set<String> servicios = new HashSet<String>();
+		Set<String> servicioEsperado = new HashSet<String>();
+		palabras.add("Banco de la Plaza");
+		servicioEsperado.add("tramites");
+		servicioEsperado.add("cheques");
+	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
+	    servicios = cgpsExternos.get(0).getTags();
+		Assert.assertEquals(servicioEsperado, servicios);
+	    //Assert.assertTrue(servicioEsperado.equals(servicios));
+			
+		}		
 
 
 }
