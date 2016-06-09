@@ -6,6 +6,7 @@ import java.util.List;
 public class ReportePorTerminal{
 	
 	Boolean detalladoActivado=false;
+	private int contador;
 	
 	public void reportar(List<RegistroBusqueda> registros) {
 		if(detalladoActivado){
@@ -14,15 +15,26 @@ public class ReportePorTerminal{
 		this.mostrarCompleto(this.asignarRegistros(registros));
 	}
 	
-	//TODO mostrarDetallado muestra la lista elemento por elemento
-	//TODO mostrarCompleto hace antes un sum de de esa lista y la muestra
-	//TODO Falta algo con el tema de guarda el id del terminal y el nombre y mostrarlo por pantalla, revisar
-	
 	private void mostrarDetallado(List<ElementoReporte> reportes){
-		
+		reportes.forEach(reporte->{
+			System.out.println(reporte.terminal.nombre);
+			this.imprimirCantidades(reporte);
+		});
 	}
 	private void mostrarCompleto(List<ElementoReporte> reportes){
-		
+		reportes.forEach(reporte->{
+			System.out.println(reporte.terminal.nombre);
+			System.out.println(this.sumatoria(reporte.busquedasParciales));
+//			System.out.println(IntStream.of(reporte.busquedasParciales).sum());
+		});
+	}
+	private void imprimirCantidades(ElementoReporte reporte){
+		reporte.busquedasParciales.forEach(unaCantidad->System.out.println(unaCantidad));
+	}
+	private int sumatoria(List<Integer> lista){
+		contador=0;
+		lista.forEach(elem->contador=contador+elem);
+		return contador;
 	}
 
 	private List<ElementoReporte> asignarRegistros(List<RegistroBusqueda> registros){
