@@ -53,6 +53,9 @@ public class Mapa {
 	}
 	
 	// Manejo de lista de pois
+	public List<Poi> pois(){
+		return pois;
+	}
 
 	public int cantidadPois() {
 		return pois.size();

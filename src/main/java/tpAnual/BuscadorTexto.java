@@ -40,7 +40,7 @@ public class BuscadorTexto{
 		Long timerFin = System.currentTimeMillis();
 		Long tiempoEmpleado = timerFin - timerInicio;
 		
-		agregarRegistro(listaPois, palabras, tiempoEmpleado, terminal);
+		agregarRegistro(poisDeTodosOrigenes, palabras, tiempoEmpleado, terminal);
 		this.informar(tiempoEmpleado);
 
 		return poisDeTodosOrigenes;

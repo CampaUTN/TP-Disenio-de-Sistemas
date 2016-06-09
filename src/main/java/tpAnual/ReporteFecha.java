@@ -27,16 +27,16 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 	
 	private void buscarElementoYSumarBusqueda(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		listadoReporte.stream()
-				.filter(elemento->elemento.fecha.toString().equals(registro.fecha.toString()))
+				.filter(elemento->elemento.fecha.toString().equals(registro.getFecha().toString()))
 				.findFirst()
 				.get()
 				.sumarBusqueda();
 	}
 	
 	private void agregarSiNoEstaFecha(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
-		if(!this.estaLaFecha(registro.fecha, listadoReporte)){
+		if(!this.estaLaFecha(registro.getFecha(), listadoReporte)){
 			ElementoReporte elemento = new ElementoReporte();
-			elemento.setFecha(registro.fecha);
+			elemento.setFecha(registro.getFecha());
 			listadoReporte.add(elemento);
 		}
 	}
