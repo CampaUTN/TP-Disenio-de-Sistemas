@@ -1,10 +1,18 @@
 package tpAnual;
 
 public class Terminal {
-	int id;
-	String nombre;
+	private int id;
+	private String nombre;
 	
 	public Terminal(int idParametro){
 		id = idParametro;
+	}
+	
+	public int getId(){
+		return id;
+	}
+	
+	public String getNombre(){
+		return nombre;
 	}
 }

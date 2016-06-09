@@ -6,21 +6,49 @@ import java.util.List;
 
 public class ElementoReporte {
 	
-	LocalDate fecha;
-	Integer cantidadBusquedas=0;
-	Terminal terminal;
-	Integer cantidadPoisEncontrados=0;
+	private LocalDate fecha;
+	private Integer cantidadBusquedas=0;
+	private Terminal terminal;
+	private Integer cantidadPoisEncontrados=0;
 	List<Integer> busquedasParciales = new ArrayList<Integer>();
+	
+	/*--------Setters----------*/
 	
 	public void setFecha(LocalDate fechaParam){
 		fecha = fechaParam;
 	}
 	
+	public void setTerminal(Terminal unaTerminal){
+		terminal = unaTerminal;
+	}
 	public void sumarBusqueda(){
 		cantidadBusquedas++;
 	}
 	
 	public void agregarBusquedasParciales(int cantidadEncontrada){
 		busquedasParciales.add(cantidadEncontrada);
+	}
+	
+	
+	/*--------Getters----------*/
+	
+	public LocalDate getfecha(){
+		return fecha;
+	}
+	
+	public Integer getCantidadBusquedas(){
+		return cantidadBusquedas;
+	}
+	
+	public Terminal getTerminal(){
+		return terminal;
+	}
+	
+	public Integer getCantidadPois(){
+		return cantidadPoisEncontrados;
+	}
+	
+	public List<Integer> getBusquedasParciales(){
+		return busquedasParciales;
 	}
 }
