@@ -1,19 +1,13 @@
 package tpAnual.externo.mocks;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-
+import java.io.File;
+import org.apache.commons.io.FileUtils;
 public class MockSistemaBancario{
 
-	public BufferedReader consultar(String palabra){
-        try {
-                BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/bancos.json"));
-                return reader;
-                 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		return null;
+	public File consultar(String palabra){
+		File file = FileUtils.getFile("src/test/resources/bancos.json");
+        //BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/bancos.json"));
+      	return file;
 	}
 	
 }
