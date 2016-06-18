@@ -8,6 +8,7 @@ import org.uqbar.geodds.Point;
 import org.junit.*;
 //import org.mockito.Mockito;
 
+import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 

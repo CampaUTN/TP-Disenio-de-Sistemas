@@ -5,6 +5,8 @@ import java.util.Set;
 import org.junit.*;
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.Poi;
+
 public class TestPoi {
 	private Set<String> tags = new HashSet<String>();
 	private EstacionDeColectivo tipo = new EstacionDeColectivo();

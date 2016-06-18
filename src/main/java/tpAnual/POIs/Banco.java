@@ -1,7 +1,10 @@
-package tpAnual;
+package tpAnual.POIs;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+
+import tpAnual.Horario;
+import tpAnual.Servicio;
 
 public class Banco extends PoiConServicio{
 	

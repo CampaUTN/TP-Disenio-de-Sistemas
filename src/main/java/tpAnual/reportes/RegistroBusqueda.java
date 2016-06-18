@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.Poi;
 import tpAnual.Terminal;
+import tpAnual.POIs.Poi;
 
 public class RegistroBusqueda {
 	

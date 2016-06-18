@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.Negocio;
+import tpAnual.POIs.Poi;
 import tpAnual.reportes.ReporteFecha;
 
 public class Mapa {

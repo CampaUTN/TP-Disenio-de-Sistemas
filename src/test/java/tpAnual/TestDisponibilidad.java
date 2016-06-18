@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.POIs.Cgp;
+
 public class TestDisponibilidad {
 
 	private DayOfWeek lunes = DayOfWeek.MONDAY;

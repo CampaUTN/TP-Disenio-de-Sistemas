@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 import org.uqbar.geodds.Point;
 
-import tpAnual.Cgp;
 import tpAnual.Horario;
-import tpAnual.Poi;
 import tpAnual.Servicio;
+import tpAnual.POIs.Cgp;
+import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaCGP;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;

@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.POIs;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.geodds.*;
+
+import tpAnual.Horario;
 
 
 public class Negocio extends TipoPoi {

@@ -7,6 +7,10 @@ import java.util.Set;
 import org.junit.*;
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.Banco;
+import tpAnual.POIs.Cgp;
+import tpAnual.POIs.Poi;
+
 public class TestCercania {
 	private Point puntoComunaA = new Point(0,0);
 	private Point puntoComunaB = new Point(20,60);

@@ -7,6 +7,8 @@ import java.util.Set;
 import org.junit.*;
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.Banco;
+import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.reportes.RegistroBusqueda;

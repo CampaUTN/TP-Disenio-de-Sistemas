@@ -33,7 +33,7 @@ public class Horario  {
 	}
 	
 	//se usa si es un rango de dias
-	static Horario nuevoHorarioParaFranja(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){   
+	public static Horario nuevoHorarioParaFranja(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){   
 		return new Horario(inicio, fin, desde, hasta);
 	}
 	

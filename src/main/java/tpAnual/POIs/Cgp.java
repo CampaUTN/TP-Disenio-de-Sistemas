@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.POIs;
 
 import java.util.*;
 

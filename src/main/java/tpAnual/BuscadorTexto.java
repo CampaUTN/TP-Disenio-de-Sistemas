@@ -3,6 +3,7 @@ package tpAnual;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.reportes.RegistroBusqueda;

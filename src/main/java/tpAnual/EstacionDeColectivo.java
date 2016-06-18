@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.TipoPoi;
+
 public class EstacionDeColectivo extends TipoPoi {
 	
 	private String nroColectivo;

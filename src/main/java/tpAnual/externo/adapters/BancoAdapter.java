@@ -16,8 +16,8 @@ import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
 
-import tpAnual.Banco;
-import tpAnual.Poi;
+import tpAnual.POIs.Banco;
+import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoExterno;
 import tpAnual.externo.sistemasExternos.Consultora;
