@@ -7,6 +7,11 @@ public class Terminal {
 	private String nombre;
 	private EmailSender sender = EmailSenderBusqueda.getInstance();
 	
+	
+	public boolean equals(Terminal terminal){
+		return this.numeroTerminal==terminal.getNumeroTerminal();
+	}
+	
 	public void informar(Long tiempo, Long limite){
 		if(tiempo>limite){
 			sender.enviarMensajePorDemora(limite);

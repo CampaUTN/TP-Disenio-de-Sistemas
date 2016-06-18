@@ -54,7 +54,7 @@ public class ReportePorTerminal{
 	
 	private void buscarElementoYAgregarBusquedas(RegistroBusqueda registro, List<ElementoReporte> listadoReporte){
 		listadoReporte.stream()
-			.filter(elemento->elemento.getTerminal().getNumeroTerminal() == registro.getTerminal().getNumeroTerminal())
+			.filter(elemento->elemento.esDeLaTerminal(registro.getTerminal()))
 			.findFirst()
 			.get()
 			.agregarBusquedasParciales(registro.getCantidad());
@@ -62,9 +62,7 @@ public class ReportePorTerminal{
 	
 	private void agregarSiNoEstaTerminal(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		if(!this.estaElTerminal(registro.getTerminal(), listadoReporte)){
-			ElementoReporte elemento = new ElementoReporte();
-			elemento.setTerminal(registro.getTerminal());
-			listadoReporte.add(elemento);
+			listadoReporte.add(ElementoReporte.crearConTerminal(registro.getTerminal()));
 		}
 	}
 	

@@ -35,9 +35,7 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 	
 	private void agregarSiNoEstaFecha(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		if(!this.estaLaFecha(registro.getFecha(), listadoReporte)){
-			ElementoReporte elemento = new ElementoReporte();
-			elemento.setFecha(registro.getFecha());
-			listadoReporte.add(elemento);
+			listadoReporte.add(ElementoReporte.crearConFecha(registro.getFecha()));
 		}
 	}
 	

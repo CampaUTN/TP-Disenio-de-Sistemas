@@ -18,14 +18,32 @@ public class ElementoReporte {
 		return this.fecha.toString().equals(fecha.toString());
 	}
 	
-	/*--------Setters----------*/
-	
-	public void setFecha(LocalDate fechaParam){
-		fecha = fechaParam;
+	public boolean esDeLaTerminal(Terminal terminal){
+		return this.terminal.equals(terminal);
 	}
 	
-	public void setTerminal(Terminal unaTerminal){
-		terminal = unaTerminal;
+	// Factory methods
+	public static ElementoReporte crearConFecha(LocalDate fecha){
+		ElementoReporte elemento = new ElementoReporte();
+		elemento.setFecha(fecha);
+		return elemento;
+	}
+	
+	
+	public static ElementoReporte crearConTerminal(Terminal terminal){
+		ElementoReporte elemento = new ElementoReporte();
+		elemento.setTerminal(terminal);
+		return elemento;
+	}
+	
+	/*--------Setters----------*/
+	
+	public void setFecha(LocalDate fecha){
+		this.fecha = fecha;
+	}
+	
+	public void setTerminal(Terminal terminal){
+		this.terminal = terminal;
 	}
 	public void registrarBusqueda(){
 		cantidadBusquedas++;
