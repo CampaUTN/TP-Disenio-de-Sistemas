@@ -17,6 +17,14 @@ public class Terminal {
 		this.numeroTerminal = numeroTerminal;
 	}
 	
+	public void activarAvisoPorMail(){
+		sender = EmailSenderBusqueda.getInstance();
+	}
+	
+	public void desactivarAvisoPorMail(){
+		sender = MockEmailSenderBusqueda.getInstance();
+	}
+	
 	public void setSender(EmailSender sender) {
 		this.sender = sender;
 	}
