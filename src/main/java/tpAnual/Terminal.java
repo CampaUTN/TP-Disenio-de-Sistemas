@@ -3,9 +3,9 @@ package tpAnual;
 import tpAnual.com.*;
 
 public class Terminal {
-	private int id;
+	private int numeroTerminal;
 	private String nombre;
-	private EmailSender sender = new EmailSenderBusqueda();
+	private EmailSender sender = EmailSenderBusqueda.getInstance();
 	
 	public void informar(Long tiempo, Long limite){
 		if(tiempo>limite){
@@ -13,19 +13,19 @@ public class Terminal {
 		}
 	}
 	
-	public Terminal(int idParametro){
-		id = idParametro;
+	public Terminal(int numeroTerminal){
+		this.numeroTerminal = numeroTerminal;
 	}
 	
-	public int getId(){
-		return id;
+	public void setSender(EmailSender sender) {
+		this.sender = sender;
+	}
+	
+	public int getNumeroTerminal(){
+		return numeroTerminal;
 	}
 	
 	public String getNombre(){
 		return nombre;
-	}
-
-	public void setSender(EmailSender sender) {
-		this.sender = sender;
 	}
 }

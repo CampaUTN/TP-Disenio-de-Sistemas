@@ -11,6 +11,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Singleton.
+ */
 public class EmailSenderBusqueda implements EmailSender {
 	private String mailAdministrador="pepe@gmail.com";
 	private String de = "grupo7-noreply@gmail.com";
@@ -20,7 +23,20 @@ public class EmailSenderBusqueda implements EmailSender {
 	// Si cambian habria que tocar el codigo de todas formas, asi que los declaro final
 	private final Properties propiedades = this.crearPropiedades();
 	private final Session sesion = this.crearSesion();
-
+	
+	private static EmailSenderBusqueda instance = null;
+	
+	private EmailSenderBusqueda(){
+		//Para evitar que sea instanciada esta clase.
+	}
+	
+	public static EmailSenderBusqueda getInstance(){
+		if(instance==null){
+			instance = new EmailSenderBusqueda();
+		}
+		return instance;
+	}
+	
 	private void enviarMensaje(String titulo, String contenido) {
 		try {
 			Transport.send(crearMensaje(titulo, contenido));
@@ -35,7 +51,7 @@ public class EmailSenderBusqueda implements EmailSender {
 
 
 	// Setters
-	public void setMailAdministrador(String mailAdministrador) {
+	public void setMailReceptor(String mailAdministrador) {
 		this.mailAdministrador = mailAdministrador;
 	}
 	
