@@ -19,31 +19,31 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 	
 	private void mostrarReporteFecha(List<ElementoReporte> listadoReporte){
 		listadoReporte.forEach(elemento->{
-						System.out.println(elemento.fecha.toString());
-						System.out.println(elemento.cantidadBusquedas);
+						System.out.println(elemento.getFecha().toString());
+						System.out.println(elemento.getCantidadBusquedas());
 					}
 				);
 	}
 	
 	private void buscarElementoYSumarBusqueda(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
 		listadoReporte.stream()
-				.filter(elemento->elemento.fecha.toString().equals(registro.fecha.toString()))
+				.filter(elemento->elemento.esDeLaFecha(registro.getFecha()))
 				.findFirst()
 				.get()
-				.sumarBusqueda();
+				.registrarBusqueda();
 	}
 	
 	private void agregarSiNoEstaFecha(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
-		if(!this.estaLaFecha(registro.fecha, listadoReporte)){
+		if(!this.estaLaFecha(registro.getFecha(), listadoReporte)){
 			ElementoReporte elemento = new ElementoReporte();
-			elemento.setFecha(registro.fecha);
+			elemento.setFecha(registro.getFecha());
 			listadoReporte.add(elemento);
 		}
 	}
 	
 	private Boolean estaLaFecha(LocalDate fecha, List<ElementoReporte> listadoReporte){
 		return listadoReporte.stream()
-				.anyMatch(elemento-> elemento.fecha.toString().equals(fecha.toString()));
+				.anyMatch(elemento-> elemento.esDeLaFecha(fecha));
 	}
 	
 }

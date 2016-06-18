@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ReportePorTerminal{
 	
-	Boolean detalladoActivado=false;
+	private Boolean detalladoActivado=false;
 	private int contador;
 	
 	public void reportar(List<RegistroBusqueda> registros) {
@@ -25,12 +25,12 @@ public class ReportePorTerminal{
 	private void mostrarCompleto(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
 			System.out.println(reporte.getTerminal().getNombre());
-			System.out.println(this.sumatoria(reporte.busquedasParciales));
+			System.out.println(this.sumatoria(reporte.getBusquedasParciales()));
 		});
 	}
 	
 	private void imprimirCantidades(ElementoReporte reporte){
-		reporte.busquedasParciales.forEach(unaCantidad->System.out.println(unaCantidad));
+		reporte.getBusquedasParciales().forEach(unaCantidad->System.out.println(unaCantidad));
 	}
 	
 	private int sumatoria(List<Integer> lista){

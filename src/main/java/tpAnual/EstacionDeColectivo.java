@@ -8,7 +8,7 @@ import org.uqbar.geodds.Point;
 
 public class EstacionDeColectivo extends TipoPoi {
 	
-	String nroColectivo;
+	private String nroColectivo;
 	
 	@Override
 	public boolean estaDisponible(DayOfWeek dia,LocalTime hora) {

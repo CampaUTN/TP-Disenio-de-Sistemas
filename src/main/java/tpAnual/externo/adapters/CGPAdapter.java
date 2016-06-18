@@ -51,8 +51,8 @@ public class CGPAdapter implements Consultora{
 	}
 	
 	private Servicio convertirAServicioCgp(ServicioDTO servDto){
-		LocalTime desde = LocalTime.of(servDto.getHoraD(),servDto.getMinD());		//junta la hora y el minuto en LocalTime
-		LocalTime hasta = LocalTime.of(servDto.getHoraH(),servDto.getMinH());
+		LocalTime desde = LocalTime.of(servDto.getHoraApertura(),servDto.getMinutoApertura());		//junta la hora y el minuto en LocalTime
+		LocalTime hasta = LocalTime.of(servDto.getHoraCierre(),servDto.getMinutoCierre());
 		DayOfWeek dia = DayOfWeek.of(servDto.getDia());
 		
 		Horario horario = Horario.nuevoHorarioParaDia(dia,desde,hasta);

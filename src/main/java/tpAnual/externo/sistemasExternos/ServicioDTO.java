@@ -1,38 +1,38 @@
 package tpAnual.externo.sistemasExternos;
 
 public class ServicioDTO {
-	String nombre;
-	int diaSemana;
-	int horaDesde;
-	int minutosDesde;
-	int horaHasta;
-	int minutosHasta;
+	private String nombre;
+	private int dia;
+	private int horaApertura;
+	private int minutoApertura;
+	private int horaCierre;
+	private int minutoCierre;
 	
-	public ServicioDTO(String nom, int dia, int horaD, int minD, int horaH, int minH){
-		nombre = nom;
-		diaSemana = dia;
-		horaDesde = horaD;
-		minutosDesde = minD;
-		horaHasta = horaH;
-		minutosHasta = minH;
+	public ServicioDTO(String nombre, int dia, int horaApertura, int minApertura, int horaCierre, int minCierre){
+		this.nombre = nombre;
+		this.dia = dia;
+		this.horaApertura = horaApertura;
+		this.minutoApertura = minApertura;
+		this.horaCierre = horaCierre;
+		this.minutoCierre = minCierre;
 	}
 	
 	public int getDia(){
-		return diaSemana;
+		return dia;
 	}
 	public String getNombre(){
 		return nombre;
 	}
-	public int getHoraD(){
-		return horaDesde;
+	public int getHoraApertura(){
+		return horaApertura;
 	}
-	public int getMinD(){
-		return minutosDesde;
+	public int getMinutoApertura(){
+		return minutoApertura;
 	}
-	public int getHoraH(){
-		return horaHasta;
+	public int getHoraCierre(){
+		return horaCierre;
 	}
-	public int getMinH(){
-		return minutosHasta;
+	public int getMinutoCierre(){
+		return minutoCierre;
 	}
 }

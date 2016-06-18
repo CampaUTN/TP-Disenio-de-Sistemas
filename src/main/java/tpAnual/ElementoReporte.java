@@ -10,7 +10,7 @@ public class ElementoReporte {
 	private Integer cantidadBusquedas=0;
 	private Terminal terminal;
 	private Integer cantidadPoisEncontrados=0;
-	List<Integer> busquedasParciales = new ArrayList<Integer>();
+	private List<Integer> busquedasParciales = new ArrayList<Integer>();
 	
 	/*--------Setters----------*/
 	

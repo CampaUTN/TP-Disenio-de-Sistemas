@@ -6,12 +6,11 @@ import java.util.List;
 import java.util.Set;
 
 public class CentroDTO {
-	int numeroComuna;
-	Set<String> zonas = new HashSet<String>();
-	String nombreDirector;
-	String domicilio;
-	String telefono;
-	List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
+	private int numeroComuna;
+	private Set<String> zonas = new HashSet<String>();
+	private String nombreDirector;
+	private String domicilio;
+	private List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
 	
 	
 	public void setServicios(List<ServicioDTO> serv){
@@ -29,9 +28,11 @@ public class CentroDTO {
 	public int getNumeroComuna(){
 		return numeroComuna;
 	}
+	
 	public Set<String> getZonas(){
 		return zonas;
 	}
+	
 	public String getDomicilio(){
 		return domicilio;
 	}

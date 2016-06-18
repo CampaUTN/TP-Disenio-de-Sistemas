@@ -9,18 +9,22 @@ import tpAnual.Terminal;
 
 public class RegistroBusqueda {
 	
-	List<String> palabrasUtilizadas = new ArrayList<String>();
-	Long tiempoBusqueda;
-	LocalDate fecha;
-	Integer cantidadEncontrada;
-	Terminal terminal;
+	private List<String> palabrasUtilizadas = new ArrayList<String>();
+	private Long tiempoBusqueda;
+	private LocalDate fecha;
+	private Integer cantidadEncontrada;
+	private Terminal terminal;
 	
-	public RegistroBusqueda(List<Poi> pois, List<String> palabras, Long tiempo, Terminal terminalParam){
-		palabrasUtilizadas.addAll(palabras);
-		cantidadEncontrada = pois.size();
-		tiempoBusqueda = tiempo;
-		fecha = LocalDate.now();
-		terminal = terminalParam;
+	public RegistroBusqueda(List<Poi> pois, List<String> palabras, Long tiempoBusqueda, Terminal terminal){
+		this.palabrasUtilizadas.addAll(palabras);
+		this.cantidadEncontrada = pois.size();
+		this.tiempoBusqueda = tiempoBusqueda;
+		this.fecha = LocalDate.now();
+		this.terminal = terminal;
+	}
+
+	public LocalDate getFecha() {
+		return fecha;
 	}
 	
 }
