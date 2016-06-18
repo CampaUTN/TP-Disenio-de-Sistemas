@@ -15,17 +15,10 @@ public class BuscadorTexto{
 	private HashSet<Consultora> adapters = new HashSet<Consultora>();
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
 	private Long limite = Long.MAX_VALUE;
-	private EmailSender sender;
 	
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
-	}
-	
-	private void informar(Long tiempo){
-		if(tiempo>limite){
-			sender.enviarMensajePorDemora(limite);
-		}
 	}
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
@@ -38,10 +31,9 @@ public class BuscadorTexto{
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
 		Long timerFin = System.currentTimeMillis();
-		Long tiempoEmpleado = timerFin - timerInicio;
+		terminal.informar(timerFin - timerInicio, limite);
 		
-		agregarRegistro(poisDeTodosOrigenes, palabras, tiempoEmpleado, terminal);
-		this.informar(tiempoEmpleado);
+		agregarRegistro(poisDeTodosOrigenes, palabras, timerFin - timerInicio, terminal);
 
 		return poisDeTodosOrigenes;
 	}
@@ -71,10 +63,6 @@ public class BuscadorTexto{
 	public void setLimite(Long limite) {
 		this.limite = limite;
 	}
-
-	public void setSender(EmailSender sender) {
-		this.sender = sender;
-	}
 	
 	//Getters
 	public List<RegistroBusqueda> getRegistros(){
@@ -91,9 +79,5 @@ public class BuscadorTexto{
 
 	public HashSet<Consultora> getAdapters() {
 		return adapters;
-	}
-
-	public EmailSender getSender() {
-		return sender;
 	}
 }

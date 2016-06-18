@@ -14,8 +14,8 @@ public class TestEmailSenderBusqueda extends TestBuscador{
 	public void init(){
 		super.init();
 		sender = Mockito.mock(EmailSender.class);
-		mapa.getBuscador().setSender(sender);
 		terminal = new Terminal(1);
+		terminal.setSender(sender);
 	}
 	
 	@Test
