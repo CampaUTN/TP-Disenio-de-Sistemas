@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
+import tpAnual.reportes.RegistroBusqueda;
 
 import java.util.ArrayList;
 import java.util.Arrays;

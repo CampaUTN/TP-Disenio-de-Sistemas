@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
 
+import tpAnual.reportes.ReporteFecha;
+
 public class Mapa {
 	
 	private BuscadorTexto buscador = new BuscadorTexto();

@@ -9,6 +9,7 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.reportes.RegistroBusqueda;
 
 public class TestBuscador {
 	protected Mapa mapa = new Mapa();

@@ -1,7 +1,9 @@
-package tpAnual;
+package tpAnual.reportes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import tpAnual.Terminal;
 
 public class ReportePorTerminal{
 	

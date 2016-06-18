@@ -15,13 +15,18 @@ public class ElementoReporte {
 	private List<Integer> busquedasParciales = new ArrayList<Integer>();
 	
 	public boolean esDeLaFecha(LocalDate fecha){
-		return fecha.toString().equals(fecha.toString());
+		return this.fecha.toString().equals(fecha.toString());
 	}
+	
+	/*--------Setters----------*/
 	
 	public void setFecha(LocalDate fechaParam){
 		fecha = fechaParam;
 	}
 	
+	public void setTerminal(Terminal unaTerminal){
+		terminal = unaTerminal;
+	}
 	public void registrarBusqueda(){
 		cantidadBusquedas++;
 	}
@@ -29,12 +34,35 @@ public class ElementoReporte {
 	public void agregarBusquedasParciales(int cantidadEncontrada){
 		busquedasParciales.add(cantidadEncontrada);
 	}
+	
+	
+	/*--------Getters----------*/
+	
+	public LocalDate getfecha(){
+		return fecha;
+	}
+	
+	public Integer getCantidadBusquedas(){
+		return cantidadBusquedas;
+	}
+	
+	public Terminal getTerminal(){
+		return terminal;
+	}
+	
+	public Integer getCantidadPois(){
+		return cantidadPoisEncontrados;
+	}
+	
+	public List<Integer> getBusquedasParciales(){
+		return busquedasParciales;
+	}
 
 	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public Integer getCantidadBusquedas() {
-		return cantidadBusquedas;
+	public Integer getCantidadPoisEncontrados() {
+		return cantidadPoisEncontrados;
 	}
 }
