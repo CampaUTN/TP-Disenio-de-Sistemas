@@ -1,12 +1,10 @@
-package tpAnual;
+package tpAnual.POIs;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
 
 import org.uqbar.geodds.Point;
-
-import tpAnual.POIs.TipoPoi;
 
 public class EstacionDeColectivo extends TipoPoi {
 	

@@ -5,6 +5,7 @@ import java.util.Set;
 import org.junit.*;
 import org.uqbar.geodds.Point;
 
+import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 
 public class TestPoi {

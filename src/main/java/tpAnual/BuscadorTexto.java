@@ -28,7 +28,7 @@ public class BuscadorTexto{
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 				
-		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois));
+		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois)); // TODO armar un repositorio (singleton) con esto y pasar la busqueda local y las de los adapters como observadores del repositorio.
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
 		Long timerFin = System.currentTimeMillis();

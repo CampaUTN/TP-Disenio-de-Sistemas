@@ -9,6 +9,7 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
+import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 
 public class TestCercania {
