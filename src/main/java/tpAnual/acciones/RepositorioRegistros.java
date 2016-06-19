@@ -6,11 +6,10 @@ import java.util.List;
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.reportes.RegistroBusqueda;
-import tpAnual.acciones.reportes.Reporte;
 import tpAnual.acciones.reportes.ReportePorFecha;
 import tpAnual.acciones.reportes.ReportePorTerminal;
 
-public class RepositorioRegistros implements Reporte{
+public class RepositorioRegistros{
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
 	
 private static RepositorioRegistros instance = null;
@@ -41,11 +40,5 @@ private static RepositorioRegistros instance = null;
 
 	public List<RegistroBusqueda> getRegistros() {
 		return registros;
-	}
-
-	@Override
-	public void reportar(List<RegistroBusqueda> registros) {
-		// TODO Auto-generated method stub
-		
 	}
 }
