@@ -10,7 +10,7 @@ public class TestReporteBusqueda extends TestBuscador{
 	@Test
 	public void testSeAlmacenaLaCantidad(){
 			
-		Assert.assertEquals(pois.size(), registro.getCantidad(),0);
+		Assert.assertEquals(pois.size(), registro.getCantidadPois(),0);
 	}
 	
 	@Test
@@ -22,7 +22,7 @@ public class TestReporteBusqueda extends TestBuscador{
 	public void testSeAlmacenaLasPalabaras(){
 		List <String> comp = new ArrayList<>();
 		comp.add("colectivo");
-		Assert.assertTrue(registro.getPalabras().containsAll(comp));
+		Assert.assertTrue(registro.getPalabrasUtilizadas().containsAll(comp));
 	}
 	
 	@Test

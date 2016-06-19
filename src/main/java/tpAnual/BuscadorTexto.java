@@ -2,19 +2,17 @@ package tpAnual;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import tpAnual.POIs.Poi;
-import tpAnual.externo.adapters.CGPAdapter;
-import tpAnual.externo.sistemasExternos.Consultora;
-import tpAnual.reportes.RegistroBusqueda;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import tpAnual.POIs.Poi;
+import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.externo.sistemasExternos.Consultora;
+
+
 public class BuscadorTexto{
 	private HashSet<Consultora> adapters = new HashSet<Consultora>();
-	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
 	private Long limite = Long.MAX_VALUE;
 	
 	
@@ -28,13 +26,13 @@ public class BuscadorTexto{
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 				
-		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois)); // TODO armar un repositorio (singleton) con esto y pasar la busqueda local y las de los adapters como observadores del repositorio.
+		poisDeTodosOrigenes.addAll(buscarEnPoisLocales(palabras, listaPois)); // TODO armar un repositorio (singleton) con esto y pasar la busqueda local y las de los adapters como observe
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
 		Long timerFin = System.currentTimeMillis();
 		terminal.informar(timerFin - timerInicio, limite);
 		
-		agregarRegistro(poisDeTodosOrigenes, palabras, timerFin - timerInicio, terminal);
+		terminal.agregarRegistro(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
 
 		return poisDeTodosOrigenes;
 	}
@@ -47,10 +45,6 @@ public class BuscadorTexto{
 		return listaPois.stream()
 				.filter(poi-> poi.cumpleCondicionBusqueda(palabras))
 				.collect(Collectors.toList());
-	}
-	
-	private void agregarRegistro(List<Poi> listaPois,List<String> palabras,Long tiempoEmpleado, Terminal terminal){
-		registros.add(new RegistroBusqueda(listaPois,palabras,tiempoEmpleado,terminal));
 	}
 	
 	public List<Poi> obtenerCGPsConServicioExternos(String servicio){
@@ -66,10 +60,6 @@ public class BuscadorTexto{
 	}
 	
 	//Getters
-	public List<RegistroBusqueda> getRegistros(){
-		return registros;
-	}
-	
 	public void agregarAdapterExterno(Consultora adapter){
 		adapters.add(adapter);
 	}

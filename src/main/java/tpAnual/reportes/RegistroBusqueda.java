@@ -12,30 +12,30 @@ public class RegistroBusqueda {
 	private List<String> palabrasUtilizadas = new ArrayList<String>();
 	private Long tiempoBusqueda;
 	private LocalDate fecha;
-	private Integer cantidadEncontrada;
+	private Integer cantidadPois;
 	private Terminal terminal;
 	
-	public RegistroBusqueda(List<Poi> pois, List<String> palabras, Long tiempo, Terminal terminalParam){
-		palabrasUtilizadas.addAll(palabras);
-		cantidadEncontrada = pois.size();
-		tiempoBusqueda = tiempo;
-		fecha = LocalDate.now();
-		terminal = terminalParam;
+	public RegistroBusqueda(List<Poi> pois, List<String> palabrasUtilizadas, Long tiempoBusqueda, Terminal terminal){
+		this.palabrasUtilizadas.addAll(palabrasUtilizadas);
+		this.cantidadPois = pois.size();
+		this.tiempoBusqueda = tiempoBusqueda;
+		this.fecha = LocalDate.now();
+		this.terminal = terminal;
 	}
 	
-	public List<String> getPalabras(){
+	public List<String> getPalabrasUtilizadas(){
 		return palabrasUtilizadas;
 	}
 	
-	public Long getTiempo(){
+	public Long getTiempoBusqueda(){
 		return tiempoBusqueda;
 	}
 	
 	public LocalDate getFecha(){
 		return fecha;
 	}
-	public Integer getCantidad(){
-		return cantidadEncontrada;
+	public Integer getCantidadPois(){
+		return cantidadPois;
 	}
 	
 	public Terminal getTerminal(){

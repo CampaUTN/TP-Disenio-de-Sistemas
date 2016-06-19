@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.buscadorTexto.getRegistros());
+/**
+ * Ej llamada: generadorReportes.reporteFecha(mapa.buscadorTexto.getRegistros());
+ */
+public class ReporteFecha implements Reporte{
 
 	public void reportar(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();
@@ -17,6 +20,7 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 		mostrarReporteFecha(listadoReporte);
 	}
 	
+	// Esto se haria mediante la GUI cuando la tengamos
 	private void mostrarReporteFecha(List<ElementoReporte> listadoReporte){
 		listadoReporte.forEach(elemento->{
 						System.out.println(elemento.getFecha().toString());
@@ -39,7 +43,7 @@ public class ReporteFecha{ //Ej llamada: generadorReportes.reporteFecha(mapa.bus
 		}
 	}
 	
-	private Boolean estaLaFecha(LocalDate fecha, List<ElementoReporte> listadoReporte){
+	private boolean estaLaFecha(LocalDate fecha, List<ElementoReporte> listadoReporte){
 		return listadoReporte.stream()
 				.anyMatch(elemento-> elemento.esDeLaFecha(fecha));
 	}

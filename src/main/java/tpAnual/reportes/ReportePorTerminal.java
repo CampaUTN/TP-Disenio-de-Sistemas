@@ -5,7 +5,7 @@ import java.util.List;
 
 import tpAnual.Terminal;
 
-public class ReportePorTerminal{
+public class ReportePorTerminal implements Reporte{
 	
 	private Boolean detalladoActivado=false;
 	private int contador;
@@ -17,13 +17,15 @@ public class ReportePorTerminal{
 		this.mostrarCompleto(this.asignarRegistros(registros));
 	}
 	
+	// Esto se haria con la GUI cuando la tengamos
 	private void mostrarDetallado(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
 			System.out.println(reporte.getTerminal().getNombre());
 			this.imprimirCantidades(reporte);
 		});
 	}
-	
+
+	// Esto se haria con la GUI cuando la tengamos
 	private void mostrarCompleto(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
 			System.out.println(reporte.getTerminal().getNombre());
@@ -31,6 +33,7 @@ public class ReportePorTerminal{
 		});
 	}
 	
+	// Esto se haria con la GUI cuando la tengamos
 	private void imprimirCantidades(ElementoReporte reporte){
 		reporte.getBusquedasParciales().forEach(unaCantidad->System.out.println(unaCantidad));
 	}
@@ -57,7 +60,7 @@ public class ReportePorTerminal{
 			.filter(elemento->elemento.esDeLaTerminal(registro.getTerminal()))
 			.findFirst()
 			.get()
-			.agregarBusquedasParciales(registro.getCantidad());
+			.agregarBusquedasParciales(registro.getCantidadPois());
 	}
 	
 	private void agregarSiNoEstaTerminal(RegistroBusqueda registro,List<ElementoReporte> listadoReporte){
@@ -66,9 +69,8 @@ public class ReportePorTerminal{
 		}
 	}
 	
-	private boolean estaElTerminal(Terminal terminalParam, List<ElementoReporte> listadoReporte){
+	private boolean estaElTerminal(Terminal terminal, List<ElementoReporte> listadoReporte){
 		return listadoReporte.stream()
-				.anyMatch(elemento-> elemento.getTerminal().getNumeroTerminal() == (terminalParam.getNumeroTerminal())); //no hago el equals pq no es Integer
+				.anyMatch(elemento-> elemento.getTerminal().equals(terminal));
 	}
-	
 }

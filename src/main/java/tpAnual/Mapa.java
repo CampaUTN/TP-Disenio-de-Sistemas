@@ -4,26 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.uqbar.geodds.Point;
 
-import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.reportes.ReporteFecha;
 
 public class Mapa {
 	
 	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
-	
-	public void main(){
-		Mapa mapa = new Mapa();
-		
-		Negocio negocio = new Negocio("mueble");
-		Poi poi = new Poi(negocio,new Point(1,1),"A",null);
-		mapa.alta(poi);
-		mapa.buscador.buscarSegunTexto("mueble", mapa.pois, new Terminal(1));
-		
-		ReporteFecha reporteFecha = new ReporteFecha();
-		reporteFecha.reportar(mapa.buscador.getRegistros());
-	}
 	
 	// Busqueda de texto libre de pois
 	
