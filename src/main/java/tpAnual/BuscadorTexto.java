@@ -13,7 +13,6 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorTexto{
 	private HashSet<Consultora> adapters = new HashSet<Consultora>();
-	private Long limite = Long.MAX_VALUE;
 	
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
@@ -30,9 +29,8 @@ public class BuscadorTexto{
 		buscarEnPoisExternos(palabras, poisDeTodosOrigenes);   //va agregando los resultados de los adapters a la lista de pois
 				
 		Long timerFin = System.currentTimeMillis();
-		terminal.informar(timerFin - timerInicio, limite);
 		
-		terminal.agregarRegistro(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
+		terminal.informarBusqueda(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
 
 		return poisDeTodosOrigenes;
 	}
@@ -53,19 +51,9 @@ public class BuscadorTexto{
 		return (new CGPAdapter()).consultar(palabras);
 	}
 	
-
-	//Setters
-	public void setLimite(Long limite) {
-		this.limite = limite;
-	}
-	
 	//Getters
 	public void agregarAdapterExterno(Consultora adapter){
 		adapters.add(adapter);
-	}
-
-	public Long getLimite() {
-		return limite;
 	}
 
 	public HashSet<Consultora> getAdapters() {

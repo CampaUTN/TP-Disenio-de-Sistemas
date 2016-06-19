@@ -1,4 +1,4 @@
-package tpAnual.reportes;
+package tpAnual.acciones.reportes;
 
 import java.util.List;
 

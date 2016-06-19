@@ -1,11 +1,11 @@
-package tpAnual.reportes;
+package tpAnual.acciones.reportes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.Terminal;
 
-public class ReportePorTerminal implements Reporte{
+public class ReportePorTerminal{
 	
 	private Boolean detalladoActivado=false;
 	private int contador;

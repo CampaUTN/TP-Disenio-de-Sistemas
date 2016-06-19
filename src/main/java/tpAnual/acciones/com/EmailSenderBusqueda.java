@@ -1,4 +1,4 @@
-package tpAnual.com;
+package tpAnual.acciones.com;
 
 import java.util.Properties;
 
@@ -20,6 +20,7 @@ public class EmailSenderBusqueda implements EmailSender {
 	private String usuario = "grupo7";
 	private String contrasenia = "******";
 	private String host = "pois.gob.ar";
+	private Long limite = Long.parseLong("0");
 	// Si cambian habria que tocar el codigo de todas formas, asi que los declaro final
 	private final Properties propiedades = this.crearPropiedades();
 	private final Session sesion = this.crearSesion();
@@ -45,8 +46,10 @@ public class EmailSenderBusqueda implements EmailSender {
 		}
 	}
 	
-	public void enviarMensajePorDemora(Long limite){
-		this.enviarMensaje("Busqueda lenta", "La busqueda tardó más de "+limite+" segundos.");
+	public void enviarMensajePorDemora(Long duracionBusqueda){
+		if(duracionBusqueda>limite){
+			this.enviarMensaje("Busqueda lenta", "La busqueda tardó más de "+limite+" segundos.");
+		}
 	}
 
 
@@ -55,6 +58,14 @@ public class EmailSenderBusqueda implements EmailSender {
 		this.mailAdministrador = mailAdministrador;
 	}
 	
+	//Getters
+	public Long getLimite() {
+		return limite;
+	}
+	
+	public void setLimite(Long limite) {
+		this.limite = limite;
+	}
 	
 	// Constructores varios
 	// Estos constructores están aca porque no tiene sentido hacer una clase

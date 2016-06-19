@@ -10,9 +10,10 @@ import org.uqbar.geodds.Point;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.acciones.RepositorioRegistros;
+import tpAnual.acciones.reportes.RegistroBusqueda;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
-import tpAnual.reportes.RegistroBusqueda;
 
 public class TestBuscador {
 	protected Mapa mapa = new Mapa();
@@ -39,6 +40,8 @@ public class TestBuscador {
 	
 	@Before
 	public void init() {
+		terminal.desactivarMails();
+		
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
 		mapa.alta(poi);
@@ -50,7 +53,7 @@ public class TestBuscador {
 		palabras.add("aasas");
 		
 		pois = mapa.buscar("colectivo",terminal);
-		registro = terminal.getRegistros().get(0);
+		registro = RepositorioRegistros.getInstance().getRegistros().get(0);
 
 		mapa.getBuscador().agregarAdapterExterno(bancoAdapter);
 		mapa.getBuscador().agregarAdapterExterno(cgpAdapter);

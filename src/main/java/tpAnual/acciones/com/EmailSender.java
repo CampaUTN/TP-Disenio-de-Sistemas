@@ -1,4 +1,4 @@
-package tpAnual.com;
+package tpAnual.acciones.com;
 
 /**
  * Interface para mockear.

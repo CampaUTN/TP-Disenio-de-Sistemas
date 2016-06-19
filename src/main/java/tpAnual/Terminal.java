@@ -1,61 +1,86 @@
 package tpAnual;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.POIs.Poi;
-import tpAnual.com.*;
-import tpAnual.reportes.RegistroBusqueda;
+import tpAnual.acciones.RepositorioRegistros;
+import tpAnual.acciones.com.EmailSender;
+import tpAnual.acciones.com.EmailSenderBusqueda;
 
 public class Terminal {
 	private int numeroTerminal;
 	private String nombre;
-	private EmailSender sender = EmailSenderBusqueda.getInstance();
-	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
-	
-	public boolean equals(Terminal terminal){
-		return this.numeroTerminal==terminal.getNumeroTerminal();
+	private EmailSender sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
+	private boolean tieneRegistrosActivados = true;
+	private boolean tieneMailsActivados = true;
+
+	public boolean equals(Terminal terminal) {
+		return this.numeroTerminal == terminal.getNumeroTerminal();
 	}
-	
-	// Mail
-	public void informar(Long tiempo, Long limite){
-		if(tiempo>limite){
-			sender.enviarMensajePorDemora(limite);
+
+	public void informarBusqueda(List<Poi> pois, List<String> palabras, Long duracionBusqueda) {
+		notificarRegistro(pois, palabras, duracionBusqueda);
+		enviarMailDemora(duracionBusqueda);
+	}
+
+	private void enviarMailDemora(Long duracionBusqueda) {
+		if (this.tieneMailsActivados()) {
+			sender.enviarMensajePorDemora(duracionBusqueda);
 		}
 	}
-	
-	public void activarAvisoPorMail(){
-		sender = EmailSenderBusqueda.getInstance();
+
+	private void notificarRegistro(List<Poi> pois, List<String> palabras, Long duracionBusqueda) {
+		if (this.tieneRegistrosActivados()) {
+			RepositorioRegistros.getInstance().agregarRegistro(pois, palabras, duracionBusqueda, this);
+		}
 	}
-	
-	public void desactivarAvisoPorMail(){
-		sender = MockEmailSenderBusqueda.getInstance();
-	}
-	
-	// Registros
-	public void agregarRegistro(List<Poi> listaPois,List<String> palabras,Long tiempoEmpleado){
-		registros.add(new RegistroBusqueda(listaPois,palabras,tiempoEmpleado,this));
-	}
-	
+
 	// Constructor
-	public Terminal(int numeroTerminal){
+	public Terminal(int numeroTerminal) {
 		this.numeroTerminal = numeroTerminal;
 	}
+
+	// Getters
+	public int getNumeroTerminal() {
+		return numeroTerminal;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
 	
-	// Setters & Getters
-	public void setSender(EmailSender sender) {
+	// Setters
+	public void setSender(EmailSender sender){
 		this.sender = sender;
 	}
 	
-	public int getNumeroTerminal(){
-		return numeroTerminal;
-	}
+	// Activacion y desactivación dinamica:
+	// Estos metodos si o si tienen que estar. Si no es con booleanos, hay que usar strategy con stubs,
+	// Asi que se termina agregando complejidad sin mejorar la funcionalidad.
 	
-	public String getNombre(){
-		return nombre;
+	// Reportes
+	private boolean tieneRegistrosActivados() {
+		return tieneRegistrosActivados;
 	}
 
-	public List<RegistroBusqueda> getRegistros() {
-		return registros;
+	public void activarRegistros() {
+		tieneRegistrosActivados = true;
+	}
+
+	public void desactivarRegistros() {
+		tieneRegistrosActivados = false;
+	}
+
+	// Mails
+	private boolean tieneMailsActivados() {
+		return tieneMailsActivados;
+	}
+	
+	public void activarMails() {
+		tieneMailsActivados = true;
+	}
+
+	public void desactivarMails() {
+		tieneMailsActivados = false;
 	}
 }

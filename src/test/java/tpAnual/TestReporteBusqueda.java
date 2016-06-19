@@ -6,7 +6,15 @@ import java.util.List;
 import org.junit.*;
 
 public class TestReporteBusqueda extends TestBuscador{
-		
+	
+	@Before
+	public void init(){
+		super.init();
+		terminal.desactivarRegistros();
+		terminal.desactivarMails();
+	}
+	
+	
 	@Test
 	public void testSeAlmacenaLaCantidad(){
 			
@@ -28,7 +36,7 @@ public class TestReporteBusqueda extends TestBuscador{
 	@Test
 	public void testSeAlmacenaElTerminal(){
 		
-		Assert.assertEquals(terminal,registro.getTerminal());
+		Assert.assertTrue(registro.getTerminal().equals(terminal));
 	}
 	
 }

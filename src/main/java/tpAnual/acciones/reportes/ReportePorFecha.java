@@ -1,4 +1,4 @@
-package tpAnual.reportes;
+package tpAnual.acciones.reportes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Ej llamada: generadorReportes.reporteFecha(mapa.buscadorTexto.getRegistros());
  */
-public class ReporteFecha implements Reporte{
+public class ReportePorFecha{
 
 	public void reportar(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();
