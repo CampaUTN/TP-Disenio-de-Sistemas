@@ -9,8 +9,8 @@ import tpAnual.externo.sistemasExternos.Consultora;
 public class BuscadorLocal implements Consultora{
 	Mapa mapa;
 	
-	public BuscadorLocal(Mapa mapaConstructor){
-		mapa = mapaConstructor;	
+	public BuscadorLocal(Mapa mapa){
+		this.mapa = mapa;	
 	}
 	
 	public List<Poi> consultar(List<String> palabras){

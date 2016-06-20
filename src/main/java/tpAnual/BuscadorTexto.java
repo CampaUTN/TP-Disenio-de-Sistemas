@@ -36,10 +36,4 @@ public class BuscadorTexto{
 		return Arrays.asList(Busqueda.split(" "));
 	}
 	
-	public List<Poi> obtenerCGPsConServicioExternos(String servicio){ //QUE HACER CON ESTO??
-		
-		List <String> palabras = Arrays.asList(servicio.split(" "));
-		return (new CGPAdapter()).consultar(palabras);
-	}
-	
 }
