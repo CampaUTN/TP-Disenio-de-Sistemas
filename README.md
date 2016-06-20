@@ -26,5 +26,5 @@ En eclipse, estando con Package explore, ir a la flechita hacia abajo que aparec
 
 De esa forma las cosas, segun el orden que les puse, se ven como corresponde y quedan en subcarpetas, en vez de verse en forma rara.
 
-##Diagrama de clase 3ra entrega (falta revision)
-https://1drv.ms/u/s!Av0vPKTcwzssgS93cFyFgJqFGUW4
+##Diagrama de clase 3ra entrega (falta revision) y alternativa decorator
+https://1drv.ms/f/s!Av0vPKTcwzssgTKfw-G5Q8JprhKD
