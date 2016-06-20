@@ -8,7 +8,6 @@ import tpAnual.POIs.Poi;
 
 public class Mapa {
 	
-	private BuscadorTexto buscador = new BuscadorTexto();
 	private List<Poi> pois = new ArrayList<Poi>();
 	
 	// Busqueda de texto libre de pois
@@ -21,13 +20,6 @@ public class Mapa {
 		pois.remove(poi);
 	}
 	
-	public List<Poi> buscar(String tags, Terminal terminal){
-		return buscador.buscarSegunTexto(tags, pois, terminal);
-	}
-
-	public BuscadorTexto getBuscador(){
-		return buscador;
-	}
 	// Cercania de poi
 	
 	public boolean estaCerca(Poi poi, Point unPunto) {
