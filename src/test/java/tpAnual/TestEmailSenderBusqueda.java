@@ -21,14 +21,14 @@ public class TestEmailSenderBusqueda extends TestSetup{
 	
 	@Test
 	public void testearMailPorDemora(){
-		mapa.buscar("colectivo",terminal);
+		buscador.buscarSegunTexto("colectivo",terminal);
 		Mockito.verify(sender).enviarMensajePorDemora(Mockito.anyLong()); //uso anyLong porque la demora no es determinable antes de ejecutar el metodo.
 	}
 	
 	@Test
 	public void testMailsDesactivados(){
 		terminal.desactivarMails();
-		mapa.buscar("colectivo",terminal);
+		buscador.buscarSegunTexto("colectivo",terminal);
 		Mockito.verifyNoMoreInteractions(sender);
 	}
 }

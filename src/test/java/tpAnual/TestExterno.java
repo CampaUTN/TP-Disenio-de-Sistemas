@@ -39,7 +39,6 @@ public class TestExterno {
 		
 	}
 	
-	
 	@Test
 	public void testBancoMismaUbicacion(){
 		List<String> palabras = new ArrayList<String>();

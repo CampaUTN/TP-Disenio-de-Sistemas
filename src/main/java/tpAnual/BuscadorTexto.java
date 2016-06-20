@@ -11,9 +11,11 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorTexto{
 	
-	private final RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
+	private RepositorioBuscador repositorio; 
 	
-	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
+	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
+		
+		repositorio = RepositorioBuscador.getInstance();
 		
 		Long timerInicio = System.currentTimeMillis();
 		

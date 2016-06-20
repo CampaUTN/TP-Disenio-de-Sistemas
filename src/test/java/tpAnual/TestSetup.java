@@ -29,7 +29,7 @@ public class TestSetup {
 	protected Poi poi = new Poi(tipo, ubicacion, "107", tags);
 	protected Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
 	
-	
+	protected BuscadorTexto buscador = new BuscadorTexto();
 	protected Servicio servicio = new Servicio("rentas");
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
@@ -61,7 +61,7 @@ public class TestSetup {
 		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
 		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
 		
-		poisBusqueda = mapa.buscar("colectivo",terminal);
+		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
 		registro = RepositorioRegistros.getInstance().getRegistros().get(0);
 	}
 
