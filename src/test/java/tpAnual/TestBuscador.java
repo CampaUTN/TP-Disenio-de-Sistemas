@@ -1,6 +1,8 @@
 package tpAnual;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,12 +33,12 @@ public class TestBuscador {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
+	private BuscadorLocal local = new BuscadorLocal(mapa);
 	
 	protected Terminal terminal = new Terminal(0);
 	
-	List<Poi> pois = new ArrayList<>();
-	List<String> palabras = new ArrayList<String>();
-	RegistroBusqueda registro;
+	protected List<Poi> poisBusqueda = new ArrayList<>();
+	protected RegistroBusqueda registro;
 	
 	@Before
 	public void init() {
@@ -49,44 +51,33 @@ public class TestBuscador {
 		poi2.agregarTag("108");
 		poi2.agregarTag("colectivo");
 		mapa.alta(poi2);
+				
+		RepositorioRegistros.resetSingleton();
+		RepositorioBuscador.resetSingleton();
+		RepositorioBuscador.getInstance().agregarConsultora(local);
+		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
+		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
 		
-		palabras.add("aasas");
-		
-		pois = mapa.buscar("colectivo",terminal);
+		poisBusqueda = mapa.buscar("colectivo",terminal);
 		registro = RepositorioRegistros.getInstance().getRegistros().get(0);
-
-		mapa.getBuscador().agregarAdapterExterno(bancoAdapter);
-		mapa.getBuscador().agregarAdapterExterno(cgpAdapter);
-	}
-
-	@Test 
-	public void elBuscadorAgregaAdaptersPolimorficamente(){
-		Assert.assertEquals(2, mapa.getBuscador().getAdapters().size(), 0);
 	}
 	
 	@Test
-	public void elBuscadorTrataAdaptersPolimorficamente(){
-		
-		BuscadorTexto buscador = new BuscadorTexto();
-		buscador.agregarAdapterExterno(bancoAdapter);
-		buscador.agregarAdapterExterno(cgpAdapter);
-		
-		List<Poi> pois = new ArrayList<>();
-		
-		buscador.buscarEnPoisExternos(palabras, pois);
-		
-		Assert.assertEquals(4, pois.size() ,0);
+	public void testNoSeEncuentraEnPoisLocales(){ 
+		terminal.desactivarRegistros();
+		List<String> palabras = Arrays.asList("zzzz".split(" "));
+		Assert.assertEquals(0,local.consultar(palabras).size(),0);
 	}
-	
+
 	@Test
-	public void testUnaBusquedaParaLosTresOrigenes(){
-		Assert.assertEquals(6, mapa.buscar("colectivo",terminal).size(),0); //2 del init, 2 de bancos, 2 de cpos
+	public void testUnaBusquedaParaLosTresOrigenes(){ 
+		Assert.assertEquals(6, poisBusqueda.size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
 	
 	@Test
 	public void testFiltroSoloCGPs(){
 				
-		List<Poi> pois = mapa.getBuscador().obtenerCGPsConServicioExternos("Cheques");
+		List<Poi> pois = RepositorioBuscador.getInstance().obtenerCGPsConServicioExternos("Cheques");
 		Assert.assertEquals(2,pois.size(),0);
 		
 	}

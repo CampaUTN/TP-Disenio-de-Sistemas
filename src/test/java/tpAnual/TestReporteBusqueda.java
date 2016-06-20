@@ -5,20 +5,22 @@ import java.util.List;
 
 import org.junit.*;
 
+import tpAnual.POIs.Poi;
+import tpAnual.acciones.RepositorioRegistros;
+import tpAnual.acciones.reportes.RegistroBusqueda;
+
 public class TestReporteBusqueda extends TestBuscador{
 	
 	@Before
 	public void init(){
 		super.init();
-		terminal.desactivarRegistros();
-		terminal.desactivarMails();
+		terminal.activarRegistros();
 	}
-	
 	
 	@Test
 	public void testSeAlmacenaLaCantidad(){
 			
-		Assert.assertEquals(pois.size(), registro.getCantidadPois(),0);
+		Assert.assertEquals(poisBusqueda.size(), registro.getCantidadPois(),0);
 	}
 	
 	@Test

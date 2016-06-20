@@ -1,7 +1,6 @@
 package tpAnual;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,7 +11,7 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorTexto{
 	
-	private RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
+	private final RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
 		

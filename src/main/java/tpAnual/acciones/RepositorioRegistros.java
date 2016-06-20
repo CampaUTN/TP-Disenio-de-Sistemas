@@ -12,7 +12,7 @@ import tpAnual.acciones.reportes.ReportePorTerminal;
 public class RepositorioRegistros{
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
 	
-private static RepositorioRegistros instance = null;
+	private static RepositorioRegistros instance = null;
 	
 	private RepositorioRegistros(){
 		//Para evitar que sea instanciada esta clase.
@@ -41,4 +41,9 @@ private static RepositorioRegistros instance = null;
 	public List<RegistroBusqueda> getRegistros() {
 		return registros;
 	}
+	
+	public static void resetSingleton(){
+	    instance = null;
+	}
+	
 }
