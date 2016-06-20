@@ -2,18 +2,15 @@ package tpAnual;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.*;
 
-import tpAnual.POIs.Poi;
-import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.reportes.RegistroBusqueda;
 
-public class TestReporteBusqueda extends TestBuscador{
+
+public class TestReporteBusqueda extends TestSetup{
+	
 	
 	@Before
 	public void init(){
-		super.init();
 		terminal.activarRegistros();
 	}
 	
