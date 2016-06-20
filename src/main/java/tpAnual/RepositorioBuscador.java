@@ -7,7 +7,7 @@ import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
 
 public class RepositorioBuscador {
-	private static HashSet<Consultora> consultoras = new HashSet<Consultora>();
+	private HashSet<Consultora> consultoras = new HashSet<Consultora>();
 	private static RepositorioBuscador instance = null;
 	
 	private RepositorioBuscador(){
@@ -19,7 +19,6 @@ public class RepositorioBuscador {
 	
 	public static RepositorioBuscador getInstance(){
 		if(instance==null){
-			
 			instance = new RepositorioBuscador();
 		}
 		return instance;
