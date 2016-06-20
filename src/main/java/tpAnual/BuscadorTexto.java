@@ -7,13 +7,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import tpAnual.POIs.Poi;
-import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
 
 
 public class BuscadorTexto{
 	
-	private RepositorioBuscador repositorio;
+	private RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
 		
