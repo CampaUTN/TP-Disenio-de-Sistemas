@@ -7,7 +7,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorLocal implements Consultora{
-	Mapa mapa;
+	private Mapa mapa;
 	
 	public BuscadorLocal(Mapa mapa){
 		this.mapa = mapa;	

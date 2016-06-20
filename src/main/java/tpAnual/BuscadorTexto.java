@@ -13,7 +13,7 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorTexto{
 	
-	RepositorioBuscador repositorio;
+	private RepositorioBuscador repositorio;
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, List<Poi> listaPois, Terminal terminal){
 		
@@ -34,6 +34,10 @@ public class BuscadorTexto{
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
+	}
+	
+	public RepositorioBuscador getRepositorio(){
+		return repositorio;
 	}
 	
 }
