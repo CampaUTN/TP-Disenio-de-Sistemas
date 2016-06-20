@@ -9,15 +9,15 @@ import java.util.List;
  */
 public class ReportePorFecha{
 
-	public void reportar(List<RegistroBusqueda> registros){
+	public List<ElementoReporte> reportar(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();
 		
 		registros.forEach(registro->{
 					agregarSiNoEstaFecha(registro,listadoReporte);
 					buscarElementoYSumarBusqueda(registro,listadoReporte);
 		});
-		
-		mostrarReporteFecha(listadoReporte);
+		return listadoReporte;
+		//mostrarReporteFecha(listadoReporte);
 	}
 	
 	// Esto se haria mediante la GUI cuando la tengamos

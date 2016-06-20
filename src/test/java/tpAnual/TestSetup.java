@@ -13,7 +13,6 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.reportes.RegistroBusqueda;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 
@@ -39,7 +38,6 @@ public class TestSetup {
 	protected Terminal terminal;
 	
 	protected List<Poi> poisBusqueda = new ArrayList<>();
-	protected RegistroBusqueda registro;
 	
 	@Before
 	public void init() {
@@ -54,15 +52,10 @@ public class TestSetup {
 		poi2.agregarTag("colectivo");
 		mapa.alta(poi2);
 				
-
 		RepositorioRegistros.resetSingleton();
 		RepositorioBuscador.resetSingleton();
 		RepositorioBuscador.getInstance().agregarConsultora(local);
 		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
 		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
-		
-		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
-		registro = RepositorioRegistros.getInstance().getRegistros().get(0);
 	}
-
 }

@@ -10,6 +10,14 @@ import tpAnual.POIs.Poi;
 
 public class TestBuscador extends TestSetup{
 	
+	@Before
+	public void init(){
+
+		super.init();
+		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
+	}
+	
+	
 	@Test
 	public void testNoSeEncuentraEnPoisLocales(){ 
 		terminal.desactivarRegistros();

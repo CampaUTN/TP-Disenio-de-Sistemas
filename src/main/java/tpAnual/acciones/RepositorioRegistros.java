@@ -5,6 +5,7 @@ import java.util.List;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
+import tpAnual.acciones.reportes.ElementoReporte;
 import tpAnual.acciones.reportes.RegistroBusqueda;
 import tpAnual.acciones.reportes.ReportePorFecha;
 import tpAnual.acciones.reportes.ReportePorTerminal;
@@ -30,8 +31,8 @@ public class RepositorioRegistros{
 		registros.add(new RegistroBusqueda(listaPois, palabras, tiempoEmpleado, terminal));
 	}
 	
-	public void reportarPorFecha(){
-		new ReportePorFecha().reportar(registros);
+	public List<ElementoReporte> reportarPorFecha(){
+		return new ReportePorFecha().reportar(registros);
 	}
 	
 	public void reportarPorTerminal(){
