@@ -36,15 +36,16 @@ public class TestSetup {
 	private CGPAdapter cgpAdapter = new CGPAdapter();
 	protected BuscadorLocal local = new BuscadorLocal(mapa);
 	
-	protected Terminal terminal = new Terminal(0);
+	protected Terminal terminal;
 	
 	protected List<Poi> poisBusqueda = new ArrayList<>();
 	protected RegistroBusqueda registro;
 	
 	@Before
 	public void init() {
+		terminal = new Terminal(0);
 		terminal.desactivarMails();
-
+		
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
 		mapa.alta(poi);
@@ -53,6 +54,7 @@ public class TestSetup {
 		poi2.agregarTag("colectivo");
 		mapa.alta(poi2);
 				
+
 		RepositorioRegistros.resetSingleton();
 		RepositorioBuscador.resetSingleton();
 		RepositorioBuscador.getInstance().agregarConsultora(local);
@@ -62,4 +64,5 @@ public class TestSetup {
 		poisBusqueda = mapa.buscar("colectivo",terminal);
 		registro = RepositorioRegistros.getInstance().getRegistros().get(0);
 	}
+
 }

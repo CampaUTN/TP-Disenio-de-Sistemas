@@ -10,8 +10,6 @@ import tpAnual.POIs.Poi;
 
 public class TestBuscador extends TestSetup{
 	
-	
-	
 	@Test
 	public void testNoSeEncuentraEnPoisLocales(){ 
 		terminal.desactivarRegistros();

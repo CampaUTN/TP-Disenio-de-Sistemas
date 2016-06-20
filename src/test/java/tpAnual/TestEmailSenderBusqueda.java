@@ -9,25 +9,25 @@ import tpAnual.acciones.com.EmailSender;
 public class TestEmailSenderBusqueda extends TestSetup{
 	
 	private EmailSender sender;
-	private Terminal terminal1;
 	
 	@Before
 	public void init(){
+		super.init();
 		sender = Mockito.mock(EmailSender.class);
-		terminal1 = new Terminal(1);
-		terminal1.desactivarRegistros();
-		terminal1.setSender(sender);
+		terminal = new Terminal(1);
+		terminal.desactivarRegistros();
+		terminal.setSender(sender);
 	}
 	
 	@Test
 	public void testearMailPorDemora(){
-		mapa.buscar("colectivo",terminal1);
+		mapa.buscar("colectivo",terminal);
 		Mockito.verify(sender).enviarMensajePorDemora(Mockito.anyLong()); //uso anyLong porque la demora no es determinable antes de ejecutar el metodo.
 	}
 	
 	@Test
 	public void testMailsDesactivados(){
-		terminal1.desactivarMails();
+		terminal.desactivarMails();
 		mapa.buscar("colectivo",terminal);
 		Mockito.verifyNoMoreInteractions(sender);
 	}
