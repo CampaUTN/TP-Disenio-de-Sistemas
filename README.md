@@ -25,3 +25,6 @@ emi.tolaba95@gmail.com
 En eclipse, estando con Package explore, ir a la flechita hacia abajo que aparece arriba de la lista de proyectos -> Package presentation -> Hieranchical
 
 De esa forma las cosas, segun el orden que les puse, se ven como corresponde y quedan en subcarpetas, en vez de verse en forma rara.
+
+##Diagrama de clase 3ra entrega (falta revision)
+https://1drv.ms/u/s!Av0vPKTcwzssgSx-rN0ud6plSwq3
