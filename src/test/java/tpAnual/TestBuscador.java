@@ -33,6 +33,12 @@ public class TestBuscador extends TestSetup{
 	public void testFiltroSoloCGPs(){
 		List<Poi> pois = RepositorioBuscador.getInstance().obtenerCGPsConServicioExternos("Cheques");
 		Assert.assertEquals(2,pois.size(),0);
-		
+	}
+	
+	@Test
+	public void encuentroRubroMuebleria(){
+		Mapa.getInstance().alta(poiNegocio);
+		List<Poi> pois = buscador.buscarSegunTexto("muebleria", terminal);
+		pois.stream().anyMatch(poi->poi.getNombre().equals("mueblesSA"));
 	}
 }

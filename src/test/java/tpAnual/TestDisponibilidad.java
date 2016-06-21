@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import tpAnual.POIs.Cgp;
 
-public class TestDisponibilidad {
+public class TestDisponibilidad extends TestSetup {
 
 	private DayOfWeek lunes = DayOfWeek.MONDAY;
 	private DayOfWeek miercoles = DayOfWeek.WEDNESDAY;
@@ -27,7 +27,8 @@ public class TestDisponibilidad {
 	
 	@Before
 	public void init()
-	{
+	{	
+		super.init();
 		centro = new Cgp(null);
 		
 		rentas.agregarHorario(horarioManana);
@@ -38,6 +39,7 @@ public class TestDisponibilidad {
 		
 		centro.agregarServicio(rentas);
 		centro.agregarServicio(creditos);
+		negocio.agregarHorario(horarioManana);
 	}
 	
 	@Test
@@ -76,6 +78,11 @@ public class TestDisponibilidad {
 	@Test
 	public void estaFueraPorElDia(){
 		Assert.assertFalse(centro.estaDisponible(domingo, LocalTime.parse("11:00")));
+	}
+	
+	@Test
+	public void negocioEstaDisponible(){
+		Assert.assertTrue(negocio.estaDisponible(lunes,LocalTime.parse("10:01")));
 	}
 }
 

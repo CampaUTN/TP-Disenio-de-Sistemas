@@ -53,5 +53,8 @@ public class Negocio extends TipoPoi {
 		return rubro;
 	}
 	
+	public void setRadio(int radio){
+		this.radio = radio;
+	}
 	
 }

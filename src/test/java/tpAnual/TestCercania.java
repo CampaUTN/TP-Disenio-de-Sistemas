@@ -12,7 +12,7 @@ import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 
-public class TestCercania {
+public class TestCercania extends TestSetup{
 	private Point puntoComunaA = new Point(0,0);
 	private Point puntoComunaB = new Point(20,60);
 	private Point puntoComunaC = new Point(50,0);
@@ -28,6 +28,7 @@ public class TestCercania {
 	
 	private Point puntoDeBusqueda = new Point(20.003,10.003);
 	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
+	private Point puntoDeBusquedaNegocio = new Point(54.0008,10.0002);
 	
 	private Poi poiColectivo = new Poi(estacionDeColectivo,ubicacionPoi,"60",tags);
 	private Poi poiColectivo2 = new Poi(estacionDeColectivo,puntoDeBusquedaColect,"47",tags);
@@ -37,12 +38,15 @@ public class TestCercania {
 	
 	@Before
 	public void init(){
+		super.init();
 		Mapa.resetSingleton();
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);
 		puntosComuna.add(puntoComunaC);
 		cgp = new Cgp(puntosComuna);
 		poiCgp = new Poi(cgp, ubicacionPoi, "Asistencia social", tags);
+		negocio.setRadio(10);
+
 	}
 
 	@Test
@@ -63,5 +67,10 @@ public class TestCercania {
 	@Test
 	public void cercaniaEntrePois(){
 		Assert.assertTrue(Mapa.getInstance().estaAMenosDe(poiBanco, poiColectivo2, 0.4));
+	}
+	
+	@Test
+	public void cercaniaNegocioRadio(){
+		Assert.assertTrue(poiNegocio.estaCerca(puntoDeBusquedaNegocio));
 	}
 }

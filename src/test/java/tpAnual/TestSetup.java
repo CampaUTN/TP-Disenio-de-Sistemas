@@ -1,5 +1,7 @@
 package tpAnual;
 
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +13,7 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.EstacionDeColectivo;
+import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.externo.adapters.BancoAdapter;
@@ -22,9 +25,11 @@ public class TestSetup {
 	protected EstacionDeColectivo tipo = new EstacionDeColectivo();
 	protected Banco frances= new Banco();
 	protected Point ubicacion = new Point(54, 10);
+	protected Negocio negocio = new Negocio("muebleria");
 	
 	protected Poi poi = new Poi(tipo, ubicacion, "107", tags);
 	protected Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
+	protected Poi poiNegocio = new Poi(negocio,ubicacion,"mueblesSA",tags);
 	
 	protected BuscadorTexto buscador = new BuscadorTexto();
 	protected Servicio servicio = new Servicio("rentas");
@@ -38,6 +43,7 @@ public class TestSetup {
 	@Before
 	public void init() {
 		Mapa.resetSingleton();
+		
 		terminal = new Terminal(0);
 		terminal.desactivarMails();
 		
@@ -54,5 +60,6 @@ public class TestSetup {
 		RepositorioBuscador.getInstance().agregarConsultora(local);
 		RepositorioBuscador.getInstance().agregarConsultora(new BancoAdapter());
 		RepositorioBuscador.getInstance().agregarConsultora(new CGPAdapter());
+		
 	}
 }
