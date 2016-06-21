@@ -30,4 +30,5 @@ De esa forma las cosas, segun el orden que les puse, se ven como corresponde y q
 https://1drv.ms/f/s!Av0vPKTcwzssgTbfFJSb1x_Q5v76
 
 ![alt tag](http://i.imgur.com/yldpNMD.jpg)
+-----Alternativa------
 ![alt tag](http://i.imgur.com/oVeHxGi.jpg)
