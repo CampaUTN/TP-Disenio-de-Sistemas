@@ -39,6 +39,7 @@ public class TestBuscador extends TestSetup{
 	public void encuentroRubroMuebleria(){
 		Mapa.getInstance().alta(poiNegocio);
 		List<Poi> pois = buscador.buscarSegunTexto("muebleria", terminal);
-		pois.stream().anyMatch(poi->poi.getNombre().equals("mueblesSA"));
+		
+		Assert.assertTrue(pois.stream().anyMatch(poi->poi.getNombre().equals("mueblesSA")));
 	}
 }

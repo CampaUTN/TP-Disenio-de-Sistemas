@@ -6,7 +6,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
+import tpAnual.POIs.EstacionDeColectivo;
 
 public class TestDisponibilidad extends TestSetup {
 
@@ -24,12 +26,12 @@ public class TestDisponibilidad extends TestSetup {
 	private Horario horarioTarde = Horario.nuevoHorarioParaFranja(lunes,viernes,LocalTime.parse("14:00"), LocalTime.parse("18:00"));
 	private Horario horarioUnico = Horario.nuevoHorarioParaDia(miercoles,LocalTime.parse("09:00"),LocalTime.parse("12:00"));
 	
-	
 	@Before
-	public void init()
-	{	
+	public void init()	{	
 		super.init();
 		centro = new Cgp(null);
+		
+		frances.agregarServicio(creditos);
 		
 		rentas.agregarHorario(horarioManana);
 		rentas.agregarHorario(horarioTarde);
@@ -39,7 +41,9 @@ public class TestDisponibilidad extends TestSetup {
 		
 		centro.agregarServicio(rentas);
 		centro.agregarServicio(creditos);
+		
 		negocio.agregarHorario(horarioManana);
+		negocio.agregarHorario(horarioTarde);
 	}
 	
 	@Test
@@ -80,9 +84,49 @@ public class TestDisponibilidad extends TestSetup {
 		Assert.assertFalse(centro.estaDisponible(domingo, LocalTime.parse("11:00")));
 	}
 	
+	/*----Testeo horarios de Negocio------*/
+	
 	@Test
 	public void negocioEstaDisponible(){
 		Assert.assertTrue(negocio.estaDisponible(lunes,LocalTime.parse("10:01")));
 	}
-}
+	
+	@Test
+	public void negocioNoEstaDisponibleMientrasCierra(){
+		Assert.assertFalse(negocio.estaDisponible(lunes,LocalTime.parse("13:00")));
+	}
+	
+	/*----Testeo horarios de Colectivo------*/
+	@Test
+	public void testColectivoDisponibleEnFinDeSemanaACualquierHora(){
+		Assert.assertTrue(tipo.estaDisponible(domingo,LocalTime.parse("23:59")));
+	}
+	
+	@Test
+	public void testColectivoDisponibleEnDiaDeSemanaACualquierHora(){
+		Assert.assertTrue(tipo.estaDisponible(lunes,LocalTime.parse("00:00")));
+	}
+	
+	
+	/*----Testeo horarios de Banco------*/
+	@Test 
+	public void noEstaDisponibleEnFinDeSemana(){
+		Assert.assertFalse(frances.estaDisponible(domingo,LocalTime.parse("10:01")));
+	}
+	
+	@Test 
+	public void estaDisponibleEnDiaDeSemanaDespuesDeLasDiez(){
+		Assert.assertTrue(frances.estaDisponible(miercoles,LocalTime.parse("10:01")));
+	}
 
+	@Test 
+	public void noEestaDisponibleEnDiaDeSemanaAntesDeLasDiez(){
+		Assert.assertFalse(frances.estaDisponible(lunes,LocalTime.parse("09:59")));
+	}
+	
+	@Test 
+	public void noEestaDisponibleEnDiaDeSemanaDespuesDeLasQuince(){
+		Assert.assertFalse(frances.estaDisponible(viernes,LocalTime.parse("15:01")));
+	}
+	
+}

@@ -43,7 +43,7 @@ public class TestSetup {
 	@Before
 	public void init() {
 		Mapa.resetSingleton();
-		
+				
 		terminal = new Terminal(0);
 		terminal.desactivarMails();
 		

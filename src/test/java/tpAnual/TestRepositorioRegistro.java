@@ -25,6 +25,12 @@ public class TestRepositorioRegistro extends TestSetup{
 	}
 
 	@Test
+	public void testSeRealizaElReportePorTerminal(){
+		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
+		Assert.assertEquals(1,RepositorioRegistros.getInstance().reportarPorTerminal().size(),0);
+	}
+	
+	@Test
     public void prueboQueTodasLasInstanciasSeanLaMisma() {
 		RepositorioRegistros instance1 = RepositorioRegistros.getInstance();
 		RepositorioRegistros instance2 = RepositorioRegistros.getInstance();
