@@ -17,8 +17,6 @@ import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 
 public class TestSetup {
-
-	protected Mapa mapa = new Mapa();
 	
 	protected Set<String> tags = new HashSet<String>();
 	protected EstacionDeColectivo tipo = new EstacionDeColectivo();
@@ -33,7 +31,7 @@ public class TestSetup {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
-	protected BuscadorLocal local = new BuscadorLocal(mapa);
+	protected BuscadorLocal local = new BuscadorLocal(Mapa.getInstance());
 	
 	protected Terminal terminal;
 	
@@ -41,16 +39,17 @@ public class TestSetup {
 	
 	@Before
 	public void init() {
+		Mapa.resetSingleton();
 		terminal = new Terminal(0);
 		terminal.desactivarMails();
 		
 		poi.agregarTag("107");
 		poi.agregarTag("colectivo");
-		mapa.alta(poi);
+		Mapa.getInstance().alta(poi);
 
 		poi2.agregarTag("108");
 		poi2.agregarTag("colectivo");
-		mapa.alta(poi2);
+		Mapa.getInstance().alta(poi2);
 				
 		RepositorioRegistros.resetSingleton();
 		RepositorioBuscador.resetSingleton();

@@ -21,7 +21,6 @@ public class TestCercania {
 	private Set<String> tags = new HashSet<String>();
 	private Point ubicacionPoi = new Point(20, 10);
 	
-	private Mapa mapa = new Mapa();
 	
 	private Banco banco = new Banco();
 	private EstacionDeColectivo estacionDeColectivo = new EstacionDeColectivo();
@@ -38,6 +37,7 @@ public class TestCercania {
 	
 	@Before
 	public void init(){
+		Mapa.resetSingleton();
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);
 		puntosComuna.add(puntoComunaC);
@@ -62,6 +62,6 @@ public class TestCercania {
 	
 	@Test
 	public void cercaniaEntrePois(){
-		Assert.assertTrue(mapa.estaAMenosDe(poiBanco, poiColectivo2, 0.4));
+		Assert.assertTrue(Mapa.getInstance().estaAMenosDe(poiBanco, poiColectivo2, 0.4));
 	}
 }

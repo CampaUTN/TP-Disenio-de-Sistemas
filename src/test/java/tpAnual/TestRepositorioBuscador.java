@@ -11,14 +11,14 @@ public class TestRepositorioBuscador {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
-	private Mapa mapa = new Mapa();
 
 	@Before
 	public void init() {
+		Mapa.resetSingleton();
 		RepositorioBuscador.resetSingleton();
 		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
 		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
-		RepositorioBuscador.getInstance().agregarConsultora(new BuscadorLocal(mapa));
+		RepositorioBuscador.getInstance().agregarConsultora(new BuscadorLocal(Mapa.getInstance()));
 	}
 		
 	@Test 

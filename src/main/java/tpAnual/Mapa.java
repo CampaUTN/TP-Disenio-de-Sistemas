@@ -10,6 +10,22 @@ public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	
+	private static Mapa instance = null;
+	
+	private Mapa(){
+		//Para evitar que sea instanciada esta clase.
+	}
+	
+	public static Mapa getInstance(){
+		if(instance==null){
+			instance = new Mapa();
+		}
+		return instance;
+	}
+	
+	public static void resetSingleton(){
+	    instance = null;
+	}
 	// Busqueda de texto libre de pois
 	
 	public void alta(Poi poi){
