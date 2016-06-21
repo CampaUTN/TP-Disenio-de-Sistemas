@@ -18,7 +18,7 @@ public class TestRepositorioBuscador {
 		RepositorioBuscador.resetSingleton();
 		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
 		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
-		RepositorioBuscador.getInstance().agregarConsultora(new BuscadorLocal(Mapa.getInstance()));
+		RepositorioBuscador.getInstance().agregarConsultora(new BuscadorLocal());
 	}
 		
 	@Test 

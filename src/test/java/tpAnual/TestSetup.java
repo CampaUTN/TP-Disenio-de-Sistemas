@@ -31,7 +31,7 @@ public class TestSetup {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
-	protected BuscadorLocal local = new BuscadorLocal(Mapa.getInstance());
+	protected BuscadorLocal local = new BuscadorLocal();
 	
 	protected Terminal terminal;
 	
