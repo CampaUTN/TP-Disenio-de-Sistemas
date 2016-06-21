@@ -29,8 +29,6 @@ public class TestSetup {
 	protected BuscadorTexto buscador = new BuscadorTexto();
 	protected Servicio servicio = new Servicio("rentas");
 	
-	private BancoAdapter bancoAdapter = new BancoAdapter();
-	private CGPAdapter cgpAdapter = new CGPAdapter();
 	protected BuscadorLocal local = new BuscadorLocal();
 	
 	protected Terminal terminal;
@@ -54,7 +52,7 @@ public class TestSetup {
 		RepositorioRegistros.resetSingleton();
 		RepositorioBuscador.resetSingleton();
 		RepositorioBuscador.getInstance().agregarConsultora(local);
-		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
-		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
+		RepositorioBuscador.getInstance().agregarConsultora(new BancoAdapter());
+		RepositorioBuscador.getInstance().agregarConsultora(new CGPAdapter());
 	}
 }

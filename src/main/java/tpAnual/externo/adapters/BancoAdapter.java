@@ -53,13 +53,13 @@ public class BancoAdapter implements Consultora {
 				.collect(Collectors.toList());
 	}
 	
-	public Poi bancoExternoToPOI(BancoExterno bancoExt){
+	public Poi bancoExternoToPOI(BancoExterno bancoExterno){
 		Banco banco = new Banco();
-		Double posX = Double.parseDouble(bancoExt.getX());
-		Double posY = Double.parseDouble(bancoExt.getY());
+		Double posX = Double.parseDouble(bancoExterno.getX());
+		Double posY = Double.parseDouble(bancoExterno.getY());
 		Point ubicacion = new Point(posX,posY);
-		String nombre = bancoExt.getBanco();
-		Set<String> servicios = new HashSet<String>(Arrays.asList(bancoExt.getServicios()));
+		String nombre = bancoExterno.getBanco();
+		Set<String> servicios = new HashSet<String>(Arrays.asList(bancoExterno.getServicios()));
 		
 		return new Poi(banco, ubicacion, nombre, servicios);
 	}

@@ -21,7 +21,7 @@ public class ReportePorFecha{
 	}
 	
 	// Esto se haria mediante la GUI cuando la tengamos
-	private void mostrarReporteFecha(List<ElementoReporte> listadoReporte){
+	public void mostrarReporteFecha(List<ElementoReporte> listadoReporte){
 		listadoReporte.forEach(elemento->{
 						System.out.println(elemento.getFecha().toString());
 						System.out.println(elemento.getCantidadBusquedas());

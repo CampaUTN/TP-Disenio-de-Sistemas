@@ -8,7 +8,6 @@ import tpAnual.Terminal;
 public class ReportePorTerminal{
 	
 	private Boolean detalladoActivado=false;
-	private int contador;
 	
 	public void mostrarReportes(List<RegistroBusqueda> registros) {
 		if(detalladoActivado){
@@ -29,21 +28,13 @@ public class ReportePorTerminal{
 	private void mostrarCompleto(List<ElementoReporte> reportes){
 		reportes.forEach(reporte->{
 			System.out.println(reporte.getTerminal().getNombre());
-			System.out.println(this.sumatoria(reporte.getBusquedasParciales()));
+			System.out.println(reporte.getBusquedasParciales().stream().mapToInt(i->i).sum());
 		});
 	}
 	
 	// Esto se haria con la GUI cuando la tengamos
 	private void imprimirCantidades(ElementoReporte reporte){
 		reporte.getBusquedasParciales().forEach(unaCantidad->System.out.println(unaCantidad));
-	}
-	
-	
-	
-	private int sumatoria(List<Integer> lista){
-		contador=0;
-		lista.forEach(elem->contador=contador+elem);
-		return contador;
 	}
 
 	public List<ElementoReporte> reportar(List<RegistroBusqueda> registros){
