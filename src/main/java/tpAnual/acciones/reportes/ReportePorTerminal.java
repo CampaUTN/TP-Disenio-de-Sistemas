@@ -10,11 +10,11 @@ public class ReportePorTerminal{
 	private Boolean detalladoActivado=false;
 	private int contador;
 	
-	public void reportar(List<RegistroBusqueda> registros) {
+	public void mostrarReportes(List<RegistroBusqueda> registros) {
 		if(detalladoActivado){
-			this.mostrarDetallado(this.asignarRegistros(registros));
+			this.mostrarDetallado(this.reportar(registros));
 		}
-		this.mostrarCompleto(this.asignarRegistros(registros));
+		this.mostrarCompleto(this.reportar(registros));
 	}
 	
 	// Esto se haria con la GUI cuando la tengamos
@@ -38,13 +38,15 @@ public class ReportePorTerminal{
 		reporte.getBusquedasParciales().forEach(unaCantidad->System.out.println(unaCantidad));
 	}
 	
+	
+	
 	private int sumatoria(List<Integer> lista){
 		contador=0;
 		lista.forEach(elem->contador=contador+elem);
 		return contador;
 	}
 
-	private List<ElementoReporte> asignarRegistros(List<RegistroBusqueda> registros){
+	public List<ElementoReporte> reportar(List<RegistroBusqueda> registros){
 		List<ElementoReporte> listadoReporte = new ArrayList<ElementoReporte>();
 		
 		registros.forEach(registro->{

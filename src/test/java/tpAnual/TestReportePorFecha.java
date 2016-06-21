@@ -12,7 +12,13 @@ import tpAnual.acciones.RepositorioRegistros;
 
 public class TestReportePorFecha extends TestSetup{
 	private List<ElementoReporte> reporte;
-	private ElementoReporte elemento;
+	private ElementoReporte registro;
+	
+	@Test
+	public void noSeRealizanBusquedas(){
+		reporte = RepositorioRegistros.getInstance().reportarPorTerminal();
+		Assert.assertTrue(reporte.isEmpty());
+	}	
 	
 	@Test
 	public void alReporteSeLeAgregaLaFechaDeHoy(){
@@ -37,8 +43,8 @@ public class TestReportePorFecha extends TestSetup{
 		buscador.buscarSegunTexto("107",terminal);
 		buscador.buscarSegunTexto("colectivo",terminal);
 
-		elemento = RepositorioRegistros.getInstance().reportarPorFecha().get(0);
-		Assert.assertTrue(elemento.getCantidadBusquedas().equals(2));
+		registro = RepositorioRegistros.getInstance().reportarPorFecha().get(0);
+		Assert.assertTrue(registro.getCantidadBusquedas().equals(2));
 	}
 	
 }

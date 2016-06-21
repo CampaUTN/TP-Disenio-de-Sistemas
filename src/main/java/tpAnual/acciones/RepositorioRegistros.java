@@ -35,8 +35,8 @@ public class RepositorioRegistros{
 		return new ReportePorFecha().reportar(registros);
 	}
 	
-	public void reportarPorTerminal(){
-		new ReportePorTerminal().reportar(registros);
+	public List<ElementoReporte> reportarPorTerminal(){
+		return new ReportePorTerminal().reportar(registros);
 	}
 
 	public List<RegistroBusqueda> getRegistros() {
