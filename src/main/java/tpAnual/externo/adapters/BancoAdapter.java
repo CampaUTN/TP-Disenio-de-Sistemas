@@ -1,4 +1,5 @@
 package tpAnual.externo.adapters;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -8,12 +9,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import org.apache.commons.io.FileUtils;
 import org.uqbar.geodds.Point;
-
 import com.google.gson.Gson;
-
 import com.google.gson.reflect.TypeToken;
 
 import tpAnual.POIs.Banco;
@@ -41,7 +39,7 @@ public class BancoAdapter implements Consultora {
 			try {
 				contenido = FileUtils.readFileToString(reader,Charset.defaultCharset());
 			} catch (IOException e) {
-				
+				throw new UnsupportedOperationException(e);
 			}
 			bancosExternos = gson.fromJson(contenido, new TypeToken<List<BancoExterno>>() {}.getType());
 			
