@@ -33,7 +33,7 @@ public class TestSetup {
 	
 	protected Terminal terminal;
 	
-	protected List<Poi> poisBusqueda = new ArrayList<>();
+	protected List<Poi> poisBusqueda;
 	
 	@Before
 	public void init() {
