@@ -30,13 +30,8 @@ public class TestExterno {
 	public void testBancoMismoNombre(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
-		
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
-		
-		String nombre =bancosExterno.get(0).getNombre();
-		String nombrecito ="Banco de la Plaza";
-		Assert.assertTrue(nombrecito.equals(nombre));
-		
+		Assert.assertTrue(bancosExterno.get(0).getNombre().equals("Banco de la Plaza"));
 	}
 	
 	@Test
@@ -69,7 +64,6 @@ public class TestExterno {
 		serviciosEsperados.add("créditos");
 		
 		Assert.assertEquals(serviciosEsperados,servicios);
-		
 	}	
 	
 	@Test
@@ -87,7 +81,6 @@ public class TestExterno {
 		
 		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);	
 		String nombre = cgpsExternos.get(0).getNombre();
-		//Assert.assertEquals(null, nombre, 0);
 		Assert.assertTrue(nombre == null);
 	}
 	
@@ -120,6 +113,5 @@ public class TestExterno {
 	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 	    servicios = cgpsExternos.get(0).getTags();
 		Assert.assertEquals(servicioEsperado, servicios);
-
 		}
 }

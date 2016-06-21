@@ -44,7 +44,7 @@ public class TestReportePorFecha extends TestSetup{
 		buscador.buscarSegunTexto("colectivo",terminal);
 
 		registro = RepositorioRegistros.getInstance().reportarPorFecha().get(0);
-		Assert.assertTrue(registro.getCantidadBusquedas().equals(2));
+		Assert.assertEquals(2,registro.getCantidadBusquedas(),0);
 	}
 	
 }

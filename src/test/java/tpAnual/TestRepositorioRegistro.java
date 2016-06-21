@@ -1,16 +1,11 @@
 package tpAnual;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.reportes.ElementoReporte;
 
 public class TestRepositorioRegistro extends TestSetup{
-	
-	List<ElementoReporte> reporteFechas;
 	
 	@Test
 	public void testLosRegistrosEstanVacios(){

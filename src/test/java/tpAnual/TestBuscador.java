@@ -12,7 +12,6 @@ public class TestBuscador extends TestSetup{
 	
 	@Before
 	public void init(){
-
 		super.init();
 		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
 	}
@@ -32,7 +31,6 @@ public class TestBuscador extends TestSetup{
 	
 	@Test
 	public void testFiltroSoloCGPs(){
-				
 		List<Poi> pois = RepositorioBuscador.getInstance().obtenerCGPsConServicioExternos("Cheques");
 		Assert.assertEquals(2,pois.size(),0);
 		

@@ -20,10 +20,14 @@ public class TestPoi {
 		poi.agregarTag("mejor");
 		poi.agregarTag("colectivo");
 	}
+	
+	@Test
+	public void seAgreganTodosLosTags(){
+		Assert.assertEquals(2, poi.getTags().size(),0);
+	}
 
 	@Test
 	public void tieneTagsAgregados() {
-		Assert.assertTrue(poi.tieneTag("mejor"));
 		Assert.assertTrue(poi.tieneTag("colectivo"));
 	}
 

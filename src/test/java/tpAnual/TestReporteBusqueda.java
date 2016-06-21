@@ -10,7 +10,7 @@ import tpAnual.acciones.reportes.RegistroBusqueda;
 
 public class TestReporteBusqueda extends TestSetup{
 	
-	protected RegistroBusqueda registro;
+	private RegistroBusqueda registro;
 	
 	@Before
 	public void init(){	
@@ -40,7 +40,6 @@ public class TestReporteBusqueda extends TestSetup{
 	
 	@Test
 	public void testSeAlmacenaElTerminal(){
-		
 		Assert.assertTrue(registro.getTerminal().equals(terminal));
 	}
 }
