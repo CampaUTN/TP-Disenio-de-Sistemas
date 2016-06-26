@@ -4,13 +4,13 @@ import java.util.List;
 
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.com.EmailSender;
-import tpAnual.acciones.com.EmailSenderBusqueda;
+import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
+import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
 
 public class Terminal {
 	private int numeroTerminal;
 	private String nombre;
-	private EmailSender sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
+	private IEmailSenderBusqueda sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
 	private boolean tieneRegistrosActivados = true;
 	private boolean tieneMailsActivados = true;
 
@@ -50,7 +50,7 @@ public class Terminal {
 	}
 	
 	// Setters
-	public void setSender(EmailSender sender){
+	public void setSender(IEmailSenderBusqueda sender){
 		this.sender = sender;
 	}
 	

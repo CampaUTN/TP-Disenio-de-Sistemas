@@ -6,10 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
-import tpAnual.POIs.EstacionDeColectivo;
-
 public class TestDisponibilidad extends TestSetup {
 
 	private DayOfWeek lunes = DayOfWeek.MONDAY;

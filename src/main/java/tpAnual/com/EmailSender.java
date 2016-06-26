@@ -1,4 +1,4 @@
-package tpAnual.acciones.com;
+package tpAnual.com;
 
 import java.util.Properties;
 
@@ -12,31 +12,17 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * Singleton.
+ * Clase abstracta de la que heredan todos los Senders que se hagan.
  */
-public class EmailSenderBusqueda implements EmailSender {
-	private String mailAdministrador="pepe@gmail.com";
-	private String de = "grupo7-noreply@gmail.com";
-	private String usuario = "grupo7";
-	private String contrasenia = "******";
-	private String host = "pois.gob.ar";
-	private Long limite = Long.parseLong("0");
+public abstract class EmailSender {
+	protected String receptor="pepe@gmail.com";
+	protected String de = "grupo7-noreply@gmail.com";
+	protected String usuario = "grupo7";
+	protected String contrasenia = "******";
+	protected String host = "pois.gob.ar";
 	// Si cambian habria que tocar el codigo de todas formas, asi que los declaro final
-	private final Properties propiedades = this.crearPropiedades();
-	private final Session sesion = this.crearSesion();
-	
-	private static EmailSenderBusqueda instance = null;
-	
-	private EmailSenderBusqueda(){
-		//Para evitar que sea instanciada esta clase.
-	}
-	
-	public static EmailSenderBusqueda getInstance(){
-		if(instance==null){
-			instance = new EmailSenderBusqueda();
-		}
-		return instance;
-	}
+	protected final Properties propiedades = this.crearPropiedades();
+	protected final Session sesion = this.crearSesion();
 	
 	public void enviarMensaje(String titulo, String contenido) {
 		try {
@@ -45,32 +31,16 @@ public class EmailSenderBusqueda implements EmailSender {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	public void enviarMensajePorDemora(Long duracionBusqueda){
-		if(duracionBusqueda>limite){
-			this.enviarMensaje("Busqueda lenta", "La busqueda tardó más de "+limite+" segundos.");
-		}
-	}
-
 
 	// Setters
-	public void setMailReceptor(String mailAdministrador) {
-		this.mailAdministrador = mailAdministrador;
-	}
-	
-	//Getters
-	public Long getLimite() {
-		return limite;
-	}
-	
-	public void setLimite(Long limite) {
-		this.limite = limite;
+	public void setMailReceptor(String mailReceptor) {
+		this.receptor = mailReceptor;
 	}
 	
 	// Constructores varios
 	// Estos constructores están aca porque no tiene sentido hacer una clase
 	// para que solo haga esto.
-	private Properties crearPropiedades() {
+	protected Properties crearPropiedades() {
 		Properties propiedades = new Properties();
 		propiedades.put("mail.smtp.auth", "true");
 		propiedades.put("mail.smtp.starttls.enable", "true");
@@ -79,11 +49,11 @@ public class EmailSenderBusqueda implements EmailSender {
 		return propiedades;
 	}
 
-	private Message crearMensaje(String titulo, String contenido) {
+	protected Message crearMensaje(String titulo, String contenido) {
 		Message mensaje = new MimeMessage(sesion);
 		try {
 			mensaje.setFrom(new InternetAddress(de));
-			mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailAdministrador));
+			mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receptor));
 			mensaje.setSubject(titulo);
 			mensaje.setText(contenido);
 		} catch (AddressException e) {
@@ -94,7 +64,7 @@ public class EmailSenderBusqueda implements EmailSender {
 		return mensaje;
 	}
 
-	private Session crearSesion() {
+	protected Session crearSesion() {
 		return Session.getInstance(propiedades, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(usuario, contrasenia);

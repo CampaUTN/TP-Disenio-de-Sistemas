@@ -3,7 +3,7 @@ package tpAnual.procesos;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.acciones.com.EmailSenderBusqueda;
+import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
 import tpAnual.procesos.operaciones.Proceso;
 
 public class ManejadorDeErrores {

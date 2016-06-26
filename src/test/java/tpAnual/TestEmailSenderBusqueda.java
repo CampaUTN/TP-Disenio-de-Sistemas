@@ -4,16 +4,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import tpAnual.acciones.com.EmailSender;
+import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
 
 public class TestEmailSenderBusqueda extends TestSetup{
 	
-	private EmailSender sender;
+	private IEmailSenderBusqueda sender;
 	
 	@Before
 	public void init(){
 		super.init();
-		sender = Mockito.mock(EmailSender.class);
+		sender = Mockito.mock(IEmailSenderBusqueda.class);
 		terminal = new Terminal(1);
 		terminal.desactivarRegistros();
 		terminal.setSender(sender);
