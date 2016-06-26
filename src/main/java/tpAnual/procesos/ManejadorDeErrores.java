@@ -9,11 +9,14 @@ import tpAnual.procesos.operaciones.Proceso;
 public class ManejadorDeErrores {
 	private List<ResultadoEjecucionProceso> resultados;
 	private static ManejadorDeErrores instance = null;
-	private boolean enviarMail = false;
+	private boolean enviarMail;
+	private int limite;
 	
 	
 	private ManejadorDeErrores(){
 		resultados = new ArrayList<ResultadoEjecucionProceso>();
+		enviarMail = false;
+		limite = 1;
 	}
 	
 	public static ManejadorDeErrores getInstance(){
@@ -23,21 +26,40 @@ public class ManejadorDeErrores {
 		return instance;
 	}
 	
-	private void enviarMailFallo(Proceso proceso, int intentos){
+	/**
+	 * Lo llama el Lanzador para avisar que un proceso fallo al ejecutarse.
+	 */
+	public boolean informarFallo(Proceso proceso){
+		if(superoLimiteFallos(proceso)){
+			this.enviarMailFallo(proceso);
+		}else{
+			this.manejarFallo(proceso);
+		}
+		return false;
+	}
+	
+	private void enviarMailFallo(Proceso proceso){
 		EmailSenderBusqueda.getInstance().enviarMensaje("Proceso fallido",
 				"El proceso "+proceso.getNombre()
 				+" falló luego de intentar ejecutarlo "
-				+intentos+" veces.");
+				+proceso.getIntentos()+" veces.");
 	}
 	
-	public boolean informarFallo(Proceso proceso){
-		if(enviarMail){
-			this.enviarMailFallo(proceso, 2);// TODO sacar el 2.
-		}
-		return false;
+	private boolean superoLimiteFallos(Proceso proceso){
+		return proceso.getIntentos()>limite;
+	}
+	
+	private void manejarFallo(Proceso proceso){
+		proceso.incrementarIntentos();
+		//Lanzador.getInstance().Ejecuta(proceso); // TODO descomentar cuando este el lanzador,
+		// y ponerle al metodo el nombre que corresponda.
 	}
 
 	public List<ResultadoEjecucionProceso> getResultados() {
 		return resultados;
+	}
+
+	public void setLimite(int limite) {
+		this.limite = limite;
 	}
 }
