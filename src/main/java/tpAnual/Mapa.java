@@ -1,7 +1,10 @@
 package tpAnual;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Poi;
@@ -9,6 +12,7 @@ import tpAnual.POIs.Poi;
 public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
+	private Set<Terminal> terminales = new HashSet<Terminal>();
 	
 	private static Mapa instance = null;
 	
@@ -57,6 +61,15 @@ public class Mapa {
 
 	public int cantidadPois() {
 		return pois.size();
+	}
+	
+	// Setters y getters
+	
+	public void agregarTerminal(Terminal terminal){
+		this.terminales.add(terminal);
+	}
+	public Set<Terminal> terminales(){
+		return this.terminales;
 	}
 
 }
