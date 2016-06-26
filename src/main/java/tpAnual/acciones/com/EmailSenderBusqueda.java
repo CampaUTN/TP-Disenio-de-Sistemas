@@ -38,7 +38,7 @@ public class EmailSenderBusqueda implements EmailSender {
 		return instance;
 	}
 	
-	private void enviarMensaje(String titulo, String contenido) {
+	public void enviarMensaje(String titulo, String contenido) {
 		try {
 			Transport.send(crearMensaje(titulo, contenido));
 		} catch (MessagingException e) {
