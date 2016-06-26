@@ -7,6 +7,10 @@ public abstract class Proceso {
 	public void incrementarIntentos(){
 		intentos++;
 	}
+	
+	public void reiniciarIntentos(){
+		intentos=0;
+	}
 	public int getIntentos(){
 		return intentos;
 	}

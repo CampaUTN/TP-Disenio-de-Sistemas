@@ -9,13 +9,13 @@ import tpAnual.procesos.operaciones.Proceso;
 public class ManejadorDeErrores {
 	private List<ResultadoEjecucionProceso> resultados;
 	private static ManejadorDeErrores instance = null;
-	private boolean enviarMail;
+	private boolean envioDeMailActivado;
 	private int limite;
 	
 	
 	private ManejadorDeErrores(){
 		resultados = new ArrayList<ResultadoEjecucionProceso>();
-		enviarMail = false;
+		envioDeMailActivado = false;
 		limite = 1;
 	}
 	
@@ -27,15 +27,28 @@ public class ManejadorDeErrores {
 	}
 	
 	/**
+	 * Lo llama el Lanzador para avisar que un proceso se ejecuto correctamente.
+	 */
+	public void informarEjecucionCorrecta(Proceso proceso){
+		proceso.reiniciarIntentos();  //Como se ejecuto OK, reinicio los intentos.
+	}
+	
+	/**
 	 * Lo llama el Lanzador para avisar que un proceso fallo al ejecutarse.
 	 */
-	public boolean informarFallo(Proceso proceso){
+	public void informarEjecucionFallida(Proceso proceso){
 		if(superoLimiteFallos(proceso)){
-			this.enviarMailFallo(proceso);
+			manejarFallo(proceso);
 		}else{
-			this.manejarFallo(proceso);
+			this.reintentarEjecucion(proceso);
 		}
-		return false;
+	}
+	
+	private void manejarFallo(Proceso proceso) {
+		if(envioDeMailActivado){
+			enviarMailFallo(proceso);
+		}
+		proceso.reiniciarIntentos(); 
 	}
 	
 	private void enviarMailFallo(Proceso proceso){
@@ -49,7 +62,7 @@ public class ManejadorDeErrores {
 		return proceso.getIntentos()>limite;
 	}
 	
-	private void manejarFallo(Proceso proceso){
+	private void reintentarEjecucion(Proceso proceso){
 		proceso.incrementarIntentos();
 		//Lanzador.getInstance().Ejecuta(proceso); // TODO descomentar cuando este el lanzador,
 		// y ponerle al metodo el nombre que corresponda.
