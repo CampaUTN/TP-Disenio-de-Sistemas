@@ -8,13 +8,17 @@ import org.uqbar.geodds.Point;
 import org.junit.*;
 //import org.mockito.Mockito;
 
+import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.externo.adapters.LocalComercialAdapter;
+import tpAnual.externo.sistemasExternos.LocalComercialExterno;
 
 public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
+	private LocalComercialAdapter lcAdapter = new LocalComercialAdapter();
 	
 	
 	@Test
@@ -114,4 +118,42 @@ public class TestExterno {
 	    servicios = cgpsExternos.get(0).getTags();
 		Assert.assertEquals(servicioEsperado, servicios);
 		}
+	
+	@Test
+	public void testNuevoLocalComercialExterno(){
+		LocalComercialExterno externo= lcAdapter.adaptar("negocio1;chocolates helado");
+		Set<String> palabrasClave = new HashSet<String>();
+		palabrasClave.add("chocolates");
+		palabrasClave.add("helado");
+		palabrasClave.equals(externo.getPalabrasClave());
+	}
+	
+	@Test
+	public void testCambioTagsLocalComercial(){
+		LocalComercialExterno externo= lcAdapter.adaptar("negocio1;chocolates helado");
+		
+		Set<String> palabrasClave = new HashSet<String>();
+		palabrasClave.add("pepas");
+		Negocio negocio = new Negocio("Venta");
+		Poi poi = new Poi(negocio,new Point(0,0),"negocio1",palabrasClave);
+		List<Poi> pois = new ArrayList<Poi>();
+		pois.add(poi);
+		lcAdapter.cambiarLocalComercial(pois, externo);
+		Assert.assertFalse(pois.get(0).getTags().contains("pepas"));
+		Assert.assertTrue(pois.get(0).getTags().contains("chocolates"));
+		Assert.assertTrue(pois.get(0).getTags().contains("helado"));
+	}
+	
+	public void testIntercambiarLocalComercial(){
+		Set<String> palabrasClave = new HashSet<String>();
+		palabrasClave.add("pepas");
+		Negocio negocio = new Negocio("Venta");
+		Poi poi = new Poi(negocio,new Point(0,0),"negocio1",palabrasClave);
+		List<Poi> pois = new ArrayList<Poi>();
+		pois.add(poi);
+		lcAdapter.actualizarLocalesComerciales(pois);
+		Assert.assertFalse(pois.get(0).getTags().contains("pepas"));
+		Assert.assertTrue(pois.get(0).getTags().contains("chocolates"));
+		Assert.assertTrue(pois.get(0).getTags().contains("helado"));
+	}
 }

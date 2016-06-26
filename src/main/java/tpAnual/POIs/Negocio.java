@@ -13,9 +13,6 @@ import tpAnual.Horario;
 public class Negocio extends TipoPoi {
 
 	private int radio;
-	@SuppressWarnings("unused") // Cada poi tiene un nombre y suponemos que
-	// en se va a usar en una futura iteracion.
-	private String nombre;
 	private String rubro;
 	private List <Horario> horarios;
 

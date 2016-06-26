@@ -90,4 +90,9 @@ public class Poi {
 	public Point getUbicacion() {
 		return ubicacion;
 	}
+
+	public void cambiarTags(Set<String> palabrasClave) {
+		this.tagsPoi = palabrasClave;
+		
+	}
 }
