@@ -26,6 +26,10 @@ public class ManejadorDeErrores {
 		return instance;
 	}
 	
+	public static void resetSingleton(){
+	    instance = null;
+	}
+	
 	/**
 	 * Lo llama el Lanzador para avisar que un proceso se ejecuto correctamente.
 	 */
@@ -57,8 +61,7 @@ public class ManejadorDeErrores {
 	
 	private void reintentarEjecucion(Proceso proceso){
 		proceso.incrementarIntentos();
-		//Lanzador.getInstance().Ejecuta(proceso); // TODO descomentar cuando este el lanzador,
-		// y ponerle al metodo el nombre que corresponda.
+		Lanzador.getInstance().ejecutarProceso(proceso);
 	}
 
 	public List<ResultadoEjecucionProceso> getResultados() {
