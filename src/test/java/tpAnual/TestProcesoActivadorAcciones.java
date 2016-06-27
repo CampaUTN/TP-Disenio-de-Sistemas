@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import tpAnual.procesos.ProcesoActivadorAcciones;
 
-public class TestProcesos {
+public class TestProcesoActivadorAcciones {
 	Set<Terminal> terminales = new HashSet<>();
 	Set<String> activar = new HashSet<>();
 	Set<String> desactivar = new HashSet<>();
