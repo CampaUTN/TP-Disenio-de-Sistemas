@@ -1,12 +1,13 @@
 package tpAnual.POIs;
 
 import java.time.DayOfWeek;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+import tpAnual.Mapa;
 import org.uqbar.geodds.Point;
 
 public class Poi {
@@ -18,12 +19,14 @@ public class Poi {
 	private String calle;
 	@SuppressWarnings("unused")
 	private Integer direccion;
+	private int id;
 	
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
+		this.id= Mapa.getInstance().getNextId();
 	}
 	
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
@@ -95,4 +98,9 @@ public class Poi {
 		this.tagsPoi = palabrasClave;
 		
 	}
+	
+	public int getId(){
+		return id;
+	}
+
 }

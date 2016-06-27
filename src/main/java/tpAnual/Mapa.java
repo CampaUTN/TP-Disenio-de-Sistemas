@@ -11,8 +11,9 @@ import tpAnual.POIs.Poi;
 
 public class Mapa {
 	
-	private List<Poi> pois = new ArrayList<Poi>();
+	public List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
+	public int id = 0;
 	
 	private static Mapa instance = null;
 	
@@ -70,6 +71,11 @@ public class Mapa {
 	}
 	public Set<Terminal> terminales(){
 		return this.terminales;
+	}
+
+	public int getNextId(){
+		this.id++;
+		return this.id;
 	}
 
 }
