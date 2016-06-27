@@ -60,7 +60,7 @@ public class Terminal {
 	// Asi que se termina agregando complejidad sin mejorar la funcionalidad.
 	
 	// Reportes
-	private boolean tieneRegistrosActivados() {
+	public boolean tieneRegistrosActivados() {
 		return tieneRegistrosActivados;
 	}
 
@@ -73,7 +73,7 @@ public class Terminal {
 	}
 
 	// Mails
-	private boolean tieneMailsActivados() {
+	public boolean tieneMailsActivados() {
 		return tieneMailsActivados;
 	}
 	
