@@ -3,7 +3,7 @@ package tpAnual.procesos;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
+import tpAnual.procesos.emailSenderFallo.EmailSenderFallo;
 import tpAnual.procesos.operaciones.Proceso;
 
 public class ManejadorDeErrores {
@@ -46,16 +46,9 @@ public class ManejadorDeErrores {
 	
 	private void manejarFallo(Proceso proceso) {
 		if(envioDeMailActivado){
-			enviarMailFallo(proceso);
+			EmailSenderFallo.getInstance().enviarMensajePorFallo(proceso);
 		}
 		proceso.reiniciarIntentos(); 
-	}
-	
-	private void enviarMailFallo(Proceso proceso){
-		EmailSenderBusqueda.getInstance().enviarMensaje("Proceso fallido",
-				"El proceso "+proceso.getNombre()
-				+" falló luego de intentar ejecutarlo "
-				+proceso.getIntentos()+" veces.");
 	}
 	
 	private boolean superoLimiteFallos(Proceso proceso){
