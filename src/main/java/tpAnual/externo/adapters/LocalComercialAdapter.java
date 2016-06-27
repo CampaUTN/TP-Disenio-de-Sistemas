@@ -3,6 +3,8 @@ package tpAnual.externo.adapters;
 import tpAnual.externo.mocks.MockLocalComercial;
 import tpAnual.externo.sistemasExternos.LocalComercialExterno;
 import tpAnual.POIs.Poi;
+import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.Mapa;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,11 +16,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 
-public class LocalComercialAdapter {
+public class LocalComercialAdapter extends Proceso{
 	
 	private MockLocalComercial localComercial = new MockLocalComercial();
 	
-	public void actualizarLocalesComerciales(List<Poi> pois){
+	public void realizarProceso(){
+		List<Poi> pois = Mapa.getInstance().pois(); 
 		List<String> lineas = this.obtenerLineas(localComercial.getFile());
 		lineas.forEach(linea->cambiarLocalComercial(pois,adaptar(linea)));
 	}
@@ -45,12 +48,17 @@ public class LocalComercialAdapter {
 	}
 	
 	public void cambiarLocalComercial(List<Poi> pois,LocalComercialExterno actualizado){
-		Poi poiAModificar = pois.stream()
-			.filter(poi->poi.getNombre().equals(actualizado.getNombre()))
-			.collect(Collectors.toList())
-			.get(0);
+		Poi poiAModificar = findPoi(pois, actualizado.getNombre());
 		if(poiAModificar != null)
 			poiAModificar.cambiarTags(actualizado.getPalabrasClave());
+	}
+
+	private Poi findPoi(List<Poi> pois, String nombrePoi) {
+		Poi poiAModificar = pois.stream()
+			.filter(poi->poi.getNombre().equals(nombrePoi))
+			.collect(Collectors.toList())
+			.get(0);
+		return poiAModificar;
 	}
 }
 
