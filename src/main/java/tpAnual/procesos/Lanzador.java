@@ -1,12 +1,12 @@
 package tpAnual.procesos;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.procesos.operaciones.Proceso;
 
 public class Lanzador{
+	
 	private static Lanzador instance = null;
 	private ManejadorDeErrores manejador = ManejadorDeErrores.getInstance();
 	private List <Proceso> procesos = new ArrayList<>();
@@ -42,12 +42,11 @@ public class Lanzador{
 			manejador.informarEjecucionCorrecta(unProceso);
 			
 		} catch (Exception e) { //flujo alternativo
-			
+		
 			manejador.informarEjecucionFallida(unProceso);
 		}
 	}
-	
-		
+			
 	private void ejecutarPendientes() {
 		if(!pendientes.isEmpty()){
 
@@ -74,7 +73,7 @@ public class Lanzador{
 		return pendientes;
 	}
 	
-	public ManejadorDeErrores getManejador() {
+	public ManejadorDeErrores getManejador(){
 		return manejador;
 	}
 }

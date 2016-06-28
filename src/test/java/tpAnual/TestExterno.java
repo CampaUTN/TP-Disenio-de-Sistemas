@@ -151,7 +151,7 @@ public class TestExterno {
 		Poi poi = new Poi(negocio,new Point(0,0),"negocio1",palabrasClave);
 		List<Poi> pois = new ArrayList<Poi>();
 		pois.add(poi);
-		lcAdapter.actualizarLocalesComerciales(pois);
+		lcAdapter.realizarProceso();
 		Assert.assertFalse(pois.get(0).getTags().contains("pepas"));
 		Assert.assertTrue(pois.get(0).getTags().contains("chocolates"));
 		Assert.assertTrue(pois.get(0).getTags().contains("helado"));

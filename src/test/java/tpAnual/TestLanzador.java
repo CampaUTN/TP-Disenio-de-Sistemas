@@ -1,12 +1,17 @@
 package tpAnual;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import tpAnual.externo.adapters.LocalComercialAdapter;
+import tpAnual.procesos.IPlanificador;
 import tpAnual.procesos.Lanzador;
 import tpAnual.procesos.ProcesoActivadorAcciones;
 import tpAnual.procesos.ManejadorDeErrores;
@@ -18,8 +23,10 @@ public class TestLanzador {
 	Set<String> desactivar = new HashSet<>();
 		
 	private ProcesoActivadorAcciones proceso1;
-	private ProcesoActivadorAcciones proceso2;
-
+	private LocalComercialAdapter proceso2;
+		
+	private IPlanificador planificador; 
+	
 	@Before
 	public void init(){
 		ManejadorDeErrores.resetSingleton();
@@ -31,7 +38,9 @@ public class TestLanzador {
 		desactivar.add("chau");
 				
 		proceso1 = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
-		proceso2 = ProcesoActivadorAcciones.EnSeleccion(terminales, activar, desactivar);
+		proceso2 = new LocalComercialAdapter();
+		
+		planificador = Mockito.mock(IPlanificador.class);
 	}
 	
 	@Test
@@ -40,7 +49,7 @@ public class TestLanzador {
        	Lanzador instance2 = Lanzador.getInstance();
         Assert.assertEquals(instance1,instance2);
     }
-	
+		
 	@Test
 	public void agregoProcesosPolimorficamente(){
 		lanzador.agregarProceso(proceso1);

@@ -28,4 +28,5 @@ public abstract class Proceso{
 	public Lanzador getLanzador(){
 		return lanzador;
 	}
+	
 }
