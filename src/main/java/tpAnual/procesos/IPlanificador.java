@@ -6,8 +6,9 @@ import java.time.LocalTime;
 import tpAnual.procesos.operaciones.Proceso;
 
 public interface IPlanificador {
-
-	public void programarProceso(Proceso proceso,LocalDate fecha,LocalTime hora, int veces);
-	public void ejecutarProceso(Proceso proceso);
+	
+	public void programarProceso(Proceso proceso,LocalDate fecha,LocalTime hora);
+	public void programarProcesoRutinario(Proceso proceso, LocalTime Fecha);
+	public void tieneQueEjecutarse(Proceso proceso);
 
 }

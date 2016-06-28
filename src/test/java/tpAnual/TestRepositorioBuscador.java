@@ -11,19 +11,21 @@ public class TestRepositorioBuscador {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
-
+	private RepositorioBuscador repositorio;
 	@Before
 	public void init() {
 		Mapa.resetSingleton();
 		RepositorioBuscador.resetSingleton();
-		RepositorioBuscador.getInstance().agregarConsultora(bancoAdapter);
-		RepositorioBuscador.getInstance().agregarConsultora(cgpAdapter);
-		RepositorioBuscador.getInstance().agregarConsultora(new BuscadorLocal());
+		repositorio = RepositorioBuscador.getInstance();
+		
+		repositorio.agregarConsultora(bancoAdapter);
+		repositorio.agregarConsultora(cgpAdapter);
+		repositorio.agregarConsultora(new BuscadorLocal());
 	}
 		
 	@Test 
 	public void ElRepoAgregaAdaptersPolimorficamente(){
-		Assert.assertEquals(3, RepositorioBuscador.getInstance().getConsultoras().size(), 0);
+		Assert.assertEquals(3, repositorio.getConsultoras().size(), 0);
 	}
 	
 	

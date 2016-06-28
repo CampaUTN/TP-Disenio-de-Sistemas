@@ -42,5 +42,4 @@ public class RepositorioBuscador {
 		List <String> palabras = Arrays.asList(servicio.split(" "));
 		return (new CGPAdapter()).consultar(palabras);
 	}
-	
 }

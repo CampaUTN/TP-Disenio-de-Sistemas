@@ -1,6 +1,5 @@
 package tpAnual;
 
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,19 +12,18 @@ public class TestBuscador extends TestSetup{
 	@Before
 	public void init(){
 		super.init();
-		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
 	}
-	
 	
 	@Test
 	public void testNoSeEncuentraEnPoisLocales(){ 
 		terminal.desactivarRegistros();
 		List<String> palabras = Arrays.asList("zzzz".split(" "));
-		Assert.assertEquals(0,local.consultar(palabras).size(),0);
+		Assert.assertTrue(local.consultar(palabras).isEmpty());
 	}
 
 	@Test
 	public void testUnaBusquedaParaLosTresOrigenes(){ 
+		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
 		Assert.assertEquals(6, poisBusqueda.size(),0); //2 del init, 2 de bancos, 2 de cpos
 	}
 	
@@ -38,8 +36,8 @@ public class TestBuscador extends TestSetup{
 	@Test
 	public void encuentroRubroMuebleria(){
 		Mapa.getInstance().alta(poiNegocio);
-		List<Poi> pois = buscador.buscarSegunTexto("muebleria", terminal);
+		poisBusqueda = buscador.buscarSegunTexto("muebleria",terminal);
 		
-		Assert.assertTrue(pois.stream().anyMatch(poi->poi.getNombre().equals("mueblesSA")));
+		Assert.assertTrue(poisBusqueda.contains(poiNegocio));
 	}
 }
