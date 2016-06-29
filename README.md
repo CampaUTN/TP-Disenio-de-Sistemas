@@ -46,3 +46,10 @@ Hicimos más cohesivo al BuscadorTexto, usando un singleton que contiene los lug
 Tambien separamos la responsabilidad de buscar en los pois locales en una nueva clase BuscadorLocal, quien conoce a Mapa y le pide la lista de los poi.
 
 Tambien convertimos la clase Mapa en un singleton para asegurar la unicidad de los datos
+
+
+#Cuarta Entrega
+###Diagrama de clases cuarta entrega
+
+Solucion 1 (Elegida)
+![alt tag](http://i.imgur.com/WlosSWi.png)
