@@ -1,6 +1,7 @@
 package tpAnual;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.*;
 import org.uqbar.geodds.Point;
@@ -13,13 +14,17 @@ import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.adapters.LocalComercialAdapter;
+import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExterno;
+
+import com.sun.jersey.api.client.ClientResponse;
+
 
 public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
 	private LocalComercialAdapter lcAdapter = new LocalComercialAdapter();
-	
+	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
 	
 	@Test
 	public void testDevuelveListaExternaBanco(){
@@ -170,13 +175,13 @@ public class TestExterno {
 	    public void obtenerConUnFiltro() throws Exception {
 	        //Se solicita todos los datos de un libro por su isbn.
 	        ClientResponse response = this.bpAdapter.getBookByFilter("","");
-	        assertEquals(response.getStatus(), 200);
+	        Assert.assertEquals(response.getStatus(), 200);
 	        String json = response.getEntity(String.class);
-	        assertTrue(json.contains("122"));
-	        assertTrue(json.contains("123"));
-	        assertFalse(json.contains("321"));
-	        assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
-	        assertTrue(json.contains("id"));
+	        Assert.assertTrue(json.contains("122"));
+	        Assert.assertTrue(json.contains("123"));
+	        Assert.assertFalse(json.contains("321"));
+	        Assert.assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
+	        Assert.assertTrue(json.contains("id"));
 	        
 	        
 	    }

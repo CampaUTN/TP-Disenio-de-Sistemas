@@ -2,6 +2,7 @@ package tpAnual.externo.adapters;
 
 import java.io.File;
 
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -48,13 +49,13 @@ public class BajaPoiAdapter {
 	        return response;
 	    }
 	    
-//	    public ClientResponse getBookByFilter(String filter, String value, String fields){
-//	        ClientResponse response = this.client.resource(API_GOOGLE).path(RESOURCE)
-//	                .queryParam("q",value).queryParam("fields",fields)
-//	                .accept(MediaType.APPLICATION_JSON)
-//	                .get(ClientResponse.class);
-//	        return response;
-//	    }
+	    public ClientResponse getBookByFilter(String filter, String value, String fields){
+	        ClientResponse response = this.client.resource(API_GOOGLE).path(RESOURCE)
+	                .queryParam("q",value).queryParam("fields",fields)
+	                .accept(MediaType.APPLICATION_JSON)
+	                .get(ClientResponse.class);
+	        return response;
+	    }
 	    
 	    
 	    
