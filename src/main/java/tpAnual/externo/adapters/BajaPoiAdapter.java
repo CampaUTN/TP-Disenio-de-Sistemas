@@ -21,11 +21,11 @@ import com.google.gson.reflect.TypeToken;
 
 public class BajaPoiAdapter {
 	
-    private MockBajaPoi PoiAEliminar = new MockBajaPoi();
+    private MockBajaPoi poiAEliminar = new MockBajaPoi();
     
 	public void consultar(List<String> palabras){
 		List<PoiAEliminar> poisExternos = new ArrayList<PoiAEliminar>();
-		palabras.forEach(palabra->poisExternos.addAll(this.adaptar(PoiAEliminar.consultar(palabra))));
+		palabras.forEach(palabra->poisExternos.addAll(this.adaptar(poiAEliminar.consultar(palabra))));
 		this.ordenarEliminacion(poisExternos);
 	}
 	
