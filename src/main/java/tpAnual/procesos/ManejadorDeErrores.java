@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.procesos.emailSenderFallo.EmailSenderFallo;
+import tpAnual.procesos.emailSenderFallo.IEmailSenderFallo;
 import tpAnual.procesos.operaciones.Proceso;
 
 public class ManejadorDeErrores {
@@ -11,7 +12,8 @@ public class ManejadorDeErrores {
 	private static ManejadorDeErrores instance = null;
 	private boolean envioDeMailActivado;
 	private int limite;
-	
+	//Lo parametrizo pese a ser singleton para poder mockear.
+	private IEmailSenderFallo sender = EmailSenderFallo.getInstance();
 	
 	private ManejadorDeErrores(){
 		resultados = new ArrayList<ResultadoEjecucionProceso>();
@@ -50,7 +52,7 @@ public class ManejadorDeErrores {
 	
 	private void manejarFallo(Proceso proceso) {
 		if(envioDeMailActivado){
-			EmailSenderFallo.getInstance().enviarMensajePorFallo(proceso);
+			sender.enviarMensajePorFallo(proceso);
 		}
 		proceso.reiniciarIntentos(); 
 	}
@@ -70,5 +72,9 @@ public class ManejadorDeErrores {
 
 	public void setLimite(int limite) {
 		this.limite = limite;
+	}
+	
+	public void setSender(IEmailSenderFallo sender){
+		this.sender = sender;
 	}
 }
