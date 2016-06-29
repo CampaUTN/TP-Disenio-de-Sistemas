@@ -9,9 +9,8 @@ public class Lanzador{
 	
 	private static Lanzador instance = null;
 	private ManejadorDeErrores manejador = ManejadorDeErrores.getInstance();
-	private List <Proceso> procesos = new ArrayList<>();
 	private List <Proceso> pendientes = new ArrayList<>();
-	private boolean ejecutando;
+	private IPlanificador planificador;
 	
 	private Lanzador(){}
 	
@@ -25,11 +24,7 @@ public class Lanzador{
 	public static void resetSingleton(){
 	    instance = null;
 	}
-	
-	public void agregarProceso(Proceso unProceso){
-		procesos.add(unProceso);
-	}
-	
+		
 	public void agregaAPendientes(Proceso unProceso){
 		pendientes.add(unProceso);
 	}
@@ -40,6 +35,7 @@ public class Lanzador{
 			
 			unProceso.realizarProceso(); 
 			manejador.informarEjecucionCorrecta(unProceso);
+			ejecutarPendientes();
 			
 		} catch (Exception e) { //flujo alternativo
 		
@@ -49,31 +45,21 @@ public class Lanzador{
 			
 	private void ejecutarPendientes() {
 		if(!pendientes.isEmpty()){
-
-			ejecutando = true;
+			
 			Proceso aEjecutar = pendientes.get(0);
+			pendientes.remove(aEjecutar);
 			ejecutarProceso(aEjecutar);
+			
 		}		
 	}
-
-	public void termineDeEjecutar(){
-		ejecutando = false;
-	}
 	
-	/*--------Getters-------*/
-	public boolean estaEjecutando(){
-		return ejecutando;
-	}
-	
-	public List<Proceso> getProcesos(){
-		return procesos;
-	}
-
+	/*--------Getters-------*/	
 	public List<Proceso> getPendientes(){
 		return pendientes;
 	}
 	
 	public ManejadorDeErrores getManejador(){
 		return manejador;
-	}
+	}	
+	
 }

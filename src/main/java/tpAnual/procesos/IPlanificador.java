@@ -9,6 +9,6 @@ public interface IPlanificador {
 	
 	public void programarProceso(Proceso proceso,LocalDate fecha,LocalTime hora);
 	public void programarProcesoRutinario(Proceso proceso, LocalTime Fecha);
-	public void tieneQueEjecutarse(Proceso proceso);
-
+	public boolean tieneQueEjecutarse(HorarioProceso horario, LocalDate fecha , LocalTime hora);
+	public void ejecutarAFechaYHora(HorarioProceso horario, LocalDate fecha , LocalTime hora);
 }

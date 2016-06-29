@@ -52,10 +52,10 @@ public class TestLanzador {
 		
 	@Test
 	public void agregoProcesosPolimorficamente(){
-		lanzador.agregarProceso(proceso1);
-		lanzador.agregarProceso(proceso2);
+		lanzador.agregaAPendientes(proceso1);
+		lanzador.agregaAPendientes(proceso2);
 		//TODO agregar otro tipo de proceso
-		Assert.assertEquals(2,lanzador.getProcesos().size(),0);
+		Assert.assertEquals(2,lanzador.getPendientes().size(),0);
 	}
 	
 	@Test
