@@ -156,4 +156,42 @@ public class TestExterno {
 		Assert.assertTrue(pois.get(0).getTags().contains("chocolates"));
 		Assert.assertTrue(pois.get(0).getTags().contains("helado"));
 	}
+	
+	//	@Test
+//	public void testNoExisteEseID(){
+//		List<String> palabras = new ArrayList<String>();
+//		palabras.add("123");
+//		bpAdapter.consultar(palabras);
+//		int cantidadPois = Mapa.getInstance().cantidadPois();
+//		Assert.assertEquals(2,cantidadPois,0);
+//	}
+	
+	 @Test
+	    public void obtenerConUnFiltro() throws Exception {
+	        //Se solicita todos los datos de un libro por su isbn.
+	        ClientResponse response = this.bpAdapter.getBookByFilter("","");
+	        assertEquals(response.getStatus(), 200);
+	        String json = response.getEntity(String.class);
+	        assertTrue(json.contains("122"));
+	        assertTrue(json.contains("123"));
+	        assertFalse(json.contains("321"));
+	        assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
+	        assertTrue(json.contains("id"));
+	        
+	        
+	    }
+	
+//	@Test
+//    public void obtenerConDosFiltros() throws Exception {
+//        //Se filtra y devuelve solo el campo titulo.
+//        ClientResponse response = this.bpAdapter.getBookByFilter("","","");
+//        assertEquals(response.getStatus(), 200);
+//        String json = response.getEntity(String.class);
+//        assertTrue(json.contains("122"));
+//        assertTrue(json.contains("123"));
+//        assertFalse(json.contains("321"));
+//        //assertFalse(json.contains("2016-06-22T02:10:58.128Z"));
+//        assertTrue(json.contains("id"));
+//      
+//    }
 }
