@@ -55,7 +55,7 @@ public class ManejadorDeErrores {
 		proceso.reiniciarIntentos(); 
 	}
 	
-	private boolean superoLimiteFallos(Proceso proceso){
+	public boolean superoLimiteFallos(Proceso proceso){
 		return proceso.getIntentos()>limite;
 	}
 	
