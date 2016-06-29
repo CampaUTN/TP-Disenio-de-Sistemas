@@ -172,20 +172,20 @@ public class TestExterno {
 //	}
 	
 	 @Test
-	    public void obtenerConUnFiltro() throws Exception {
+	    public void consultarConFiltro() throws Exception {
 	        //Se solicita todos los datos de un libro por su isbn.
-	        ClientResponse response = this.bpAdapter.getBookByFilter("","");
+	        ClientResponse response = this.bpAdapter.consultar("","");
 	        Assert.assertEquals(response.getStatus(), 200);
 	        String json = response.getEntity(String.class);
 	        Assert.assertTrue(json.contains("122"));
 	        Assert.assertTrue(json.contains("123"));
 	        Assert.assertFalse(json.contains("321"));
 	        Assert.assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
-	        Assert.assertTrue(json.contains("id"));
-	        
-	        
+	        Assert.assertTrue(json.contains("id")); 
 	    }
 	
+	 
+	 
 //	@Test
 //    public void obtenerConDosFiltros() throws Exception {
 //        //Se filtra y devuelve solo el campo titulo.

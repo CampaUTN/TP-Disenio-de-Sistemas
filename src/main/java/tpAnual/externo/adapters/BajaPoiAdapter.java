@@ -41,7 +41,7 @@ public class BajaPoiAdapter {
 	    
 	    
 	  //Prueba de concepto de un parametro y los mensajes por separado para identificar los tipos de datos.
-	    public ClientResponse getBookByFilter(String filter, String value){
+	    public ClientResponse consultar(String filter, String value){
 	        WebResource recurso = this.client.resource(API_GOOGLE).path(RESOURCE);
 	        WebResource recursoConParametros = recurso.queryParam("q",filter + ":" + value);
 	        WebResource.Builder builder = recursoConParametros.accept(MediaType.APPLICATION_JSON);
@@ -49,13 +49,13 @@ public class BajaPoiAdapter {
 	        return response;
 	    }
 	    
-	    public ClientResponse getBookByFilter(String filter, String value, String fields){
-	        ClientResponse response = this.client.resource(API_GOOGLE).path(RESOURCE)
-	                .queryParam("q",value).queryParam("fields",fields)
-	                .accept(MediaType.APPLICATION_JSON)
-	                .get(ClientResponse.class);
-	        return response;
-	    }
+//	    public ClientResponse getBookByFilter(String filter, String value, String fields){
+//	        ClientResponse response = this.client.resource(API_GOOGLE).path(RESOURCE)
+//	                .queryParam("q",value).queryParam("fields",fields)
+//	                .accept(MediaType.APPLICATION_JSON)
+//	                .get(ClientResponse.class);
+//	        return response;
+//	    }
 	    
 	    
 	    
