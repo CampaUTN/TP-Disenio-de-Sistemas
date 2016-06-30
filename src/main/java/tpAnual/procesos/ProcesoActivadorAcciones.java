@@ -28,7 +28,7 @@ public class ProcesoActivadorAcciones extends Proceso{
 		
 		this.activarMapa.put("Mail",()->this.activarMail());
 		this.activarMapa.put("Registro",()->this.activarRegistros());
-		this.desactivarMapa.put("Registro",()->this.desactivarMail());
+		this.desactivarMapa.put("Mail",()->this.desactivarMail());
 		this.desactivarMapa.put("Registro",()->this.desactivarRegistros());
 	}
 	
