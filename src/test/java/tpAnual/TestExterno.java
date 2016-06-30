@@ -16,6 +16,7 @@ import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExterno;
+import tpAnual.procesos.ProcesoBajaPoi;
 
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -164,9 +165,8 @@ public class TestExterno {
 	
 		@Test
 	public void testNoExisteEseID(){
-		List<String> palabras = new ArrayList<String>();
-		palabras.add("123");
-		bpAdapter.consultar(palabras);
+		ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
+		procesoBaja.realizarProceso();
 		int cantidadPois = Mapa.getInstance().cantidadPois();
 		Assert.assertEquals(2,cantidadPois,0);
 	}
@@ -174,7 +174,7 @@ public class TestExterno {
 	 @Test
 	    public void consultarConFiltro() throws Exception {
 	        //Se solicita todos los datos de un libro por su isbn.
-	        ClientResponse response = this.bpAdapter.consultar("","");
+	        ClientResponse response = this.bpAdapter.consultarUrl("","");
 	        Assert.assertEquals(response.getStatus(), 200);
 	        String json = response.getEntity(String.class);
 	        Assert.assertTrue(json.contains("122"));

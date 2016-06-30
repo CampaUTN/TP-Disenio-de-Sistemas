@@ -29,7 +29,6 @@ import javax.ws.rs.core.MediaType;
 
 public class BajaPoiAdapter{
 		
-	List<PoiAEliminar> poisExternos = new ArrayList<PoiAEliminar>();
 	private MockBajaPoi mockBajaPoi = new MockBajaPoi();
 	
 	private Client client;
