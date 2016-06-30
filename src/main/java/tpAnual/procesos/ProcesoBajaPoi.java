@@ -24,7 +24,6 @@ public class ProcesoBajaPoi extends Proceso {
 	 
 	 public void eliminarPoi(PoiAEliminar poiAEliminar){
 		    int id = poiAEliminar.getId();
-		    String fechaEliminado = poiAEliminar.getFechaEliminado();
 		    Mapa.getInstance().baja(Mapa.getInstance().pois.stream()
 		    	    .filter(poi -> poi.getId() == id).collect(Collectors.toList()).get(0));
 		}	 

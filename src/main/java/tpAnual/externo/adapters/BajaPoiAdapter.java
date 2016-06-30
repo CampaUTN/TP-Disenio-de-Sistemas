@@ -35,13 +35,12 @@ public class BajaPoiAdapter{
 	private static final String API_GOOGLE = "http://demo3537367.mockable.io/trash";
 	private static final String RESOURCE = "pois";
 
-	    //Inicializacion del cliente.
+	//Inicializacion del cliente.
 	public BajaPoiAdapter() {
 		this.client = Client.create();
 	}
 	    
-	    
-	  //Prueba de concepto de un parametro y los mensajes por separado para identificar los tipos de datos.
+	//Prueba de concepto de un parametro y los mensajes por separado para identificar los tipos de datos.
 	public ClientResponse consultarUrl(String filter, String value){
 		WebResource recurso = this.client.resource(API_GOOGLE).path(RESOURCE);
 		WebResource recursoConParametros = recurso.queryParam("q",filter + ":" + value);
@@ -67,6 +66,7 @@ public class BajaPoiAdapter{
 		
 		Gson gson = new Gson();
 		String contenido = null;
+		
 		try {
 			contenido = FileUtils.readFileToString(reader,Charset.defaultCharset());
 		} catch (IOException e) {
