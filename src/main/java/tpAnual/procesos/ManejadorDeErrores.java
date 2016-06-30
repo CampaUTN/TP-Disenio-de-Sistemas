@@ -70,8 +70,8 @@ public class ManejadorDeErrores {
 		Lanzador.getInstance().solicitudEjecucion(proceso);
 	}
 	
-	public ResultadoEjecucionProceso generarResultado(Proceso proceso, boolean fallo){
-		return new ResultadoEjecucionProceso(proceso.getNombre(), LocalDate.now(), LocalTime.now(), fallo);
+	public void generarResultado(Proceso proceso, boolean fallo){
+		resultados.add(new ResultadoEjecucionProceso(proceso.getNombre(), LocalDate.now(), LocalTime.now(), fallo));
 	}
 
 	public List<ResultadoEjecucionProceso> getResultados() {

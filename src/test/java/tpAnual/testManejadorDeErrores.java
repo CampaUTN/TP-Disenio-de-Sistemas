@@ -19,7 +19,6 @@ public class testManejadorDeErrores {
 	private int limite;
 	private IEmailSenderFallo mockSender = Mockito.mock(IEmailSenderFallo.class);
 	private ProcesoActivadorAcciones proceso;
-	private LocalComercialAdapter proceso2;
 	
 	@Before
 	public void init(){
@@ -87,5 +86,21 @@ public class testManejadorDeErrores {
 		ManejadorDeErrores.getInstance().activarAvisoPorMail();
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Mockito.verify(mockSender).enviarMensajePorFallo(Mockito.any());
+	}
+	
+	@Test
+	public void registraEventosFallidos(){
+		proceso = ProcesoActivadorAcciones.EnTodos(activar, new HashSet<>());
+		ManejadorDeErrores.getInstance().setLimite(2);
+		Lanzador.getInstance().ejecutarProceso(proceso);
+		Assert.assertEquals(3, ManejadorDeErrores.getInstance().getResultados().size(),0);
+	}
+	
+	@Test
+	public void registraEventosExitosos(){
+		proceso = ProcesoActivadorAcciones.EnTodos(activar, desactivar);
+		ManejadorDeErrores.getInstance().setLimite(2);
+		Lanzador.getInstance().ejecutarProceso(proceso);
+		Assert.assertEquals(1, ManejadorDeErrores.getInstance().getResultados().size(),0);
 	}
 }
