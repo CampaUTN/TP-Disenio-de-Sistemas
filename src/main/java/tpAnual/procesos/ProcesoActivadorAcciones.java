@@ -23,8 +23,8 @@ public class ProcesoActivadorAcciones extends Proceso{
 	
 	private ProcesoActivadorAcciones(Set<Terminal> terminalesFiltradas,Set<String> activar,Set<String> desactivar){	//Para que no se pueda instanciar sin criterio
 		this.terminales = terminalesFiltradas;
-		this.activar.addAll(activar);
-		this.desactivar.addAll(desactivar);
+		this.activar = activar;
+		this.desactivar = desactivar;
 		
 		this.activarMapa.put("Mail",()->this.activarMail());
 		this.activarMapa.put("Registro",()->this.activarRegistros());

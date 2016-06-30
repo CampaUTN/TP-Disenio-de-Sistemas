@@ -162,14 +162,14 @@ public class TestExterno {
 		Assert.assertTrue(pois.get(0).getTags().contains("helado"));
 	}
 	
-	//	@Test
-//	public void testNoExisteEseID(){
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("123");
-//		bpAdapter.consultar(palabras);
-//		int cantidadPois = Mapa.getInstance().cantidadPois();
-//		Assert.assertEquals(2,cantidadPois,0);
-//	}
+		@Test
+	public void testNoExisteEseID(){
+		List<String> palabras = new ArrayList<String>();
+		palabras.add("123");
+		bpAdapter.consultar(palabras);
+		int cantidadPois = Mapa.getInstance().cantidadPois();
+		Assert.assertEquals(2,cantidadPois,0);
+	}
 	
 	 @Test
 	    public void consultarConFiltro() throws Exception {

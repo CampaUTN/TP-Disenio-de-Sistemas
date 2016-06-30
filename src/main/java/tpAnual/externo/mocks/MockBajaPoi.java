@@ -4,7 +4,7 @@ import java.io.File;
 
 public class MockBajaPoi {
 	
-	public File consultar(String palabra){
+	public File consultar(){
 		return FileUtils.getFile("src/test/resources/bajapois.json");
 	}
 
