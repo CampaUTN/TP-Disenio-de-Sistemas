@@ -26,9 +26,16 @@ public class Planificador implements IPlanificador{
 
 	public void ejecutarAFechaYHora(HorarioProceso horario, LocalDate fecha, LocalTime hora) {
 		if(tieneQueEjecutarse(horario, fecha, hora)){
-			Lanzador.getInstance().agregaAPendientes(horario.getProceso());
+			notificarLanzador(horario);
 		}
 		
 	}
 
+	public void notificarLanzador(HorarioProceso horario) {
+		Lanzador.getInstance().agregaAPendientes(horario.getProceso());
+		
+	}
+
+	
+	
 }

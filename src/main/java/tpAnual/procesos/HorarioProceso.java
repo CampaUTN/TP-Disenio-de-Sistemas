@@ -28,6 +28,11 @@ public class HorarioProceso {
 		this.hora = hora;
 		this.fecha = fecha;
 	}
+	
+	public static HorarioProceso horarioEspecifico(Proceso proceso,LocalDate fecha, LocalTime hora) {
+		return new HorarioProceso(proceso, fecha, hora);
+	}
+	
 	public static HorarioProceso horarioRutinario(Proceso proceso, LocalTime hora) {
 		return new HorarioProceso(proceso, null, hora);
 	}

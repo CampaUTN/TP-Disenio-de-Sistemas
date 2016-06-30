@@ -11,6 +11,7 @@ public class Lanzador{
 	private ManejadorDeErrores manejador = ManejadorDeErrores.getInstance();
 	private List <Proceso> pendientes = new ArrayList<>();
 	private IPlanificador planificador;
+	private boolean ejecutando;
 	
 	private Lanzador(){}
 	
@@ -29,31 +30,48 @@ public class Lanzador{
 		pendientes.add(unProceso);
 	}
 	
+	public void ordenEjecucion(Proceso unProceso){
+		if(!ejecutando){
+			ejecutando = true;
+			ejecutarProceso(unProceso);
+			ejecutarPendiente();
+		}
+		else{
+			agregaAPendientes(unProceso);
+		}
+		
+	}
+	
 	public void ejecutarProceso(Proceso unProceso){
 
 		try{ //flujo normal
-			
-			unProceso.realizarProceso(); 
+			unProceso.realizarProceso();
 			manejador.informarEjecucionCorrecta(unProceso);
-			ejecutarPendientes();
-			
+			ejecutando =false;
+						
 		} catch (Exception e) { //flujo alternativo
 		
 			manejador.informarEjecucionFallida(unProceso);
 		}
+	
+		
 	}
 			
-	private void ejecutarPendientes() {
+	public void ejecutarPendiente(){
 		if(!pendientes.isEmpty()){
-			
+			//Thread.currentThread().join();
 			Proceso aEjecutar = pendientes.get(0);
 			pendientes.remove(aEjecutar);
-			ejecutarProceso(aEjecutar);
+			ordenEjecucion(aEjecutar);
 			
 		}		
 	}
 	
 	/*--------Getters-------*/	
+	public boolean estaEjecutando(){
+		return ejecutando;
+	}
+	
 	public List<Proceso> getPendientes(){
 		return pendientes;
 	}

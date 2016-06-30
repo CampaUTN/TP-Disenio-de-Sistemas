@@ -11,4 +11,5 @@ public interface IPlanificador {
 	public void programarProcesoRutinario(Proceso proceso, LocalTime Fecha);
 	public boolean tieneQueEjecutarse(HorarioProceso horario, LocalDate fecha , LocalTime hora);
 	public void ejecutarAFechaYHora(HorarioProceso horario, LocalDate fecha , LocalTime hora);
+	public void notificarLanzador(HorarioProceso horario);
 }
