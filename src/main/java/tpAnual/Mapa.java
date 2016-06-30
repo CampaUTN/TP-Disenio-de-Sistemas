@@ -13,7 +13,7 @@ public class Mapa {
 	
 	public List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
-	public int id = 0;
+	public Integer id = 0;
 	
 	private static Mapa instance = null;
 	
@@ -73,7 +73,7 @@ public class Mapa {
 		return this.terminales;
 	}
 
-	public int getNextId(){
+	public Integer getNextId(){
 		this.id++;
 		return this.id;
 	}

@@ -19,7 +19,7 @@ public class Poi {
 	private String calle;
 	@SuppressWarnings("unused")
 	private Integer direccion;
-	private int id;
+	private Integer id;
 	
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
@@ -99,7 +99,7 @@ public class Poi {
 		
 	}
 	
-	public int getId(){
+	public Integer getId(){
 		return id;
 	}
 	

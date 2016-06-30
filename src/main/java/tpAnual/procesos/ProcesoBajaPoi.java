@@ -23,7 +23,7 @@ public class ProcesoBajaPoi extends Proceso {
 		 poisExternos.forEach(poi -> this.eliminarPoi(poi.getId()));
 	}
 	 
-	 public void eliminarPoi(int id){
+	 public void eliminarPoi(Integer id){
 		Mapa mapa = Mapa.getInstance();
 		List<Poi> pois = new ArrayList<>();
 		pois = mapa.pois;
@@ -33,7 +33,7 @@ public class ProcesoBajaPoi extends Proceso {
 		while (iter.hasNext()) {
 		    Poi poi = iter.next();
 
-		    if (poi.getId()==id){
+		    if (poi.getId().equals(id)){
 		        iter.remove();
 		        mapa.baja(poi);
 		    }
