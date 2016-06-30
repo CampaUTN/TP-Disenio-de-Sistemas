@@ -19,7 +19,7 @@ public class ProcesoBajaPoi extends Proceso {
 	}
 	
 	 public void realizarProceso(){ //Command para el lanzador
-			poisExternos.stream().forEach(poi -> this.eliminarPoi(poi));
+			poisExternos.forEach(poi -> this.eliminarPoi(poi));
 	}
 	 
 	 public void eliminarPoi(PoiAEliminar poiAEliminar){

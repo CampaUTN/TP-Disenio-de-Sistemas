@@ -25,7 +25,6 @@ public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
 	private LocalComercialAdapter lcAdapter = new LocalComercialAdapter();
-	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
 	
 	@Test
 	public void testDevuelveListaExternaBanco(){
@@ -163,40 +162,5 @@ public class TestExterno {
 		Assert.assertTrue(pois.get(0).getTags().contains("helado"));
 	}
 	
-		@Test
-	public void testNoExisteEseID(){
-		ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
-		procesoBaja.realizarProceso();
-		int cantidadPois = Mapa.getInstance().cantidadPois();
-		Assert.assertEquals(2,cantidadPois,0);
-	}
-	
-	 @Test
-	    public void consultarConFiltro() throws Exception {
-	        //Se solicita todos los datos de un libro por su isbn.
-	        ClientResponse response = this.bpAdapter.consultarUrl("","");
-	        Assert.assertEquals(response.getStatus(), 200);
-	        String json = response.getEntity(String.class);
-	        Assert.assertTrue(json.contains("122"));
-	        Assert.assertTrue(json.contains("123"));
-	        Assert.assertFalse(json.contains("321"));
-	        Assert.assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
-	        Assert.assertTrue(json.contains("id")); 
-	    }
-	
-	 
-	 
-//	@Test
-//    public void obtenerConDosFiltros() throws Exception {
-//        //Se filtra y devuelve solo el campo titulo.
-//        ClientResponse response = this.bpAdapter.getBookByFilter("","","");
-//        assertEquals(response.getStatus(), 200);
-//        String json = response.getEntity(String.class);
-//        assertTrue(json.contains("122"));
-//        assertTrue(json.contains("123"));
-//        assertFalse(json.contains("321"));
-//        //assertFalse(json.contains("2016-06-22T02:10:58.128Z"));
-//        assertTrue(json.contains("id"));
-//      
-//    }
+
 }
