@@ -4,6 +4,11 @@ jdk:
   - oraclejdk8
 
 notifications:
+
+  slack:
+    rooms:
+      - dds-jv-utn-ba:NSgEDJ0UiJCBmUhm9rRRQkoL#jm-group-07
+
   email:
     recipients:
       - gastonprietoutn@gmail.com
