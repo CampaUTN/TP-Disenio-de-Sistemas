@@ -17,7 +17,7 @@ public class ManejadorDeErrores {
 	
 	private ManejadorDeErrores(){
 		resultados = new ArrayList<ResultadoEjecucionProceso>();
-		envioDeMailActivado = false;
+		envioDeMailActivado = true;
 		limite = 1;
 	}
 	
@@ -76,5 +76,13 @@ public class ManejadorDeErrores {
 	
 	public void setSender(IEmailSenderFallo sender){
 		this.sender = sender;
+	}
+	
+	public void activarAvisoPorMail(){
+		envioDeMailActivado = true;
+	}
+	
+	public void desactivarAvisoPorMail(){
+		envioDeMailActivado = false;
 	}
 }
