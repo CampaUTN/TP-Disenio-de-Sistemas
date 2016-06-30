@@ -14,6 +14,7 @@ import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.procesos.IPlanificador;
 import tpAnual.procesos.Lanzador;
 import tpAnual.procesos.ProcesoActivadorAcciones;
+import tpAnual.procesos.ProcesoActualizarLocales;
 import tpAnual.procesos.ManejadorDeErrores;
 
 public class TestLanzador {
@@ -23,7 +24,7 @@ public class TestLanzador {
 	Set<String> desactivar = new HashSet<>();
 		
 	private ProcesoActivadorAcciones proceso1;
-	private LocalComercialAdapter proceso2;
+	private ProcesoActualizarLocales proceso2;
 		
 	private IPlanificador planificador; 
 	
@@ -39,7 +40,7 @@ public class TestLanzador {
 		desactivar.add("chau");
 				
 		proceso1 = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
-		proceso2 = new LocalComercialAdapter();
+		proceso2 = new ProcesoActualizarLocales();
 		
 		planificador = Mockito.mock(IPlanificador.class);
 	}

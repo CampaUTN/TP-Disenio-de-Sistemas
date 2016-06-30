@@ -7,12 +7,12 @@ import java.util.List;
 import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
-import tpAnual.externo.sistemasExternos.PoiAEliminar;
+import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.procesos.operaciones.Proceso;
 
 public class ProcesoBajaPoi extends Proceso {
 	
-	public List<PoiAEliminar> poisExternos = new ArrayList<PoiAEliminar>();
+	public List<PoiAEliminarDTO> poisExternos = new ArrayList<PoiAEliminarDTO>();
 	BajaPoiAdapter bajaPoiAdapter = new BajaPoiAdapter();
 	
 	public ProcesoBajaPoi(){ //Cuando se instancia la clase se trae la ultima modificacion del archivo

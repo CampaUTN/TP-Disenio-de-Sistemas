@@ -1,6 +1,6 @@
 package tpAnual.externo.sistemasExternos;
 
-public class PoiAEliminar {
+public class PoiAEliminarDTO {
 	private int id;
     private String fechaEliminado;
     

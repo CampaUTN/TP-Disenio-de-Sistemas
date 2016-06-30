@@ -11,7 +11,7 @@ import java.util.List;
 //import java.util.stream.Collectors;
 
 import tpAnual.externo.mocks.MockBajaPoi;
-import tpAnual.externo.sistemasExternos.PoiAEliminar;
+import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 
 import org.apache.commons.io.FileUtils;
 
@@ -58,11 +58,11 @@ public class BajaPoiAdapter{
 //	    }
 	
 	
-	 public List<PoiAEliminar> consultar(){
+	 public List<PoiAEliminarDTO> consultar(){
 		 
 		File reader = mockBajaPoi.consultar();
 		 
-		List<PoiAEliminar> pois = new ArrayList<PoiAEliminar>();
+		List<PoiAEliminarDTO> pois = new ArrayList<PoiAEliminarDTO>();
 		
 		Gson gson = new Gson();
 		String contenido = null;
@@ -72,7 +72,7 @@ public class BajaPoiAdapter{
 		} catch (IOException e) {
 			throw new UnsupportedOperationException(e);
 		}
-		pois = gson.fromJson(contenido, new TypeToken<List<PoiAEliminar>>() {}.getType());
+		pois = gson.fromJson(contenido, new TypeToken<List<PoiAEliminarDTO>>() {}.getType());
 		
 		return pois;
 		
