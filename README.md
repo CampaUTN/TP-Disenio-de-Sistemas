@@ -53,4 +53,4 @@ Tambien convertimos la clase Mapa en un singleton para asegurar la unicidad de l
 
 Solucion 1 (Elegida)
 https://1drv.ms/u/s!Av0vPKTcwzssgTtJmbyCGPK_IGnk
-![alt tag](http://i.imgur.com/WlosSWi.png)
+![alt tag](http://i.imgur.com/FrkerDc.png)
