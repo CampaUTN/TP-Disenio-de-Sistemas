@@ -44,7 +44,7 @@ public class Planificador implements IPlanificador{
 	}
 
 	public void notificarLanzador(HorarioProceso horarioEjecucion) {
-		Lanzador.getInstance().agregaAPendientes(horarioEjecucion.getProceso());
+		Lanzador.getInstance().solicitudEjecucion(horarioEjecucion.getProceso());
 		
 	}
 	

@@ -1,18 +1,12 @@
 package tpAnual;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import junit.framework.AssertionFailedError;
-import tpAnual.externo.adapters.LocalComercialAdapter;
-import tpAnual.procesos.IPlanificador;
 import tpAnual.procesos.Lanzador;
 import tpAnual.procesos.ProcesoActivadorAcciones;
 import tpAnual.procesos.ProcesoActualizarLocales;
@@ -26,9 +20,7 @@ public class TestLanzador {
 		
 	private ProcesoActivadorAcciones proceso1;
 	private ProcesoActualizarLocales proceso2;
-		
-	private IPlanificador planificador; 
-	
+			
 	@Before
 	public void init(){
 		ManejadorDeErrores.resetSingleton();
@@ -43,7 +35,6 @@ public class TestLanzador {
 		proceso1 = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
 		proceso2 = new ProcesoActualizarLocales();
 		
-		planificador = Mockito.mock(IPlanificador.class);
 	}
 	
 	@Test
@@ -69,6 +60,6 @@ public class TestLanzador {
 		
 	@Test
 	public void seEjecutaUnProcesoALaVez(){
-		//TODO realizar test
+		//TODO testear
 	}	
 }

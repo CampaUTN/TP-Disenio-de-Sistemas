@@ -63,7 +63,7 @@ public class ManejadorDeErrores {
 	
 	private void reintentarEjecucion(Proceso proceso){
 		proceso.incrementarIntentos();
-		Lanzador.getInstance().ejecutarProceso(proceso);
+		Lanzador.getInstance().solicitudEjecucion(proceso);
 	}
 
 	public List<ResultadoEjecucionProceso> getResultados() {
