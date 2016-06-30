@@ -8,6 +8,8 @@ notifications:
   slack:
     rooms:
       - dds-jv-utn-ba:NSgEDJ0UiJCBmUhm9rRRQkoL#jm-group-07
+    on_success: change # default: always
+    on_failure: always # default: always
 
   email:
     recipients:
