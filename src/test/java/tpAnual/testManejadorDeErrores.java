@@ -3,12 +3,9 @@ package tpAnual;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.mockito.Mockito;
 
-import junit.framework.Assert;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.procesos.Lanzador;
 import tpAnual.procesos.ManejadorDeErrores;

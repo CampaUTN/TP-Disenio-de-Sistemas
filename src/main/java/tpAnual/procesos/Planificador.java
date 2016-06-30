@@ -11,7 +11,8 @@ public class Planificador implements IPlanificador{
 	private List<HorarioProceso> horarios = new ArrayList<>();
 
 	public void programarProceso(Proceso proceso,LocalDate fecha,LocalTime hora){
-		Lanzador.getInstance().agregaAPendientes(proceso);
+		HorarioProceso horario = HorarioProceso.horarioEspecifico(proceso, fecha, hora);
+		horarios.add(horario);
 	}
 	
 	public void programarProcesoRutinario(Proceso proceso, LocalTime hora){
@@ -19,23 +20,37 @@ public class Planificador implements IPlanificador{
 		horarios.add(horario);
 	}
 	
-	public boolean tieneQueEjecutarse(HorarioProceso horario, LocalDate fecha, LocalTime hora) {
-		return fecha.equals(horario.getFecha()) &&
-				hora.equals(horario.getHora());
+	public boolean tieneQueEjecutarse(HorarioProceso horarioEjecucion, LocalDate fecha, LocalTime hora) {
+		return fecha.equals(horarioEjecucion.getFecha()) &&
+				hora.equals(horarioEjecucion.getHora());
 	}
 
-	public void ejecutarAFechaYHora(HorarioProceso horario, LocalDate fecha, LocalTime hora) {
-		if(tieneQueEjecutarse(horario, fecha, hora)){
-			notificarLanzador(horario);
+	
+	public boolean tieneQueEjecutarseEnHora(HorarioProceso horarioEjecucion,LocalTime hora){
+		return horarioEjecucion.getHora().equals(hora);
+	}
+	
+	public void ejecutarAFechaYHora(HorarioProceso horarioEjecucion, LocalDate fecha, LocalTime hora) {
+		if(tieneQueEjecutarse(horarioEjecucion, fecha, hora)){
+			notificarLanzador(horarioEjecucion);
 		}
 		
+	}	
+	
+	public void ejecutarEnHora(HorarioProceso horarioEjecucion,LocalTime hora) {
+		if(tieneQueEjecutarseEnHora(horarioEjecucion, hora)){
+			notificarLanzador(horarioEjecucion);
+		}	
 	}
 
-	public void notificarLanzador(HorarioProceso horario) {
-		Lanzador.getInstance().agregaAPendientes(horario.getProceso());
+	public void notificarLanzador(HorarioProceso horarioEjecucion) {
+		Lanzador.getInstance().agregaAPendientes(horarioEjecucion.getProceso());
 		
 	}
-
+	
+	public List<HorarioProceso> getHorarios(){
+		return horarios;
+	}
 	
 	
 }

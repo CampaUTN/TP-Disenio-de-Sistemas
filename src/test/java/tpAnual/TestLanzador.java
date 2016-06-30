@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import junit.framework.AssertionFailedError;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.procesos.IPlanificador;
 import tpAnual.procesos.Lanzador;
@@ -65,16 +66,6 @@ public class TestLanzador {
 		Assert.assertEquals(0,proceso1.getIntentos(),0);
 	}
 		
-	@Test
-	public void elProcesoSeEjecutaConExcepcion(){
-		//TODO realizar test
-	}	
-	
-	@Test
-	public void elProcesoSeEjecutaALaHoraIndicada(){
-		//TODO realizar test
-	}	
-	
 	@Test
 	public void seEjecutaUnProcesoALaVez(){
 		//TODO realizar test
