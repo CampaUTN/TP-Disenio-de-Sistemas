@@ -9,13 +9,13 @@ public class ResultadoEjecucionProceso {
 	private String  nombreProceso;
 	private LocalDate fecha;
 	private LocalTime hora;
-	private String resultado;
+	private boolean fallo;
 	
 	
-	public ResultadoEjecucionProceso(Proceso proceso, LocalDate fecha, LocalTime hora, String resultado){
-		this.nombreProceso = proceso.getNombre();
+	public ResultadoEjecucionProceso(String nombre, LocalDate fecha, LocalTime hora, boolean fallo){
+		this.nombreProceso = nombre;
 		this.fecha = fecha;
 		this.hora = hora;
-		this.resultado = resultado;
+		this.fallo = fallo;
 	}
 }

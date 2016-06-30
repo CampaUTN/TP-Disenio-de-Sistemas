@@ -1,5 +1,7 @@
 package tpAnual.procesos;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +47,10 @@ public class ManejadorDeErrores {
 	public void informarEjecucionFallida(Proceso proceso){
 		if(superoLimiteFallos(proceso)){
 			manejarFallo(proceso);
+			this.generarResultado(proceso, true);
 		}else{
 			this.reintentarEjecucion(proceso);
+			generarResultado(proceso, false);
 		}
 	}
 	
@@ -64,6 +68,10 @@ public class ManejadorDeErrores {
 	private void reintentarEjecucion(Proceso proceso){
 		proceso.incrementarIntentos();
 		Lanzador.getInstance().solicitudEjecucion(proceso);
+	}
+	
+	public ResultadoEjecucionProceso generarResultado(Proceso proceso, boolean fallo){
+		return new ResultadoEjecucionProceso(proceso.getNombre(), LocalDate.now(), LocalTime.now(), fallo);
 	}
 
 	public List<ResultadoEjecucionProceso> getResultados() {
