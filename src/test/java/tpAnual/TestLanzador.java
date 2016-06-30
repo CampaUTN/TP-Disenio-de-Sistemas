@@ -32,6 +32,7 @@ public class TestLanzador {
 		ManejadorDeErrores.resetSingleton();
 		Lanzador.resetSingleton();
 		lanzador = Lanzador.getInstance();
+		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		
 		terminales.add(new Terminal(0));
 		activar.add("hola");

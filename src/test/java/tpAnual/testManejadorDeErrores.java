@@ -29,8 +29,11 @@ public class testManejadorDeErrores {
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();
+		Lanzador.resetSingleton();
+		ManejadorDeErrores.resetSingleton();
 		limite=3;
 		ManejadorDeErrores.getInstance().setLimite(limite);
+		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		terminales.add(new Terminal(0));
 		activar.add("hola");
 		desactivar.add("chau");
@@ -45,35 +48,47 @@ public class testManejadorDeErrores {
 	}
 	
 	@Test
-	public void testLimiteAlcanzado(){
+	public void seReinicianLosIntentosDespuesDeQueSuperaElLimite(){
 		// Seteo todo en null para que de null pointer exception y se tenga que reejecutar
-		proceso = ProcesoActivadorAcciones.EnComuna(9, null, null);
+		Set<String> activadosParaRomper = new HashSet<String>();
+		activadosParaRomper.add(null);
+		proceso = ProcesoActivadorAcciones.EnTodos(activadosParaRomper, new HashSet<>());
 		Lanzador.getInstance().ejecutarProceso(proceso);
-		//se va a intentar reejecutar hasta superar el limite.
-		Assert.assertEquals(limite, proceso.getIntentos(),0);
+		Assert.assertEquals(0, proceso.getIntentos(),0);
 	}
 	
 	@Test
 	public void noSumaReintentosSiNoSeReejecuta(){
-		Lanzador.getInstance().ejecutarProceso(proceso);
 		limite=0;
 		ManejadorDeErrores.getInstance().setLimite(limite);
 		Assert.assertEquals(limite, proceso.getIntentos(),0);
+		Lanzador.getInstance().ejecutarProceso(proceso);
 	}
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		Lanzador.getInstance().ejecutarProceso(proceso);
 		limite=-1;
 		ManejadorDeErrores.getInstance().setLimite(limite);
+		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(0, proceso.getIntentos(),0);
 	}
 	
 	@Test
 	public void noEnviaMailSiNoEstanActivados(){
-		proceso = ProcesoActivadorAcciones.EnComuna(9, null, null);
+		ManejadorDeErrores.getInstance().setLimite(2);
+		ManejadorDeErrores.getInstance().setSender(mockSender);
+		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		Lanzador.getInstance().ejecutarProceso(proceso);
-		limite=2;
-		ManejadorDeErrores.getInstance().setLimite(limite);
+		Mockito.verifyZeroInteractions(mockSender);
+	}
+	
+	@Test
+	public void enviaMailSiEstanActivados(){
+		proceso = ProcesoActivadorAcciones.EnTodos(activar, new HashSet<>());
+		ManejadorDeErrores.getInstance().setLimite(2);
+		ManejadorDeErrores.getInstance().setSender(mockSender);
+		ManejadorDeErrores.getInstance().activarAvisoPorMail();
+		Lanzador.getInstance().ejecutarProceso(proceso);
+		Mockito.verify(mockSender).enviarMensajePorFallo(Mockito.any());
 	}
 }
