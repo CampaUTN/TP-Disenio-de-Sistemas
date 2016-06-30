@@ -52,5 +52,5 @@ Tambien convertimos la clase Mapa en un singleton para asegurar la unicidad de l
 ###Diagrama de clases cuarta entrega
 
 Solucion 1 (Elegida)
-https://1drv.ms/u/s!Av0vPKTcwzssgTtJmbyCGPK_IGnk
-![alt tag](http://i.imgur.com/FrkerDc.png)
+https://onedrive.live.com/?authkey=!AEmZvIIY8r8gaeQ&id=2C3BC3DCA43C2FFD!182&cid=2C3BC3DCA43C2FFD
+![alt tag]()
