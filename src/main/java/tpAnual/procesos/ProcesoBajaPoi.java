@@ -28,13 +28,6 @@ public class ProcesoBajaPoi extends Proceso {
 		List<Poi> pois = new ArrayList<>();
 		pois = mapa.pois;
 		
-//		mapa.pois.forEach(poi->{
-//			if(poi.getId()==id){
-//				mapa.baja(poi);
-//				return;
-//			}
-//		});
-		
 		Iterator<Poi> iter = pois.iterator();
 
 		while (iter.hasNext()) {

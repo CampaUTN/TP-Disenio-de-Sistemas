@@ -11,8 +11,6 @@ import org.uqbar.geodds.Point;
 import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.POIs.Banco;
-import tpAnual.POIs.EstacionDeColectivo;
-import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.procesos.ProcesoBajaPoi;
@@ -33,19 +31,20 @@ public class TestProcesoBajaPoi {
 	@Before
 	public void init(){
 		Mapa.resetSingleton();
-		poi.setId(123);
 		poi2.setId(122);
-		poi3.setId(125);
+		poi.setId(123);
+		poi3.setId(124);
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
+		Mapa.getInstance().alta(poi3);
 	}
 	
-//	@Test
-//	public void testNoExisteEseID(){
-//		procesoBaja.realizarProceso();
-//		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
-//	}
-//	
+	@Test
+	public void testNoExisteEseID(){
+		procesoBaja.realizarProceso();
+		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
+	}
+	
 	 @Test
 	    public void consultarConFiltro() throws Exception {
 	        //Se solicita todos los datos de un libro por su isbn.
