@@ -7,13 +7,13 @@ public class ResultadoEjecucionProceso {
 	private String  nombreProceso;
 	private LocalDate fecha;
 	private LocalTime hora;
-	private boolean fallo;
+	private boolean seEjecutoCorrectamente;
 	
 	
-	public ResultadoEjecucionProceso(String nombre, LocalDate fecha, LocalTime hora, boolean fallo){
+	public ResultadoEjecucionProceso(String nombre, LocalDate fecha, LocalTime hora, boolean seEjecutoCorrectamente){
 		this.nombreProceso = nombre;
 		this.fecha = fecha;
 		this.hora = hora;
-		this.fallo = fallo;
+		this.seEjecutoCorrectamente = seEjecutoCorrectamente;
 	}
 }

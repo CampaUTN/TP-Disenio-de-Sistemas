@@ -1,16 +1,11 @@
 package tpAnual.batch;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-
 import tpAnual.batch.observers.EmailSenderFallo;
 import tpAnual.batch.observers.IEmailSenderFallo;
+import tpAnual.batch.observers.LoggerProcesos;
 import tpAnual.batch.procesos.Proceso;
 
 public class ManejadorDeErrores {
-	private List<ResultadoEjecucionProceso> resultados;
 	private static ManejadorDeErrores instance = null;
 	private boolean envioDeMailActivado;
 	private int limite;
@@ -18,7 +13,6 @@ public class ManejadorDeErrores {
 	private IEmailSenderFallo sender = EmailSenderFallo.getInstance();
 	
 	private ManejadorDeErrores(){
-		resultados = new ArrayList<ResultadoEjecucionProceso>();
 		envioDeMailActivado = true;
 		limite = 1;
 	}
@@ -38,6 +32,7 @@ public class ManejadorDeErrores {
 	 * Lo llama el Lanzador para avisar que un proceso se ejecuto correctamente.
 	 */
 	public void informarEjecucionCorrecta(Proceso proceso){
+		//LoggerProcesos.getInstance().registrarEjecucionExitosa(proceso);
 		proceso.reiniciarIntentos();  //Como se ejecuto OK, reinicio los intentos.
 	}
 	
@@ -45,12 +40,11 @@ public class ManejadorDeErrores {
 	 * Lo llama el Lanzador para avisar que un proceso fallo al ejecutarse.
 	 */
 	public void informarEjecucionFallida(Proceso proceso){
+		LoggerProcesos.getInstance().registrarEjecucionFallida(proceso);
 		if(superoLimiteFallos(proceso)){
 			manejarFallo(proceso);
-			this.generarResultado(proceso, true);
 		}else{
-			this.reintentarEjecucion(proceso);
-			generarResultado(proceso, false);
+			reintentarEjecucion(proceso);
 		}
 	}
 	
@@ -68,14 +62,6 @@ public class ManejadorDeErrores {
 	private void reintentarEjecucion(Proceso proceso){
 		proceso.incrementarIntentos();
 		Lanzador.getInstance().solicitudEjecucion(proceso);
-	}
-	
-	public void generarResultado(Proceso proceso, boolean fallo){
-		resultados.add(new ResultadoEjecucionProceso(proceso.getNombre(), LocalDate.now(), LocalTime.now(), fallo));
-	}
-
-	public List<ResultadoEjecucionProceso> getResultados() {
-		return resultados;
 	}
 
 	public void setLimite(int limite) {
