@@ -6,11 +6,10 @@ import java.util.Set;
 import org.junit.*;
 import org.mockito.Mockito;
 
-import tpAnual.externo.adapters.LocalComercialAdapter;
-import tpAnual.procesos.Lanzador;
-import tpAnual.procesos.ManejadorDeErrores;
-import tpAnual.procesos.ProcesoActivadorAcciones;
-import tpAnual.procesos.emailSenderFallo.IEmailSenderFallo;
+import tpAnual.batch.Lanzador;
+import tpAnual.batch.ManejadorDeErrores;
+import tpAnual.batch.observers.IEmailSenderFallo;
+import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class testManejadorDeErrores {
 	private Set<Terminal> terminales;

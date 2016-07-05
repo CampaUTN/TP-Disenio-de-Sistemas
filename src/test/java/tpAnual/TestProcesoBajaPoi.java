@@ -13,9 +13,6 @@ import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
-import tpAnual.externo.adapters.BajaPoiAdapter;
-import tpAnual.procesos.ProcesoBajaPoi;
-import tpAnual.externo.sistemasExternos.UrlExterna;
 
 public class TestProcesoBajaPoi {
 	

@@ -1,4 +1,4 @@
-package tpAnual.procesos;
+package tpAnual.batch.procesos;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,7 +7,6 @@ import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import tpAnual.procesos.operaciones.Proceso;
 
 public class ProcesoActualizarLocales extends Proceso{
 	

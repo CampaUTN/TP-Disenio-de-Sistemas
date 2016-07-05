@@ -1,9 +1,9 @@
-package tpAnual.procesos;
+package tpAnual.batch;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.batch.procesos.Proceso;
 
 public class Lanzador{
 	

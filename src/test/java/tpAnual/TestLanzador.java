@@ -7,10 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import tpAnual.procesos.Lanzador;
-import tpAnual.procesos.ProcesoActivadorAcciones;
-import tpAnual.procesos.ProcesoActualizarLocales;
-import tpAnual.procesos.ManejadorDeErrores;
+import tpAnual.batch.Lanzador;
+import tpAnual.batch.ManejadorDeErrores;
+import tpAnual.batch.procesos.ProcesoActivadorAcciones;
+import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
 public class TestLanzador {
 	private Lanzador lanzador;	

@@ -1,13 +1,13 @@
-package tpAnual.procesos;
+package tpAnual.batch;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.procesos.emailSenderFallo.EmailSenderFallo;
-import tpAnual.procesos.emailSenderFallo.IEmailSenderFallo;
-import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.batch.observers.EmailSenderFallo;
+import tpAnual.batch.observers.IEmailSenderFallo;
+import tpAnual.batch.procesos.Proceso;
 
 public class ManejadorDeErrores {
 	private List<ResultadoEjecucionProceso> resultados;

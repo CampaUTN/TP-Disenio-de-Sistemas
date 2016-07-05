@@ -1,6 +1,6 @@
-package tpAnual.procesos.operaciones;
+package tpAnual.batch.procesos;
 
-import tpAnual.procesos.Lanzador;
+import tpAnual.batch.Lanzador;
 
 public abstract class Proceso{
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.

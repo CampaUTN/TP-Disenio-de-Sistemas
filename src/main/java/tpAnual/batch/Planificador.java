@@ -1,11 +1,11 @@
-package tpAnual.procesos;
+package tpAnual.batch;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.batch.procesos.Proceso;
 
 public class Planificador implements IPlanificador{
 	private List<HorarioProceso> horarios = new ArrayList<>();

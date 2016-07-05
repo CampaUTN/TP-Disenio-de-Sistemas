@@ -11,9 +11,9 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.batch.procesos.ProcesoActualizarLocales;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import tpAnual.procesos.ProcesoActualizarLocales;
 
 public class TestProcesoActualizacionLocales {
 	

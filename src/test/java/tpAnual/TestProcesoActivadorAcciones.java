@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import tpAnual.procesos.ProcesoActivadorAcciones;
+import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class TestProcesoActivadorAcciones {
 	Set<Terminal> terminales = new HashSet<>();

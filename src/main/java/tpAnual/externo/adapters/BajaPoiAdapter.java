@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-//import tpAnual.procesos.operaciones.Proceso;
 //import java.util.stream.Collectors;
 
-import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
 

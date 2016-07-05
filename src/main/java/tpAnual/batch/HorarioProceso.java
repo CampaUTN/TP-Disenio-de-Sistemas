@@ -1,9 +1,9 @@
-package tpAnual.procesos;
+package tpAnual.batch;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.batch.procesos.Proceso;
 
 public class HorarioProceso {
 	private Proceso proceso;

@@ -2,9 +2,6 @@ package tpAnual.externo.adapters;
 
 import tpAnual.externo.mocks.MockLocalComercial;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import tpAnual.POIs.Poi;
-import tpAnual.procesos.operaciones.Proceso;
-import tpAnual.Mapa;
 import java.util.stream.Collectors;
 import java.io.BufferedReader;
 import java.io.File;

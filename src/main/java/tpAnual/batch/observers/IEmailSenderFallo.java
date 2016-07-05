@@ -1,6 +1,6 @@
-package tpAnual.procesos.emailSenderFallo;
+package tpAnual.batch.observers;
 
-import tpAnual.procesos.operaciones.Proceso;
+import tpAnual.batch.procesos.Proceso;
 
 /**
  * Interface para usar mockito.

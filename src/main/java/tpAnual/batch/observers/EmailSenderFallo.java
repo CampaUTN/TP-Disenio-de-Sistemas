@@ -1,7 +1,7 @@
-package tpAnual.procesos.emailSenderFallo;
+package tpAnual.batch.observers;
 
+import tpAnual.batch.procesos.Proceso;
 import tpAnual.com.EmailSender;
-import tpAnual.procesos.operaciones.Proceso;
 
 /**
  * Singleton para avisar por mail al administrador que un proceso fallo mas de N veces consecutivas.

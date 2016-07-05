@@ -1,4 +1,4 @@
-package tpAnual.procesos;
+package tpAnual.batch.procesos;
 
 //import java.lang.reflect.InvocationTargetException;
 //import java.lang.reflect.Method;
@@ -9,7 +9,6 @@ import java.util.Set;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
-import tpAnual.procesos.operaciones.Proceso;
 
 
 public class ProcesoActivadorAcciones extends Proceso{

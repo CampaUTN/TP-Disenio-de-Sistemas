@@ -1,4 +1,4 @@
-package tpAnual.procesos;
+package tpAnual.batch.procesos;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,6 @@ import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
-import tpAnual.procesos.operaciones.Proceso;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,9 +1,7 @@
-package tpAnual.procesos;
+package tpAnual.batch;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import tpAnual.procesos.operaciones.Proceso;
 
 public class ResultadoEjecucionProceso {
 	private String  nombreProceso;

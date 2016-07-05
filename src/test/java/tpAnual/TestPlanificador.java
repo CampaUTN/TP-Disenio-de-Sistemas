@@ -7,9 +7,9 @@ import java.util.Set;
 
 import org.junit.*;
 
-import tpAnual.procesos.HorarioProceso;
-import tpAnual.procesos.Planificador;
-import tpAnual.procesos.ProcesoActivadorAcciones;
+import tpAnual.batch.HorarioProceso;
+import tpAnual.batch.Planificador;
+import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class TestPlanificador extends TestSetup{
 
