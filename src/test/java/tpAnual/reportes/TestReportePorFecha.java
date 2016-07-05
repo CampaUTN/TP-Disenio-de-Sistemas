@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.reportes;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import tpAnual.acciones.reportes.ElementoReporte;
+import tpAnual.TestSetup;
 import tpAnual.acciones.RepositorioRegistros;
 
 

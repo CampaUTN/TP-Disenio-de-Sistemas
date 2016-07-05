@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.batch.procesos;
 
 import java.util.HashSet;
 
@@ -11,6 +11,7 @@ import org.uqbar.geodds.Point;
 
 import com.sun.jersey.api.client.ClientResponse;
 
+import tpAnual.Mapa;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 

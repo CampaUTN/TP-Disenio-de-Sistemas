@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.batch;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.ManejadorDeErrores;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;

@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.batch;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.junit.*;
 
+import tpAnual.TestSetup;
 import tpAnual.batch.HorarioProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;

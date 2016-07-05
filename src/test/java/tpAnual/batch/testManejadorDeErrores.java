@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.batch;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,6 +6,7 @@ import java.util.Set;
 import org.junit.*;
 import org.mockito.Mockito;
 
+import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.ManejadorDeErrores;
 import tpAnual.batch.observers.IEmailSenderFallo;

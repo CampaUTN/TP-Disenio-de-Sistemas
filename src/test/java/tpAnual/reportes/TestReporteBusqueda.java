@@ -1,10 +1,11 @@
-package tpAnual;
+package tpAnual.reportes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.*;
 
+import tpAnual.TestSetup;
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.acciones.reportes.RegistroBusqueda;
 

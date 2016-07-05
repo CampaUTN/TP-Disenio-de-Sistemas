@@ -1,9 +1,10 @@
-package tpAnual;
+package tpAnual.batch;
 
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
 
+import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.ManejadorDeErrores;
 import tpAnual.batch.observers.LoggerProcesos;
