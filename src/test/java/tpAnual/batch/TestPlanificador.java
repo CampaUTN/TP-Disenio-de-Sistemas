@@ -1,8 +1,10 @@
 package tpAnual.batch;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.*;
@@ -11,18 +13,19 @@ import tpAnual.TestSetup;
 import tpAnual.batch.HorarioProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
+import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
-public class TestPlanificador extends TestSetup{
+public class TestPlanificador{
 
 	private Planificador planificador = new Planificador();
-	private HorarioProceso planificacion1;
 	
 	private ProcesoActivadorAcciones proceso1;
+	private ProcesoActualizarLocales proceso2;
 	
 	private Set<String> procesosActivar = new HashSet<>();
 	private Set<String> procesosDesactivar = new HashSet<>();
 	
-	private LocalDate fecha;
+	private LocalDateTime fechaYHora;
 	private LocalTime hora;
 	
 	@Before
@@ -30,50 +33,60 @@ public class TestPlanificador extends TestSetup{
 	
 		procesosActivar.add("notificar");
 		proceso1 = ProcesoActivadorAcciones.EnTodos(procesosActivar, procesosDesactivar);
-		
-		fecha = LocalDate.parse("2016-05-05");
-		hora =  LocalTime.parse("10:30");
-		planificacion1 = HorarioProceso.horarioEspecifico(proceso1, fecha,hora);
-			
+		proceso2 = new ProcesoActualizarLocales();
+		fechaYHora = LocalDateTime.parse("2016-05-05T10:30");			
 	}
 	
 	@Test
 	public void elProcesoSePlanifica(){
-		planificador.programarProceso(proceso1, fecha,hora);
+		planificador.programarProceso(proceso1, fechaYHora);
 		Assert.assertFalse(planificador.getHorarios().isEmpty());
 	}
 	
 	
 	@Test
-	public void elProcesoSeEjecutaEnLaFechaYHoraDada(){
-		planificador.programarProceso(proceso1, fecha,hora);
-		Assert.assertTrue(planificador.tieneQueEjecutarse(planificacion1, fecha,hora));
+	public void noHayNingunProcesoParaEjecutar(){
+		Assert.assertTrue(planificador.getHorarios().isEmpty());
 	}
 	
 	@Test
-	public void elProcesoNoSeEjecutaEnLaFechaDada(){
-		planificador.programarProceso(proceso1, fecha,hora);
-		fecha = LocalDate.parse("2017-05-05");
+	public void noHayNingunProcesoParaEjecutarAEstaHora(){
+		LocalTime hora = LocalTime.parse("10:30");
+		
+		planificador.programarProceso(proceso1, fechaYHora);
+		planificador.programarProcesoRutinario(proceso2, hora);
+		
+		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(LocalDateTime.parse("2016-07-07T23:10"));
+		
+		Assert.assertTrue(horariosDisponibles.isEmpty());
+	}
+	
+		
+	@Test
+	public void seEjecutaUnProcesoALaFechaDada(){
+		planificador.programarProceso(proceso1, fechaYHora);
+
+		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
+		Assert.assertTrue(horariosDisponibles.get(0).getProceso().equals(proceso1));
+	}
+	
+	@Test
+	public void seEjecutaUnProcesoALaHoraDada(){
 		hora =  LocalTime.parse("10:30");
-		Assert.assertFalse(planificador.tieneQueEjecutarse(planificacion1, fecha,hora));
+		planificador.programarProcesoRutinario(proceso2, hora);
+		
+		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
+		
+		Assert.assertTrue(horariosDisponibles.get(0).getProceso().equals(proceso2));
 	}
 	
 	@Test
-	public void elProcesoNoSeEjecutaEnLaHoraDada(){
-		planificador.programarProceso(proceso1, fecha,hora);
-		fecha = LocalDate.parse("2016-05-05");
-		hora =  LocalTime.parse("13:56");
-		Assert.assertFalse(planificador.tieneQueEjecutarse(planificacion1,  fecha,hora));
-	}
-	
-	@Test
-	public void elProcesoSeEjecutaSoloEnLaHoraDada(){
-		hora =  LocalTime.parse("13:56");
+	public void seEjecutanDosProcesosEnLaMismaHora(){
+		LocalTime hora = LocalTime.parse("10:30");
 		
-		HorarioProceso planificacion2 = HorarioProceso.horarioRutinario(proceso1, hora);	
-		Assert.assertTrue(planificador.tieneQueEjecutarseEnHora(planificacion2, hora));
+		planificador.programarProceso(proceso1, fechaYHora);
+		planificador.programarProcesoRutinario(proceso2, hora);
 		
+		Assert.assertEquals(2, planificador.filtrarProcesos(fechaYHora).size());	
 	}
-	
-	
 }
