@@ -7,7 +7,7 @@ import java.util.List;
 
 import tpAnual.batch.procesos.Proceso;
 
-public class Planificador implements IPlanificador{
+public class Planificador{
 	private List<HorarioProceso> horarios = new ArrayList<>();
 
 	public void programarProceso(Proceso proceso,LocalDate fecha,LocalTime hora){
