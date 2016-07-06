@@ -12,7 +12,8 @@ public class ProcesoActualizarLocales extends Proceso{
 	
 	LocalComercialAdapter localAdapter = new LocalComercialAdapter();
 	
-	public void realizarProceso(){
+	@Override
+	public void ejecutar(){
 		List<Poi> pois = Mapa.getInstance().pois(); 
 		List<LocalComercialExternoDTO> locales = localAdapter.consultar();
 		locales.forEach(local->cambiarLocalComercial(pois,local));

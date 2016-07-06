@@ -1,14 +1,12 @@
 package tpAnual.batch.observers;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.batch.ResultadoEjecucionProceso;
 import tpAnual.batch.procesos.Proceso;
 
-public class LoggerProcesos {
+public class LoggerProcesos implements Accion{
 	private static LoggerProcesos instance = null;
 	private List<ResultadoEjecucionProceso> resultados;
 	
@@ -27,16 +25,10 @@ public class LoggerProcesos {
 	    instance = null;
 	}
 	
-	private void generarResultado(Proceso proceso, boolean seEjecutoCorrectamente){
-		resultados.add(new ResultadoEjecucionProceso(proceso.getNombre(), LocalDate.now(), LocalTime.now(), seEjecutoCorrectamente));
-	}
-	
-	public void registrarEjecucionExitosa(Proceso proceso){
-		this.generarResultado(proceso, true);
-	}
-	
-	public void registrarEjecucionFallida(Proceso proceso){
-		this.generarResultado(proceso, false);
+
+	@Override
+	public void accionar(Proceso proceso) {
+		resultados.add(new ResultadoEjecucionProceso(proceso));
 	}
 
 	

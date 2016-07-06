@@ -1,14 +1,8 @@
 package tpAnual.batch.observers;
 
-import tpAnual.batch.procesos.Proceso;
-
 /**
  * Interface para usar mockito.
  */
-public interface IEmailSenderFallo {
-	
-	public void enviarMensajePorFallo(Proceso proceso);
-
+public interface IEmailSenderFallo extends Accion{
 	public void setMailReceptor(String mailReceptor);
-
 }

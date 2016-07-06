@@ -52,8 +52,8 @@ public class ProcesoActivadorAcciones extends Proceso{
 		return new ProcesoActivadorAcciones(terminales,activar,desactivar);
 	}
 	
-	
-	public void realizarProceso(){
+	@Override
+	public void ejecutar(){
 		activar.forEach(palabra->this.activarMapa.get(palabra).run());
 		desactivar.forEach(palabra->this.desactivarMapa.get(palabra).run());
 	}

@@ -21,10 +21,9 @@ public class EmailSenderFallo extends EmailSender implements IEmailSenderFallo{
 	}
 	
 	@Override
-	public void enviarMensajePorFallo(Proceso proceso) {
+	public void accionar(Proceso proceso) {
 		enviarMensaje("Proceso fallido",
 				"El proceso "+proceso.getNombre()
-				+" falló luego de intentar ejecutarlo "
-				+proceso.getIntentos()+" veces.");
+				+" falló");
 	}
 }

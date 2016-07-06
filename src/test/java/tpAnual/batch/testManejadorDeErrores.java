@@ -8,8 +8,9 @@ import org.mockito.Mockito;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.ManejadorDeErrores;
 import tpAnual.batch.observers.IEmailSenderFallo;
+import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class testManejadorDeErrores {
@@ -26,65 +27,42 @@ public class testManejadorDeErrores {
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();
 		Lanzador.resetSingleton();
-		ManejadorDeErrores.resetSingleton();
 		limite=3;
-		ManejadorDeErrores.getInstance().setLimite(limite);
-		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		terminales.add(new Terminal(0));
-		activar.add("hola");
-		desactivar.add("chau");
+		activar.add("Mail");
+		desactivar.add("Registro");
 				
 		proceso = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
 	}
 	
 	@After
 	public void finalizar(){
-		ManejadorDeErrores.resetSingleton();
 		Lanzador.resetSingleton();
-	}
-	
-	@Test
-	public void seReinicianLosIntentosDespuesDeQueSuperaElLimite(){
-		// Seteo todo en null para que de null pointer exception y se tenga que reejecutar
-		Set<String> activadosParaRomper = new HashSet<String>();
-		activadosParaRomper.add(null);
-		proceso = ProcesoActivadorAcciones.EnTodos(activadosParaRomper, new HashSet<>());
-		Lanzador.getInstance().ejecutarProceso(proceso);
-		Assert.assertEquals(0, proceso.getIntentos(),0);
 	}
 	
 	@Test
 	public void noSumaReintentosSiNoSeReejecuta(){
 		limite=0;
-		ManejadorDeErrores.getInstance().setLimite(limite);
-		Assert.assertEquals(limite, proceso.getIntentos(),0);
+		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(limite);
+		proceso.agregarObservador(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
+		Assert.assertEquals(0, relanzador.getVecesConsecutivasQueFallo(),0);
 	}
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		limite=-1;
-		ManejadorDeErrores.getInstance().setLimite(limite);
+		proceso.agregarObservador(ReLanzador.ReLanzadorSinMail(-1));
 		Lanzador.getInstance().ejecutarProceso(proceso);
-		Assert.assertEquals(0, proceso.getIntentos(),0);
-	}
-	
-	@Test
-	public void noEnviaMailSiNoEstanActivados(){
-		ManejadorDeErrores.getInstance().setLimite(2);
-		ManejadorDeErrores.getInstance().setSender(mockSender);
-		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
-		Lanzador.getInstance().ejecutarProceso(proceso);
-		Mockito.verifyZeroInteractions(mockSender);
+		Assert.assertEquals(FinEjecucion.CORRECTO,proceso.getEstado());
 	}
 	
 	@Test
 	public void enviaMailSiEstanActivados(){
-		proceso = ProcesoActivadorAcciones.EnTodos(activar, new HashSet<>());
-		ManejadorDeErrores.getInstance().setLimite(2);
-		ManejadorDeErrores.getInstance().setSender(mockSender);
-		ManejadorDeErrores.getInstance().activarAvisoPorMail();
+		proceso = ProcesoActivadorAcciones.EnTodos(null, null);
+		ReLanzador relanzador = ReLanzador.ReLanzadorConMail(3);
+		relanzador.setSender(mockSender);
+		proceso.agregarObservador(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
-		Mockito.verify(mockSender).enviarMensajePorFallo(Mockito.any());
+		Mockito.verify(mockSender).accionar(Mockito.any());
 	}
 }

@@ -8,7 +8,6 @@ import tpAnual.batch.procesos.Proceso;
 public class Lanzador{
 	
 	private static Lanzador instance = null;
-	private ManejadorDeErrores manejador = ManejadorDeErrores.getInstance();
 	private List <Proceso> pendientes = new ArrayList<>();
 	private boolean ejecutando = false;
 	
@@ -45,20 +44,8 @@ public class Lanzador{
 	
 	
 	public void ejecutarProceso(Proceso unProceso){
-
-		try{ //flujo normal
-			unProceso.realizarProceso();
-			manejador.informarEjecucionCorrecta(unProceso);
-			
-			ejecutando= false;
-											
-		} catch (Exception e) { //flujo alternativo
-			
-			ejecutando=false;
-			manejador.informarEjecucionFallida(unProceso);
-		}
-	
-		
+		unProceso.realizarProceso();
+		ejecutando= false;					
 	}
 			
 	public void ejecutarPendientes(){
@@ -78,9 +65,4 @@ public class Lanzador{
 	public List<Proceso> getPendientes(){
 		return pendientes;
 	}
-	
-	public ManejadorDeErrores getManejador(){
-		return manejador;
-	}	
-	
 }

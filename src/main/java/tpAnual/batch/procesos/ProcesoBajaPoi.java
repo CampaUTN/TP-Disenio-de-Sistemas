@@ -25,7 +25,8 @@ public class ProcesoBajaPoi extends Proceso {
 		poisExternos = bajaPoiAdapter.consultar(url, path);
 	}
 	
-	public void realizarProceso(){ //Command para el lanzador
+	@Override
+	public void ejecutar(){ //Command para el lanzador
 		 poisExternos.forEach(poi -> this.eliminarPoi(poi.getId()));
 	}
 	 

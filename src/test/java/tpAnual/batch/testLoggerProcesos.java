@@ -6,8 +6,9 @@ import org.junit.*;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.ManejadorDeErrores;
 import tpAnual.batch.observers.LoggerProcesos;
+import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class testLoggerProcesos {
@@ -15,46 +16,49 @@ public class testLoggerProcesos {
 	private Set<String> activar;
 	private Set<String> desactivar;
 	private int limite;
-	private ProcesoActivadorAcciones proceso;
+	private Proceso proceso;
 	
 	@Before
 	public void init(){
-		ManejadorDeErrores.resetSingleton();
 		Lanzador.resetSingleton();
 		LoggerProcesos.resetSingleton();
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();
 		limite=2;
-		ManejadorDeErrores.getInstance().setLimite(limite);
-		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		terminales.add(new Terminal(0));
-		activar.add("hola");
-		desactivar.add("chau");
+		activar.add("Mail");
+		desactivar.add("Registro");
 				
 		proceso = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
+		proceso.agregarObservador(ReLanzador.ReLanzadorSinMail(limite));
 	}
 	
 	@After
 	public void finalizar(){
-		ManejadorDeErrores.resetSingleton();
 		Lanzador.resetSingleton();
 		LoggerProcesos.resetSingleton();
 	}
 	
-	// TODO 
-	//@Test
-	public void registraEventosFallidos(){
+	@Test
+	public void registraEventosFallidosSinRelanzador(){
 		proceso = ProcesoActivadorAcciones.EnTodos(activar, new HashSet<>());
-		ManejadorDeErrores.getInstance().setLimite(2);
 		Lanzador.getInstance().ejecutarProceso(proceso);
-		Assert.assertEquals(3, LoggerProcesos.getInstance().getResultados().size(),0);
+		Assert.assertEquals(1, LoggerProcesos.getInstance().getResultados().size(),0);
 	}
 	
-	//@Test
+	@Test
+	public void registraEventosFallidosConRelanzador(){
+		Proceso proceso1 = ProcesoActivadorAcciones.EnTodos(activar, null);
+		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(3);
+		proceso1.agregarObservador(relanzador);
+		Lanzador.getInstance().ejecutarProceso(proceso1);
+		Assert.assertEquals(1+3, LoggerProcesos.getInstance().getResultados().size(),0);
+	}
+	
+	@Test
 	public void registraEventosExitosos(){
 		proceso = ProcesoActivadorAcciones.EnTodos(activar, desactivar);
-		ManejadorDeErrores.getInstance().setLimite(2);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(1, LoggerProcesos.getInstance().getResultados().size(),0);
 	}

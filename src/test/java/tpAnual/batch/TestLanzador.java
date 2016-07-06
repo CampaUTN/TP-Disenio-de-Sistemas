@@ -3,13 +3,15 @@ package tpAnual.batch;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.ManejadorDeErrores;
+
+import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
@@ -24,18 +26,20 @@ public class TestLanzador {
 			
 	@Before
 	public void init(){
-		ManejadorDeErrores.resetSingleton();
 		Lanzador.resetSingleton();
 		lanzador = Lanzador.getInstance();
-		ManejadorDeErrores.getInstance().desactivarAvisoPorMail();
 		
 		terminales.add(new Terminal(0));
-		activar.add("hola");
-		desactivar.add("chau");
+		activar.add("Mail");
+		desactivar.add("Registro");
 				
 		proceso1 = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
 		proceso2 = new ProcesoActualizarLocales();
-		
+	}
+	
+	@After
+	public void after(){
+		Lanzador.resetSingleton();
 	}
 	
 	@Test
@@ -53,10 +57,11 @@ public class TestLanzador {
 		Assert.assertEquals(2,lanzador.getPendientes().size(),0);
 	}
 	
+	// FALLA Y NO SE POR QUE
 	@Test
 	public void elProcesoSeEjecutaBien(){
 		lanzador.ejecutarProceso(proceso1);
-		Assert.assertEquals(0,proceso1.getIntentos(),0);
+		Assert.assertEquals(FinEjecucion.CORRECTO,proceso1.getEstado());
 	}
 		
 	@Test
