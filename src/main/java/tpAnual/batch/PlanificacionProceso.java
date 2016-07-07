@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 import tpAnual.batch.procesos.Proceso;
 
-public class HorarioProceso {
+public class PlanificacionProceso {
 	private Proceso proceso;
 	private LocalTime hora;
 	private LocalDate fecha;
@@ -33,19 +33,19 @@ public class HorarioProceso {
 				fechaYhora.toLocalTime().equals(hora);
 	}
 	
-	public HorarioProceso(Proceso proceso,LocalDate fecha,LocalTime hora, boolean esPeriodico){
+	public PlanificacionProceso(Proceso proceso,LocalDate fecha,LocalTime hora, boolean esPeriodico){
 		this.proceso = proceso;
 		this.hora = hora;
 		this.fecha = fecha;
 		this.periodico = esPeriodico;
 	}
 	
-	public static HorarioProceso horarioEspecifico(Proceso proceso,LocalDateTime fechaYhora) {
-		return new HorarioProceso(proceso, fechaYhora.toLocalDate(), fechaYhora.toLocalTime(),false);
+	public static PlanificacionProceso unicaVez(Proceso proceso,LocalDateTime fechaYhora) {
+		return new PlanificacionProceso(proceso, fechaYhora.toLocalDate(), fechaYhora.toLocalTime(),false);
 	}
 	
-	public static HorarioProceso horarioRutinario(Proceso proceso, LocalTime hora) {
-		return new HorarioProceso(proceso,null, hora, true);
+	public static PlanificacionProceso periodico(Proceso proceso, LocalTime hora) {
+		return new PlanificacionProceso(proceso,null, hora, true);
 	}
 	
 	public boolean tieneQueEjecutarseAEstaHora(LocalTime hora){

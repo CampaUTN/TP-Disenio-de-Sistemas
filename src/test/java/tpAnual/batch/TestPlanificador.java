@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.junit.*;
 
-import tpAnual.batch.HorarioProceso;
+import tpAnual.batch.PlanificacionProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
@@ -60,7 +60,7 @@ public class TestPlanificador{
 		planificador.programarProceso(proceso1, fechaYHora);
 		planificador.programarProcesoRutinario(proceso2, hora);
 		
-		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(LocalDateTime.parse("2016-07-07T23:10"));
+		List<PlanificacionProceso> horariosDisponibles = planificador.filtrarProcesos(LocalDateTime.parse("2016-07-07T23:10"));
 		
 		Assert.assertTrue(horariosDisponibles.isEmpty());
 	}
@@ -70,7 +70,7 @@ public class TestPlanificador{
 	public void seEjecutaUnProcesoALaFechaDada(){
 		planificador.programarProceso(proceso1, fechaYHora);
 
-		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
+		List<PlanificacionProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
 		Assert.assertTrue(horariosDisponibles.get(0).getProceso().equals(proceso1));
 	}
 	
@@ -79,7 +79,7 @@ public class TestPlanificador{
 		hora =  LocalTime.parse("10:30");
 		planificador.programarProcesoRutinario(proceso2, hora);
 		
-		List<HorarioProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
+		List<PlanificacionProceso> horariosDisponibles = planificador.filtrarProcesos(fechaYHora);
 		
 		Assert.assertTrue(horariosDisponibles.get(0).getProceso().equals(proceso2));
 	}
