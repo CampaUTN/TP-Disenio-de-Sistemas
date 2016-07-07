@@ -1,6 +1,5 @@
 package tpAnual.batch;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -9,7 +8,6 @@ import java.util.Set;
 
 import org.junit.*;
 
-import tpAnual.TestSetup;
 import tpAnual.batch.HorarioProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
@@ -30,11 +28,17 @@ public class TestPlanificador{
 	
 	@Before
 	public void init(){
-	
+
+		Lanzador.resetSingleton();
 		procesosActivar.add("notificar");
 		proceso1 = ProcesoActivadorAcciones.EnTodos(procesosActivar, procesosDesactivar);
 		proceso2 = new ProcesoActualizarLocales();
 		fechaYHora = LocalDateTime.parse("2016-05-05T10:30");			
+	}
+	
+	@After
+	public void after(){
+		Lanzador.resetSingleton();
 	}
 	
 	@Test

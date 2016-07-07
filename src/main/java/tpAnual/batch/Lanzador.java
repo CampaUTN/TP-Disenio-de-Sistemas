@@ -37,11 +37,8 @@ public class Lanzador{
 			
 		}else{
 			agregaAPendientes(unProceso);
-		}
-		
-		
-	}
-	
+		}		
+	}	
 	
 	public void ejecutarProceso(Proceso unProceso){
 		unProceso.realizarProceso();

@@ -14,15 +14,17 @@ import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
+import tpAnual.batch.procesos.ProcesoBajaPoi;
 
-public class TestLanzador {
+public class TestLanzador{
 	private Lanzador lanzador;	
-	Set<Terminal> terminales = new HashSet<>();
-	Set<String> activar = new HashSet<>();
-	Set<String> desactivar = new HashSet<>();
+	private Set<Terminal> terminales = new HashSet<>();
+	private Set<String> activar = new HashSet<>();
+	private Set<String> desactivar = new HashSet<>();
 		
 	private ProcesoActivadorAcciones proceso1;
 	private ProcesoActualizarLocales proceso2;
+	private ProcesoBajaPoi proceso3;
 			
 	@Before
 	public void init(){
@@ -53,8 +55,8 @@ public class TestLanzador {
 	public void agregoProcesosPolimorficamente(){
 		lanzador.agregaAPendientes(proceso1);
 		lanzador.agregaAPendientes(proceso2);
-		//TODO agregar otro tipo de proceso
-		Assert.assertEquals(2,lanzador.getPendientes().size(),0);
+		lanzador.agregaAPendientes(proceso3);
+		Assert.assertEquals(3,lanzador.getPendientes().size());
 	}
 	
 	// FALLA Y NO SE POR QUE
@@ -63,9 +65,32 @@ public class TestLanzador {
 		lanzador.ejecutarProceso(proceso1);
 		Assert.assertEquals(FinEjecucion.CORRECTO,proceso1.getEstado());
 	}
-		
+	
+	@Test
+	public void elProcesoSeEjecutaMal(){
+		proceso1 = ProcesoActivadorAcciones.EnComuna(0, null , null);
+		lanzador.ejecutarProceso(proceso1);
+		Assert.assertEquals(FinEjecucion.FALLIDO,proceso1.getEstado());
+	}
+	
 	@Test
 	public void seEjecutaUnProcesoALaVez(){
-		//TODO testear
+		lanzador.solicitudEjecucion(proceso1);
+		Assert.assertFalse(lanzador.estaEjecutando());
 	}	
+	
+	@Test
+	public void seAgreganProcesosPendientes(){
+		lanzador.agregaAPendientes(proceso1);
+		lanzador.agregaAPendientes(proceso2);
+
+		Assert.assertFalse(lanzador.getPendientes().isEmpty());
+	}
+	
+	@Test
+	public void seEjecutanProcesosPendientes(){
+		lanzador.agregaAPendientes(proceso1);		
+		lanzador.solicitudEjecucion(proceso2);
+		Assert.assertTrue(lanzador.getPendientes().isEmpty());
+	}
 }
