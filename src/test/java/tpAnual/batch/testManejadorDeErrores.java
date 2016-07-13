@@ -46,14 +46,14 @@ public class testManejadorDeErrores {
 	public void noSumaReintentosSiNoSeReejecuta(){
 		limite=0;
 		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(limite);
-		proceso.agregarAccionPostEjecucion(relanzador);
+		proceso.agregarAccionPostFallo(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(0, relanzador.getVecesConsecutivasQueFallo(),0);
 	}
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		proceso.agregarAccionPostEjecucion(ReLanzador.ReLanzadorSinMail(-1));
+		proceso.agregarAccionPostFallo(ReLanzador.ReLanzadorSinMail(-1));
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(FinEjecucion.CORRECTO,proceso.getEstado());
 	}
@@ -63,7 +63,7 @@ public class testManejadorDeErrores {
 		proceso = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorConMail(3);
 		relanzador.setSender(mockSender);
-		proceso.agregarAccionPostEjecucion(relanzador);
+		proceso.agregarAccionPostFallo(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Mockito.verify(mockSender).accionar(Mockito.any());
 	}

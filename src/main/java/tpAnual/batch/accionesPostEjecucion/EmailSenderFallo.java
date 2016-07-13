@@ -5,6 +5,7 @@ import tpAnual.com.EmailSender;
 
 /**
  * Singleton para avisar por mail al administrador que un proceso fallo mas de N veces consecutivas.
+ * Precondicion: El proceso falló.
  */
 public class EmailSenderFallo extends EmailSender implements IEmailSenderFallo{
 	private static EmailSenderFallo instance = null;

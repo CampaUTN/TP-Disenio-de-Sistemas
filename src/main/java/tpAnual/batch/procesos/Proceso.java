@@ -8,12 +8,12 @@ import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
 
 public abstract class Proceso{
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
-	private List<Accion> accionesPostEjecucion;
+	private List<Accion> accionesPostFallo;
 	private FinEjecucion estado;
 	
 	
 	protected Proceso(){
-		accionesPostEjecucion = new ArrayList<Accion>();
+		accionesPostFallo = new ArrayList<Accion>();
 		estado = FinEjecucion.CORRECTO;
 	}
 	
@@ -27,7 +27,7 @@ public abstract class Proceso{
 			estado = FinEjecucion.CORRECTO;
 		}catch(Exception e){
 			estado = FinEjecucion.FALLIDO;
-			accionesPostEjecucion.forEach(obs->obs.accionar(this));
+			accionesPostFallo.forEach(obs->obs.accionar(this));
 		}
 		LoggerProcesos.getInstance().accionar(this);
 	}
@@ -45,8 +45,8 @@ public abstract class Proceso{
 	 * Mediante la GUI se agregarian observadores como el envio de mail si falla, que se reejecute
 	 * si falla, o cualquier otra accion que en un futuro se defina.
 	 */
-	public void agregarAccionPostEjecucion(Accion accion){
-		accionesPostEjecucion.add(accion);
+	public void agregarAccionPostFallo(Accion accion){
+		accionesPostFallo.add(accion);
 	}
 	
 	// Setters & getters

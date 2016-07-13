@@ -32,7 +32,7 @@ public class testLoggerProcesos {
 		desactivar.add("Registro");
 				
 		proceso = new ActivacionPorComuna(0, null);
-		proceso.agregarAccionPostEjecucion(ReLanzador.ReLanzadorSinMail(limite));
+		proceso.agregarAccionPostFallo(ReLanzador.ReLanzadorSinMail(limite));
 	}
 	
 	@After
@@ -52,7 +52,7 @@ public class testLoggerProcesos {
 	public void registraEventosFallidosConRelanzador(){
 		Proceso proceso1 = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(3);
-		proceso1.agregarAccionPostEjecucion(relanzador);
+		proceso1.agregarAccionPostFallo(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso1);
 		Assert.assertEquals(1+3, LoggerProcesos.getInstance().getResultados().size(),0);
 	}
