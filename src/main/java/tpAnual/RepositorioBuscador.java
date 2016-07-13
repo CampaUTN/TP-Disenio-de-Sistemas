@@ -28,7 +28,7 @@ public class RepositorioBuscador {
 			consultoras.add(adapter);
 		}
 	}
-
+	
 	public HashSet<Consultora> getConsultoras() {
 		return consultoras;
 	}

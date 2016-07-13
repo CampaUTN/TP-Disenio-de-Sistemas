@@ -10,8 +10,10 @@ import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.observers.IEmailSenderFallo;
 import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.procesos.ActivacionEnTodas;
+import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.FinEjecucion;
-import tpAnual.batch.procesos.ProcesoActivadorAcciones;
+import tpAnual.batch.procesos.Proceso;
 
 public class testManejadorDeErrores {
 	private Set<Terminal> terminales;
@@ -19,7 +21,7 @@ public class testManejadorDeErrores {
 	private Set<String> desactivar;
 	private int limite;
 	private IEmailSenderFallo mockSender = Mockito.mock(IEmailSenderFallo.class);
-	private ProcesoActivadorAcciones proceso;
+	private Proceso proceso;
 	
 	@Before
 	public void init(){
@@ -31,8 +33,8 @@ public class testManejadorDeErrores {
 		terminales.add(new Terminal(0));
 		activar.add("Mail");
 		desactivar.add("Registro");
-				
-		proceso = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
+
+		proceso = new ActivacionPorComuna(0, null);
 	}
 	
 	@After
@@ -58,7 +60,7 @@ public class testManejadorDeErrores {
 	
 	@Test
 	public void enviaMailSiEstanActivados(){
-		proceso = ProcesoActivadorAcciones.EnTodos(null, null);
+		proceso = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorConMail(3);
 		relanzador.setSender(mockSender);
 		proceso.agregarObservador(relanzador);

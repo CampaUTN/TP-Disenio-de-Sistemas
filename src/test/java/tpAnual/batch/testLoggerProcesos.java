@@ -8,8 +8,9 @@ import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.observers.LoggerProcesos;
 import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.procesos.ActivacionEnTodas;
+import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.Proceso;
-import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 
 public class testLoggerProcesos {
 	private Set<Terminal> terminales;
@@ -30,7 +31,7 @@ public class testLoggerProcesos {
 		activar.add("Mail");
 		desactivar.add("Registro");
 				
-		proceso = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
+		proceso = new ActivacionPorComuna(0, null);
 		proceso.agregarObservador(ReLanzador.ReLanzadorSinMail(limite));
 	}
 	
@@ -42,14 +43,14 @@ public class testLoggerProcesos {
 	
 	@Test
 	public void registraEventosFallidosSinRelanzador(){
-		proceso = ProcesoActivadorAcciones.EnTodos(activar, new HashSet<>());
+		proceso = new ActivacionEnTodas(null);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(1, LoggerProcesos.getInstance().getResultados().size(),0);
 	}
 	
 	@Test
 	public void registraEventosFallidosConRelanzador(){
-		Proceso proceso1 = ProcesoActivadorAcciones.EnTodos(activar, null);
+		Proceso proceso1 = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(3);
 		proceso1.agregarObservador(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso1);
@@ -58,7 +59,7 @@ public class testLoggerProcesos {
 	
 	@Test
 	public void registraEventosExitosos(){
-		proceso = ProcesoActivadorAcciones.EnTodos(activar, desactivar);
+		proceso = new ActivacionEnTodas(null);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(1, LoggerProcesos.getInstance().getResultados().size(),0);
 	}

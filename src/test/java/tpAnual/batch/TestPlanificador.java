@@ -10,6 +10,8 @@ import org.junit.*;
 
 import tpAnual.batch.PlanificacionProceso;
 import tpAnual.batch.Planificador;
+import tpAnual.batch.procesos.ActivacionEnTodas;
+import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
@@ -17,11 +19,11 @@ public class TestPlanificador{
 
 	private Planificador planificador = new Planificador();
 	
-	private ProcesoActivadorAcciones proceso1;
+	private Proceso proceso1;
 	private ProcesoActualizarLocales proceso2;
 	
-	private Set<String> procesosActivar = new HashSet<>();
-	private Set<String> procesosDesactivar = new HashSet<>();
+//	private Set<String> procesosActivar = new HashSet<>();
+//	private Set<String> procesosDesactivar = new HashSet<>();
 	
 	private LocalDateTime fechaYHora;
 	private LocalTime hora;
@@ -30,8 +32,9 @@ public class TestPlanificador{
 	public void init(){
 
 		Lanzador.resetSingleton();
-		procesosActivar.add("notificar");
-		proceso1 = ProcesoActivadorAcciones.EnTodos(procesosActivar, procesosDesactivar);
+//		procesosActivar.add("notificar");
+//		proceso1 = ProcesoActivadorAcciones.EnTodos(procesosActivar, procesosDesactivar);
+		proceso1 = new ActivacionEnTodas(null);
 		proceso2 = new ProcesoActualizarLocales();
 		fechaYHora = LocalDateTime.parse("2016-05-05T10:30");			
 	}

@@ -13,7 +13,7 @@ public class Terminal {
 	private IEmailSenderBusqueda sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
 	private boolean tieneRegistrosActivados = true;
 	private boolean tieneMailsActivados = true;
-	private int numeroComuna;
+	private Integer numeroComuna;
 
 	public boolean equals(Terminal terminal) {
 		return this.numeroTerminal == terminal.getNumeroTerminal();
@@ -89,7 +89,7 @@ public class Terminal {
 		this.numeroComuna = numeroComuna;
 	}
 	
-	public int getNumeroComuna(){
+	public Integer getNumeroComuna(){
 		return this.numeroComuna;
 	}
 }
