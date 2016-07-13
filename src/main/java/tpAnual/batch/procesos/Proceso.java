@@ -3,17 +3,17 @@ package tpAnual.batch.procesos;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.batch.observers.Accion;
-import tpAnual.batch.observers.LoggerProcesos;
+import tpAnual.batch.accionesPostEjecucion.Accion;
+import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
 
 public abstract class Proceso{
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
-	private List<Accion> observadores;
+	private List<Accion> accionesPostEjecucion;
 	private FinEjecucion estado;
 	
 	
 	protected Proceso(){
-		observadores = new ArrayList<Accion>();
+		accionesPostEjecucion = new ArrayList<Accion>();
 		estado = FinEjecucion.CORRECTO;
 	}
 	
@@ -27,13 +27,13 @@ public abstract class Proceso{
 			estado = FinEjecucion.CORRECTO;
 		}catch(Exception e){
 			estado = FinEjecucion.FALLIDO;
-			observadores.forEach(obs->obs.accionar(this));
+			accionesPostEjecucion.forEach(obs->obs.accionar(this));
 		}
 		LoggerProcesos.getInstance().accionar(this);
 	}
 	// El logger se ejecuta siempre, aunque al tener la misma interface que las demas acciones,
 	// podria agregarlo a la lista de observers si en un futuro quisieran solo registrarse fallos,
-	// o sería facil hacer un logger modificado que registre ciertos datos extras en caso de fallo.
+	// tambien sería facil hacer un logger modificado que registre ciertos datos extras en caso de fallo.
 	
 	
 	/**
@@ -45,8 +45,8 @@ public abstract class Proceso{
 	 * Mediante la GUI se agregarian observadores como el envio de mail si falla, que se reejecute
 	 * si falla, o cualquier otra accion que en un futuro se defina.
 	 */
-	public void agregarObservador(Accion observador){
-		observadores.add(observador);
+	public void agregarAccionPostEjecucion(Accion accion){
+		accionesPostEjecucion.add(accion);
 	}
 	
 	// Setters & getters

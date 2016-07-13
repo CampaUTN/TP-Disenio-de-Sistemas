@@ -8,8 +8,8 @@ import org.mockito.Mockito;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.observers.IEmailSenderFallo;
-import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.accionesPostEjecucion.IEmailSenderFallo;
+import tpAnual.batch.accionesPostEjecucion.ReLanzador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.FinEjecucion;
@@ -46,14 +46,14 @@ public class testManejadorDeErrores {
 	public void noSumaReintentosSiNoSeReejecuta(){
 		limite=0;
 		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(limite);
-		proceso.agregarObservador(relanzador);
+		proceso.agregarAccionPostEjecucion(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(0, relanzador.getVecesConsecutivasQueFallo(),0);
 	}
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		proceso.agregarObservador(ReLanzador.ReLanzadorSinMail(-1));
+		proceso.agregarAccionPostEjecucion(ReLanzador.ReLanzadorSinMail(-1));
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Assert.assertEquals(FinEjecucion.CORRECTO,proceso.getEstado());
 	}
@@ -63,7 +63,7 @@ public class testManejadorDeErrores {
 		proceso = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorConMail(3);
 		relanzador.setSender(mockSender);
-		proceso.agregarObservador(relanzador);
+		proceso.agregarAccionPostEjecucion(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso);
 		Mockito.verify(mockSender).accionar(Mockito.any());
 	}

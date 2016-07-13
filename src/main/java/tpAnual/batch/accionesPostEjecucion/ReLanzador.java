@@ -1,4 +1,4 @@
-package tpAnual.batch.observers;
+package tpAnual.batch.accionesPostEjecucion;
 
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.Proceso;
@@ -40,7 +40,7 @@ public class ReLanzador implements Accion{
 	}
 	
 	/**
-	 * Lo llama el Lanzador para avisar que un proceso fallo al ejecutarse.
+	 * Lo llama el proceso para avisarle que fallo al ejecutarse
 	 */
 	public void accionar(Proceso proceso){
 		if(superoLimiteFallos()){

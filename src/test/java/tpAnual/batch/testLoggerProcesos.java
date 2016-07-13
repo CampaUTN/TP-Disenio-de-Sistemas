@@ -6,8 +6,8 @@ import org.junit.*;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.observers.LoggerProcesos;
-import tpAnual.batch.observers.ReLanzador;
+import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
+import tpAnual.batch.accionesPostEjecucion.ReLanzador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.Proceso;
@@ -32,7 +32,7 @@ public class testLoggerProcesos {
 		desactivar.add("Registro");
 				
 		proceso = new ActivacionPorComuna(0, null);
-		proceso.agregarObservador(ReLanzador.ReLanzadorSinMail(limite));
+		proceso.agregarAccionPostEjecucion(ReLanzador.ReLanzadorSinMail(limite));
 	}
 	
 	@After
@@ -52,7 +52,7 @@ public class testLoggerProcesos {
 	public void registraEventosFallidosConRelanzador(){
 		Proceso proceso1 = new ActivacionEnTodas(null);
 		ReLanzador relanzador = ReLanzador.ReLanzadorSinMail(3);
-		proceso1.agregarObservador(relanzador);
+		proceso1.agregarAccionPostEjecucion(relanzador);
 		Lanzador.getInstance().ejecutarProceso(proceso1);
 		Assert.assertEquals(1+3, LoggerProcesos.getInstance().getResultados().size(),0);
 	}

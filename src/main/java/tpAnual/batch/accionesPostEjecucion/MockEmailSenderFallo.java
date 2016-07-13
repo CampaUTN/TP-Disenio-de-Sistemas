@@ -1,4 +1,4 @@
-package tpAnual.batch.observers;
+package tpAnual.batch.accionesPostEjecucion;
 
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.com.EmailSender;

@@ -1,4 +1,4 @@
-package tpAnual.batch.observers;
+package tpAnual.batch.accionesPostEjecucion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.List;
 import tpAnual.batch.ResultadoEjecucionProceso;
 import tpAnual.batch.procesos.Proceso;
 
+/**
+ * Dado que tiene la lista de resultados, me importa que sea singleton.
+ */
 public class LoggerProcesos implements Accion{
 	private static LoggerProcesos instance = null;
 	private List<ResultadoEjecucionProceso> resultados;

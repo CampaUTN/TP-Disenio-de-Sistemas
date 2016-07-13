@@ -1,4 +1,4 @@
-package tpAnual.batch.observers;
+package tpAnual.batch.accionesPostEjecucion;
 
 /**
  * Interface para usar mockito.
