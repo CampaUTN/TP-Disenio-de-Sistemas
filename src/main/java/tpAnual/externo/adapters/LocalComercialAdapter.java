@@ -1,8 +1,11 @@
 package tpAnual.externo.adapters;
 
-import tpAnual.externo.mocks.MockLocalComercial;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 import java.util.stream.Collectors;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,21 +18,32 @@ import java.util.Set;
 
 public class LocalComercialAdapter{
 	
-	private MockLocalComercial localComercial = new MockLocalComercial();
+	String direccion;
 	
+	public LocalComercialAdapter(String direccion){
+		this.direccion = direccion;
+	}
+	
+	
+	public void setDireccion(String direccion){
+		this.direccion = direccion;
+	}
+	
+	public File getFile(){
+		return FileUtils.getFile(direccion);
+	}
 	
 	public List<String> obtenerLineas(){
-		File file = localComercial.getFile();
 		List<String> lineas = new ArrayList<String>();
-		String line;
-		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-		    while ((line = reader.readLine()) != null) {
-		       lineas.add(line);
-		    }
+		LineIterator it;
+		try {
+			it = FileUtils.lineIterator(this.getFile(), "UTF-8");
+			while(it.hasNext())
+				lineas.add(it.nextLine());
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		catch(IOException e){
-			throw new UnsupportedOperationException(e);
-		}
+	
 		return lineas;
 	}
 	

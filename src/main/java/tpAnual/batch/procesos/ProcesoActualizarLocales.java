@@ -10,26 +10,22 @@ import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 
 public class ProcesoActualizarLocales extends Proceso{
 	
-	LocalComercialAdapter localAdapter = new LocalComercialAdapter();
+	LocalComercialAdapter localAdapter = new LocalComercialAdapter("src/test/resources/localesComerciales.txt");
 	
 	@Override
 	public void ejecutar(){
-		List<Poi> pois = Mapa.getInstance().pois(); 
 		List<LocalComercialExternoDTO> locales = localAdapter.consultar();
-		locales.forEach(local->cambiarLocalComercial(pois,local));
+		locales.forEach(local->cambiarLocalComercial(local));
 	}
 	
-	public void cambiarLocalComercial(List<Poi> pois,LocalComercialExternoDTO actualizado){
-		Poi poiAModificar = findPoi(pois, actualizado.getNombre());
+	public void cambiarLocalComercial(LocalComercialExternoDTO actualizado){
+		Poi poiAModificar = findPoi(actualizado.getNombre());
 		if(poiAModificar != null)
 			poiAModificar.cambiarTags(actualizado.getPalabrasClave());
 	}
 
-	private Poi findPoi(List<Poi> pois, String nombrePoi) {
-		Poi poiAModificar = pois.stream()
-			.filter(poi->poi.getNombre().equals(nombrePoi))
-			.collect(Collectors.toList())
-			.get(0);
-		return poiAModificar;
+	private Poi findPoi(String nombrePoi) {
+		return Mapa.getInstance().findPoi(nombrePoi);
+		
 	}
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.uqbar.geodds.Point;
 
@@ -76,6 +77,14 @@ public class Mapa {
 	public Integer getNextId(){
 		this.id++;
 		return this.id;
+	}
+	
+	public Poi findPoi(String nombre){
+		Poi poiAModificar = pois.stream()
+				.filter(poi->poi.getNombre().equals(nombre))
+				.collect(Collectors.toList())
+				.get(0);
+		return poiAModificar;
 	}
 
 }
