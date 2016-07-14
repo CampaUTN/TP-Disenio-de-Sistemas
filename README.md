@@ -71,4 +71,4 @@ https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authke
 ![alt tag](http://i.imgur.com/ybVwg7n.jpg)
 
 #### Diagrama Proceso 3: Activacion Terminales
-![alt tag](http://imgur.com/hNn2fi5)
+![alt tag](http://i.imgur.com/hNn2fi5.jpg)
