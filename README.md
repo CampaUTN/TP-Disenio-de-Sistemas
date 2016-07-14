@@ -67,6 +67,9 @@ https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authke
 #### Dejo link de mi drive, completar diagrama cada uno con sus procesos (usar StarUml)
 #### https://1drv.ms/u/s!Av0vPKTcwzssgT-et3_4OMyiVnC5
 
+#### Diagrama Proceso 1: Actualizacion Locales Comerciales
+![alt tag](http://puu.sh/q10VL/66bd877992.png)
+
 #### Diagrama Proceso 2: Baja Poi:
 ![alt tag](http://i.imgur.com/ybVwg7n.jpg)
 
