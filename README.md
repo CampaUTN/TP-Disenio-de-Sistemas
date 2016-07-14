@@ -66,3 +66,6 @@ https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authke
 #### borrar esta nota: No especificar el funcionamiento de la clase proceso acá. Solo mostrar en Proceso el método abstracto que sus subclases sobreescriben.
 #### Dejo link de mi drive, completar diagrama cada uno con sus procesos (usar StarUml)
 #### https://1drv.ms/u/s!Av0vPKTcwzssgT-et3_4OMyiVnC5
+
+#### Diagrama Proceso Baja Poi:
+![alt tag](http://i.imgur.com/ybVwg7n.jpg)
