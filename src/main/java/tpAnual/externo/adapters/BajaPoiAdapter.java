@@ -21,7 +21,7 @@ import com.google.gson.reflect.TypeToken;
 
 
 public class BajaPoiAdapter{
-		
+	
 	public String url;
 	public String path;
 	
@@ -34,8 +34,6 @@ public class BajaPoiAdapter{
 	
 	
 	 public List<PoiAEliminarDTO> jsonToPoiAEliminar(String contenido){
-		 
-		//File reader = mockBajaPoi.consultar();
 		 
 		List<PoiAEliminarDTO> pois = new ArrayList<PoiAEliminarDTO>();
 		

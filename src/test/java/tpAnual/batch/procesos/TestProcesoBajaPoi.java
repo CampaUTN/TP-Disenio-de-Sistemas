@@ -19,6 +19,7 @@ import tpAnual.Mapa;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
+import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
 
@@ -36,7 +37,7 @@ public class TestProcesoBajaPoi {
 	private ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
 	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
 	List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
-	
+	private MockBajaPoi mockbp = new MockBajaPoi();
 	
 	
 	
@@ -49,16 +50,30 @@ public class TestProcesoBajaPoi {
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);
-		//SI LE INTENTO PASAR LA URL, ROMPE TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
+		
+		//TODO
+		//SI LE INTENTO PASAR LA URL, ROMPE. TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
 		//SI CAMBIO A LO CAVERNICOLA EN LA CLASE, EL STATUS RESPONSE DA DIFERENTE DE 200 COMO ES ESPERADO
 		//bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
 		//bpAdapter.setPath("pois");
+		//Url mala
+		//bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
+		//bpAdapter.setPath("pois_bad");
 	}
+	
 	
 	@Test
 	public void testAndaBienLaUrl(){
 		ClientResponse response = urlExt.consultarUrl("", "");
-        assertEquals(response.getStatus(), 200);
+        Assert.assertEquals(response.getStatus(), 200,0);
+	}
+	
+// Solo con URL mala(?
+	
+	@Test 
+	public void testAndaMalLaUrl(){
+		ClientResponse response = urlExt.consultarUrl("", "");
+        Assert.assertNotEquals(response.getStatus(), 400,0);
 	}
 	
 	@Test
@@ -87,7 +102,17 @@ public class TestProcesoBajaPoi {
 	        Assert.assertEquals(poisAEliminar.size(),2,0);
 	    }
 	
+	 @Test
+	 public void testConMock(){
+		 poisAEliminar = mockbp.consultar();
+		 Assert.assertEquals(poisAEliminar.size(),1,0);
+	 }
 	 
+	 @Test
+	 public void testConMock2(){
+		 poisAEliminar = mockbp.consultar();
+		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
+	 }
 	 
 
 }
