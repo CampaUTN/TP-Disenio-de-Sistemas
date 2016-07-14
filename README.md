@@ -54,3 +54,13 @@ Tambien convertimos la clase Mapa en un singleton para asegurar la unicidad de l
 Solucion 1 (Elegida)
 https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authkey=!ALsbFENhYlbBuOM
 ![alt tag]()
+
+#Cuarta Entrega - Correcciones del 14/07
+## Planificador
+
+## Manejo de errores
+#### Lo que era el manejador de errores ahora ya no esta más como clase, aunque sus funcionalidades se mantienen en otras clases. El try-catch del error se pasó a la clase abstracta Proceso, el loggeo de eventos a Logger y lo de volver a ejecutar los procesos hasta que alcancen el limite de fallos lo hace ReLanzador.
+![alt tag](http://i.imgur.com/hcNk1v4.jpg)
+
+## Diagrama de clases de cada proceso
+#### borrar esta nota: No especificar el funcionamiento de la clase proceso acá. Solo mostrar en Proceso el método abstracto que sus subclases sobreescriben.
