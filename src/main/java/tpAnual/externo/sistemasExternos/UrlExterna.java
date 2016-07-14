@@ -10,8 +10,8 @@ public class UrlExterna {
 	private Client client;
 	private String url;
 	private String path;
-	private String API_GOOGLE = "http://demo3537367.mockable.io/trash";
-	private String RESOURCE = "pois";
+	public String API_GOOGLE = "http://demo3537367.mockable.io/trash";
+	public String RESOURCE = "pois";
 
 	//Inicializacion del cliente.
 	public UrlExterna(String urlExt, String path) {

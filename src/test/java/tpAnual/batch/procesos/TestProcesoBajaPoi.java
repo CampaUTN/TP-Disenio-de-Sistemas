@@ -1,5 +1,7 @@
 package tpAnual.batch.procesos;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -31,8 +33,10 @@ public class TestProcesoBajaPoi {
 	protected Poi poi3 = new Poi(banco, ubicacion, "", tags);
 	
 	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
-	ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
+	private ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
+	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
 	List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
+	
 	
 	
 	
@@ -45,14 +49,20 @@ public class TestProcesoBajaPoi {
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);
+		//SI LE INTENTO PASAR LA URL, ROMPE TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
+		//SI CAMBIO A LO CAVERNICOLA EN LA CLASE, EL STATUS RESPONSE DA DIFERENTE DE 200 COMO ES ESPERADO
+		//bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
+		//bpAdapter.setPath("pois");
+	}
+	
+	@Test
+	public void testAndaBienLaUrl(){
+		ClientResponse response = urlExt.consultarUrl("", "");
+        assertEquals(response.getStatus(), 200);
 	}
 	
 	@Test
 	public void testNoExisteEseID(){
-		
-		//SI LE INTENTO PASAR LA URL, ROMPE
-		bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
-		bpAdapter.setPath("pois");
 		procesoBaja.realizarProceso();
 		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
 		
