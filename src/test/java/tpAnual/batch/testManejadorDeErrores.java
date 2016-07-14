@@ -10,10 +10,14 @@ import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.accionesPostEjecucion.IEmailSenderFallo;
 import tpAnual.batch.accionesPostEjecucion.ReLanzador;
+import tpAnual.batch.procesos.AccionTerminal;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
+import tpAnual.batch.procesos.ActivarMails;
+import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
+import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
 public class testManejadorDeErrores {
 	private Set<Terminal> terminales;
@@ -21,7 +25,7 @@ public class testManejadorDeErrores {
 	private Set<String> desactivar;
 	private int limite;
 	private IEmailSenderFallo mockSender = Mockito.mock(IEmailSenderFallo.class);
-	private Proceso proceso;
+	private Proceso proceso, proceso2;
 	
 	@Before
 	public void init(){
@@ -35,6 +39,7 @@ public class testManejadorDeErrores {
 		desactivar.add("Registro");
 
 		proceso = new ActivacionPorComuna(0, null);
+		proceso2 = new ProcesoActualizarLocales();
 	}
 	
 	@After
@@ -53,9 +58,13 @@ public class testManejadorDeErrores {
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		proceso.agregarAccionPostFallo(ReLanzador.ReLanzadorSinMail(-1));
-		Lanzador.getInstance().ejecutarProceso(proceso);
-		Assert.assertEquals(FinEjecucion.CORRECTO,proceso.getEstado());
+		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+		acciones.add(new ActivarMails());
+		acciones.add(new DesactivarRegistros());
+		proceso2 = new ActivacionPorComuna(5, acciones);
+		proceso2.agregarAccionPostFallo(ReLanzador.ReLanzadorSinMail(-1));
+		Lanzador.getInstance().ejecutarProceso(proceso2);
+		Assert.assertEquals(FinEjecucion.CORRECTO,proceso2.getEstado());
 	}
 	
 	@Test

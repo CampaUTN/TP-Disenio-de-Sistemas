@@ -10,8 +10,13 @@ import org.junit.Test;
 
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
+import tpAnual.batch.procesos.AccionTerminal;
+import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
+import tpAnual.batch.procesos.ActivarMails;
+import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
+import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
 import tpAnual.batch.procesos.ProcesoBajaPoi;
 
@@ -20,11 +25,9 @@ public class TestLanzador{
 	private Set<Terminal> terminales = new HashSet<>();
 	private Set<String> activar = new HashSet<>();
 	private Set<String> desactivar = new HashSet<>();
-		
-//	private ProcesoActivadorAcciones proceso1;
-	private ActivacionPorComuna proceso1;
-	private ProcesoActualizarLocales proceso2;
-	private ProcesoBajaPoi proceso3;
+	private Proceso proceso1;
+	private Proceso proceso2;
+	private Proceso proceso3;
 			
 	@Before
 	public void init(){
@@ -34,8 +37,6 @@ public class TestLanzador{
 		terminales.add(new Terminal(0));
 		activar.add("Mail");
 		desactivar.add("Registro");
-				
-//		proceso1 = ProcesoActivadorAcciones.EnComuna(0, activar, desactivar);
 		proceso1 = new ActivacionPorComuna(0, null);
 		proceso2 = new ProcesoActualizarLocales();
 	}
@@ -60,12 +61,16 @@ public class TestLanzador{
 		Assert.assertEquals(3,lanzador.getPendientes().size());
 	}
 	
-	// FALLA Y NO SE POR QUE
-//	@Test
-//	public void elProcesoSeEjecutaBien(){
-//		lanzador.ejecutarProceso(proceso1);
-//		Assert.assertEquals(FinEjecucion.CORRECTO,proceso1.getEstado());
-//	}
+
+	@Test
+	public void elProcesoSeEjecutaBien(){
+		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+		acciones.add(new ActivarMails());
+		acciones.add(new DesactivarRegistros());
+		proceso1 = new ActivacionPorComuna(5, acciones);
+		lanzador.ejecutarProceso(proceso1);
+		Assert.assertEquals(FinEjecucion.CORRECTO,proceso1.getEstado());
+	}
 	
 	@Test
 	public void elProcesoSeEjecutaMal(){
