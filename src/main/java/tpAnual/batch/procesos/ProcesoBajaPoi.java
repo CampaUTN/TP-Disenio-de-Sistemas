@@ -18,11 +18,9 @@ public class ProcesoBajaPoi extends Proceso {
 	
 	public List<PoiAEliminarDTO> poisExternos = new ArrayList<PoiAEliminarDTO>();
 	BajaPoiAdapter bajaPoiAdapter = new BajaPoiAdapter();
-	String url;
-	String path;
 	
 	public ProcesoBajaPoi(){ //Cuando se instancia la clase se trae la ultima modificacion
-		poisExternos = bajaPoiAdapter.consultar(url, path);
+		poisExternos = bajaPoiAdapter.consultar();
 	}
 	
 	@Override
@@ -34,24 +32,8 @@ public class ProcesoBajaPoi extends Proceso {
 		Mapa mapa = Mapa.getInstance();
 		List<Poi> pois = new ArrayList<>();
 		pois = mapa.pois;
-		pois.stream().filter(p -> p.getId().equals(id)).forEach(p -> mapa.baja(p));
+		mapa.baja(pois.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList()).get(0));
 	 }	
-	 
-	 public void setUrl(String url){
-		 this.url=url;
-	 }
-	 
-	 public String getUrl(){
-		 return this.url;
-	 }
-	 
-	 public void setPath(String path){
-		 this.path=url;
-	 }
-	 
-	 public String getPath(){
-		 return this.path;
-	 }
-	 
+	  
 
 }

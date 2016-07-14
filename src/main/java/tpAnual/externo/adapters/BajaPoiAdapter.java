@@ -4,11 +4,12 @@ import java.io.File;
 
 
 
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-//import java.util.stream.Collectors;
+import java.util.stream.Collectors;
 
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
@@ -21,9 +22,10 @@ import com.google.gson.reflect.TypeToken;
 
 public class BajaPoiAdapter{
 		
-	//private MockBajaPoi mockBajaPoi = new MockBajaPoi();
+	public String url;
+	public String path;
 	
-	public List<PoiAEliminarDTO> consultar(String url, String path){
+	public List<PoiAEliminarDTO> consultar(){
 		UrlExterna urlExterna = new UrlExterna(url, path);
 		return jsonToPoiAEliminar(urlExterna.consultarUrl("", "").getEntity(String.class));
 		
@@ -44,5 +46,21 @@ public class BajaPoiAdapter{
 		return pois;
 		
       }
+	 
+	 public void setUrl(String url){
+		 this.url=url;
+	 }
+	 
+	 public String getUrl(){
+		 return this.url;
+	 }
+	 
+	 public void setPath(String path){
+		 this.path=url;
+	 }
+	 
+	 public String getPath(){
+		 return this.path;
+	 }
 	 
 }

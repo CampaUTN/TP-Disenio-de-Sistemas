@@ -1,8 +1,10 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import java.util.Set;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,6 +16,9 @@ import com.sun.jersey.api.client.ClientResponse;
 import tpAnual.Mapa;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
+import tpAnual.externo.adapters.BajaPoiAdapter;
+import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
+import tpAnual.externo.sistemasExternos.UrlExterna;
 
 public class TestProcesoBajaPoi {
 	
@@ -25,8 +30,9 @@ public class TestProcesoBajaPoi {
 	protected Poi poi2 = new Poi(banco, ubicacion, "", tags);
 	protected Poi poi3 = new Poi(banco, ubicacion, "", tags);
 	
-//	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
-//	ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
+	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
+	ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
+	List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
 	
 	
 	
@@ -43,40 +49,35 @@ public class TestProcesoBajaPoi {
 	
 	@Test
 	public void testNoExisteEseID(){
-//		procesoBaja.setUrl("http://demo3537367.mockable.io/trash");
-//		procesoBaja.setUrl("pois");
-//		procesoBaja.realizarProceso();
-//		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
-		Assert.assertEquals(3, Mapa.getInstance().cantidadPois(), 0);
+		
+		//SI LE INTENTO PASAR LA URL, ROMPE
+		bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
+		bpAdapter.setPath("pois");
+		procesoBaja.realizarProceso();
+		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
+		
 		
 	}
 	
-//	 @Test
-//	    public void consultarConFiltro() throws Exception {
-//	        //Se solicita todos los datos de un libro por su isbn.
-//	        ClientResponse response = this.bpAdapter.consultarUrl("","");
-//	        Assert.assertEquals(response.getStatus(), 200);
-//	        String json = response.getEntity(String.class);
-//	        Assert.assertTrue(json.contains("122"));
-//	        Assert.assertTrue(json.contains("123"));
-//	        Assert.assertFalse(json.contains("321"));
-//	        Assert.assertTrue(json.contains("2016-06-22T02:10:58.128Z"));
-//	        Assert.assertTrue(json.contains("id")); 
-//	    }
+	 @Test
+	    public void consultarConFiltro() {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
+	    }
+	 
+	 @Test
+	    public void consultarConFiltro2() {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
+	    }
+	 
+	 @Test
+	    public void consultarConFiltro3() throws Exception {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.size(),2,0);
+	    }
 	
 	 
 	 
-//	@Test
-//    public void obtenerConDosFiltros() throws Exception {
-//        //Se filtra y devuelve solo el campo titulo.
-//        ClientResponse response = this.bpAdapter.getBookByFilter("","","");
-//        assertEquals(response.getStatus(), 200);
-//        String json = response.getEntity(String.class);
-//        assertTrue(json.contains("122"));
-//        assertTrue(json.contains("123"));
-//        assertFalse(json.contains("321"));
-//        //assertFalse(json.contains("2016-06-22T02:10:58.128Z"));
-//        assertTrue(json.contains("id"));
-//      
-//    }
+
 }
