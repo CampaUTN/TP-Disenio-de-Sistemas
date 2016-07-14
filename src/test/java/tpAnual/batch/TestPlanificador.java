@@ -2,9 +2,7 @@ package tpAnual.batch;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.*;
 
@@ -12,7 +10,6 @@ import tpAnual.batch.PlanificacionProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.Proceso;
-import tpAnual.batch.procesos.ProcesoActivadorAcciones;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
 public class TestPlanificador{
