@@ -1,20 +1,22 @@
 package tpAnual.batch.procesos;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 import tpAnual.Mapa;
+import tpAnual.Terminal;
 
-public class ActivacionEnTodas extends CriterioActivacion{
+public class ActivacionEnTodas extends Proceso{
 	
-	Map<String,AccionTerminal> acciones = new HashMap<String, AccionTerminal>();
+	Set<Terminal> terminales = new HashSet<Terminal>();
+	Set<AccionTerminal> acciones= new HashSet<AccionTerminal>();
 	
-	public ActivacionEnTodas(Map<String,AccionTerminal> acciones){
+	public ActivacionEnTodas(Set<AccionTerminal> acciones){
 		this.acciones = acciones;
 	}
 	
 	public void ejecutar(){
 		terminales = Mapa.getInstance().terminales();
-		super.ejecutar();
+		acciones.forEach(accion -> accion.realizarAccion(terminales));
 	}
 }

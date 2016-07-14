@@ -1,27 +1,26 @@
 package tpAnual.batch.procesos;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
 
-public class ActivacionPorComuna extends CriterioActivacion{
+public class ActivacionPorComuna extends Proceso{
 	
+	Set<Terminal> terminales = new HashSet<Terminal>();
 	Integer comuna;
-	Map<String,AccionTerminal> acciones = new HashMap<String, AccionTerminal>();
+	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 	
-	public ActivacionPorComuna(Integer numeroComuna,Map<String,AccionTerminal> acciones){
+	public ActivacionPorComuna(Integer numeroComuna,Set<AccionTerminal> acciones){
 		this.acciones = acciones;
 		this.comuna = numeroComuna;
 	}
 	
 	public void ejecutar(){
 		terminales = this.seleccionarTerminales();
-		super.ejecutar();
+		acciones.forEach(accion -> accion.realizarAccion(terminales));
 	}
 	
 	private Set<Terminal> seleccionarTerminales(){
@@ -30,6 +29,5 @@ public class ActivacionPorComuna extends CriterioActivacion{
 		
 		return terminales.stream()
 				.filter(terminal -> terminal.getNumeroComuna().equals(comuna)).collect(Collectors.toSet());
-		
 	}
 }

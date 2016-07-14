@@ -6,6 +6,6 @@ import tpAnual.Terminal;
 
 public interface AccionTerminal {
 	
-	public void ejecutar(Set<Terminal> terminales);
+	public void realizarAccion(Set<Terminal> terminales);
 	
 }

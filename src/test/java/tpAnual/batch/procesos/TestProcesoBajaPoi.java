@@ -1,7 +1,5 @@
 package tpAnual.batch.procesos;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 

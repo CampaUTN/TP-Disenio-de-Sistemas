@@ -6,7 +6,7 @@ import tpAnual.Terminal;
 
 public class ActivarRegistros implements AccionTerminal{
 	
-	public void ejecutar(Set<Terminal> terminales){
+	public void realizarAccion(Set<Terminal> terminales){
 		terminales.forEach(terminal -> terminal.activarRegistros());
 	}
 	
