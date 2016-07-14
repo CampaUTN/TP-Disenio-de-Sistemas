@@ -57,6 +57,7 @@ https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authke
 
 #Cuarta Entrega - Correcciones del 14/07
 ## Planificador
+![alt tag](http://i.imgur.com/9u9HqJu.jpg)
 
 ## Manejo de errores
 #### Lo que era el manejador de errores ahora ya no esta más como clase, aunque sus funcionalidades se mantienen en otras clases. El try-catch del error se pasó a la clase abstracta Proceso, el loggeo de eventos a Logger y lo de volver a ejecutar los procesos hasta que alcancen el limite de fallos lo hace ReLanzador.
