@@ -8,9 +8,8 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
     	
-    	
-    	<class>jacklow.model.Vehiculo</class>
-    	<class>jacklow.model.Robo</class>
+        <!-- Clases a persistir: -->
+    	<class></class>
        
        
         <properties> 
@@ -18,7 +17,7 @@
         
         
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/prueba" /> 
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pois" /> 
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="" /> 
 
