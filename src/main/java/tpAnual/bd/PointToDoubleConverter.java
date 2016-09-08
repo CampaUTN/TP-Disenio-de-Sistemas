@@ -18,7 +18,6 @@ public class PointToDoubleConverter implements AttributeConverter<Point, String>
 		stringCoordenadas.append(String.valueOf(punto.latitude()))
 				.append(SEPARATOR)
 				.append(punto.longitude());
-		System.out.println("punto: "+punto.latitude()+", "+punto.longitude()+"--->string: "+stringCoordenadas.toString());
 		return stringCoordenadas.toString();
 	}
 
@@ -28,10 +27,7 @@ public class PointToDoubleConverter implements AttributeConverter<Point, String>
 	@Override
 	public Point convertToEntityAttribute(String stringPunto) {
 		String[] coordenadas = stringPunto.split(SEPARATOR);
-		System.out.println("coord[0]: "+coordenadas[0]+", coord[1]: "+coordenadas[1]);
-		Point punto = new Point(new Double(coordenadas[0]), Double.parseDouble(coordenadas[1]));
-		System.out.println("coord[0]: "+coordenadas[0]+", coord[1]: "+coordenadas[1]+"--->Point: lat: "+punto.latitude()+", long: "+punto.longitude());
-		return punto;
+		return new Point(new Double(coordenadas[0]), Double.parseDouble(coordenadas[1]));
 	}
 	
 }
