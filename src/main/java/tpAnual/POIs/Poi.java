@@ -14,10 +14,13 @@ import org.uqbar.geodds.Point;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
 // Imports para BD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Poi {
@@ -28,7 +31,10 @@ public class Poi {
 	@Convert(converter = PointToDoubleConverter.class)
 	private Point ubicacion;
 	
+	@Transient
 	private TipoPoi tipo;
+	
+	@ElementCollection
 	private Set<String> tagsPoi = new HashSet<String>();
 	
 	private String nombre;
