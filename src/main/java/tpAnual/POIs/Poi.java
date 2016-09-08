@@ -7,14 +7,15 @@ import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import tpAnual.bd.PointToDoubleConverter;
+
 
 import org.uqbar.geodds.Point;
 
+//Imports para BD
+import tpAnual.bd.PointToDoubleConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
-// Imports para BD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -123,12 +124,8 @@ public class Poi {
 	public long getId(){
 		return id;
 	}
-	
-	public void setId(int id){
-		this.id=id;
-	}
 
-	public boolean tieneId(long id) {
+	public boolean esDeId(long id) {
 		return this.id==id;
 	}
 
