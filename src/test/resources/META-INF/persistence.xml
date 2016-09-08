@@ -22,7 +22,9 @@
        
        
         <!--OtrasCosas-->
-
+		<class>tpAnual.Horario</class>
+		<class>tpAnual.Servicio</class>
+		<class></class>
     	<!--/OtrasCosas-->
        
         <properties> 

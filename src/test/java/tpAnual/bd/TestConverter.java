@@ -3,7 +3,7 @@ package tpAnual.bd;
 import org.junit.Test;
 import org.uqbar.geodds.Point;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 public class TestConverter {
 	private Point ubicacion = new Point(6.77,40);

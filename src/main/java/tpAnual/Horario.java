@@ -17,6 +17,9 @@ public class Horario  {
 	private LocalTime desde;
 	private LocalTime hasta;
 
+	//Es necesario el constructor vacio
+	private Horario(){}
+	
 	//Esta entre el diaDesde y el diaHasta
 	private boolean cumpleRango(DayOfWeek dia, LocalTime hora)
 	{
@@ -48,5 +51,13 @@ public class Horario  {
 	//se usa por si es un unico dia
 	public static Horario nuevoHorarioParaDia(DayOfWeek inicio, LocalTime desde, LocalTime hasta){   
 		return new Horario(inicio, inicio, desde, hasta);
+	}
+	
+	public long getId(){
+		return id;
+	}
+	
+	public void setId(long id){
+		this.id = id;
 	}
 }
