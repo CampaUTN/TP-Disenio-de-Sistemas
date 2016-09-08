@@ -14,7 +14,6 @@ public class Mapa {
 	
 	public List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
-	public Integer id = 0;
 	
 	private static Mapa instance = null;
 	
@@ -72,11 +71,6 @@ public class Mapa {
 	}
 	public Set<Terminal> terminales(){
 		return this.terminales;
-	}
-
-	public Integer getNextId(){
-		this.id++;
-		return this.id;
 	}
 	
 	public Poi findPoi(String nombre){

@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import tpAnual.Mapa;
 import tpAnual.bd.PointToDoubleConverter;
 
 import org.uqbar.geodds.Point;
@@ -19,7 +18,6 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -50,7 +48,6 @@ public class Poi {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
-		this.id= Mapa.getInstance().getNextId();
 	}
 	
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
