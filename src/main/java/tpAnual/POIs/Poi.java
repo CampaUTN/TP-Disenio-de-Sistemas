@@ -8,7 +8,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import tpAnual.Mapa;
+import tpAnual.bd.PointToDoubleConverter;
+
 import org.uqbar.geodds.Point;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
 // Imports para BD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,10 +24,14 @@ public class Poi {
 	@Id @GeneratedValue
 	private long id;
 	
-	private String nombre;
+	@Column(name="Latitud | Longitud")
+	@Convert(converter = PointToDoubleConverter.class)
 	private Point ubicacion;
+	
 	private TipoPoi tipo;
 	private Set<String> tagsPoi = new HashSet<String>();
+	
+	private String nombre;
 	private String calle;
 	private Integer direccion;
 
