@@ -45,9 +45,9 @@ public abstract class TipoPoiConServicio extends TipoPoi{
 						.collect(Collectors.toSet());
 	}
 	
-	private boolean tieneServicio(String palabra){
+	private boolean tieneServicio(String nombreServicio){
 		return this.getServicios().stream()
-								.anyMatch(unNombreServicio-> unNombreServicio == palabra);
+								.anyMatch(unNombreServicio-> unNombreServicio.equalsIgnoreCase(nombreServicio));
 	}
 	
 	// Otros
