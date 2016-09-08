@@ -24,12 +24,12 @@ public class Servicio {
 	private String nombre;
 
 	public Servicio(String nombre) {
-		this.nombre = nombre.toLowerCase();
+		this.nombre = nombre;
 		this.horarios = new ArrayList<>();
 	}
 
-	public boolean tienePorNombre(String nombreServ) {
-		return nombre.equals(nombreServ.toLowerCase());
+	public boolean equals(String nombreServ) {
+		return nombre.equalsIgnoreCase(nombreServ);
 	}
 	
 	public boolean disponible(DayOfWeek dia,LocalTime hora){

@@ -107,8 +107,8 @@ public class TestExterno {
 		Set<String> servicios = new HashSet<String>();
 		Set<String> servicioEsperado = new HashSet<String>();
 		palabras.add("Banco de la Plaza");
-		servicioEsperado.add("tramites");
-		servicioEsperado.add("cheques");
+		servicioEsperado.add("Tramites");
+		servicioEsperado.add("Cheques");
 		
 	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 	    servicios = cgpsExternos.get(0).getTags();
