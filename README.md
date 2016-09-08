@@ -19,8 +19,8 @@ emi.tolaba95@gmail.com
 1. Instalar mysql y mysql-workbench
 2. sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 3. Si es necesario, activar el servicio de mysql.
-4. Completar con usuario y contraseña en persistence.xml:
-            property name="hibernate.connection.username" value="root"
+4. Completar con usuario y contraseña en persistence.xml:                                                                                                                     
+            property name="hibernate.connection.username" value="root"                                                                                                        
             property name="hibernate.connection.password" value=""
 5. En mysql-workbench -> create a new schema in the connected server -> llamarlo 'pois'
 6. En el directorio del proyecto correr: mvn clean install && mvn eclipse:clean eclipse:eclipse
