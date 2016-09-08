@@ -67,8 +67,8 @@ public class Poi {
 	}
 
 	// Distancia:
-	public boolean estaCerca(Point unPunto) {
-		return tipo.estaCerca(unPunto, this.ubicacion);
+	public boolean estaCerca(Point ubicacion) {
+		return tipo.estaCerca(this.ubicacion, ubicacion);
 	}
 	
 	// Tags:
@@ -116,7 +116,7 @@ public class Poi {
 		return ubicacion;
 	}
 
-	public void cambiarTags(Set<String> palabrasClave) {
+	public void setTags(Set<String> palabrasClave) {
 		this.tagsPoi = palabrasClave;
 		
 	}
@@ -143,6 +143,11 @@ public class Poi {
 
 	public Integer getDireccion() {
 		return direccion;
+	}
+
+	// TODO: solo para testear, habria que sacarlo y usar IDs autogeneradas
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

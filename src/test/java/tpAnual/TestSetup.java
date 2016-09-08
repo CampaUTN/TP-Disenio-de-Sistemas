@@ -19,7 +19,7 @@ import tpAnual.externo.adapters.CGPAdapter;
 public class TestSetup {
 	
 	protected Set<String> tags = new HashSet<String>();
-	protected EstacionDeColectivo tipo = new EstacionDeColectivo();
+	protected EstacionDeColectivo tipo = new EstacionDeColectivo(0,"");
 	protected Banco frances= new Banco();
 	protected Point ubicacion = new Point(54, 10);
 	protected Negocio negocio = new Negocio("muebleria");

@@ -20,11 +20,11 @@ public class ProcesoActualizarLocales extends Proceso{
 	public void cambiarLocalComercial(LocalComercialExternoDTO actualizado){
 		Poi poiAModificar = findPoi(actualizado.getNombre());
 		if(poiAModificar != null)
-			poiAModificar.cambiarTags(actualizado.getPalabrasClave());
+			poiAModificar.setTags(actualizado.getPalabrasClave());
 	}
 
 	private Poi findPoi(String nombrePoi) {
-		return Mapa.getInstance().findPoi(nombrePoi);
+		return Mapa.getInstance().poisPendientesDeModificar(nombrePoi);
 		
 	}
 }

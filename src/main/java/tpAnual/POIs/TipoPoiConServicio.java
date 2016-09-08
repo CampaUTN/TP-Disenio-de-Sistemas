@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import tpAnual.Servicio;
 
-public abstract class PoiConServicio extends TipoPoi{
+public abstract class TipoPoiConServicio extends TipoPoi{
 	protected Set<Servicio> servicios = new HashSet<>();
 	
 	//Busqueda
@@ -20,7 +20,6 @@ public abstract class PoiConServicio extends TipoPoi{
 	}
 	
 	// Disponibilidad sin nombre de servicio
-	@Override
 	public boolean estaDisponible(DayOfWeek dia,LocalTime hora) {
 		return servicios.stream()
 				.anyMatch(unServicio -> unServicio.disponible(dia, hora));

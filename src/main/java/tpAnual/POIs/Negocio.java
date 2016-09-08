@@ -14,6 +14,7 @@ public class Negocio extends TipoPoi {
 
 	private int radio;
 	private String rubro;
+	
 	private List <Horario> horarios;
 
 	
@@ -21,7 +22,7 @@ public class Negocio extends TipoPoi {
 	
 	public boolean cumpleBusqueda(List<String> palabras){
 		return palabras.stream()
-				.anyMatch(palabra -> palabra == rubro);
+				.anyMatch(palabra -> palabra.equalsIgnoreCase(rubro));
 	}
 	
 	//Disponibilidad
@@ -37,8 +38,8 @@ public class Negocio extends TipoPoi {
 	
 	//Cercania
 	@Override
-	public boolean estaCerca(Point unPunto, Point puntoPoi) {
-		return puntoPoi.distance(unPunto) < radio;
+	public boolean estaCerca(Point ubicacion1, Point ubicacion2) {
+		return ubicacion1.distance(ubicacion2) < radio;
 	}
 	
 	public Negocio(String rubro){

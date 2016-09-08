@@ -73,7 +73,7 @@ public class Mapa {
 		return this.terminales;
 	}
 	
-	public Poi findPoi(String nombre){
+	public Poi poisPendientesDeModificar(String nombre){
 		Poi poiAModificar = pois.stream()
 				.filter(poi->poi.getNombre().equals(nombre))
 				.collect(Collectors.toList())

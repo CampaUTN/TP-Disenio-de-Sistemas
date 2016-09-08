@@ -23,7 +23,7 @@ public class TestCercania extends TestSetup{
 	
 	
 	private Banco banco = new Banco();
-	private EstacionDeColectivo estacionDeColectivo = new EstacionDeColectivo();
+	private EstacionDeColectivo estacionDeColectivo = new EstacionDeColectivo(0,"");
 	private Cgp cgp;
 	
 	private Point puntoDeBusqueda = new Point(20.003,10.003);

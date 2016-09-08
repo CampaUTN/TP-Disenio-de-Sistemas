@@ -12,8 +12,8 @@ public abstract class TipoPoi {
 
 	public abstract boolean cumpleBusqueda(List<String> palabras);
 	
-	public boolean estaCerca(Point unPunto, Point puntoPoi) {
-		return unPunto.distance(puntoPoi) <= 0.5;
+	public boolean estaCerca(Point ubicacion1, Point ubicacion2) {
+		return ubicacion1.distance(ubicacion2) <= 0.5;
 	}
 	
 	public Set<String> getServicios(){

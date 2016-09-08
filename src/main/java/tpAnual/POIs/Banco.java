@@ -6,11 +6,12 @@ import java.time.LocalTime;
 import tpAnual.Horario;
 import tpAnual.Servicio;
 
-public class Banco extends PoiConServicio{
-	
+public class Banco extends TipoPoiConServicio {
+
 	@Override
-	public void agregarServicio(Servicio servicio){
-		servicio.agregarHorario(Horario.nuevoHorarioParaFranja(DayOfWeek.MONDAY,DayOfWeek.FRIDAY,LocalTime.parse("10:00"), LocalTime.parse("15:00")));
+	public void agregarServicio(Servicio servicio) {
+		servicio.agregarHorario(Horario.nuevoHorarioParaFranja(DayOfWeek.MONDAY, DayOfWeek.FRIDAY,
+				LocalTime.parse("10:00"), LocalTime.parse("15:00")));
 		servicios.add(servicio);
 	}
 }
