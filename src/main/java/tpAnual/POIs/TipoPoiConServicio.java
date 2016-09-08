@@ -34,7 +34,7 @@ public abstract class TipoPoiConServicio extends TipoPoi{
 	@Override
 	public boolean estaDisponibleConServicio(String nombreServ, DayOfWeek dia,LocalTime hora) {
 		return servicios.stream()
-				.anyMatch(unServicio -> unServicio.equals(nombreServ) && unServicio.disponible(dia,hora));
+				.anyMatch(unServicio -> unServicio.tienePorNombre(nombreServ) && unServicio.disponible(dia,hora));
 	}
 	
 	// Getters:

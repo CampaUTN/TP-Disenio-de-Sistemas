@@ -7,15 +7,15 @@ public class TestServicio {
 	
 	@Test
 	public void esElMismoSerivio(){
-		Assert.assertTrue(rentas.equals("Rentas"));
+		Assert.assertTrue(rentas.tienePorNombre("Rentas"));
 	}
 	
 	@Test
 	public void tomaElNombreEnMayuscula(){
-		Assert.assertTrue(rentas.equals("RENTAS"));
+		Assert.assertTrue(rentas.tienePorNombre("RENTAS"));
 	}
 	
 	public void tomaElNombreEnMinuscula(){
-		Assert.assertTrue(rentas.equals("rentas"));
+		Assert.assertTrue(rentas.tienePorNombre("rentas"));
 	}
 }

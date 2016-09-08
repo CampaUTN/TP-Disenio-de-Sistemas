@@ -28,7 +28,7 @@ public class Servicio {
 		this.horarios = new ArrayList<>();
 	}
 
-	public boolean equals(String nombreServ) {
+	public boolean tienePorNombre(String nombreServ) {
 		return nombre.equalsIgnoreCase(nombreServ);
 	}
 	
