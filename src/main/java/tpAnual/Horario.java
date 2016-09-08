@@ -3,12 +3,20 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Horario  {
+	@Id @GeneratedValue
+	private long id;
+	
 	private DayOfWeek diaDesde;
 	private DayOfWeek diaHasta;
 	private LocalTime desde;
 	private LocalTime hasta;
-	
+
 	//Esta entre el diaDesde y el diaHasta
 	private boolean cumpleRango(DayOfWeek dia, LocalTime hora)
 	{

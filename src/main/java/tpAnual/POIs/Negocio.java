@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ManyToMany;
+
 import org.uqbar.geodds.*;
 
 import tpAnual.Horario;
@@ -15,6 +17,7 @@ public class Negocio extends TipoPoi {
 	private int radio;
 	private String rubro;
 	
+	@ManyToMany
 	private List <Horario> horarios;
 
 	

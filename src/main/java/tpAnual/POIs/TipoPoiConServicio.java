@@ -7,9 +7,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.ManyToMany;
+
 import tpAnual.Servicio;
 
+
+
 public abstract class TipoPoiConServicio extends TipoPoi{
+	@ManyToMany
 	protected Set<Servicio> servicios = new HashSet<>();
 	
 	//Busqueda

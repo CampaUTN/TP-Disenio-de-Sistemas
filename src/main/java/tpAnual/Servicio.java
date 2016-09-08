@@ -5,11 +5,23 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 import tpAnual.Horario;
 
+@Entity
 public class Servicio {
-	private String nombre;
+	@Id @GeneratedValue
+	private long id;
+	
+	@ManyToMany
 	private List <Horario> horarios; 
+	
+	
+	private String nombre;
 
 	public Servicio(String nombre) {
 		this.nombre = nombre.toLowerCase();

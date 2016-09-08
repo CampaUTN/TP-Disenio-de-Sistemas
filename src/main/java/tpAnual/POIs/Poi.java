@@ -26,7 +26,7 @@ public class Poi {
 	@Id @GeneratedValue
 	private long id;
 	
-	@Column(name="Latitud | Longitud")
+	@Column(name="Latitud _ Longitud")
 	@Convert(converter = PointToDoubleConverter.class)
 	private Point ubicacion;
 	
@@ -145,7 +145,7 @@ public class Poi {
 		return direccion;
 	}
 
-	// TODO: solo para testear, habria que sacarlo y usar IDs autogeneradas
+	// TODO: solo para testear, habria que sacarlo y usar las IDs autogeneradas
 	public void setId(long id) {
 		this.id = id;
 	}
