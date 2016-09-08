@@ -11,14 +11,12 @@ import org.junit.Test;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.AccionTerminal;
-import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivarMails;
 import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
-import tpAnual.batch.procesos.ProcesoBajaPoi;
 
 public class TestLanzador{
 	private Lanzador lanzador;	

@@ -1,14 +1,12 @@
 package tpAnual.externo.adapters;
 
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import java.util.stream.Collectors;
+
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.HashSet;

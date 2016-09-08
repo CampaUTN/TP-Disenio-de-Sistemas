@@ -8,7 +8,9 @@ import com.sun.jersey.api.client.WebResource;
 
 public class UrlExterna {
 	private Client client;
+	@SuppressWarnings("unused")
 	private String url;
+	@SuppressWarnings("unused")
 	private String path;
 	public String API_GOOGLE = "http://demo3537367.mockable.io/trash";
 	public String RESOURCE = "pois";

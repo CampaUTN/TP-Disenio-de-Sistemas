@@ -1,7 +1,6 @@
 package tpAnual.batch.procesos;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
