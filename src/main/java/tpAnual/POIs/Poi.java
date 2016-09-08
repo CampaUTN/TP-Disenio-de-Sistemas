@@ -9,17 +9,26 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import tpAnual.Mapa;
 import org.uqbar.geodds.Point;
+// Imports para BD
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Poi {
+	@Id @GeneratedValue
+	private long id;
+	
 	private String nombre;
 	private Point ubicacion;
 	private TipoPoi tipo;
 	private Set<String> tagsPoi = new HashSet<String>();
-	@SuppressWarnings("unused")
 	private String calle;
-	@SuppressWarnings("unused")
 	private Integer direccion;
-	private Integer id;
+
+	//Es necesario el constructor vacio.
+	@SuppressWarnings("unused")
+	private Poi(){}
 	
 	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
 		this.tipo = tipo;
@@ -99,12 +108,32 @@ public class Poi {
 		
 	}
 	
-	public Integer getId(){
+	public long getId(){
 		return id;
 	}
 	
 	public void setId(int id){
 		this.id=id;
+	}
+
+	public boolean tieneId(long id) {
+		return this.id==id;
+	}
+
+	public TipoPoi getTipo() {
+		return tipo;
+	}
+
+	public Set<String> getTagsPoi() {
+		return tagsPoi;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public Integer getDireccion() {
+		return direccion;
 	}
 
 }

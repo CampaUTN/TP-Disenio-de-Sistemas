@@ -25,11 +25,10 @@ public class ProcesoBajaPoi extends Proceso {
 		 poisExternos.forEach(poi -> this.eliminarPoi(poi.getId()));
 	}
 	 
-	 public void eliminarPoi(Integer id){
+	 public void eliminarPoi(long id){
 		Mapa mapa = Mapa.getInstance();
-		List<Poi> pois = new ArrayList<>();
-		pois = mapa.pois;
-		mapa.baja(pois.stream().filter(p -> p.getId().equals(id)).collect(Collectors.toList()).get(0));
+		List<Poi> pois = mapa.pois;
+		mapa.baja(pois.stream().filter(p -> p.tieneId(id)).collect(Collectors.toList()).get(0));
 	 }	
 	  
 
