@@ -23,9 +23,7 @@ emi.tolaba95@gmail.com
             property name="hibernate.connection.username" value="root"
             property name="hibernate.connection.password" value=""
 5. En mysql-workbench -> create a new schema in the connected server -> llamarlo 'pois'
-6. En el directorio del proyecto correr:
-mvn clean install
-mvn eclipse:clean eclipse:eclipse
+6. En el directorio del proyecto correr: mvn clean install && mvn eclipse:clean eclipse:eclipse
 
 # Comandos copados sobre mysql:
 ## Bash:
@@ -33,7 +31,9 @@ mysql -h localhost -u root -p: iniciar mysql
 
 ## Mysql:
 show databases: muestra las bases de datos
+
 use <database>: cambia a la base de datos seleccionada
+
 insert into <table> (<param1>,…,<paramn>) values (<value1>,…,<valuen>)
 
 # Waffle
