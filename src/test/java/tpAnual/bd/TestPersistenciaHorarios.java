@@ -10,7 +10,7 @@ import org.junit.BeforeClass;
 import tpAnual.Horario;
 
 
-public class TestPersistencia {
+public class TestPersistenciaHorarios {
 	private static DayOfWeek lunes = DayOfWeek.MONDAY;
 	private static DayOfWeek miercoles = DayOfWeek.WEDNESDAY;
 	private static DayOfWeek viernes = DayOfWeek.FRIDAY;
@@ -22,7 +22,6 @@ public class TestPersistencia {
 	static long id1;
 	static long id2;
 
-	
 	@BeforeClass
 	public static void init() {
 		entityManager.getTransaction().begin();

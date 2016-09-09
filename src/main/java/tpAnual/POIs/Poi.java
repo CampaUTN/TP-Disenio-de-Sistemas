@@ -11,8 +11,8 @@ import java.util.stream.Stream;
 
 import org.uqbar.geodds.Point;
 
-//Imports para BD
 import tpAnual.bd.PointToDoubleConverter;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
@@ -26,17 +26,21 @@ public class Poi {
 	@Id @GeneratedValue
 	private long id;
 	
-	@Column(name="Latitud _ Longitud")
-	@Convert(converter = PointToDoubleConverter.class)
+	//@Column(name="Latitud _ Longitud")
+	//@Convert(converter = PointToDoubleConverter.class)  !! TIRA ERROR ESTE ANNOTATION!
+	@Transient
 	private Point ubicacion;
 	
 	@Transient
 	private TipoPoi tipo;
 	
 	@ElementCollection
+	//@Transient	
 	private Set<String> tagsPoi = new HashSet<String>();
 	
+	@Column
 	private String nombre;
+	
 	private String calle;
 	private Integer direccion;
 
