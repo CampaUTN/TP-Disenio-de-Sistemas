@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.uqbar.geodds.Point;
+import javax.persistence.EntityManager;
 
+import org.uqbar.geodds.Point;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import tpAnual.POIs.Poi;
 
 public class Mapa {
 	
-	public List<Poi> pois = new ArrayList<Poi>();
+	private List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
 	
 	private static Mapa instance = null;
@@ -29,18 +31,27 @@ public class Mapa {
 	}
 	
 	public static void resetSingleton(){
+		eliminarTodosLosPois();
 	    instance = null;
 	}
 	// Busqueda de texto libre de pois
 	
 	public void alta(Poi poi){
 		pois.add(poi);
+		PerThreadEntityManagers.getEntityManager().persist(poi);
 	}
 	
 	public void baja(Poi poi){
 		pois.remove(poi);
+		EntityManager em = PerThreadEntityManagers.getEntityManager();
+		em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
+	private static void eliminarTodosLosPois(){
+		List<Poi> poisAEliminar = new ArrayList<Poi>();
+		poisAEliminar.addAll(Mapa.getInstance().getPois());
+		poisAEliminar.forEach(poi -> Mapa.getInstance().baja(poi)); //Doy de baja los POIs de la BD
+	}
 	// Cercania de poi
 	
 	public boolean estaCerca(Poi poi, Point unPunto) {
@@ -56,7 +67,7 @@ public class Mapa {
 	}
 	
 	// Manejo de lista de pois
-	public List<Poi> pois(){
+	public List<Poi> getPois(){
 		return pois;
 	}
 

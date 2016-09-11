@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import java.util.Set;
+import java.util.stream.IntStream;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uqbar.geodds.Point;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -23,32 +25,37 @@ import tpAnual.externo.sistemasExternos.UrlExterna;
 
 public class TestProcesoBajaPoi {
 	
-	protected Set<String> tags = new HashSet<String>();
-	protected Banco banco = new Banco();
-	protected Point ubicacion = new Point(54, 10);
+	protected static Set<String> tags = new HashSet<String>();
+	protected static Banco banco = new Banco();
+	protected static Point ubicacion = new Point(54, 10);
 	
-	protected Poi poi = new Poi(banco, ubicacion, "", tags);
-	protected Poi poi2 = new Poi(banco, ubicacion, "", tags);
-	protected Poi poi3 = new Poi(banco, ubicacion, "", tags);
+	protected static Poi poi;
+	protected static Poi poi2;
+	protected static Poi poi3;
 	
 	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
 	private ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
 	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
-	List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
+	private List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
 	private MockBajaPoi mockbp = new MockBajaPoi();
 	
 	
 	
-	@Before
-	public void init(){
+	@BeforeClass
+	public static void init(){
 		Mapa.resetSingleton();
-		poi2.setId(122);
-		poi.setId(123);
-		poi3.setId(124);
+
+		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Poi(banco, ubicacion, "", tags)));
+		poi2 = new Poi(banco, ubicacion, "", tags);
+		System.out.println(poi2.getId());
+		poi = new Poi(banco, ubicacion, "", tags);
+		poi3 = new Poi(banco, ubicacion, "", tags);
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);
 		
+		PerThreadEntityManagers.getEntityManager().merge(poi);
+
 		//TODO
 		//SI LE INTENTO PASAR LA URL, ROMPE. TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
 		//SI CAMBIO A LO CAVERNICOLA EN LA CLASE, EL STATUS RESPONSE DA DIFERENTE DE 200 COMO ES ESPERADO
@@ -75,11 +82,9 @@ public class TestProcesoBajaPoi {
 	}
 	
 	@Test
-	public void testNoExisteEseID(){
+	public void seEliminanPoisSobrantes(){
 		procesoBaja.realizarProceso();
-		Assert.assertEquals(1,Mapa.getInstance().cantidadPois(),0);
-		
-		
+		Assert.assertEquals(124,Mapa.getInstance().cantidadPois(),0);
 	}
 	
 	 @Test

@@ -27,10 +27,8 @@ public class TestPersistenciaHorarios {
 		entityManager.getTransaction().begin();
 		entityManager.persist(horarioUnico);
 		entityManager.persist(horarioManana);
-		entityManager.merge(horarioUnico);
-		entityManager.merge(horarioManana);
-		entityManager.flush();
 		entityManager.getTransaction().rollback();
+
 		id1 = horarioUnico.getId();
 		id2 = horarioManana.getId();
 
@@ -44,11 +42,6 @@ public class TestPersistenciaHorarios {
 
 	@Test
 	public void testId2(){
-		Assert.assertEquals(2, id2, 0);
-	}
-	
-	@Test
-	public void test(){
 		Assert.assertEquals(2, id2, 0);
 	}
 }

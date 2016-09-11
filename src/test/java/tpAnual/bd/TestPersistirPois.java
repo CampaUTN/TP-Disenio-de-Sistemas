@@ -22,26 +22,27 @@ public class TestPersistirPois {
 	private static Point punto = new Point(10,10);
 	private static Set<String> tags = new HashSet<String>();
 	
-	static long id1;
+	static long id1, id2;
 	
 	@BeforeClass
 	public static void init() {
 		tags.add("cole");
 		Poi poiPrueba = new Poi(colectivo,punto,"Parada del 60",tags);
+		Poi poiPrueba2 = new Poi(colectivo,punto,"Parada del 60",tags);
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(poiPrueba);
-		//entityManager.merge(poiPrueba);
-		entityManager.flush();
+		entityManager.persist(poiPrueba2);
 		entityManager.getTransaction().rollback();
 		
 		id1 = poiPrueba.getId();
+		id2 = poiPrueba2.getId();
 		
 	}
 	
 	@Test
-	public void testId1(){
-		Assert.assertEquals(1, id1, 0);
+	public void testId(){
+		Assert.assertEquals(id2, id1+1, 0);
 	}
 	
 }

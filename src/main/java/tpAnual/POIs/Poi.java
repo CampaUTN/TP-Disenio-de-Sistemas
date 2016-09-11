@@ -16,6 +16,7 @@ import tpAnual.bd.PointToDoubleConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,14 +32,14 @@ public class Poi {
 	@Transient
 	private Point ubicacion;
 	
-	@Transient
+	@Transient //@Embedded
 	private TipoPoi tipo;
 	
 	@ElementCollection
 	//@Transient	
 	private Set<String> tagsPoi = new HashSet<String>();
 	
-	@Column
+	//@Column
 	private String nombre;
 	
 	private String calle;

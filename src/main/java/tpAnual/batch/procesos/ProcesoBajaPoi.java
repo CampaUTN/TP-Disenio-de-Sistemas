@@ -27,7 +27,7 @@ public class ProcesoBajaPoi extends Proceso {
 	 
 	 public void eliminarPoi(long id){
 		Mapa mapa = Mapa.getInstance();
-		List<Poi> pois = mapa.pois;
+		List<Poi> pois = mapa.getPois();
 		mapa.baja(pois.stream().filter(p -> p.esDeId(id)).collect(Collectors.toList()).get(0));
 	 }	
 	  

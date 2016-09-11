@@ -6,6 +6,9 @@ import java.time.LocalTime;
 import org.uqbar.geodds.*;
 import java.util.*;
 
+import javax.persistence.Embeddable;
+
+//@Embeddable
 public abstract class TipoPoi {
 
 	public abstract boolean estaDisponible(DayOfWeek dia, LocalTime hora);

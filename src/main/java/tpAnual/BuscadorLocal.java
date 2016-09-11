@@ -9,7 +9,7 @@ import tpAnual.externo.sistemasExternos.Consultora;
 public class BuscadorLocal implements Consultora{
 	
 	public List<Poi> consultar(List<String> palabras){
-		return Mapa.getInstance().pois().stream()
+		return Mapa.getInstance().getPois().stream()
 				.filter(poi-> poi.cumpleCondicionBusqueda(palabras))
 				.collect(Collectors.toList());
 	}
