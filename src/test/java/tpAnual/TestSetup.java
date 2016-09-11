@@ -40,7 +40,9 @@ public class TestSetup {
 	@Before
 	public void init() {
 		Mapa.resetSingleton();
-				
+		RepositorioRegistros.resetSingleton();
+		RepositorioBuscador.resetSingleton();
+		
 		terminal = new Terminal(0);
 		terminal.desactivarMails();
 		
@@ -52,8 +54,7 @@ public class TestSetup {
 		poi2.agregarTag("colectivo");
 		Mapa.getInstance().alta(poi2);
 				
-		RepositorioRegistros.resetSingleton();
-		RepositorioBuscador.resetSingleton();
+
 		RepositorioBuscador.getInstance().agregarConsultora(local);
 		RepositorioBuscador.getInstance().agregarConsultora(new BancoAdapter());
 		RepositorioBuscador.getInstance().agregarConsultora(new CGPAdapter());

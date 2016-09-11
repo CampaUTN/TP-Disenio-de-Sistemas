@@ -36,7 +36,6 @@ public class Poi {
 	private TipoPoi tipo;
 	
 	@ElementCollection
-	//@Transient	
 	private Set<String> tagsPoi = new HashSet<String>();
 	
 	//@Column

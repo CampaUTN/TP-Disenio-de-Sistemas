@@ -16,7 +16,7 @@ public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
-	
+	private EntityManager em = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	
 	private Mapa(){
@@ -38,12 +38,11 @@ public class Mapa {
 	
 	public void alta(Poi poi){
 		pois.add(poi);
-		PerThreadEntityManagers.getEntityManager().persist(poi);
+		em.persist(poi);
 	}
 	
 	public void baja(Poi poi){
 		pois.remove(poi);
-		EntityManager em = PerThreadEntityManagers.getEntityManager();
 		em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
@@ -68,7 +67,7 @@ public class Mapa {
 	
 	// Manejo de lista de pois
 	public List<Poi> getPois(){
-		return pois;
+		return em.createQuery("FROM Poi").getResultList();
 	}
 
 	public int cantidadPois() {
