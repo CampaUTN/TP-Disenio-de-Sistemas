@@ -3,11 +3,29 @@ package tpAnual.batch.procesos;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import tpAnual.batch.accionesPostEjecucion.Accion;
 import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
 
+@Entity
+@Table(name="Proceso")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Proceso{
+	
+	@Id
+	@GeneratedValue
+	private long id;
+	
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
+	
+	@OneToMany
 	private List<Accion> accionesPostFallo;
 	private FinEjecucion estado;
 	

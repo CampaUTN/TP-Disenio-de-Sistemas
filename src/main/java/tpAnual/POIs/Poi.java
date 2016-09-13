@@ -29,8 +29,8 @@ public abstract class Poi {
 	@Column(name = "poi_id")
 	private long id;
 	
-	//@Column(name="Latitud _ Longitud")
-	//@Convert(converter = PointToDoubleConverter.class)  !! TIRA ERROR ESTE ANNOTATION!
+//	@Column(name="Latitud _ Longitud")
+//	@Convert(converter = PointToDoubleConverter.class)
 	@Transient
 	private Point ubicacion;
 	
@@ -43,7 +43,6 @@ public abstract class Poi {
 	private String calle;
 	private Integer direccion;
 
-	//Es necesario el constructor vacio.
 	protected Poi(){}
 	
 	public Poi(Point ubicacion, String nombre, Set<String> tags) {

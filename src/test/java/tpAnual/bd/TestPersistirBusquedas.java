@@ -20,6 +20,11 @@ public class TestPersistirBusquedas {
 
 	@BeforeClass
 	public static void init() {
+		
+	}
+	
+	@Test
+	public void testBuscar(){
 		BuscadorTexto buscador = new BuscadorTexto();
 		Terminal terminal = new Terminal(1);
 		
