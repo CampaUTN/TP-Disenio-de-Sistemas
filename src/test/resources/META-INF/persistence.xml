@@ -31,7 +31,7 @@
        	<class>tpAnual.Servicio</class>
        	
        	<!-- Converters -->
-       	<class> PointToDoubleConverter </class>
+       	<class> tpAnual.bd.PointToDoubleConverter </class>
        
         <!--OtrasCosas-->
 		<class></class>
