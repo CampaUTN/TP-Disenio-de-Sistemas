@@ -29,6 +29,9 @@
        	
        	<class>tpAnual.Horario</class>
        	<class>tpAnual.Servicio</class>
+       	
+       	<!-- Converters -->
+       	<class> PointToDoubleConverter </class>
        
         <!--OtrasCosas-->
 		<class></class>
