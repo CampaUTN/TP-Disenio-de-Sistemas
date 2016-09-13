@@ -38,12 +38,12 @@ public class Mapa {
 	
 	public void alta(Poi poi){
 		pois.add(poi);
-		em.persist(poi);
+		//em.persist(poi);
 	}
 	
 	public void baja(Poi poi){
 		pois.remove(poi);
-		em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
+		//em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
 	private static void eliminarTodosLosPois(){
@@ -67,7 +67,8 @@ public class Mapa {
 	
 	// Manejo de lista de pois
 	public List<Poi> getPois(){
-		return em.createQuery("FROM Poi").getResultList();
+		return pois;
+		// TODO descomentar al desbugear todo: return em.createQuery("FROM Poi").getResultList();
 	}
 
 	public int cantidadPois() {
@@ -84,7 +85,7 @@ public class Mapa {
 	}
 	
 	public Poi poisPendientesDeModificar(String nombre){
-		Poi poiAModificar = pois.stream()
+		Poi poiAModificar = this.getPois().stream()
 				.filter(poi->poi.getNombre().equals(nombre))
 				.collect(Collectors.toList())
 				.get(0);

@@ -9,7 +9,7 @@ import org.uqbar.geodds.*;
 public class Cgp extends PoiConServicios {
 
 
-	@Transient //TODO: sacar y q la comuna sea un nro!
+	//@Transient //TODO: sacar y q la comuna sea un nro!
 	private Polygon comuna;
 
 

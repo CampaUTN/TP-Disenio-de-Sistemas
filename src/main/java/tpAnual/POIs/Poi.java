@@ -23,7 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-@Entity
+//@Entity
 public abstract class Poi {
 	@Id @GeneratedValue
 	private long id;

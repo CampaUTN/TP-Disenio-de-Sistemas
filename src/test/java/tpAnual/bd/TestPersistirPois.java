@@ -18,7 +18,6 @@ public class TestPersistirPois {
 	
 	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	
-	private static EstacionDeColectivo colectivo = new EstacionDeColectivo(60, "pilar");
 	private static Point punto = new Point(10,10);
 	private static Set<String> tags = new HashSet<String>();
 	
@@ -27,8 +26,8 @@ public class TestPersistirPois {
 	@BeforeClass
 	public static void init() {
 		tags.add("cole");
-		Poi poiPrueba = new Poi(colectivo,punto,"Parada del 60",tags);
-		Poi poiPrueba2 = new Poi(colectivo,punto,"Parada del 60",tags);
+		Poi poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
+		Poi poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(poiPrueba);

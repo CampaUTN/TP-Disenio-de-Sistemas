@@ -19,14 +19,11 @@ import tpAnual.externo.adapters.CGPAdapter;
 public class TestSetup {
 	
 	protected Set<String> tags = new HashSet<String>();
-	protected EstacionDeColectivo tipo = new EstacionDeColectivo(0,"");
-	protected Banco frances= new Banco();
 	protected Point ubicacion = new Point(54, 10);
-	protected Negocio negocio = new Negocio("muebleria");
 	
-	protected Poi poi = new Poi(tipo, ubicacion, "107", tags);
-	protected Poi poi2 = new Poi(tipo, ubicacion, "108", tags);
-	protected Poi poiNegocio = new Poi(negocio,ubicacion,"mueblesSA",tags);
+	protected Poi poi = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
+	protected Poi poi2 = new EstacionDeColectivo(ubicacion, "108", tags,0,"");
+	protected Negocio negocio = new Negocio(ubicacion,"mueblesSA",tags,"muebleria",10);
 	
 	protected BuscadorTexto buscador = new BuscadorTexto();
 	protected Servicio servicio = new Servicio("rentas");

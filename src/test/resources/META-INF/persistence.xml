@@ -10,7 +10,7 @@
     	
         <!-- Clases a persistir: -->
         <!--POI-->
-            	<class>tpAnual.POIs.Poi</class>
+
     	<!--/POI-->
         <!-- por el momento esta comentado asi no se rompe nada
     	<class>tpAnual.POIs.Banco</class>
@@ -22,8 +22,7 @@
        
        
         <!--OtrasCosas-->
-		<class>tpAnual.Horario</class>
-		<class>tpAnual.Servicio</class>
+
 		<class></class>
     	<!--/OtrasCosas-->
        

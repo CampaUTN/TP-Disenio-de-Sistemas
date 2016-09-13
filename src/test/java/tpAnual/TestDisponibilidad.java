@@ -2,10 +2,13 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.HashSet;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
 public class TestDisponibilidad extends TestSetup {
 
@@ -22,11 +25,10 @@ public class TestDisponibilidad extends TestSetup {
 	private Horario horarioManana = Horario.nuevoHorarioParaFranja(lunes,viernes,LocalTime.parse("10:00:30"), LocalTime.parse("12:00"));
 	private Horario horarioTarde = Horario.nuevoHorarioParaFranja(lunes,viernes,LocalTime.parse("14:00"), LocalTime.parse("18:00"));
 	private Horario horarioUnico = Horario.nuevoHorarioParaDia(miercoles,LocalTime.parse("09:00"),LocalTime.parse("12:00"));
-	
+	private Banco frances = new Banco(ubicacion,"frances",new HashSet<String>());
 	@Before
 	public void init()	{	
 		super.init();
-		centro = new Cgp(null);
 		
 		frances.agregarServicio(creditos);
 		
@@ -96,12 +98,12 @@ public class TestDisponibilidad extends TestSetup {
 	/*----Testeo horarios de Colectivo------*/
 	@Test
 	public void testColectivoDisponibleEnFinDeSemanaACualquierHora(){
-		Assert.assertTrue(tipo.estaDisponible(domingo,LocalTime.parse("23:59")));
+		Assert.assertTrue(poi.estaDisponible(domingo,LocalTime.parse("23:59")));
 	}
 	
 	@Test
 	public void testColectivoDisponibleEnDiaDeSemanaACualquierHora(){
-		Assert.assertTrue(tipo.estaDisponible(lunes,LocalTime.parse("00:00")));
+		Assert.assertTrue(poi.estaDisponible(lunes,LocalTime.parse("00:00")));
 	}
 	
 	

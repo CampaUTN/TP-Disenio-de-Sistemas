@@ -21,19 +21,15 @@ public class TestCercania extends TestSetup{
 	private Set<String> tags = new HashSet<String>();
 	private Point ubicacionPoi = new Point(20, 10);
 	
-	
-	private Banco banco = new Banco();
-	private EstacionDeColectivo estacionDeColectivo = new EstacionDeColectivo(0,"");
-	private Cgp cgp;
-	
+
 	private Point puntoDeBusqueda = new Point(20.003,10.003);
 	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
 	private Point puntoDeBusquedaNegocio = new Point(54.0008,10.0002);
 	
-	private Poi poiColectivo = new Poi(estacionDeColectivo,ubicacionPoi,"60",tags);
-	private Poi poiColectivo2 = new Poi(estacionDeColectivo,puntoDeBusquedaColect,"47",tags);
-	private Poi poiBanco = new Poi(banco, ubicacionPoi, "banco galicia", tags);
-	private Poi poiCgp;
+	private Poi poiColectivo = new EstacionDeColectivo(ubicacionPoi,"60",tags,0,"");
+	private Poi poiColectivo2 = new EstacionDeColectivo(puntoDeBusquedaColect,"47",tags,0,"");
+	private Poi poiBanco = new Banco(ubicacionPoi, "banco galicia", tags);
+	private Cgp cgp;
 	
 	
 	@Before
@@ -43,15 +39,13 @@ public class TestCercania extends TestSetup{
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);
 		puntosComuna.add(puntoComunaC);
-		cgp = new Cgp(puntosComuna);
-		poiCgp = new Poi(cgp, ubicacionPoi, "Asistencia social", tags);
-		negocio.setRadio(10);
+		cgp = new Cgp(ubicacionPoi, "Asistencia social", tags,puntosComuna);
 
 	}
 
 	@Test
 	public void cgpEstaCercaPorComuna() {
-		Assert.assertTrue(poiCgp.estaCerca(puntoDeBusqueda));
+		Assert.assertTrue(cgp.estaCerca(puntoDeBusqueda));
 	}
 	
 	@Test
@@ -71,6 +65,6 @@ public class TestCercania extends TestSetup{
 	
 	@Test
 	public void cercaniaNegocioRadio(){
-		Assert.assertTrue(poiNegocio.estaCerca(puntoDeBusquedaNegocio));
+		Assert.assertTrue(negocio.estaCerca(puntoDeBusquedaNegocio));
 	}
 }

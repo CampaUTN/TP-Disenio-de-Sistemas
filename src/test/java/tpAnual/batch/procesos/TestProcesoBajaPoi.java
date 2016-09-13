@@ -26,8 +26,8 @@ import tpAnual.externo.sistemasExternos.UrlExterna;
 public class TestProcesoBajaPoi {
 	
 	protected static Set<String> tags = new HashSet<String>();
-	protected static Banco banco = new Banco();
 	protected static Point ubicacion = new Point(54, 10);
+	protected static Banco banco = new Banco(ubicacion,"Santander rio",new HashSet<String>());
 	
 	protected static Poi poi;
 	protected static Poi poi2;
@@ -45,11 +45,10 @@ public class TestProcesoBajaPoi {
 	public static void init(){
 		Mapa.resetSingleton();
 
-		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Poi(banco, ubicacion, "", tags)));
-		poi2 = new Poi(banco, ubicacion, "", tags);
-		System.out.println(poi2.getId());
-		poi = new Poi(banco, ubicacion, "", tags);
-		poi3 = new Poi(banco, ubicacion, "", tags);
+		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
+		poi2 = new Banco(ubicacion, "", tags);
+		poi = new Banco(ubicacion, "", tags);
+		poi3 = new Banco(ubicacion, "", tags);
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);

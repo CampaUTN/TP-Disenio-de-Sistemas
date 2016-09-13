@@ -35,9 +35,9 @@ public class TestBuscador extends TestSetup{
 	
 	@Test
 	public void encuentroRubroMuebleria(){
-		Mapa.getInstance().alta(poiNegocio);
+		Mapa.getInstance().alta(negocio);
 		poisBusqueda = buscador.buscarSegunTexto("muebleria",terminal);
 		
-		Assert.assertTrue(poisBusqueda.contains(poiNegocio));
+		Assert.assertTrue(poisBusqueda.contains(negocio));
 	}
 }

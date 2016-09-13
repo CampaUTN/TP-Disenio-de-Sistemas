@@ -40,8 +40,7 @@ public class TestProcesoActualizacionLocales {
 		
 		Set<String> palabrasClave = new HashSet<String>();
 		palabrasClave.add("pepas");
-		Negocio negocio = new Negocio("Venta");
-		Poi poi = new Poi(negocio,new Point(0,0),"negocio1",palabrasClave);
+		Poi poi = new Negocio(new Point(0,0),"negocio1",palabrasClave,"Venta",10);
 		Mapa.getInstance().alta(poi);
 		procesoLocales.cambiarLocalComercial(externo);
 		Assert.assertFalse(poi.getTags().contains("pepas"));
@@ -53,8 +52,7 @@ public class TestProcesoActualizacionLocales {
 	public void testIntercambiarLocalComercial(){
 		Set<String> palabrasClave = new HashSet<String>();
 		palabrasClave.add("pepas");
-		Negocio negocio = new Negocio("Venta");
-		Poi poi = new Poi(negocio,new Point(0,0),"negocio1",palabrasClave);
+		Poi poi = new Negocio(new Point(0,0),"negocio1",palabrasClave,"Venta",10);
 
 		Mapa.getInstance().alta(poi);
 		procesoLocales.realizarProceso();
