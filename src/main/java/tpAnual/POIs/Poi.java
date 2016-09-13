@@ -5,9 +5,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 
 import org.uqbar.geodds.Point;
 
@@ -16,16 +13,20 @@ import tpAnual.bd.PointToDoubleConverter;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.persistence.Transient;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-//@Entity
+
+@Entity
+@Table(name = "Pois")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Poi {
 	@Id @GeneratedValue
+	@Column(name = "poi_id")
 	private long id;
 	
 	//@Column(name="Latitud _ Longitud")
@@ -36,15 +37,14 @@ public abstract class Poi {
 	@ElementCollection
 	private Set<String> tagsPoi = new HashSet<String>();
 	
-	//@Column
+	@Column(name = "poi_nombre")
 	private String nombre;
 	
 	private String calle;
 	private Integer direccion;
 
 	//Es necesario el constructor vacio.
-	@SuppressWarnings("unused")
-	private Poi(){}
+	protected Poi(){}
 	
 	public Poi(Point ubicacion, String nombre, Set<String> tags) {
 		this.ubicacion = ubicacion;
@@ -55,21 +55,10 @@ public abstract class Poi {
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
 		return this.tieneAlgunTag(palabras) || this.cumpleBusqueda(palabras); 
 	}
-
 	
-	
-	
-	// Disponibilidad: TODO arreglar esto porque deberia ser un solo metodo
-	public boolean estaDisponible(LocalDate fecha,LocalTime hora) {
-		DayOfWeek dia = fecha.getDayOfWeek();
-		return this.estaDisponible(dia, hora);
-	}
-	
+	//saque el anterior porque era un pasamanos
 	public abstract boolean estaDisponible(DayOfWeek dia, LocalTime hora);
 
-	
-	
-	
 	public boolean estaDisponibleConServicio(String servicio,LocalDate fecha,LocalTime hora) {
 		DayOfWeek dia = fecha.getDayOfWeek();
 		return this.estaDisponibleConServicio(servicio, dia, hora);
@@ -79,9 +68,7 @@ public abstract class Poi {
 		return false;
 	}
 	
-	
-	
-	
+		
 	// Distancia:
 	public boolean estaCerca(Point ubicacion) {
 		return this.ubicacion.distance(ubicacion) <= 0.5;
@@ -164,14 +151,10 @@ public abstract class Poi {
 	}
 	
 	
-	
 	//agregado:
-
-
 	public abstract boolean cumpleBusqueda(List<String> palabras);
 
 	public Set<String> getServicios() {
 		return new HashSet<String>();
 	}
-
 }

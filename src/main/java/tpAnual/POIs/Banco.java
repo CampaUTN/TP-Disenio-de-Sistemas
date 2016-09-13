@@ -4,16 +4,31 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+
 import org.uqbar.geodds.Point;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
 
+@Entity
+@DiscriminatorValue("nro_banco")
 public class Banco extends PoiConServicios {
 
+	@GeneratedValue
+	@Column(name = "nro_banco")
+	private long numero;
+	
+	
+	public Banco(){ 
+		super();
+	}
+	
 	public Banco(Point ubicacion, String nombre, Set<String> tags) {
 		super(ubicacion, nombre, tags);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

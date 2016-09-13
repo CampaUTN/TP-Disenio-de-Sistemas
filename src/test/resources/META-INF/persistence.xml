@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" 
-    version="1.0"> 
+    version="2.0"> 
   
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -18,13 +18,19 @@
     	<class>tpAnual.POIs.EstacionDeColectivo</class>
     	<class>tpAnual.POIs.Negocio</class>
     	-->
-       	 
-       	 
+		<class>tpAnual.POIs.Poi</class>
+       	<class>tpAnual.POIs.Banco</class>
+    	<class>tpAnual.POIs.Cgp</class>
+    	<class>tpAnual.POIs.EstacionDeColectivo</class>
+    	<class>tpAnual.POIs.Negocio</class>
+    	<class>tpAnual.POIs.PoiConServicio</class>
+    	
        	<class>tpAnual.Busqueda</class>
-       
+       	
+       	<class>tpAnual.Horario</class>
+       	<class>tpAnual.Servicio</class>
        
         <!--OtrasCosas-->
-
 		<class></class>
     	<!--/OtrasCosas-->
        

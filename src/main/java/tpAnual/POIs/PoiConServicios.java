@@ -8,6 +8,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 
 import org.uqbar.geodds.Point;
@@ -15,13 +20,22 @@ import org.uqbar.geodds.Point;
 import tpAnual.Servicio;
 
 
-
+@Entity
+@DiscriminatorValue("con_servicio")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class PoiConServicios extends Poi{
+	
+	@Column(name = "con_servicio")
+	public long tieneServicio = 1;
+	
+	
 	public PoiConServicios(Point ubicacion, String nombre, Set<String> tags) {
 		super(ubicacion, nombre, tags);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public PoiConServicios(){super();}
+	
 	@ManyToMany
 	protected Set<Servicio> servicios = new HashSet<>();
 	

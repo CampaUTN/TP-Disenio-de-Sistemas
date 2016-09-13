@@ -6,31 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import org.uqbar.geodds.*;
 
 import tpAnual.Horario;
 
-
+@Entity
+@DiscriminatorValue("radio_cercania")
 public class Negocio extends Poi {
-
+	
+	@Column(name = "radio_cercania")
+	private long radioCercania = 5;
+	
+	private String rubro;
+	
+	@ManyToMany
+	//@Transient
+	private List <Horario> horarios;
+	
+	
+	public Negocio(){super();}
+	
 	public Negocio(Point ubicacion, String nombre, Set<String> tags, String rubro, int radioCercania) {
 		super(ubicacion, nombre, tags);
 		this.rubro = rubro;
 		horarios = new ArrayList<>();
 		this.radioCercania = radioCercania;
 	}
-
-	private int radioCercania = 5;
-	private String rubro;
 	
-	@ManyToMany
-	private List <Horario> horarios;
-
-	
-	//Busqueda
-	
+	//Busqueda	
 	public boolean cumpleBusqueda(List<String> palabras){
 		return palabras.stream()
 				.anyMatch(palabra -> palabra.equalsIgnoreCase(rubro));
@@ -56,4 +65,9 @@ public class Negocio extends Poi {
 	public String getRubro() {
 		return rubro;
 	}
+	
+	public List <Horario> getHorarios(){
+		return horarios;
+	}
+	
 }

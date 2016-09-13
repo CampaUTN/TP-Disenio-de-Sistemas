@@ -3,13 +3,18 @@ package tpAnual;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Horarios")
 public class Horario  {
 	@Id @GeneratedValue
+	@Column(name = "horario_id")
 	private long id;
 	
 	private DayOfWeek diaDesde;

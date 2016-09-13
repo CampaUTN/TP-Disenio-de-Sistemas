@@ -5,12 +5,24 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import org.uqbar.geodds.Point;
 
+@Entity
+@DiscriminatorValue("cole_linea")
 public class EstacionDeColectivo extends Poi {
+	
+	@Column(name = "cole_linea")
 	private Integer linea;
+	
+	@Column(name = "cole_ramal")
 	private String ramal;
 
+	
+	public EstacionDeColectivo(){super();}
 	
 	public EstacionDeColectivo(Point ubicacion, String nombre, Set<String> tags, int linea, String ramal) {
 		super(ubicacion, nombre, tags);
