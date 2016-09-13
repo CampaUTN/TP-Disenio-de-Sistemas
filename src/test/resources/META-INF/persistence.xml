@@ -18,7 +18,9 @@
     	<class>tpAnual.POIs.EstacionDeColectivo</class>
     	<class>tpAnual.POIs.Negocio</class>
     	-->
-       
+       	 
+       	 
+       	<class>tpAnual.Busqueda</class>
        
        
         <!--OtrasCosas-->

@@ -1,6 +1,11 @@
 package tpAnual;
 
 import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -12,6 +17,7 @@ import tpAnual.externo.sistemasExternos.Consultora;
 public class BuscadorTexto{
 	
 	private RepositorioBuscador repositorio; 
+//	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
@@ -28,7 +34,11 @@ public class BuscadorTexto{
 		Long timerFin = System.currentTimeMillis();
 		
 		terminal.informarBusqueda(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
-
+		
+		Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		entityManager.persist(busqueda); 
+		
 		return poisDeTodosOrigenes;
 	}
 	
