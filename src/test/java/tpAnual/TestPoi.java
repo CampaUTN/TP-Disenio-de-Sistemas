@@ -10,9 +10,8 @@ import tpAnual.POIs.Poi;
 
 public class TestPoi {
 	private Set<String> tags = new HashSet<String>();
-	private EstacionDeColectivo tipo = new EstacionDeColectivo(0,"");
 	private Point ubicacion = new Point(54, 10);
-	private Poi poi = new Poi(tipo, ubicacion, "107", tags);
+	private Poi poi = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
 
 	
 	@Before

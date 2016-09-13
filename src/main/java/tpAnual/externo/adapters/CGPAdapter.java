@@ -39,14 +39,16 @@ public class CGPAdapter implements Consultora{
 	
 	
 	private Poi centroToPOI(CentroDTO centro){
-		Cgp cgp = new Cgp(null); //TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
+		//TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
 		Point ubicacion = new Point(-35.9345681,72.344546); 
 		String nombre = centro.getDirector();
 		Set<String> tags = centro.getZonas();
+		List<Point> comuna = new ArrayList<Point>();
 		
-		centro.getServicios().forEach(servDto-> cgp.agregarServicio( convertirAServicioCgp(servDto)));
+		Cgp nuevoPoi = new Cgp(ubicacion,nombre,tags,comuna);
+		centro.getServicios().forEach(servDto-> nuevoPoi.agregarServicio( convertirAServicioCgp(servDto)));
 		
-		Poi nuevoPoi = new Poi(cgp,ubicacion,nombre,tags);
+
 		return nuevoPoi;
 	}
 	

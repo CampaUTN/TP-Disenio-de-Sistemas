@@ -21,9 +21,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 @Entity
-public class Poi {
+public abstract class Poi {
 	@Id @GeneratedValue
 	private long id;
 	
@@ -31,9 +32,6 @@ public class Poi {
 	//@Convert(converter = PointToDoubleConverter.class)  !! TIRA ERROR ESTE ANNOTATION!
 	@Transient
 	private Point ubicacion;
-	
-	@Transient //@Embedded
-	private TipoPoi tipo;
 	
 	@ElementCollection
 	private Set<String> tagsPoi = new HashSet<String>();
@@ -48,31 +46,45 @@ public class Poi {
 	@SuppressWarnings("unused")
 	private Poi(){}
 	
-	public Poi(TipoPoi tipo, Point ubicacion, String nombre, Set<String> tags) {
-		this.tipo = tipo;
+	public Poi(Point ubicacion, String nombre, Set<String> tags) {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
 	}
 	
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
-		return this.tieneAlgunTag(palabras) || tipo.cumpleBusqueda(palabras); 
+		return this.tieneAlgunTag(palabras) || this.cumpleBusqueda(palabras); 
 	}
 
-	// Disponibilidad:
+	
+	
+	
+	// Disponibilidad: TODO arreglar esto porque deberia ser un solo metodo
 	public boolean estaDisponible(LocalDate fecha,LocalTime hora) {
 		DayOfWeek dia = fecha.getDayOfWeek();
-		return tipo.estaDisponible(dia, hora);
+		return this.estaDisponible(dia, hora);
 	}
+	
+	public abstract boolean estaDisponible(DayOfWeek dia, LocalTime hora);
 
+	
+	
+	
 	public boolean estaDisponibleConServicio(String servicio,LocalDate fecha,LocalTime hora) {
 		DayOfWeek dia = fecha.getDayOfWeek();
-		return tipo.estaDisponibleConServicio(servicio, dia, hora);
+		return this.estaDisponibleConServicio(servicio, dia, hora);
 	}
 
+	public boolean estaDisponibleConServicio(String servicio, DayOfWeek dia, LocalTime hora) {
+		return false;
+	}
+	
+	
+	
+	
 	// Distancia:
 	public boolean estaCerca(Point ubicacion) {
-		return tipo.estaCerca(this.ubicacion, ubicacion);
+		return this.ubicacion.distance(ubicacion) <= 0.5;
 	}
 	
 	// Tags:
@@ -111,9 +123,10 @@ public class Poi {
 		return this.nombre;
 	}
 	
+	
+	
 	public Set<String> getTags(){
-		return Stream.concat(tagsPoi.stream(),tipo.getServicios().stream())
-					 .collect(Collectors.toSet());
+		return tagsPoi;
 	}
 
 	public Point getUbicacion() {
@@ -133,10 +146,6 @@ public class Poi {
 		return this.id==id;
 	}
 
-	public TipoPoi getTipo() {
-		return tipo;
-	}
-
 	public Set<String> getTagsPoi() {
 		return tagsPoi;
 	}
@@ -152,6 +161,17 @@ public class Poi {
 	// TODO: solo para testear, habria que sacarlo y usar las IDs autogeneradas
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	
+	
+	//agregado:
+
+
+	public abstract boolean cumpleBusqueda(List<String> palabras);
+
+	public Set<String> getServicios() {
+		return new HashSet<String>();
 	}
 
 }

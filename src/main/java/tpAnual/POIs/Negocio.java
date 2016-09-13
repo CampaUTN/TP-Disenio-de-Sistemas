@@ -4,7 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
 
 import javax.persistence.ManyToMany;
 
@@ -13,9 +13,16 @@ import org.uqbar.geodds.*;
 import tpAnual.Horario;
 
 
-public class Negocio extends TipoPoi {
+public class Negocio extends Poi {
 
-	private int radio;
+	public Negocio(Point ubicacion, String nombre, Set<String> tags, String rubro, int radioCercania) {
+		super(ubicacion, nombre, tags);
+		this.rubro = rubro;
+		horarios = new ArrayList<>();
+		this.radioCercania = radioCercania;
+	}
+
+	private int radioCercania = 5;
 	private String rubro;
 	
 	@ManyToMany
@@ -42,21 +49,11 @@ public class Negocio extends TipoPoi {
 	
 	//Cercania
 	@Override
-	public boolean estaCerca(Point ubicacion1, Point ubicacion2) {
-		return ubicacion1.distance(ubicacion2) < radio;
-	}
-	
-	public Negocio(String rubro){
-		this.rubro = rubro;
-		horarios = new ArrayList<>();
+	public boolean estaCerca(Point ubicacion) {
+		return this.getUbicacion().distance(ubicacion) < radioCercania;
 	}
 
 	public String getRubro() {
 		return rubro;
 	}
-	
-	public void setRadio(int radio){
-		this.radio = radio;
-	}
-	
 }

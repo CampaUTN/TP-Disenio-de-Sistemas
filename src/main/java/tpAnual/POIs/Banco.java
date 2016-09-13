@@ -2,11 +2,19 @@ package tpAnual.POIs;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Set;
+
+import org.uqbar.geodds.Point;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
 
-public class Banco extends TipoPoiConServicio {
+public class Banco extends PoiConServicios {
+
+	public Banco(Point ubicacion, String nombre, Set<String> tags) {
+		super(ubicacion, nombre, tags);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void agregarServicio(Servicio servicio) {

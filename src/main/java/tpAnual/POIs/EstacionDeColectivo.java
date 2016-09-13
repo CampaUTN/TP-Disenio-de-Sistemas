@@ -3,26 +3,28 @@ package tpAnual.POIs;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 import org.uqbar.geodds.Point;
 
-public class EstacionDeColectivo extends TipoPoi {
-	
+public class EstacionDeColectivo extends Poi {
 	private Integer linea;
 	private String ramal;
+
 	
-	public EstacionDeColectivo(int linea, String ramal) {
+	public EstacionDeColectivo(Point ubicacion, String nombre, Set<String> tags, int linea, String ramal) {
+		super(ubicacion, nombre, tags);
 		this.linea = linea;
 		this.ramal = ramal;
 	}
-
+	
 	public boolean estaDisponible(DayOfWeek dia,LocalTime hora) {
 		return true;
 	}
 
 	@Override
-	public boolean estaCerca(Point ubicacion1, Point ubicacion2) {
-		return ubicacion1.distance(ubicacion2) < 0.1; // 0.1 km = 100 m = 1 cuadra;
+	public boolean estaCerca(Point ubicacion) {
+		return this.getUbicacion().distance(ubicacion) < 0.1; // 0.1 km = 100 m = 1 cuadra;
 	}
 	
 	//Busqueda
