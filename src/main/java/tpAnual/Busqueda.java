@@ -41,4 +41,25 @@ public class Busqueda {
 	public long getId(){
 		return this.id;
 	}
+	
+	public String getParametros() {
+		return parametros;
+	}
+
+	public void setParametros(String parametros) {
+		this.parametros = parametros;
+	}
+
+	public List<Poi> getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(List<Poi> resultado) {
+		this.resultado = resultado;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 }

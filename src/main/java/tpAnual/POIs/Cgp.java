@@ -37,5 +37,21 @@ public class Cgp extends PoiConServicios {
 	public boolean estaCerca(Point ubicacion) {
 		return comuna.isInside(ubicacion) && comuna.isInside(this.getUbicacion());
 	}
+
+	public long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(long numero) {
+		this.numero = numero;
+	}
+
+	public Polygon getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Polygon comuna) {
+		this.comuna = comuna;
+	}
 	
 }

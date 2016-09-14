@@ -32,6 +32,30 @@ public class ActivacionSeleccion extends Proceso {
 	public void ejecutar(){
 		acciones.forEach(accion -> accion.realizarAccion(terminalesSeleccion));
 	}
+
+	public long getNumeroProceso() {
+		return numeroProceso;
+	}
+
+	public void setNumeroProceso(long numeroProceso) {
+		this.numeroProceso = numeroProceso;
+	}
+
+	public Set<AccionTerminal> getAcciones() {
+		return acciones;
+	}
+
+	public void setAcciones(Set<AccionTerminal> acciones) {
+		this.acciones = acciones;
+	}
+
+	public Set<Terminal> getTerminalesSeleccion() {
+		return terminalesSeleccion;
+	}
+
+	public void setTerminalesSeleccion(Set<Terminal> terminalesSeleccion) {
+		this.terminalesSeleccion = terminalesSeleccion;
+	}
 	
 	
 }

@@ -44,4 +44,36 @@ public class ActivacionPorComuna extends Proceso{
  		return terminales.stream()
  				.filter(terminal -> terminal.getNumeroComuna().equals(comuna)).collect(Collectors.toSet());
  	}
+
+	public long getNumeroProceso() {
+		return numeroProceso;
+	}
+
+	public void setNumeroProceso(long numeroProceso) {
+		this.numeroProceso = numeroProceso;
+	}
+
+	public Set<Terminal> getTerminales() {
+		return terminales;
+	}
+
+	public void setTerminales(Set<Terminal> terminales) {
+		this.terminales = terminales;
+	}
+
+	public Integer getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Integer comuna) {
+		this.comuna = comuna;
+	}
+
+	public Set<AccionTerminal> getAcciones() {
+		return acciones;
+	}
+
+	public void setAcciones(Set<AccionTerminal> acciones) {
+		this.acciones = acciones;
+	}
  }

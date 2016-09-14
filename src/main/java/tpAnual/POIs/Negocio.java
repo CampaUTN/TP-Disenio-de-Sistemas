@@ -70,5 +70,21 @@ public class Negocio extends Poi {
 	public List <Horario> getHorarios(){
 		return horarios;
 	}
+
+	public long getRadioCercania() {
+		return radioCercania;
+	}
+
+	public void setRadioCercania(long radioCercania) {
+		this.radioCercania = radioCercania;
+	}
+
+	public void setRubro(String rubro) {
+		this.rubro = rubro;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
 	
 }

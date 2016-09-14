@@ -79,4 +79,29 @@ public abstract class Proceso{
 	public long getId(){
 		return this.id;
 	}
+
+
+	public List<Accion> getAccionesPostFallo() {
+		return accionesPostFallo;
+	}
+
+
+	public void setAccionesPostFallo(List<Accion> accionesPostFallo) {
+		this.accionesPostFallo = accionesPostFallo;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public void setEstado(FinEjecucion estado) {
+		this.estado = estado;
+	}
 }

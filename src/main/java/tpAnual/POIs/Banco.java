@@ -38,4 +38,12 @@ public class Banco extends PoiConServicios {
 				LocalTime.parse("10:00"), LocalTime.parse("15:00")));
 		servicios.add(servicio);
 	}
+
+	public long getNumero() {
+		return numero;
+	}
+
+	public void setNumero(long numero) {
+		this.numero = numero;
+	}
 }

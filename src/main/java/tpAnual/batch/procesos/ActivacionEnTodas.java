@@ -33,4 +33,28 @@ public class ActivacionEnTodas extends Proceso{
 		terminales = Mapa.getInstance().terminales();
 		acciones.forEach(accion -> accion.realizarAccion(terminales));
 	}
+
+	public long getNumeroProceso() {
+		return numeroProceso;
+	}
+
+	public void setNumeroProceso(long numeroProceso) {
+		this.numeroProceso = numeroProceso;
+	}
+
+	public Set<Terminal> getTerminales() {
+		return terminales;
+	}
+
+	public void setTerminales(Set<Terminal> terminales) {
+		this.terminales = terminales;
+	}
+
+	public Set<AccionTerminal> getAcciones() {
+		return acciones;
+	}
+
+	public void setAcciones(Set<AccionTerminal> acciones) {
+		this.acciones = acciones;
+	}
 }

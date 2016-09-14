@@ -115,19 +115,11 @@ public abstract class Poi {
 	}
 	
 	
-	
-	public Set<String> getTags(){
-		return tagsPoi;
-	}
 
 	public Point getUbicacion() {
 		return ubicacion;
 	}
 
-	public void setTags(Set<String> palabrasClave) {
-		this.tagsPoi = palabrasClave;
-		
-	}
 	
 	public long getId(){
 		return id;
@@ -137,7 +129,7 @@ public abstract class Poi {
 		return this.id==id;
 	}
 
-	public Set<String> getTagsPoi() {
+	public Set<String> getTags() {
 		return tagsPoi;
 	}
 
@@ -160,5 +152,17 @@ public abstract class Poi {
 
 	public Set<String> getServicios() {
 		return new HashSet<String>();
+	}
+
+	public void setTags(Set<String> tagsPoi) {
+		this.tagsPoi = tagsPoi;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public void setDireccion(Integer direccion) {
+		this.direccion = direccion;
 	}
 }

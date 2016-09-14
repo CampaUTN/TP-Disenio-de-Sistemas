@@ -19,6 +19,7 @@ public class Mapa {
 	private EntityManager em = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	
+
 	private Mapa(){
 		//Para evitar que sea instanciada esta clase.
 	}
@@ -83,6 +84,18 @@ public class Mapa {
 	public Set<Terminal> terminales(){
 		return this.terminales;
 	}
+	public Set<Terminal> getTerminales() {
+		return terminales;
+	}
+
+	public void setTerminales(Set<Terminal> terminales) {
+		this.terminales = terminales;
+	}
+
+	public void setPois(List<Poi> pois) {
+		this.pois = pois;
+	}
+
 	
 	public Poi poisPendientesDeModificar(String nombre){
 		Poi poiAModificar = this.getPois().stream()

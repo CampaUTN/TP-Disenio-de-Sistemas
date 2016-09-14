@@ -27,6 +27,8 @@ public class Servicio {
 	@Column(name = "serv_id")
 	private long id;
 	
+	
+
 	@ManyToMany
 	//@Transient
 	private List <Horario> horarios = new ArrayList<Horario>(); 
@@ -57,5 +59,28 @@ public class Servicio {
 	
 	public String getNombre(){
 		return this.nombre;
+		
+	
+		}
+
+	public long getId() {
+		return id;
 	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 }
