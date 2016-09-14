@@ -1,4 +1,4 @@
-package tpAnual.bd;
+package tpAnual.bd.persistencia;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 
 import org.hsqldb.util.DatabaseManager;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -50,6 +51,11 @@ public class TestPersistirBusquedas {
 		
 		id1 = busqueda1.getId();
 		id2 = busqueda2.getId();
+	}
+	
+	@AfterClass
+	public static void clear() {
+		em.getTransaction().rollback();
 	}
 		
 	

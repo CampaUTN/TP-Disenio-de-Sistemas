@@ -1,4 +1,4 @@
-package tpAnual.bd;
+package tpAnual.bd.persistencia;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -51,9 +52,12 @@ public class TestPersistirAcciones {
 		
 		id1 = activadorComuna.getId();
 		id2 = activadorSeleccion.getId();
-		
 	}
 		
+	@AfterClass
+	public static void clear() {
+		em.getTransaction().rollback();
+	}
 	
 	@Test
 	public void testId2(){

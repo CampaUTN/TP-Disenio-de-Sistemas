@@ -29,7 +29,7 @@ public class Servicio {
 	
 	@ManyToMany
 	//@Transient
-	private List <Horario> horarios; 
+	private List <Horario> horarios = new ArrayList<Horario>(); 
 	
 	@Column(name = "serv_nombre")
 	private String nombre;

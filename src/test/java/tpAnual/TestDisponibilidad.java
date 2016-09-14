@@ -2,11 +2,15 @@ package tpAnual;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.uqbar.geodds.Point;
+import org.uqbar.geodds.Polygon;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
@@ -17,7 +21,7 @@ public class TestDisponibilidad extends TestSetup {
 	private DayOfWeek viernes = DayOfWeek.FRIDAY;
 	private DayOfWeek domingo = DayOfWeek.SUNDAY;
 
-	private Cgp centro;
+	private Cgp centro = new Cgp(ubicacion, "un cgp", new HashSet<String>(),new ArrayList<Point>());
 	
 	private Servicio rentas = new Servicio("Rentas");
 	private Servicio creditos = new Servicio("Creditos");
@@ -38,8 +42,8 @@ public class TestDisponibilidad extends TestSetup {
 		
 		creditos.agregarHorario(horarioUnico);
 		
-		centro.agregarServicio(rentas);
 		centro.agregarServicio(creditos);
+		centro.agregarServicio(rentas);
 		
 		negocio.agregarHorario(horarioManana);
 		negocio.agregarHorario(horarioTarde);

@@ -11,10 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Horarios")
+//@Table(name = "Horarios")
 public class Horario  {
 	@Id @GeneratedValue
-	@Column(name = "hora_id")
+	//@Column(name = "hora_id")
 	private long id;
 	
 	private DayOfWeek diaDesde;
@@ -42,8 +42,8 @@ public class Horario  {
 	}
 	
 	private Horario(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){
-		this.diaHasta = fin;
 		this.diaDesde = inicio;
+		this.diaHasta = fin;
 		this.desde= desde;
 		this.hasta= hasta; 
 	}
