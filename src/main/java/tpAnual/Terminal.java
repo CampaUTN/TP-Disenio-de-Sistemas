@@ -2,16 +2,35 @@ package tpAnual;
 
 import java.util.List;
 
+
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
 import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity 
+@Table(name= "Terminal")
 public class Terminal {
+	@Id @GeneratedValue
 	private int numeroTerminal;
+	@Column (name="nombre_terminal")
 	private String nombre;
 	private IEmailSenderBusqueda sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
+	@Column (name="registros_activados")
 	private boolean tieneRegistrosActivados = true;
+	@Column (name="registros_activados")
 	private boolean tieneMailsActivados = true;
 	private Integer numeroComuna;
 
@@ -91,5 +110,37 @@ public class Terminal {
 	
 	public Integer getNumeroComuna(){
 		return this.numeroComuna;
+	}
+
+	public boolean isTieneRegistrosActivados() {
+		return tieneRegistrosActivados;
+	}
+
+	public void setTieneRegistrosActivados(boolean tieneRegistrosActivados) {
+		this.tieneRegistrosActivados = tieneRegistrosActivados;
+	}
+
+	public boolean isTieneMailsActivados() {
+		return tieneMailsActivados;
+	}
+
+	public void setTieneMailsActivados(boolean tieneMailsActivados) {
+		this.tieneMailsActivados = tieneMailsActivados;
+	}
+
+	public IEmailSenderBusqueda getSender() {
+		return sender;
+	}
+
+	public void setNumeroTerminal(int numeroTerminal) {
+		this.numeroTerminal = numeroTerminal;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setNumeroComuna(Integer numeroComuna) {
+		this.numeroComuna = numeroComuna;
 	}
 }
