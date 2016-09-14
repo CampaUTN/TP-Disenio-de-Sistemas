@@ -4,23 +4,33 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import tpAnual.bd.LocalTimeToTimeConverter;
+
 @Entity
-//@Table(name = "Horarios")
+@Table(name = "Horarios")
 public class Horario  {
 	@Id @GeneratedValue
-	//@Column(name = "hora_id")
+	@Column(name = "hora_id")
 	private long id;
 	
 	private DayOfWeek diaDesde;
 	private DayOfWeek diaHasta;
-	private LocalTime desde;
-	private LocalTime hasta;
+	
+	
+	@Convert(converter = LocalTimeToTimeConverter.class)
+	@Column(name = "hora_desde")
+	private LocalTime horaDesde;
+	
+	@Convert(converter = LocalTimeToTimeConverter.class)
+	@Column(name = "hora_hasta")
+	private LocalTime horaHasta;
 
 	//Es necesario el constructor vacio
 	private Horario(){}
@@ -34,7 +44,7 @@ public class Horario  {
 	
 	//estaDentro del horario especificado
 	private boolean estaEnHorario(LocalTime hora){
-		return (hora.isAfter(desde) && hora.isBefore(hasta));
+		return (hora.isAfter(horaDesde) && hora.isBefore(horaHasta));
 	}
 	
 	public boolean estaEnFranjaHoraria(DayOfWeek dia, LocalTime hora){
@@ -44,8 +54,8 @@ public class Horario  {
 	private Horario(DayOfWeek inicio,DayOfWeek fin, LocalTime desde, LocalTime hasta){
 		this.diaDesde = inicio;
 		this.diaHasta = fin;
-		this.desde= desde;
-		this.hasta= hasta; 
+		this.horaDesde= desde;
+		this.horaHasta= hasta; 
 	}
 	
 	//se usa si es un rango de dias
