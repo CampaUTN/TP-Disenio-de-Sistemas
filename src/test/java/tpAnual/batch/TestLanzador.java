@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.AccionTerminal;
@@ -29,7 +30,7 @@ public class TestLanzador{
 			
 	@Before
 	public void init(){
-		Lanzador.resetSingleton();
+		SingletonReseter.resetAll();
 		lanzador = Lanzador.getInstance();
 		
 		terminales.add(new Terminal(0));

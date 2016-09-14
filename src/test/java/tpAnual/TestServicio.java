@@ -5,6 +5,11 @@ import org.junit.*;
 public class TestServicio {
 	private Servicio rentas = new Servicio("Rentas");
 	
+	@Before
+	public void init(){
+		SingletonReseter.resetAll();
+	}
+	
 	@Test
 	public void esElMismoSerivio(){
 		Assert.assertTrue(rentas.tienePorNombre("Rentas"));

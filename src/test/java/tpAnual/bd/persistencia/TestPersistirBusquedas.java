@@ -20,6 +20,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import tpAnual.BuscadorTexto;
 import tpAnual.Busqueda;
 import tpAnual.Horario;
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
@@ -38,6 +39,7 @@ public class TestPersistirBusquedas {
 	
 	@BeforeClass
 	public static void init() {
+		SingletonReseter.resetAll();
 		terminal.desactivarMails();
 		tags.add("cole");
 		Poi poi= new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");

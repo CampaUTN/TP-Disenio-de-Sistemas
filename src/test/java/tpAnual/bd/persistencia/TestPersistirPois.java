@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
+import tpAnual.SingletonReseter;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 
@@ -30,6 +31,7 @@ public class TestPersistirPois {
 	
 	@BeforeClass
 	public static void init() {
+		SingletonReseter.resetAll();
 		tags.add("cole");
 		Poi poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		Poi poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");

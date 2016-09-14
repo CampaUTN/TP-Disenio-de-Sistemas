@@ -9,6 +9,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import tpAnual.Horario;
+import tpAnual.SingletonReseter;
 
 
 public class TestPersistenciaHorarios {
@@ -25,6 +26,7 @@ public class TestPersistenciaHorarios {
 
 	@BeforeClass
 	public static void init() {
+		SingletonReseter.resetAll();
 		em.getTransaction().begin();
 		em.persist(horarioUnico);
 		em.persist(horarioManana);

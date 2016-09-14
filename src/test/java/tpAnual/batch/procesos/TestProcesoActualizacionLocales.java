@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.uqbar.geodds.Point;
 
 import tpAnual.Mapa;
+import tpAnual.SingletonReseter;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
@@ -22,7 +23,7 @@ public class TestProcesoActualizacionLocales {
 	
 	@Before
 	public void init(){
-		Mapa.resetSingleton();
+		SingletonReseter.resetAll();
 	}
 	
 	@Test

@@ -36,9 +36,7 @@ public class TestSetup {
 	
 	@Before
 	public void init() {
-		Mapa.resetSingleton();
-		RepositorioRegistros.resetSingleton();
-		RepositorioBuscador.resetSingleton();
+		SingletonReseter.resetAll();
 		
 		terminal = new Terminal(0);
 		terminal.desactivarMails();

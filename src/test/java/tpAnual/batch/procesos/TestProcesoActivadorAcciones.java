@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tpAnual.Mapa;
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 
 public class TestProcesoActivadorAcciones {
@@ -23,7 +24,7 @@ public class TestProcesoActivadorAcciones {
 	
 	@Before
 	public void init(){
-		Mapa.resetSingleton();
+		SingletonReseter.resetAll();
 		mapa = Mapa.getInstance();
 
 		terminal0.setNumeroComuna(5);

@@ -17,6 +17,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import tpAnual.BuscadorTexto;
 import tpAnual.Busqueda;
 import tpAnual.Mapa;
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
@@ -36,6 +37,7 @@ public class TestPersistirAcciones {
 	
 	@BeforeClass
 	public static void init() {
+		SingletonReseter.resetAll();
 		terminal.desactivarMails();
 		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 		acciones.add(new DesactivarMails());
