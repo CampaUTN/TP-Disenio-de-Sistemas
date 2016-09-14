@@ -46,6 +46,15 @@ public class EstacionDeColectivo extends Poi {
 								  || palabra.equalsIgnoreCase(ramal));
 	}
 
+	//Getters y Setters
+	public Integer getLinea() {
+		return linea;
+	}
+
+	public String getRamal() {
+		return ramal;
+	}	
+	
 	public void setLinea(Integer linea) {
 		this.linea = linea;
 	}

@@ -20,9 +20,11 @@ public class Horario  {
 	@Column(name = "hora_id")
 	private long id;
 	
+	@Column(name = "dia_desde")
 	private DayOfWeek diaDesde;
+
+	@Column(name = "dia_hasta")
 	private DayOfWeek diaHasta;
-	
 	
 	@Convert(converter = LocalTimeToTimeConverter.class)
 	@Column(name = "hora_desde")
@@ -68,11 +70,45 @@ public class Horario  {
 		return new Horario(inicio, inicio, desde, hasta);
 	}
 	
+	
+	//Getters y Setters
 	public long getId(){
 		return id;
 	}
 	
 	public void setId(long id){
 		this.id = id;
+	}
+	
+	public DayOfWeek getDiaDesde() {
+		return diaDesde;
+	}
+
+	public void setDiaDesde(DayOfWeek diaDesde) {
+		this.diaDesde = diaDesde;
+	}
+
+	public DayOfWeek getDiaHasta() {
+		return diaHasta;
+	}
+
+	public void setDiaHasta(DayOfWeek diaHasta) {
+		this.diaHasta = diaHasta;
+	}
+
+	public LocalTime getHoraDesde() {
+		return horaDesde;
+	}
+
+	public void setHoraDesde(LocalTime horaDesde) {
+		this.horaDesde = horaDesde;
+	}
+
+	public LocalTime getHoraHasta() {
+		return horaHasta;
+	}
+
+	public void setHoraHasta(LocalTime horaHasta) {
+		this.horaHasta = horaHasta;
 	}
 }

@@ -21,13 +21,8 @@ import tpAnual.Servicio;
 
 
 @Entity
-@DiscriminatorValue("con_servicio")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class PoiConServicios extends Poi{
-	
-	@Column(name = "con_servicio")
-	public long tieneServicio = 1;
-	
+public abstract class PoiConServicios extends Poi{	
 	
 	public PoiConServicios(Point ubicacion, String nombre, Set<String> tags) {
 		super(ubicacion, nombre, tags);
