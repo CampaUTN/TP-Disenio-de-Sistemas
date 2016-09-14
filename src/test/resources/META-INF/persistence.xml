@@ -19,6 +19,7 @@
        	<class>tpAnual.Busqueda</class>
        	<class>tpAnual.Horario</class>
        	<class>tpAnual.Servicio</class>
+       	<class>tpAnual.Terminal</class>
        	
        	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>

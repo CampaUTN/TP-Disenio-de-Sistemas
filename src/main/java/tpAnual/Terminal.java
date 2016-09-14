@@ -24,13 +24,16 @@ import javax.persistence.Transient;
 @Table(name= "Terminal")
 public class Terminal {
 	@Id @GeneratedValue
-	private int numeroTerminal;
+	private long numeroTerminal;
 	@Column (name="nombre_terminal")
 	private String nombre;
+	@Transient
 	private IEmailSenderBusqueda sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
-	@Column (name="registros_activados")
+	//@Column (name="registros_activados")
+	@Transient
 	private boolean tieneRegistrosActivados = true;
-	@Column (name="registros_activados")
+	//@Column (name="registros_activados")
+	@Transient
 	private boolean tieneMailsActivados = true;
 	private Integer numeroComuna;
 
@@ -59,9 +62,12 @@ public class Terminal {
 	public Terminal(int numeroTerminal) {
 		this.numeroTerminal = numeroTerminal;
 	}
+	
+	public Terminal() {
+	}
 
 	// Getters
-	public int getNumeroTerminal() {
+	public long getNumeroTerminal() {
 		return numeroTerminal;
 	}
 
@@ -104,6 +110,8 @@ public class Terminal {
 		tieneMailsActivados = false;
 	}
 	
+	
+	//Setters y Getters
 	public void setNumeroComuna(int numeroComuna){
 		this.numeroComuna = numeroComuna;
 	}
