@@ -35,9 +35,9 @@ public class BuscadorTexto{
 		
 		terminal.informarBusqueda(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
 		
-//		Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
-//		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-//		entityManager.persist(busqueda); 
+		Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		entityManager.persist(busqueda); 
 		
 		return poisDeTodosOrigenes;
 	}

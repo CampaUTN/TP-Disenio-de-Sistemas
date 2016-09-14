@@ -3,6 +3,7 @@ package tpAnual;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,13 +18,15 @@ import tpAnual.POIs.Poi;
 public class Busqueda {
 	@Id
 	@GeneratedValue
-	Long id;
+	@Column(name="busq_id")
+	long id;
 	
+	@Column(name="busq_parametros")
 	String parametros;
 	
 	//@NotNull
-//	@OneToMany
-	@Transient  //TODO  SACAR CUANDO ANDE BIEN LO DE PERSISTIR POIS, ESTO ME ESTA ROMPIENDO
+	@Column(name="busq_resultado")
+	@OneToMany
 	List<Poi> resultado = new ArrayList<Poi>();
 	
 	@SuppressWarnings("unused")
@@ -32,5 +35,10 @@ public class Busqueda {
 	public Busqueda(String parametros, List<Poi> resultado){
 		this.parametros=parametros;
 		this.resultado.addAll(resultado);
+	}
+	
+	
+	public long getId(){
+		return this.id;
 	}
 }

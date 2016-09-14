@@ -1,10 +1,13 @@
 package tpAnual.bd;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
 
+import org.hsqldb.util.DatabaseManager;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,6 +23,7 @@ public class TestPersistirPois {
 	
 	private static Point punto = new Point(10,10);
 	private static Set<String> tags = new HashSet<String>();
+	private static List<Poi> poisBd = new ArrayList<Poi>();
 	
 	static long id1, id2;
 	
@@ -32,16 +36,24 @@ public class TestPersistirPois {
 		entityManager.getTransaction().begin();
 		entityManager.persist(poiPrueba);
 		entityManager.persist(poiPrueba2);
-		entityManager.getTransaction().rollback();
+//		entityManager.getTransaction().rollback();
 		
 		id1 = poiPrueba.getId();
 		id2 = poiPrueba2.getId();
+		
+		poisBd = entityManager.createQuery("SELECT * FROM Pois").getResultList();
+		
+//		DatabaseManager.threadedDBM();
 		
 	}
 	
 	@Test
 	public void testId(){
 		Assert.assertEquals(id2, id1+1, 0);
+	}
+	@Test
+	public void hayObjetosEnLaBase(){
+		Assert.assertTrue(poisBd.size()>0);
 	}
 	
 }

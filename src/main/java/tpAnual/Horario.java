@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "Horarios")
 public class Horario  {
 	@Id @GeneratedValue
-	@Column(name = "horario_id")
+	@Column(name = "hora_id")
 	private long id;
 	
 	private DayOfWeek diaDesde;

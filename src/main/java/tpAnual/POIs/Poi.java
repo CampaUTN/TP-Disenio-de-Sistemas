@@ -25,6 +25,7 @@ import javax.persistence.Transient;
 @Table(name = "Pois")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Poi {
+	
 	@Id @GeneratedValue
 	@Column(name = "poi_id")
 	private long id;

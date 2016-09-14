@@ -75,4 +75,8 @@ public abstract class Proceso{
 	public FinEjecucion getEstado() {
 		return estado;
 	}
+	
+	public long getId(){
+		return this.id;
+	}
 }
