@@ -6,9 +6,12 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.uqbar.geodds.Point;
 
 import tpAnual.bd.PointToDoubleConverter;
+
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -18,6 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -27,7 +31,7 @@ import javax.persistence.Transient;
 public abstract class Poi {
 	
 	@Id @GeneratedValue
-	@Column(name = "poi_id")
+	//@Column(name = "poi_id")
 	private long id;
 	
 //	@Column(name="Latitud _ Longitud")
@@ -35,7 +39,7 @@ public abstract class Poi {
 	@Transient
 	private Point ubicacion;
 	
-	@ElementCollection
+	@ElementCollection @Cascade({CascadeType.ALL})
 	private Set<String> tagsPoi = new HashSet<String>();
 	
 	@Column(name = "poi_nombre")

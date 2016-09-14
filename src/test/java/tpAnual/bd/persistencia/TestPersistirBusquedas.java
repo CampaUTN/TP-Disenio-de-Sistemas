@@ -40,6 +40,8 @@ public class TestPersistirBusquedas {
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
+		em.getTransaction().begin();
+		
 		terminal.desactivarMails();
 		tags.add("cole");
 		Poi poi= new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
@@ -47,7 +49,7 @@ public class TestPersistirBusquedas {
 
 		Busqueda busqueda1 = new Busqueda("colectivo",result);
 		Busqueda busqueda2 = new Busqueda("colectivo",result);
-		em.getTransaction().begin();
+
 		em.persist(busqueda1);
 		em.persist(busqueda2); 
 		

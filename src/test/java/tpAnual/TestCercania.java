@@ -35,7 +35,6 @@ public class TestCercania extends TestSetup{
 	@Before
 	public void init(){
 		super.init();
-		Mapa.resetSingleton();
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);
 		puntosComuna.add(puntoComunaC);

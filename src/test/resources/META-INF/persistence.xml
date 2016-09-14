@@ -20,7 +20,9 @@
        	<class>tpAnual.Horario</class>
        	<class>tpAnual.Servicio</class>
        	
+       	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>
+        <class> tpAnual.bd.LocalTimeToTimeConverter </class>
        
   
   
@@ -29,12 +31,13 @@
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         
         
-        <!-- Base de datos posta
+        <!-- Base de datos posta 
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pois" /> 
             <property name="hibernate.connection.username" value="root" /> 
             <property name="hibernate.connection.password" value="" /> 
-		-->
+		  -->
+
 
 
  <!-- Base de datos en memoria, para testing -->
@@ -43,7 +46,8 @@
             <property name="hibernate.connection.username" value="sa" /> 
             <property name="hibernate.connection.password" value="" /> 
             <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
-
+            
+            
                       
             <property name="hibernate.show_sql" value="true" /> 
             <property name="hibernate.format_sql" value="true" /> 

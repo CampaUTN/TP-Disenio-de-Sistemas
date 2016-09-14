@@ -5,7 +5,7 @@ import org.uqbar.geodds.Point;
 
 import org.junit.Assert;
 
-public class TestConverter {
+public class TestPointConverter {
 	private Point ubicacion = new Point(6.77,40);
 	private PointToDoubleConverter converter = new PointToDoubleConverter();
 	

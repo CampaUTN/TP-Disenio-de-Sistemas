@@ -38,6 +38,8 @@ public class TestPersistirAcciones {
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
+		em.getTransaction().begin();
+		
 		terminal.desactivarMails();
 		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 		acciones.add(new DesactivarMails());
@@ -48,7 +50,6 @@ public class TestPersistirAcciones {
 		ActivacionPorComuna activadorComuna = new ActivacionPorComuna(1,acciones);
 		ActivacionSeleccion activadorSeleccion = new ActivacionSeleccion(terminales, acciones);
 		
-		em.getTransaction().begin();
 		em.persist(activadorComuna);
 		em.persist(activadorSeleccion);
 		
@@ -60,6 +61,7 @@ public class TestPersistirAcciones {
 	public static void clear() {
 		em.getTransaction().rollback();
 	}
+	
 	
 	@Test
 	public void testId2(){

@@ -54,7 +54,6 @@ public class TestProcesoBajaPoi {
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);
 		
-		PerThreadEntityManagers.getEntityManager().merge(poi);
 
 		//TODO
 		//SI LE INTENTO PASAR LA URL, ROMPE. TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
