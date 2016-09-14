@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
 
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
@@ -21,8 +22,7 @@ public class testLoggerProcesos {
 	
 	@Before
 	public void init(){
-		Lanzador.resetSingleton();
-		LoggerProcesos.resetSingleton();
+		SingletonReseter.resetAll();
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();

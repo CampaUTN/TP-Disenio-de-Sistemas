@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.*;
 
+import tpAnual.SingletonReseter;
 import tpAnual.batch.PlanificacionProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
@@ -28,9 +29,7 @@ public class TestPlanificador{
 	@Before
 	public void init(){
 
-		Lanzador.resetSingleton();
-//		procesosActivar.add("notificar");
-//		proceso1 = ProcesoActivadorAcciones.EnTodos(procesosActivar, procesosDesactivar);
+		SingletonReseter.resetAll();
 		proceso1 = new ActivacionEnTodas(null);
 		proceso2 = new ProcesoActualizarLocales();
 		fechaYHora = LocalDateTime.parse("2016-05-05T10:30");			

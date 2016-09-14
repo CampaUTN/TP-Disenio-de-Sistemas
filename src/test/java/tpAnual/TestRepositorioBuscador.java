@@ -14,8 +14,7 @@ public class TestRepositorioBuscador {
 	private RepositorioBuscador repositorio;
 	@Before
 	public void init() {
-		Mapa.resetSingleton();
-		RepositorioBuscador.resetSingleton();
+		SingletonReseter.resetAll();
 		repositorio = RepositorioBuscador.getInstance();
 		
 		repositorio.agregarConsultora(bancoAdapter);

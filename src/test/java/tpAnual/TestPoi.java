@@ -16,6 +16,7 @@ public class TestPoi {
 	
 	@Before
 	public void init() {
+		SingletonReseter.resetAll();
 		poi.agregarTag("mejor");
 		poi.agregarTag("colectivo");
 	}

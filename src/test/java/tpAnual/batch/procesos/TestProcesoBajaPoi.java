@@ -16,6 +16,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.Mapa;
+import tpAnual.SingletonReseter;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
@@ -43,7 +44,7 @@ public class TestProcesoBajaPoi {
 	
 	@BeforeClass
 	public static void init(){
-		Mapa.resetSingleton();
+		SingletonReseter.resetAll();
 
 		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
 		poi2 = new Banco(ubicacion, "", tags);

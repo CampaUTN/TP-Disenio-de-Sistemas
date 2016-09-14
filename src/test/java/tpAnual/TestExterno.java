@@ -17,6 +17,12 @@ public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
 	
+	@Before
+	public void init(){
+		SingletonReseter.resetAll();
+	}
+	
+	
 	@Test
 	public void testDevuelveListaExternaBanco(){
 		List<String> palabras = new ArrayList<String>();

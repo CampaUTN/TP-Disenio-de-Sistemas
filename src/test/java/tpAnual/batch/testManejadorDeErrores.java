@@ -6,6 +6,7 @@ import java.util.Set;
 import org.junit.*;
 import org.mockito.Mockito;
 
+import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.accionesPostEjecucion.IEmailSenderFallo;
@@ -29,10 +30,11 @@ public class testManejadorDeErrores {
 	
 	@Before
 	public void init(){
+		SingletonReseter.resetAll();
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();
-		Lanzador.resetSingleton();
+;
 		limite=3;
 		terminales.add(new Terminal(0));
 		activar.add("Mail");
