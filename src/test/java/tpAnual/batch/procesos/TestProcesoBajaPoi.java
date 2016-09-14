@@ -66,19 +66,19 @@ public class TestProcesoBajaPoi {
 	}
 	
 	
-	@Test
-	public void testAndaBienLaUrl(){
-		ClientResponse response = urlExt.consultarUrl("", "");
-        Assert.assertEquals(response.getStatus(), 200,0);
-	}
-	
-// Solo con URL mala(?
-	
-	@Test 
-	public void testAndaMalLaUrl(){
-		ClientResponse response = urlExt.consultarUrl("", "");
-        Assert.assertNotEquals(response.getStatus(), 400,0);
-	}
+//	@Test
+//	public void testAndaBienLaUrl(){
+//		ClientResponse response = urlExt.consultarUrl("", "");
+//        Assert.assertEquals(response.getStatus(), 200,0);
+//	}
+//	
+//// Solo con URL mala(?
+//	
+//	@Test 
+//	public void testAndaMalLaUrl(){
+//		ClientResponse response = urlExt.consultarUrl("", "");
+//        Assert.assertNotEquals(response.getStatus(), 400,0);
+//	}
 	
 	@Test
 	public void seEliminanPoisSobrantes(){
@@ -86,35 +86,35 @@ public class TestProcesoBajaPoi {
 		Assert.assertEquals(124,Mapa.getInstance().cantidadPois(),0);
 	}
 	
-	 @Test
-	    public void consultarConFiltro() {
-	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
-	    }
-	 
-	 @Test
-	    public void consultarConFiltro2() {
-	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
-	    }
-	 
-	 @Test
-	    public void consultarConFiltro3() throws Exception {
-	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.size(),2,0);
-	    }
-	
-	 @Test
-	 public void testConMock(){
-		 poisAEliminar = mockbp.consultar();
-		 Assert.assertEquals(poisAEliminar.size(),1,0);
-	 }
-	 
-	 @Test
-	 public void testConMock2(){
-		 poisAEliminar = mockbp.consultar();
-		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
-	 }
+//	 @Test
+//	    public void consultarConFiltro() {
+//	        poisAEliminar = bpAdapter.consultar();
+//	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
+//	    }
+//	 
+//	 @Test
+//	    public void consultarConFiltro2() {
+//	        poisAEliminar = bpAdapter.consultar();
+//	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
+//	    }
+//	 
+//	 @Test
+//	    public void consultarConFiltro3() throws Exception {
+//	        poisAEliminar = bpAdapter.consultar();
+//	        Assert.assertEquals(poisAEliminar.size(),2,0);
+//	    }
+//	
+//	 @Test
+//	 public void testConMock(){
+//		 poisAEliminar = mockbp.consultar();
+//		 Assert.assertEquals(poisAEliminar.size(),1,0);
+//	 }
+//	 
+//	 @Test
+//	 public void testConMock2(){
+//		 poisAEliminar = mockbp.consultar();
+//		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
+//	 }
 	 
 
 }
