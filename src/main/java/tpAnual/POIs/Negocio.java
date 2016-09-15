@@ -8,6 +8,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import tpAnual.Horario;
@@ -15,6 +17,10 @@ import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class Negocio extends Poi {
+	
+//	@Id
+//	@GeneratedValue
+//	private long nego_id;
 	
 	@Column(name = "radio_cercania")
 	private long radioCercania = 5;
@@ -80,5 +86,12 @@ public class Negocio extends Poi {
 	public void setHorarios(List<Horario> horarios) {
 		this.horarios = horarios;
 	}
+//	public long getId() {
+//		return nego_id;
+//	}
+//
+//	public void setId(long numero) {
+//		this.nego_id = numero;
+//	}
 	
 }

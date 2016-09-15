@@ -7,11 +7,18 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class EstacionDeColectivo extends Poi {
 	
+//	@Id
+//	@GeneratedValue
+//	private long cole_id;
+//	
 	@Column(name = "cole_linea")
 	private Integer linea;
 	
@@ -59,4 +66,13 @@ public class EstacionDeColectivo extends Poi {
 	public void setRamal(String ramal) {
 		this.ramal = ramal;
 	}
+	
+//	public long getId() {
+//		return cole_id;
+//	}
+//
+//	public void setId(long numero) {
+//		this.cole_id = numero;
+//	}
+	
 }
