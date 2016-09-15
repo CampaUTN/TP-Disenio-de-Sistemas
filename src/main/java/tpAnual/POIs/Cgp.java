@@ -16,7 +16,7 @@ import tpAnual.utils.PointWrapper;
 import tpAnual.utils.PolygonWrapper;
 
 @Entity
-@DiscriminatorValue("nro_cgp")
+@DiscriminatorValue("CGP")
 public class Cgp extends PoiConServicios {
 
 

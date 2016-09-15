@@ -60,7 +60,6 @@ public abstract class Poi {
 		return this.tieneAlgunTag(palabras) || this.cumpleBusqueda(palabras); 
 	}
 	
-	//saque el anterior porque era un pasamanos
 	public abstract boolean estaDisponible(DayOfWeek dia, LocalTime hora);
 
 	public boolean estaDisponibleConServicio(String servicio,LocalDate fecha,LocalTime hora) {
@@ -72,6 +71,8 @@ public abstract class Poi {
 		return false;
 	}
 	
+	public abstract boolean cumpleBusqueda(List<String> palabras);
+	
 		
 	// Distancia:
 	public boolean estaCerca(PointWrapper ubicacion) {
@@ -79,7 +80,6 @@ public abstract class Poi {
 	}
 	
 	// Tags:
-	
 	public boolean tieneAlgunTag(List<String> palabras){
 		return palabras.stream()
 				.anyMatch(palabra -> this.tieneTag(palabra));
@@ -109,6 +109,7 @@ public abstract class Poi {
 	public void setUbicacion(PointWrapper ubicacion){
 		this.ubicacion = ubicacion;
 	}
+	
 	// Getters:
 	public String getNombre(){
 		return this.nombre;
@@ -118,7 +119,6 @@ public abstract class Poi {
 		return ubicacion;
 	}
 
-	
 	public long getId(){
 		return id;
 	}
@@ -139,13 +139,9 @@ public abstract class Poi {
 		return direccion;
 	}
 
-	// TODO: solo para testear, habria que sacarlo y usar las IDs autogeneradas
 	public void setId(long id) {
 		this.id = id;
 	}	
-	
-	//agregado:
-	public abstract boolean cumpleBusqueda(List<String> palabras);
 
 	public Set<String> getServicios() {
 		return new HashSet<String>();

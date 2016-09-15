@@ -14,7 +14,7 @@ import org.uqbar.geodds.Point;
 import tpAnual.utils.PointWrapper;
 
 @Entity
-@DiscriminatorValue("cole_linea")
+@DiscriminatorValue("Linea de colectivo")
 public class EstacionDeColectivo extends Poi {
 	
 	@Column(name = "cole_linea")

@@ -19,7 +19,7 @@ import tpAnual.Horario;
 import tpAnual.utils.PointWrapper;
 
 @Entity
-@DiscriminatorValue("radio_cercania")
+@DiscriminatorValue("Negocio")
 public class Negocio extends Poi {
 	
 	@Column(name = "radio_cercania")

@@ -14,7 +14,7 @@ import tpAnual.Servicio;
 import tpAnual.utils.PointWrapper;
 
 @Entity
-@DiscriminatorValue("nro_banco")
+@DiscriminatorValue("Banco")
 public class Banco extends PoiConServicios {
 
 	@GeneratedValue
