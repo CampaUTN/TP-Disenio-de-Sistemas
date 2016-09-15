@@ -14,10 +14,10 @@ import tpAnual.POIs.Poi;
 import tpAnual.utils.PointWrapper;
 
 public class TestCercania extends TestSetup{
-	private Point puntoComunaA = new Point(0,0);
-	private Point puntoComunaB = new Point(20,60);
-	private Point puntoComunaC = new Point(50,0);
-	private List<Point> puntosComuna =  new ArrayList<Point>();
+	private PointWrapper puntoComunaA = new PointWrapper(0,0);
+	private PointWrapper puntoComunaB = new PointWrapper(20,60);
+	private PointWrapper puntoComunaC = new PointWrapper(50,0);
+	private List<PointWrapper> puntosComuna =  new ArrayList<PointWrapper>();
 	
 	private Set<String> tags = new HashSet<String>();
 	private PointWrapper ubicacionPoi = new PointWrapper(20, 10);

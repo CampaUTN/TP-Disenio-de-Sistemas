@@ -68,11 +68,11 @@ public class TestPersistirPois {
 	public void losPoisConServicioSePersisten(){
 		Poi negocio = new Negocio(punto,"mueblesSA",tags,"muebleria",10);
 		
-		Point puntoComunaA = new Point(0,0);
-		Point puntoComunaB = new Point(20,60);
-		Point puntoComunaC = new Point(50,0);
+		PointWrapper puntoComunaA = new PointWrapper(0,0);
+		PointWrapper puntoComunaB = new PointWrapper(20,60);
+		PointWrapper puntoComunaC = new PointWrapper(50,0);
 		
-		List<Point> puntosComuna =  new ArrayList<Point>();
+		List<PointWrapper> puntosComuna =  new ArrayList<PointWrapper>();
 		
 		puntosComuna.add(puntoComunaA);
 		puntosComuna.add(puntoComunaB);

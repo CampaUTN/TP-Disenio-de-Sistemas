@@ -44,7 +44,7 @@ public class CGPAdapter implements Consultora{
 		PointWrapper ubicacion = new PointWrapper(-35.9345681,72.344546); 
 		String nombre = centro.getDirector();
 		Set<String> tags = centro.getZonas();
-		List<Point> comuna = new ArrayList<Point>();
+		List<PointWrapper> comuna = new ArrayList<PointWrapper>();
 		
 		Cgp nuevoPoi = new Cgp(ubicacion,nombre,tags,comuna);
 		centro.getServicios().forEach(servDto-> nuevoPoi.agregarServicio( convertirAServicioCgp(servDto)));

@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Transient;
@@ -12,6 +13,7 @@ import javax.persistence.Transient;
 import org.uqbar.geodds.*;
 
 import tpAnual.utils.PointWrapper;
+import tpAnual.utils.PolygonWrapper;
 
 @Entity
 @DiscriminatorValue("nro_cgp")
@@ -24,20 +26,20 @@ public class Cgp extends PoiConServicios {
 	private long numero;
 	
 	
-	@Transient
-	private Polygon comuna;
+//	@Transient
+	@Embedded
+	private PolygonWrapper comuna;
 
 	public Cgp(){super();}
 	
-	public Cgp(PointWrapper ubicacion, String nombre, Set<String> tags, List<Point> puntosComuna) {
+	public Cgp(PointWrapper ubicacion, String nombre, Set<String> tags, List<PointWrapper> puntosComuna) {
 		super(ubicacion, nombre, tags);
-		comuna =new Polygon(puntosComuna);
-		// TODO Auto-generated constructor stub
+		comuna = new PolygonWrapper(puntosComuna);
 	}
 	
 	@Override
 	public boolean estaCerca(PointWrapper ubicacion) {
-		return comuna.isInside(ubicacion.toPoint()) && comuna.isInside(this.getUbicacion().toPoint());
+		return comuna.isInside(ubicacion) && comuna.isInside(this.getUbicacion());
 	}
 
 	public long getNumero() {
@@ -48,11 +50,11 @@ public class Cgp extends PoiConServicios {
 		this.numero = numero;
 	}
 
-	public Polygon getComuna() {
+	public PolygonWrapper getComuna() {
 		return comuna;
 	}
 
-	public void setComuna(Polygon comuna) {
+	public void setComuna(PolygonWrapper comuna) {
 		this.comuna = comuna;
 	}
 	

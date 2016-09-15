@@ -14,6 +14,7 @@ import org.uqbar.geodds.Polygon;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
+import tpAnual.utils.PointWrapper;
 public class TestDisponibilidad extends TestSetup {
 
 	private DayOfWeek lunes = DayOfWeek.MONDAY;
@@ -21,7 +22,7 @@ public class TestDisponibilidad extends TestSetup {
 	private DayOfWeek viernes = DayOfWeek.FRIDAY;
 	private DayOfWeek domingo = DayOfWeek.SUNDAY;
 
-	private Cgp centro = new Cgp(ubicacion, "un cgp", new HashSet<String>(),new ArrayList<Point>());
+	private Cgp centro = new Cgp(ubicacion, "un cgp", new HashSet<String>(),new ArrayList<PointWrapper>());
 	
 	private Servicio rentas = new Servicio("Rentas");
 	private Servicio creditos = new Servicio("Creditos");
