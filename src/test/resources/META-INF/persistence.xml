@@ -40,7 +40,6 @@
        	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>
         <class> tpAnual.bd.LocalTimeToTimeConverter </class>
-  		 <class> tpAnual.utils.PolygonWrapper</class>
   
        
         <properties> 
