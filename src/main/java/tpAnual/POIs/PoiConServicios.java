@@ -11,14 +11,13 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
-import javax.persistence.MappedSuperclass;
 
 import tpAnual.Servicio;
 import tpAnual.util.wrapper.PointWrapper;
 
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class PoiConServicios extends Poi{	
 	
 	public PoiConServicios(PointWrapper ubicacion, String nombre, Set<String> tags) {

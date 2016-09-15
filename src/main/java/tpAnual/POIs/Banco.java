@@ -4,11 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Set;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
@@ -16,10 +12,6 @@ import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class Banco extends PoiConServicios {
-	
-//	@Id
-//	@GeneratedValue
-//	private long banco_id;
 	
 	public Banco(){ 
 		super();
@@ -36,11 +28,4 @@ public class Banco extends PoiConServicios {
 		servicios.add(servicio);
 	}
 
-//	public long getId() {
-//		return banco_id;
-//	}
-//
-//	public void setId(long numero) {
-//		this.banco_id = numero;
-//	}
 }

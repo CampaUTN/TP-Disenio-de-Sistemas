@@ -4,18 +4,12 @@ import java.util.*;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 import tpAnual.util.wrapper.PointWrapper;
 import tpAnual.util.wrapper.PolygonWrapper;
 
 @Entity
 public class Cgp extends PoiConServicios {
-	
-//	@Id
-//	@GeneratedValue
-//	private long cgp_id;
 	
 	@Embedded
 	private PolygonWrapper comuna;
@@ -31,14 +25,6 @@ public class Cgp extends PoiConServicios {
 	public boolean estaCerca(PointWrapper ubicacion) {
 		return comuna.isInside(ubicacion) && comuna.isInside(this.getUbicacion());
 	}
-
-//	public long getId() {
-//		return cgp_id;
-//	}
-//
-//	public void setId(long numero) {
-//		this.cgp_id = numero;
-//	}
 
 	public PolygonWrapper getComuna() {
 		return comuna;
