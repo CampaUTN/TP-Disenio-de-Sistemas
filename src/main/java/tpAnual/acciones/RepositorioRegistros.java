@@ -1,6 +1,7 @@
 package tpAnual.acciones;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import tpAnual.Terminal;
@@ -10,9 +11,26 @@ import tpAnual.acciones.reportes.RegistroBusqueda;
 import tpAnual.acciones.reportes.ReportePorFecha;
 import tpAnual.acciones.reportes.ReportePorTerminal;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table (name="registros")
 public class RepositorioRegistros{
-	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
+	@Id @GeneratedValue
+	private long numeroRegistro;
 	
+	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
+	@Transient
 	private static RepositorioRegistros instance = null;
 	
 	private RepositorioRegistros(){
@@ -45,6 +63,18 @@ public class RepositorioRegistros{
 	
 	public static void resetSingleton(){
 	    instance = null;
+	}
+
+	public long getNumeroRegistro() {
+		return numeroRegistro;
+	}
+
+	public void setNumeroRegistro(long numeroRegistro) {
+		this.numeroRegistro = numeroRegistro;
+	}
+
+	public void setRegistros(List<RegistroBusqueda> registros) {
+		this.registros = registros;
 	}
 	
 }
