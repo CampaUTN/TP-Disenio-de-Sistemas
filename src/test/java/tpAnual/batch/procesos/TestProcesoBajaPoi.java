@@ -2,18 +2,13 @@ package tpAnual.batch.procesos;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-
+import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
-import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.Mapa;
 import tpAnual.SingletonReseter;

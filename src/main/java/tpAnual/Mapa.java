@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import tpAnual.POIs.Poi;
 import tpAnual.utils.PointWrapper;
 
@@ -17,13 +17,11 @@ public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
-	private EntityManager em = PerThreadEntityManagers.getEntityManager();
+	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	
 
-	private Mapa(){
-		//Para evitar que sea instanciada esta clase.
-	}
+	private Mapa(){}
 	
 	public static Mapa getInstance(){
 		if(instance==null){
@@ -36,8 +34,8 @@ public class Mapa {
 		eliminarTodosLosPois();
 	    instance = null;
 	}
-	// Busqueda de texto libre de pois
 	
+	//Altas y bajas
 	public void alta(Poi poi){
 		pois.add(poi);
 		//em.persist(poi);
@@ -53,8 +51,8 @@ public class Mapa {
 		poisAEliminar.addAll(Mapa.getInstance().getPois());
 		poisAEliminar.forEach(poi -> Mapa.getInstance().baja(poi)); //Doy de baja los POIs de la BD
 	}
-	// Cercania de poi
 	
+	// Cercania de poi
 	public boolean estaCerca(Poi poi, PointWrapper unPunto) {
 		return poi.estaCerca(unPunto);
 	}
@@ -78,13 +76,14 @@ public class Mapa {
 	}
 	
 	// Setters y getters
-	
 	public void agregarTerminal(Terminal terminal){
 		this.terminales.add(terminal);
 	}
+	
 	public Set<Terminal> terminales(){
 		return this.terminales;
 	}
+	
 	public Set<Terminal> getTerminales() {
 		return terminales;
 	}
@@ -97,7 +96,6 @@ public class Mapa {
 		this.pois = pois;
 	}
 
-	
 	public Poi poisPendientesDeModificar(String nombre){
 		Poi poiAModificar = this.getPois().stream()
 				.filter(poi->poi.getNombre().equals(nombre))

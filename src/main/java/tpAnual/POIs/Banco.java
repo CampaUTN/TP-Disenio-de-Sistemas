@@ -5,19 +5,16 @@ import java.time.LocalTime;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
-import org.uqbar.geodds.Point;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
 import tpAnual.utils.PointWrapper;
 
 @Entity
-@DiscriminatorValue("nro_banco")
+@DiscriminatorValue("Banco")
 public class Banco extends PoiConServicios {
 
 	@GeneratedValue

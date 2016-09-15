@@ -2,8 +2,10 @@ package tpAnual;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.junit.*;
-import org.uqbar.geodds.Point;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;

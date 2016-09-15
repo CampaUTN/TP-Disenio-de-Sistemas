@@ -1,13 +1,15 @@
 package tpAnual;
 
 import java.util.ArrayList;
-
+import java.util.HashSet;
 import java.util.List;
-import java.util.*;
-import org.uqbar.geodds.Point;
+import java.util.Set;
 
-import org.junit.*;
 //import org.mockito.Mockito;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;

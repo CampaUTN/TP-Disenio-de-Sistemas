@@ -8,7 +8,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import tpAnual.Terminal;
 
