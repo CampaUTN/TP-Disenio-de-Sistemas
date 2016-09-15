@@ -30,7 +30,7 @@
        	<class>tpAnual.batch.procesos.DesactivarRegistros</class>
        	
        	<class>tpAnual.Terminal</class>
-       	<!-- rompe: <class>tpAnual.acciones.reportes.RegistroBusqueda</class>   -->
+       	<class>tpAnual.acciones.reportes.RegistroBusqueda</class>
        	<class>tpAnual.acciones.reportes.ElementoReporte</class>
        		
        	

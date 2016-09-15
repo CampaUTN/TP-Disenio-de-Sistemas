@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -41,7 +42,11 @@ public class RegistroBusqueda {
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDate fecha;
 	private Integer cantidadPois;
+	@OneToOne
 	private Terminal terminal;
+	
+	@SuppressWarnings("unused")
+	private RegistroBusqueda(){}
 	
 	public RegistroBusqueda(List<Poi> pois, List<String> palabrasUtilizadas, Long tiempoBusqueda, Terminal terminal){
 		this.palabrasUtilizadas.addAll(palabrasUtilizadas);
