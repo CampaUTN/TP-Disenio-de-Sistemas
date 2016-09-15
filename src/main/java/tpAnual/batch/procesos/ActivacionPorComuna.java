@@ -25,8 +25,8 @@ public class ActivacionPorComuna extends Proceso{
 	@OneToMany
 	Set<Terminal> terminales = new HashSet<Terminal>();
 	Integer comuna;
-//	@OneToMany
-	@Transient
+//	@Transient
+	@OneToMany
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
  	
  	public ActivacionPorComuna(Integer numeroComuna,Set<AccionTerminal> acciones){
