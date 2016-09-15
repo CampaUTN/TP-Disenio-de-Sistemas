@@ -33,7 +33,7 @@ public class ElementoReporte {
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDate fecha;
 	private Integer cantidadBusquedas=0;
-	@Transient // TODO rompe
+	@OneToOne
 	private Terminal terminal;
 	private Integer cantidadPoisEncontrados=0;
 	@ElementCollection @Cascade({CascadeType.ALL})
