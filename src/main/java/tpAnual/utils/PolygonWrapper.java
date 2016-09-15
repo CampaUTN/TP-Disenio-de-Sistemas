@@ -18,7 +18,8 @@ import org.uqbar.geodds.Polygon;
 @Embeddable
 public class PolygonWrapper{
 	@Transient //@OneToMany @Cascade({CascadeType.ALL})
-	List<PointWrapper> puntos = new ArrayList<PointWrapper>();
+	private List<PointWrapper> puntos = new ArrayList<PointWrapper>();
+	
 	
 	@SuppressWarnings("unused")
 	private PolygonWrapper(){}
@@ -26,6 +27,7 @@ public class PolygonWrapper{
 	public PolygonWrapper(List<PointWrapper> puntos){
 		this.puntos=puntos;
 	}
+	
 	
 	public Polygon toPolygon(){
 		return new Polygon(this.toPoints());
