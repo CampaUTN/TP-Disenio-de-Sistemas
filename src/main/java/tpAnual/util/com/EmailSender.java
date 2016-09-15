@@ -1,4 +1,4 @@
-package tpAnual.com;
+package tpAnual.util.com;
 
 import java.util.Properties;
 

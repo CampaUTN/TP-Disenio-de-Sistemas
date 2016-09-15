@@ -6,8 +6,8 @@ import java.util.List;
 import org.junit.*;
 
 import tpAnual.TestSetup;
-import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.reportes.RegistroBusqueda;
+import tpAnual.busquedas.RepositorioRegistros;
+import tpAnual.reportes.RegistroBusqueda;
 
 public class TestReporteBusqueda extends TestSetup{
 	

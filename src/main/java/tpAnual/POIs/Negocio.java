@@ -16,7 +16,7 @@ import javax.persistence.Transient;
 import org.uqbar.geodds.*;
 
 import tpAnual.Horario;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 @DiscriminatorValue("Negocio")

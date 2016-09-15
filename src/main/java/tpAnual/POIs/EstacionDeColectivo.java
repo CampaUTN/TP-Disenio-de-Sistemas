@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 
 import org.uqbar.geodds.Point;
 
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 @DiscriminatorValue("Linea de colectivo")

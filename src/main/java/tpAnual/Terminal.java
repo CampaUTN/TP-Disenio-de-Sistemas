@@ -10,9 +10,9 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import tpAnual.POIs.Poi;
-import tpAnual.acciones.RepositorioRegistros;
-import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
-import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
+import tpAnual.busquedas.RepositorioRegistros;
+import tpAnual.busquedas.emailSenderBusqueda.EmailSenderBusqueda;
+import tpAnual.busquedas.emailSenderBusqueda.IEmailSenderBusqueda;
 
 @Entity 
 @Table(name= "Terminal")

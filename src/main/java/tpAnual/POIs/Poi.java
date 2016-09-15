@@ -10,8 +10,8 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.uqbar.geodds.Point;
 
-import tpAnual.bd.PointToDoubleConverter;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.bd.PointToDoubleConverter;
+import tpAnual.util.wrapper.PointWrapper;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;

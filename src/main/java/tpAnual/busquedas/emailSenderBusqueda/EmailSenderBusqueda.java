@@ -1,6 +1,6 @@
-package tpAnual.acciones.emailSenderBusqueda;
+package tpAnual.busquedas.emailSenderBusqueda;
 
-import tpAnual.com.EmailSender;
+import tpAnual.util.com.EmailSender;
 
 /**
  * Singleton para avisar por mail al administrador si las busquedas tardan mas del limite establecido.

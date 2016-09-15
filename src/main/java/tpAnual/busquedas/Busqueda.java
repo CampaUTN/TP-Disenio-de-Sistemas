@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.busquedas;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,6 +3,8 @@ package tpAnual.bd;
 import org.junit.Test;
 import org.uqbar.geodds.Point;
 
+import tpAnual.util.bd.PointToDoubleConverter;
+
 import org.junit.Assert;
 
 public class TestPointConverter {

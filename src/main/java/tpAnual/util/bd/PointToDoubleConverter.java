@@ -1,4 +1,4 @@
-package tpAnual.bd;
+package tpAnual.util.bd;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.POIs.Poi;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class Mapa {
 	

@@ -7,12 +7,10 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 
-import org.hsqldb.util.DatabaseManager;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.SingletonReseter;
@@ -20,7 +18,7 @@ import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistirPois {
 	

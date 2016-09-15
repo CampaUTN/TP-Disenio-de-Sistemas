@@ -6,9 +6,9 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import tpAnual.acciones.reportes.ElementoReporte;
+import tpAnual.busquedas.RepositorioRegistros;
+import tpAnual.reportes.ElementoReporte;
 import tpAnual.TestSetup;
-import tpAnual.acciones.RepositorioRegistros;
 
 
 public class TestReportePorFecha extends TestSetup{

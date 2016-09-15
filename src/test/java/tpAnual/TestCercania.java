@@ -13,7 +13,7 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestCercania extends TestSetup{
 	private PointWrapper puntoComunaA = new PointWrapper(0,0);

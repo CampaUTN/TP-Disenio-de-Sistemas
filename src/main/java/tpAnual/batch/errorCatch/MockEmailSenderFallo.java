@@ -1,7 +1,7 @@
 package tpAnual.batch.errorCatch;
 
 import tpAnual.batch.procesos.Proceso;
-import tpAnual.com.EmailSender;
+import tpAnual.util.com.EmailSender;
 
 
 public class MockEmailSenderFallo extends EmailSender implements IEmailSenderFallo, Accion{

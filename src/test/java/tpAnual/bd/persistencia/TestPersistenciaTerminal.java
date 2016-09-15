@@ -12,7 +12,6 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Terminal;
-import tpAnual.POIs.Poi;
 
 public class TestPersistenciaTerminal {
 	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();

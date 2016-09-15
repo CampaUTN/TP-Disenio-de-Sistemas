@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.busquedas.BuscadorLocal;
+import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 

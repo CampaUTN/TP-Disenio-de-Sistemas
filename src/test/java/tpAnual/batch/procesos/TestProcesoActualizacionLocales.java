@@ -13,7 +13,7 @@ import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoActualizacionLocales {
 	

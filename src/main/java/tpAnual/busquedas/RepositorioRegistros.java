@@ -1,4 +1,4 @@
-package tpAnual.acciones;
+package tpAnual.busquedas;
 
 import java.util.ArrayList;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
-import tpAnual.acciones.reportes.ElementoReporte;
-import tpAnual.acciones.reportes.RegistroBusqueda;
-import tpAnual.acciones.reportes.ReportePorFecha;
-import tpAnual.acciones.reportes.ReportePorTerminal;
+import tpAnual.reportes.ElementoReporte;
+import tpAnual.reportes.RegistroBusqueda;
+import tpAnual.reportes.ReportePorFecha;
+import tpAnual.reportes.ReportePorTerminal;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;

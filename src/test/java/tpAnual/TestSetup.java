@@ -9,9 +9,12 @@ import org.junit.Before;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.BuscadorLocal;
+import tpAnual.busquedas.BuscadorTexto;
+import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestSetup {
 	

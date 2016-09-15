@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
+import tpAnual.busquedas.emailSenderBusqueda.IEmailSenderBusqueda;
 
 public class TestEmailSenderBusqueda extends TestSetup{
 	

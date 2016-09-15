@@ -1,4 +1,4 @@
-package tpAnual.utils;
+package tpAnual.util.wrapper;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPoi {
 	private Set<String> tags = new HashSet<String>();

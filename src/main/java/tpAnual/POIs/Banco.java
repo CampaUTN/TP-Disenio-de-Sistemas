@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 @DiscriminatorValue("Banco")

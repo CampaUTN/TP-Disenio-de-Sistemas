@@ -1,8 +1,9 @@
-package tpAnual;
+package tpAnual.busquedas;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
 

@@ -1,4 +1,4 @@
-package tpAnual.acciones.reportes;
+package tpAnual.reportes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

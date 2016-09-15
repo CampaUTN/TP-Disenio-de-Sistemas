@@ -1,7 +1,5 @@
 package tpAnual.bd.persistencia;
 
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -9,22 +7,19 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 
-import org.hsqldb.util.DatabaseManager;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
-import tpAnual.BuscadorTexto;
-import tpAnual.Busqueda;
-import tpAnual.Horario;
 import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
-import tpAnual.utils.PointWrapper;
+import tpAnual.busquedas.BuscadorTexto;
+import tpAnual.busquedas.Busqueda;
+import tpAnual.util.wrapper.PointWrapper;
  	
 public class TestPersistirBusquedas {
 	

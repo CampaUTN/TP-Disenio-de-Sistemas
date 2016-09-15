@@ -1,4 +1,4 @@
-package tpAnual.acciones.reportes;
+package tpAnual.reportes;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,8 @@ import java.util.List;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
-import tpAnual.bd.LocalTimeToTimeConverter;
+import tpAnual.util.bd.LocalDateConverter;
+import tpAnual.util.bd.LocalTimeToTimeConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -28,7 +29,6 @@ import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import tpAnual.bd.LocalDateConverter;
 
 @Entity
 public class RegistroBusqueda {

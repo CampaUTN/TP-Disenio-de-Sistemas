@@ -1,4 +1,4 @@
-package tpAnual.acciones.emailSenderBusqueda;
+package tpAnual.busquedas.emailSenderBusqueda;
 
 /**
  * Interface para usar mockito.

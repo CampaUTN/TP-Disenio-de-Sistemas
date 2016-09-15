@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.busquedas;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -8,6 +8,9 @@ import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.externo.sistemasExternos.Consultora;
 
+/**
+ * Repositorio con buscadores
+ */
 public class RepositorioBuscador {
 	private final HashSet<Consultora> consultoras = new HashSet<Consultora>();
 	private static RepositorioBuscador instance = null;
@@ -33,7 +36,7 @@ public class RepositorioBuscador {
 		return consultoras;
 	}
 	
-	static void resetSingleton(){
+	public static void resetSingleton(){
 	    instance = null;
 	}
 	

@@ -18,7 +18,7 @@ import javax.persistence.ManyToMany;
 import org.uqbar.geodds.Point;
 
 import tpAnual.Servicio;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 
 @Entity

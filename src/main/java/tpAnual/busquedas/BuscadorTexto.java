@@ -1,4 +1,4 @@
-package tpAnual;
+package tpAnual.busquedas;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
 

@@ -1,4 +1,4 @@
-package tpAnual.acciones.reportes;
+package tpAnual.reportes;
 
 import java.time.LocalDate;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tpAnual.Terminal;
-import tpAnual.bd.LocalDateConverter;
+import tpAnual.util.bd.LocalDateConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;

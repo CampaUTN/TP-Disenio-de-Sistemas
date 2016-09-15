@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import tpAnual.bd.LocalTimeToTimeConverter;
+import tpAnual.util.bd.LocalTimeToTimeConverter;
 
 @Entity
 @Table(name = "Horarios")

@@ -15,7 +15,7 @@ import tpAnual.externo.mocks.MockSistemaCGP;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class CGPAdapter implements Consultora{
 	

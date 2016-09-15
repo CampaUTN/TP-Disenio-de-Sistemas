@@ -12,8 +12,8 @@ import javax.persistence.Transient;
 
 import org.uqbar.geodds.*;
 
-import tpAnual.utils.PointWrapper;
-import tpAnual.utils.PolygonWrapper;
+import tpAnual.util.wrapper.PointWrapper;
+import tpAnual.util.wrapper.PolygonWrapper;
 
 @Entity
 @DiscriminatorValue("CGP")

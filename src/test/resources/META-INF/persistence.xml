@@ -30,17 +30,17 @@
        	<class>tpAnual.batch.procesos.DesactivarRegistros</class>
        	
        	<class>tpAnual.Terminal</class>
-       	<class>tpAnual.acciones.reportes.RegistroBusqueda</class>
-       	<class>tpAnual.acciones.reportes.ElementoReporte</class>
+       	<class>tpAnual.reportes.RegistroBusqueda</class>
+       	<class>tpAnual.reportes.ElementoReporte</class>
        		
        	
        	<!-- Converters -->
-       	<class> tpAnual.bd.PointToDoubleConverter </class>
-        <class> tpAnual.bd.LocalTimeToTimeConverter </class>
-        <class> tpAnual.bd.LocalDateConverter </class>
+       	<class> tpAnual.util.bd.PointToDoubleConverter </class>
+        <class> tpAnual.util.bd.LocalTimeToTimeConverter </class>
+        <class> tpAnual.util.bd.LocalDateConverter </class>
         
         <!-- Varios --> 	
-       	<class>tpAnual.Busqueda</class>
+       	<class>tpAnual.busquedas.Busqueda</class>
        	<class>tpAnual.Horario</class>
        	<class>tpAnual.Servicio</class>
        	<class>tpAnual.Terminal</class>

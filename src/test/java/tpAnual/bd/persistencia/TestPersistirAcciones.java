@@ -1,8 +1,6 @@
 package tpAnual.bd.persistencia;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -11,21 +9,14 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
-import tpAnual.BuscadorTexto;
-import tpAnual.Busqueda;
 import tpAnual.Mapa;
 import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
-import tpAnual.POIs.EstacionDeColectivo;
-import tpAnual.POIs.Poi;
 import tpAnual.batch.procesos.AccionTerminal;
-import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivacionSeleccion;
-import tpAnual.batch.procesos.ActivarMails;
 import tpAnual.batch.procesos.DesactivarMails;
 
 public class TestPersistirAcciones {

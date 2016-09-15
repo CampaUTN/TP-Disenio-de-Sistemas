@@ -3,7 +3,7 @@ package tpAnual;
 import org.junit.Assert;
 import org.junit.Test;
 
-import tpAnual.acciones.RepositorioRegistros;
+import tpAnual.busquedas.RepositorioRegistros;
 
 public class TestRepositorioRegistro extends TestSetup{
 	

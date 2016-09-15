@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 public class TestDisponibilidad extends TestSetup {
 
 	private DayOfWeek lunes = DayOfWeek.MONDAY;

@@ -5,14 +5,15 @@ import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import org.junit.Test;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import tpAnual.Horario;
 import tpAnual.SingletonReseter;
-import tpAnual.Terminal;
 
 
 public class TestPersistenciaHorarios {

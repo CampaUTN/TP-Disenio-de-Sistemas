@@ -20,7 +20,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoExterno;
 import tpAnual.externo.sistemasExternos.Consultora;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 
 public class BancoAdapter implements Consultora {

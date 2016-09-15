@@ -18,7 +18,7 @@ import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
-import tpAnual.utils.PointWrapper;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoBajaPoi {
 	
