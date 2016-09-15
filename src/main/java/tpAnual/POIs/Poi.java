@@ -11,11 +11,12 @@ import org.hibernate.annotations.CascadeType;
 import org.uqbar.geodds.Point;
 
 import tpAnual.bd.PointToDoubleConverter;
-
+import tpAnual.utils.PointWrapper;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,10 +35,9 @@ public abstract class Poi {
 	//@Column(name = "poi_id")
 	private long id;
 	
-//	@Column(name="Latitud _ Longitud")
-//	@Convert(converter = PointToDoubleConverter.class)
-	@Transient
-	private Point ubicacion;
+
+	@Embedded
+	private PointWrapper ubicacion;
 	
 	@ElementCollection @Cascade({CascadeType.ALL})
 	private Set<String> tagsPoi = new HashSet<String>();
@@ -50,7 +50,7 @@ public abstract class Poi {
 
 	protected Poi(){}
 	
-	public Poi(Point ubicacion, String nombre, Set<String> tags) {
+	public Poi(PointWrapper ubicacion, String nombre, Set<String> tags) {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
 		this.tagsPoi = tags;
@@ -74,7 +74,7 @@ public abstract class Poi {
 	
 		
 	// Distancia:
-	public boolean estaCerca(Point ubicacion) {
+	public boolean estaCerca(PointWrapper ubicacion) {
 		return this.ubicacion.distance(ubicacion) <= 0.5;
 	}
 	
@@ -106,8 +106,8 @@ public abstract class Poi {
 		this.nombre = nuevoNombre;
 	}
 	
-	public void setUbicacion(Point nuevaUbic){
-		this.ubicacion = nuevaUbic;
+	public void setUbicacion(PointWrapper ubicacion){
+		this.ubicacion = ubicacion;
 	}
 	// Getters:
 	public String getNombre(){
@@ -116,7 +116,7 @@ public abstract class Poi {
 	
 	
 
-	public Point getUbicacion() {
+	public PointWrapper getUbicacion() {
 		return ubicacion;
 	}
 

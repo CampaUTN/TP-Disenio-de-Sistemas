@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import tpAnual.POIs.Poi;
+import tpAnual.utils.PointWrapper;
 
 public class Mapa {
 	
@@ -54,7 +55,7 @@ public class Mapa {
 	}
 	// Cercania de poi
 	
-	public boolean estaCerca(Poi poi, Point unPunto) {
+	public boolean estaCerca(Poi poi, PointWrapper unPunto) {
 		return poi.estaCerca(unPunto);
 	}
 	
