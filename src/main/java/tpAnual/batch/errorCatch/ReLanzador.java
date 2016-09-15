@@ -1,4 +1,4 @@
-package tpAnual.batch.accionesPostEjecucion;
+package tpAnual.batch.errorCatch;
 
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.Proceso;

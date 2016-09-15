@@ -8,40 +8,40 @@
     <persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
     	
-    
+        <!-- POIs -->
 		<class>tpAnual.POIs.Poi</class>
        	<class>tpAnual.POIs.Banco</class>
     	<class>tpAnual.POIs.Cgp</class>
     	<class>tpAnual.POIs.EstacionDeColectivo</class>
     	<class>tpAnual.POIs.Negocio</class>
     	<class>tpAnual.POIs.PoiConServicio</class>
-    		<!-- <class>tpAnual.POIs.Polygon</class> -->
-    	
-       	<class>tpAnual.Busqueda</class>
-       	<class>tpAnual.Horario</class>
-       	<class>tpAnual.Servicio</class>
-       	<class>tpAnual.Terminal</class>
        	
-       		<class>tpAnual.batch.procesos.ActivacionEnTodas</class>
-       		<class>tpAnual.batch.procesos.ActivacionSeleccion</class>
-       		<class>tpAnual.batch.procesos.ActivacionPorComuna</class>
-       		<class>tpAnual.batch.procesos.Proceso</class>
-       		<class>tpAnual.batch.procesos.ProcesoBajaPoi</class>
-       		<class>tpAnual.batch.procesos.ProcesoActualizarLocales</class>
-       		
-       	<!-- 	-->
-       		<class>tpAnual.batch.procesos.AccionTerminal</class>
-       		<class>tpAnual.batch.procesos.ActivarMails</class>
-       		<class>tpAnual.batch.procesos.DesactivarMails</class>
-       		<class>tpAnual.batch.procesos.ActivarRegistros</class>
-       		<class>tpAnual.batch.procesos.DesactivarRegistros</class>
+       	<!-- Acciones -->
+       	<class>tpAnual.batch.procesos.ActivacionEnTodas</class>
+       	<class>tpAnual.batch.procesos.ActivacionSeleccion</class>
+       	<class>tpAnual.batch.procesos.ActivacionPorComuna</class>
+       	<class>tpAnual.batch.procesos.Proceso</class>
+       	<class>tpAnual.batch.procesos.ProcesoBajaPoi</class>
+       	<class>tpAnual.batch.procesos.ProcesoActualizarLocales</class>
+       	<class>tpAnual.batch.procesos.AccionTerminal</class>
+       	<class>tpAnual.batch.procesos.ActivarMails</class>
+       	<class>tpAnual.batch.procesos.DesactivarMails</class>
+       	<class>tpAnual.batch.procesos.ActivarRegistros</class>
+       	<class>tpAnual.batch.procesos.DesactivarRegistros</class>
        		
        	
        	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>
         <class> tpAnual.bd.LocalTimeToTimeConverter </class>
   
-       
+        <!-- Varios --> 	
+       	<class>tpAnual.Busqueda</class>
+       	<class>tpAnual.Horario</class>
+       	<class>tpAnual.Servicio</class>
+       	<class>tpAnual.Terminal</class>
+       	
+       	
+       	
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         

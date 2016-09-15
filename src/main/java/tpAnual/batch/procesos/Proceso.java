@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import tpAnual.batch.accionesPostEjecucion.Accion;
-import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
+import tpAnual.batch.errorCatch.Accion;
+import tpAnual.batch.errorCatch.LoggerProcesos;
 
 @Entity
 @Table(name="Proceso")

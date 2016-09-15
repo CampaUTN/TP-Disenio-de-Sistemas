@@ -2,7 +2,7 @@ package tpAnual;
 
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
+import tpAnual.batch.errorCatch.LoggerProcesos;
 
 public class SingletonReseter {
 	public static void resetAll(){

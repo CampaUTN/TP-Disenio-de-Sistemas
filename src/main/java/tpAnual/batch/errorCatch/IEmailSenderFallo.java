@@ -1,4 +1,4 @@
-package tpAnual.batch.accionesPostEjecucion;
+package tpAnual.batch.errorCatch;
 
 /**
  * Interface para usar mockito.
