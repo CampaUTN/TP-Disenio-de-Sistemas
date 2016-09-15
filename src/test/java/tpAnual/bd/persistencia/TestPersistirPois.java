@@ -52,6 +52,7 @@ public class TestPersistirPois {
 	@AfterClass
 	public static void clear() {
 		entityManager.getTransaction().rollback();
+		SingletonReseter.resetAll();
 	}	
 	
 	@Test
@@ -113,7 +114,7 @@ public class TestPersistirPois {
 	@Test
 	public void buscoPoiPorID(){
 		
-		List<Poi> busquedas = entityManager.createQuery("FROM Poi where id= :unId ", Poi.class).
+		List<Poi> busquedas = entityManager.createQuery("FROM EstacionDeColectivo where poi_id= :unId ", Poi.class).
 			setParameter("unId", id1).getResultList();
 	
 		Assert.assertEquals(poiPrueba,busquedas.get(0));
