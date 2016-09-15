@@ -12,41 +12,71 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Terminal;
+import tpAnual.POIs.Poi;
 
 public class TestPersistenciaTerminal {
-	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
+	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	
 	static long numTerminal1, numTerminal2;
 	static Integer numComuna;
 	
 	private static List<Terminal> terminalBd = new ArrayList<Terminal>();
 	
+	private static Terminal terminalPrueba1 = new Terminal();
+	private static Terminal terminalPrueba2 = new Terminal();
+		
 	@BeforeClass
 	public static void init() {
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
-		Terminal terminalPrueba1 = new Terminal();
-		Terminal terminalPrueba2 = new Terminal();
 		terminalPrueba1.activarRegistros();
 		terminalPrueba1.activarMails();
-		terminalPrueba2.activarRegistros();
-		terminalPrueba2.activarMails();
-		em.persist(terminalPrueba1);
-		em.persist(terminalPrueba2);
-        numTerminal1 = terminalPrueba1.getNumeroTerminal();
-		numTerminal2 = terminalPrueba2.getNumeroTerminal();
-		terminalBd = em.createQuery("FROM Terminal").getResultList();
 		
+		terminalPrueba2.activarRegistros();
+		terminalPrueba2.activarMails();		
+		
+
+		entityManager.persist(terminalPrueba1);
 	}
 	
 	@AfterClass
 	public static void clear() {
-		em.getTransaction().rollback();
+		entityManager.getTransaction().rollback();
 	}
 	
 	@Test
-	public void lasIdsSeAutogeneranSecuencialmente(){
-		Assert.assertEquals(numTerminal2, numTerminal1+1, 0);
+	public void sePersisteLaTerminal(){
+		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
+	
+		Assert.assertFalse(terminales.isEmpty());
+		
 	}
 	
+	@Test
+	public void sePersisteMasDeUnaTerminal(){
+		entityManager.persist(terminalPrueba2);
+		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
+	
+		Assert.assertEquals(terminales.size(),2);		
+	}
+	
+	
+	@Test
+	public void lasIdsSeAutogeneranSecuencialmente(){
+		entityManager.persist(terminalPrueba2);
+		
+        numTerminal1 = terminalPrueba1.getNumeroTerminal();
+		numTerminal2 = terminalPrueba2.getNumeroTerminal();
+		
+		Assert.assertEquals(numTerminal2, numTerminal1+1);
+	}
+	
+	@Test
+	public void lasIdsNoSeRepiten(){
+		List<Terminal> terminales = entityManager.createQuery("FROM Terminal where id= :unId", Terminal.class)
+				.setParameter("unId", 1l).getResultList();
+			
+		Assert.assertEquals(terminales.size(),1);
+	}
+
 }

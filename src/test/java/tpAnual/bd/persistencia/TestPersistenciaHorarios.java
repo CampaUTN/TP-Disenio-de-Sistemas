@@ -2,6 +2,8 @@ package tpAnual.bd.persistencia;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
@@ -10,6 +12,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import tpAnual.Horario;
 import tpAnual.SingletonReseter;
+import tpAnual.Terminal;
 
 
 public class TestPersistenciaHorarios {
@@ -20,35 +23,34 @@ public class TestPersistenciaHorarios {
 	private static Horario horarioManana = Horario.nuevoHorarioParaFranja(lunes,viernes,LocalTime.parse("10:00:30"), LocalTime.parse("12:00"));
 	private static Horario horarioUnico = Horario.nuevoHorarioParaDia(miercoles,LocalTime.parse("09:00"),LocalTime.parse("12:00"));
 	
-	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
-	static long id1;
-	static long id2;
+	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
-		em.getTransaction().begin();
-		em.persist(horarioUnico);
-		em.persist(horarioManana);
-
-		id1 = horarioUnico.getId();
-		id2 = horarioManana.getId();
-
+		entityManager.getTransaction().begin();
+		
+		entityManager.persist(horarioUnico);
+		entityManager.persist(horarioManana);
 	}
 	
 	@AfterClass
 	public static void clear() {
-		em.getTransaction().rollback();
+		entityManager.getTransaction().rollback();
+	}
+	
+	@Test
+	public void testLosIdsSonIncrementales(){
+		long id1 = horarioUnico.getId();
+		long id2 = horarioManana.getId();
+		
+		Assert.assertEquals(id2, id1+1);
 	}
 	
 	
 	@Test
-	public void testId1(){
-		Assert.assertEquals(1, id1, 0);
-	}
-
-	@Test
-	public void testId2(){
-		Assert.assertEquals(2, id2, 0);
-	}
+	public void sePersisteElHorario(){
+		List<Horario> terminales = entityManager.createQuery("FROM Horario").getResultList();
+		Assert.assertFalse(terminales.isEmpty());		
+	}	
 }
