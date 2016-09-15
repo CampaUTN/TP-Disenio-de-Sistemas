@@ -51,6 +51,7 @@ public class TestPersistenciaHorarios {
 	
 	@Test
 	public void sePersisteElHorario(){
+		@SuppressWarnings("unchecked")
 		List<Horario> terminales = entityManager.createQuery("FROM Horario").getResultList();
 		Assert.assertFalse(terminales.isEmpty());		
 	}	

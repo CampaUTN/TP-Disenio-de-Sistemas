@@ -1,6 +1,5 @@
 package tpAnual.bd.persistencia;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,7 +18,7 @@ public class TestPersistenciaTerminal {
 	static long numTerminal1, numTerminal2;
 	static Integer numComuna;
 	
-	private static List<Terminal> terminalBd = new ArrayList<Terminal>();
+//	private static List<Terminal> terminalBd = new ArrayList<Terminal>();
 	
 	private static Terminal terminalPrueba1 = new Terminal();
 	private static Terminal terminalPrueba2 = new Terminal();
@@ -45,6 +44,7 @@ public class TestPersistenciaTerminal {
 	
 	@Test
 	public void sePersisteLaTerminal(){
+		@SuppressWarnings("unchecked")
 		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
 	
 		Assert.assertFalse(terminales.isEmpty());
@@ -54,6 +54,7 @@ public class TestPersistenciaTerminal {
 	@Test
 	public void sePersisteMasDeUnaTerminal(){
 		entityManager.persist(terminalPrueba2);
+		@SuppressWarnings("unchecked")
 		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
 	
 		Assert.assertEquals(terminales.size(),2);		

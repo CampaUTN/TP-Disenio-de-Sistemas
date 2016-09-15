@@ -58,6 +58,7 @@ public class TestPersistirPois {
 	
 	@Test
 	public void todosLosPoisSePersisten(){
+		@SuppressWarnings("unchecked")
 		List<Poi> poisBd = entityManager.createQuery("FROM Poi").getResultList();
 		Assert.assertEquals(2,poisBd.size(),0);
 	}
@@ -81,6 +82,7 @@ public class TestPersistirPois {
 		entityManager.persist(negocio);
 		entityManager.persist(cgp);
 		
+		@SuppressWarnings("unchecked")
 		List<Poi> poisBd2 = entityManager.createQuery("FROM Poi").getResultList();
 		
 		Assert.assertEquals(4,poisBd2.size(),0);

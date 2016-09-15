@@ -17,6 +17,7 @@ public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
+	@SuppressWarnings("unused")
 	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	

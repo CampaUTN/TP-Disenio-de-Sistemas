@@ -11,18 +11,6 @@ import tpAnual.reportes.RegistroBusqueda;
 import tpAnual.reportes.ReportePorFecha;
 import tpAnual.reportes.ReportePorTerminal;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 
 public class RepositorioRegistros{
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();

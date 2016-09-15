@@ -9,7 +9,6 @@ import java.util.List;
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.util.bd.LocalDateConverter;
-import tpAnual.util.bd.LocalTimeToTimeConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -17,18 +16,10 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
 
 @Entity
 public class RegistroBusqueda {

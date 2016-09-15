@@ -1,8 +1,6 @@
 package tpAnual.batch.procesos;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -14,10 +12,6 @@ import tpAnual.Mapa;
 import tpAnual.SingletonReseter;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
-import tpAnual.externo.adapters.BajaPoiAdapter;
-import tpAnual.externo.mocks.MockBajaPoi;
-import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
-import tpAnual.externo.sistemasExternos.UrlExterna;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoBajaPoi {
@@ -30,11 +24,11 @@ public class TestProcesoBajaPoi {
 	protected static Poi poi2;
 	protected static Poi poi3;
 	
-	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
+//	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
 	private ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
-	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
-	private List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
-	private MockBajaPoi mockbp = new MockBajaPoi();
+//	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
+//	private List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
+//	private MockBajaPoi mockbp = new MockBajaPoi();
 	
 	
 	
