@@ -1,6 +1,8 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,11 +14,11 @@ import tpAnual.Terminal;
 public class ActivacionSeleccion extends Proceso {
 	
 	@OneToMany
-	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+	List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 	@OneToMany
-	Set<Terminal> terminalesSeleccion = new HashSet<Terminal>();
+	List<Terminal> terminalesSeleccion = new ArrayList<Terminal>();
 	
-	public ActivacionSeleccion(Set<Terminal> terminales,Set<AccionTerminal> acciones){
+	public ActivacionSeleccion(List<Terminal> terminales,List<AccionTerminal> acciones){
 		this.acciones = acciones;
 		this.terminalesSeleccion = terminales;
 	}
@@ -25,19 +27,19 @@ public class ActivacionSeleccion extends Proceso {
 		acciones.forEach(accion -> accion.realizarAccion(terminalesSeleccion));
 	}
 
-	public Set<AccionTerminal> getAcciones() {
+	public List<AccionTerminal> getAcciones() {
 		return acciones;
 	}
 
-	public void setAcciones(Set<AccionTerminal> acciones) {
+	public void setAcciones(List<AccionTerminal> acciones) {
 		this.acciones = acciones;
 	}
 
-	public Set<Terminal> getTerminalesSeleccion() {
+	public List<Terminal> getTerminalesSeleccion() {
 		return terminalesSeleccion;
 	}
 
-	public void setTerminalesSeleccion(Set<Terminal> terminalesSeleccion) {
+	public void setTerminalesSeleccion(List<Terminal> terminalesSeleccion) {
 		this.terminalesSeleccion = terminalesSeleccion;
 	}
 	

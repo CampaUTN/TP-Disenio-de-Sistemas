@@ -1,5 +1,6 @@
 package tpAnual.bd.persistencia;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,9 +38,9 @@ public class TestPersistirAcciones {
 		entityManager.getTransaction().begin();
 		
 		terminal.desactivarMails();
-		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+		List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 		acciones.add(new DesactivarMails());
-		Set<Terminal> terminales = new HashSet<Terminal>();
+		List<Terminal> terminales = new ArrayList<Terminal>();
 		terminales.add(terminal);
 		Mapa.getInstance().agregarTerminal(terminal);
 		

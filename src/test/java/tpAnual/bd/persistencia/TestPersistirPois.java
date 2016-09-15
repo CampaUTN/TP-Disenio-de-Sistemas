@@ -67,7 +67,7 @@ public class TestPersistirPois {
 		Assert.assertEquals(2,poisBd.size(),0);
 	}
 	
-	@Test
+	//@Test
 	public void losPoisConServicioSePersisten(){
 		Poi negocio = new Negocio(punto,"mueblesSA",tags,"muebleria",10);
 		

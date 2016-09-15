@@ -1,8 +1,14 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,19 +18,20 @@ import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 
 public class TestProcesoActivadorAcciones {
-	Set<Terminal> terminales = new HashSet<Terminal>();
-	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+	private List<Terminal> terminales = new ArrayList<Terminal>();
+	private List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 	
-	Terminal terminal0 = new Terminal(0);
-	Terminal terminal1 = new Terminal(1);
-	Terminal terminal2 = new Terminal(2);
-	
-	Mapa mapa;
+	private Terminal terminal0 = new Terminal(0);
+	private Terminal terminal1 = new Terminal(99);
+	private Terminal terminal2 = new Terminal(2);
+	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+	private Mapa mapa;
 	
 	
 	@Before
 	public void init(){
 		SingletonReseter.resetAll();
+		entityManager.getTransaction().begin();
 		mapa = Mapa.getInstance();
 
 		terminal0.setNumeroComuna(5);
@@ -37,6 +44,11 @@ public class TestProcesoActivadorAcciones {
 		
 		acciones.add(new ActivarMails());
 		acciones.add(new DesactivarRegistros());
+	}
+	
+	@After
+	public void clean(){
+		entityManager.getTransaction().rollback();
 	}
 	
 	@Test
@@ -81,7 +93,7 @@ public class TestProcesoActivadorAcciones {
 	
 	@Test
 	public void testActivadorEnAlgunosLosDesactiva(){
-		Set<Terminal> algunos = new HashSet<Terminal>();
+		List<Terminal> algunos = new ArrayList<Terminal>();
 	
 		algunos.add(terminal0);
 		terminal0.activarRegistros();
@@ -94,7 +106,7 @@ public class TestProcesoActivadorAcciones {
 	
 	@Test
 	public void testActivadorEnAlgunosNoDesactivaSiNoEsta(){
-		Set<Terminal> algunos = new HashSet<Terminal>();
+		List<Terminal> algunos = new ArrayList<Terminal>();
 	
 		algunos.add(terminal0);
 		terminal0.activarRegistros();
@@ -148,7 +160,7 @@ public class TestProcesoActivadorAcciones {
 		terminal0.desactivarMails();
 		
 
-		Set<AccionTerminal> acciones2 = new HashSet<AccionTerminal>();
+		List<AccionTerminal> acciones2 = new ArrayList<AccionTerminal>();
 		acciones2.add(new ActivarRegistros());
 		
 		ActivacionEnTodas activador = new ActivacionEnTodas(acciones2);

@@ -1,6 +1,6 @@
 package tpAnual.batch.procesos;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +18,6 @@ public abstract class AccionTerminal {
 	@GeneratedValue
 	private long id;
 	
-	public abstract void realizarAccion(Set<Terminal> terminales);
+	public abstract void realizarAccion(List<Terminal> terminales);
 	
 }

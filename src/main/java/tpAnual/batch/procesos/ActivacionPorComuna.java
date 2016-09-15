@@ -1,6 +1,8 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,14 +16,14 @@ import tpAnual.Terminal;
 public class ActivacionPorComuna extends Proceso{
 	
 	@OneToMany
-	private Set<Terminal> terminales = new HashSet<Terminal>();
+	private List<Terminal> terminales = new ArrayList<Terminal>();
 	
 	private Integer comuna;
 	
 	@OneToMany
-	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+	List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
  	
- 	public ActivacionPorComuna(Integer numeroComuna,Set<AccionTerminal> acciones){
+ 	public ActivacionPorComuna(Integer numeroComuna,List<AccionTerminal> acciones){
  		this.acciones = acciones;
  		this.comuna = numeroComuna;
  	}
@@ -31,19 +33,19 @@ public class ActivacionPorComuna extends Proceso{
  		acciones.forEach(accion -> accion.realizarAccion(terminales));
  	}
  	
- 	private Set<Terminal> seleccionarTerminales(){
- 		Set<Terminal> terminales = new HashSet<Terminal>();
- 		terminales = Mapa.getInstance().terminales();
+ 	private List<Terminal> seleccionarTerminales(){
+ 		List<Terminal> terminales = new ArrayList<Terminal>();
+ 		terminales = Mapa.getInstance().getTerminales();
  		
  		return terminales.stream()
- 				.filter(terminal -> terminal.getNumeroComuna().equals(comuna)).collect(Collectors.toSet());
+ 				.filter(terminal -> terminal.getNumeroComuna().equals(comuna)).collect(Collectors.toList());
  	}
 
-	public Set<Terminal> getTerminales() {
+	public List<Terminal> getTerminales() {
 		return terminales;
 	}
 
-	public void setTerminales(Set<Terminal> terminales) {
+	public void setTerminales(List<Terminal> terminales) {
 		this.terminales = terminales;
 	}
 
@@ -55,11 +57,11 @@ public class ActivacionPorComuna extends Proceso{
 		this.comuna = comuna;
 	}
 
-	public Set<AccionTerminal> getAcciones() {
+	public List<AccionTerminal> getAcciones() {
 		return acciones;
 	}
 
-	public void setAcciones(Set<AccionTerminal> acciones) {
+	public void setAcciones(List<AccionTerminal> acciones) {
 		this.acciones = acciones;
 	}
  }

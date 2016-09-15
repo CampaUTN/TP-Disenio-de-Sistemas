@@ -1,6 +1,8 @@
 package tpAnual.batch;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.After;
@@ -21,7 +23,7 @@ import tpAnual.batch.procesos.ProcesoActualizarLocales;
 
 public class TestLanzador{
 	private Lanzador lanzador;	
-	private Set<Terminal> terminales = new HashSet<>();
+	private List<Terminal> terminales = new ArrayList<>();
 	private Set<String> activar = new HashSet<>();
 	private Set<String> desactivar = new HashSet<>();
 	private Proceso proceso1;
@@ -63,7 +65,7 @@ public class TestLanzador{
 
 	@Test
 	public void elProcesoSeEjecutaBien(){
-		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+		List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 		acciones.add(new ActivarMails());
 		acciones.add(new DesactivarRegistros());
 		proceso1 = new ActivacionPorComuna(5, acciones);

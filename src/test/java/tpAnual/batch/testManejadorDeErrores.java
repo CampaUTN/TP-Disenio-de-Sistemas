@@ -1,6 +1,8 @@
 package tpAnual.batch;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.*;
@@ -60,7 +62,7 @@ public class testManejadorDeErrores {
 	
 	@Test
 	public void ignoraElLimiteSiSeEjecutaCorrectamente(){
-		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
+		List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 		acciones.add(new ActivarMails());
 		acciones.add(new DesactivarRegistros());
 		proceso2 = new ActivacionPorComuna(5, acciones);

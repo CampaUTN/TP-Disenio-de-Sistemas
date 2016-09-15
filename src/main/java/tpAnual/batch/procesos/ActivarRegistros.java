@@ -1,6 +1,6 @@
 package tpAnual.batch.procesos;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 
@@ -9,7 +9,7 @@ import tpAnual.Terminal;
 @Entity
 public class ActivarRegistros extends AccionTerminal{
 	
-	public void realizarAccion(Set<Terminal> terminales){
+	public void realizarAccion(List<Terminal> terminales){
 		terminales.forEach(terminal -> terminal.activarRegistros());
 	}
 	

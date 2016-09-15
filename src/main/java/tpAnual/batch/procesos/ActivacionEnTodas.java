@@ -1,6 +1,8 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -13,33 +15,33 @@ import tpAnual.Terminal;
 public class ActivacionEnTodas extends Proceso{
 	
 	@OneToMany
-	Set<Terminal> terminales = new HashSet<Terminal>();
+	List<Terminal> terminales = new ArrayList<Terminal>();
 
 	@OneToMany
-	Set<AccionTerminal> acciones= new HashSet<AccionTerminal>();
+	List<AccionTerminal> acciones= new ArrayList<AccionTerminal>();
 	
-	public ActivacionEnTodas(Set<AccionTerminal> acciones){
+	public ActivacionEnTodas(List<AccionTerminal> acciones){
 		this.acciones = acciones;
 	}
 	
 	public void ejecutar(){
-		terminales = Mapa.getInstance().terminales();
+		terminales = Mapa.getInstance().getTerminales();
 		acciones.forEach(accion -> accion.realizarAccion(terminales));
 	}
 
-	public Set<Terminal> getTerminales() {
+	public List<Terminal> getTerminales() {
 		return terminales;
 	}
 
-	public void setTerminales(Set<Terminal> terminales) {
+	public void setTerminales(List<Terminal> terminales) {
 		this.terminales = terminales;
 	}
 
-	public Set<AccionTerminal> getAcciones() {
+	public List<AccionTerminal> getAcciones() {
 		return acciones;
 	}
 
-	public void setAcciones(Set<AccionTerminal> acciones) {
+	public void setAcciones(List<AccionTerminal> acciones) {
 		this.acciones = acciones;
 	}
 }
