@@ -7,16 +7,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
-
-import org.uqbar.geodds.Point;
-
 import tpAnual.Servicio;
 import tpAnual.util.wrapper.PointWrapper;
 

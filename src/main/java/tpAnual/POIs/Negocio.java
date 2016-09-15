@@ -7,19 +7,13 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
-
-import org.uqbar.geodds.*;
 
 import tpAnual.Horario;
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
-@DiscriminatorValue("Negocio")
 public class Negocio extends Poi {
 	
 	@Column(name = "radio_cercania")
@@ -28,7 +22,6 @@ public class Negocio extends Poi {
 	private String rubro;
 	
 	@ManyToMany
-	//@Transient
 	private List <Horario> horarios;
 	
 	

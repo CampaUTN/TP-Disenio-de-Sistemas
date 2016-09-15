@@ -6,15 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-
-import org.uqbar.geodds.Point;
-
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
-@DiscriminatorValue("Linea de colectivo")
 public class EstacionDeColectivo extends Poi {
 	
 	@Column(name = "cole_linea")
