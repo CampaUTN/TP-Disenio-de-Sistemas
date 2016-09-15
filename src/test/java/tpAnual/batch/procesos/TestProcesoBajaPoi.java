@@ -1,6 +1,8 @@
 package tpAnual.batch.procesos;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -8,10 +10,16 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.sun.jersey.api.client.ClientResponse;
+
 import tpAnual.Mapa;
 import tpAnual.SingletonReseter;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
+import tpAnual.externo.adapters.BajaPoiAdapter;
+import tpAnual.externo.mocks.MockBajaPoi;
+import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
+import tpAnual.externo.sistemasExternos.UrlExterna;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoBajaPoi {
@@ -24,11 +32,11 @@ public class TestProcesoBajaPoi {
 	protected static Poi poi2;
 	protected static Poi poi3;
 	
-//	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
+	private BajaPoiAdapter bpAdapter = new BajaPoiAdapter();
 	private ProcesoBajaPoi procesoBaja = new ProcesoBajaPoi();
-//	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
-//	private List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
-//	private MockBajaPoi mockbp = new MockBajaPoi();
+	private UrlExterna urlExt = new UrlExterna("http://demo3537367.mockable.io/trash","pois");
+	private List<PoiAEliminarDTO> poisAEliminar = new ArrayList<PoiAEliminarDTO>();
+	private MockBajaPoi mockbp = new MockBajaPoi();
 	
 	
 	
@@ -56,19 +64,19 @@ public class TestProcesoBajaPoi {
 	}
 	
 	
-//	@Test
-//	public void testAndaBienLaUrl(){
-//		ClientResponse response = urlExt.consultarUrl("", "");
-//        Assert.assertEquals(response.getStatus(), 200,0);
-//	}
-//	
-//// Solo con URL mala(?
-//	
-//	@Test 
-//	public void testAndaMalLaUrl(){
-//		ClientResponse response = urlExt.consultarUrl("", "");
-//        Assert.assertNotEquals(response.getStatus(), 400,0);
-//	}
+	@Test
+	public void testAndaBienLaUrl(){
+		ClientResponse response = urlExt.consultarUrl("", "");
+        Assert.assertEquals(response.getStatus(), 200,0);
+	}
+	
+// Solo con URL mala(?
+	
+	@Test 
+	public void testAndaMalLaUrl(){
+		ClientResponse response = urlExt.consultarUrl("", "");
+        Assert.assertNotEquals(response.getStatus(), 400,0);
+	}
 	
 	@Test
 	public void seEliminanPoisSobrantes(){
@@ -76,35 +84,35 @@ public class TestProcesoBajaPoi {
 		Assert.assertEquals(124,Mapa.getInstance().cantidadPois(),0);
 	}
 	
-//	 @Test
-//	    public void consultarConFiltro() {
-//	        poisAEliminar = bpAdapter.consultar();
-//	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
-//	    }
-//	 
-//	 @Test
-//	    public void consultarConFiltro2() {
-//	        poisAEliminar = bpAdapter.consultar();
-//	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
-//	    }
-//	 
-//	 @Test
-//	    public void consultarConFiltro3() throws Exception {
-//	        poisAEliminar = bpAdapter.consultar();
-//	        Assert.assertEquals(poisAEliminar.size(),2,0);
-//	    }
-//	
-//	 @Test
-//	 public void testConMock(){
-//		 poisAEliminar = mockbp.consultar();
-//		 Assert.assertEquals(poisAEliminar.size(),1,0);
-//	 }
-//	 
-//	 @Test
-//	 public void testConMock2(){
-//		 poisAEliminar = mockbp.consultar();
-//		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
-//	 }
+	 @Test
+	    public void consultarConFiltro() {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
+	    }
+	 
+	 @Test
+	    public void consultarConFiltro2() {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
+	    }
+	 
+	 @Test
+	    public void consultarConFiltro3() throws Exception {
+	        poisAEliminar = bpAdapter.consultar();
+	        Assert.assertEquals(poisAEliminar.size(),2,0);
+	    }
+	
+	 @Test
+	 public void testConMock(){
+		 poisAEliminar = mockbp.consultar();
+		 Assert.assertEquals(poisAEliminar.size(),1,0);
+	 }
+	 
+	 @Test
+	 public void testConMock2(){
+		 poisAEliminar = mockbp.consultar();
+		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
+	 }
 	 
 
 }
