@@ -4,15 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
 import org.junit.Before;
-import org.uqbar.geodds.Point;
 
-import tpAnual.POIs.Banco;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.utils.PointWrapper;

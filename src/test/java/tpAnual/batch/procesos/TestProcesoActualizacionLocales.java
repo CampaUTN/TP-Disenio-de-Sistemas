@@ -4,15 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Assert;
-import org.junit.Test;
 import org.junit.Before;
-import org.uqbar.geodds.Point;
+import org.junit.Test;
 
 import tpAnual.Mapa;
 import tpAnual.SingletonReseter;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.batch.procesos.ProcesoActualizarLocales;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 import tpAnual.utils.PointWrapper;

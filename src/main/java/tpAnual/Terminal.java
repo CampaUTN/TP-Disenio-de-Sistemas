@@ -2,23 +2,17 @@ package tpAnual;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.acciones.emailSenderBusqueda.EmailSenderBusqueda;
 import tpAnual.acciones.emailSenderBusqueda.IEmailSenderBusqueda;
-
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity 
 @Table(name= "Terminal")

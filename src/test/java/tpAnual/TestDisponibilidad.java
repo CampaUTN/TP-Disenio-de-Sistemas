@@ -4,13 +4,10 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
-import org.uqbar.geodds.Polygon;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;

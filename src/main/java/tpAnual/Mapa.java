@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import tpAnual.POIs.Poi;
 import tpAnual.utils.PointWrapper;
 
@@ -17,7 +17,7 @@ public class Mapa {
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	private Set<Terminal> terminales = new HashSet<Terminal>();
-	private EntityManager em = PerThreadEntityManagers.getEntityManager();
+	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	
 
