@@ -26,7 +26,8 @@ public abstract class Proceso{
 	
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
 	
-	@OneToMany
+//	@OneToMany
+	@Transient
 	private List<Accion> accionesPostFallo;
 	
 	@Transient

@@ -11,9 +11,22 @@ import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 
 import java.util.stream.Collectors;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
+
+@Entity
+@DiscriminatorValue("proc_baja")
 public class ProcesoBajaPoi extends Proceso {
 	
+	@Column(name="proc_baja")
+	private long nro_proc_baja;
+	
+	@Transient
 	public List<PoiAEliminarDTO> poisExternos = new ArrayList<PoiAEliminarDTO>();
+	
+	@Transient
 	BajaPoiAdapter bajaPoiAdapter = new BajaPoiAdapter();
 	
 	public ProcesoBajaPoi(){ //Cuando se instancia la clase se trae la ultima modificacion
