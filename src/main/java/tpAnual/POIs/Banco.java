@@ -14,6 +14,7 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
+import tpAnual.utils.PointWrapper;
 
 @Entity
 @DiscriminatorValue("nro_banco")
@@ -28,7 +29,7 @@ public class Banco extends PoiConServicios {
 		super();
 	}
 	
-	public Banco(Point ubicacion, String nombre, Set<String> tags) {
+	public Banco(PointWrapper ubicacion, String nombre, Set<String> tags) {
 		super(ubicacion, nombre, tags);
 	}
 

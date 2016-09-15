@@ -15,6 +15,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
+import tpAnual.utils.PointWrapper;
 
 public class TestProcesoActualizacionLocales {
 	
@@ -41,7 +42,7 @@ public class TestProcesoActualizacionLocales {
 		
 		Set<String> palabrasClave = new HashSet<String>();
 		palabrasClave.add("pepas");
-		Poi poi = new Negocio(new Point(0,0),"negocio1",palabrasClave,"Venta",10);
+		Poi poi = new Negocio(new PointWrapper(0,0),"negocio1",palabrasClave,"Venta",10);
 		Mapa.getInstance().alta(poi);
 		procesoLocales.cambiarLocalComercial(externo);
 		Assert.assertFalse(poi.getTags().contains("pepas"));
@@ -53,7 +54,7 @@ public class TestProcesoActualizacionLocales {
 	public void testIntercambiarLocalComercial(){
 		Set<String> palabrasClave = new HashSet<String>();
 		palabrasClave.add("pepas");
-		Poi poi = new Negocio(new Point(0,0),"negocio1",palabrasClave,"Venta",10);
+		Poi poi = new Negocio(new PointWrapper(0,0),"negocio1",palabrasClave,"Venta",10);
 
 		Mapa.getInstance().alta(poi);
 		procesoLocales.realizarProceso();

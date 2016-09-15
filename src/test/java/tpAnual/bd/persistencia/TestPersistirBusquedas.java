@@ -24,6 +24,7 @@ import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.utils.PointWrapper;
  	
 public class TestPersistirBusquedas {
 	
@@ -32,7 +33,7 @@ public class TestPersistirBusquedas {
 	static long id2;
 	
 	private static List<Poi> result = new ArrayList<Poi>();
-	private static Point punto = new Point(10,10);
+	private static PointWrapper punto = new PointWrapper(10,10);
 	private static Set<String> tags = new HashSet<String>();
 	private static Terminal terminal = new Terminal(1);
 	private static BuscadorTexto buscador = new BuscadorTexto();

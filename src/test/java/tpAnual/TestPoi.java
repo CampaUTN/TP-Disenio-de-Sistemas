@@ -7,10 +7,11 @@ import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.utils.PointWrapper;
 
 public class TestPoi {
 	private Set<String> tags = new HashSet<String>();
-	private Point ubicacion = new Point(54, 10);
+	private PointWrapper ubicacion = new PointWrapper(54, 10);
 	private Poi poi = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
 
 	

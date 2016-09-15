@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 
 import org.uqbar.geodds.Point;
 
+import tpAnual.utils.PointWrapper;
+
 @Entity
 @DiscriminatorValue("cole_linea")
 public class EstacionDeColectivo extends Poi {
@@ -24,7 +26,7 @@ public class EstacionDeColectivo extends Poi {
 	
 	public EstacionDeColectivo(){super();}
 	
-	public EstacionDeColectivo(Point ubicacion, String nombre, Set<String> tags, int linea, String ramal) {
+	public EstacionDeColectivo(PointWrapper ubicacion, String nombre, Set<String> tags, int linea, String ramal) {
 		super(ubicacion, nombre, tags);
 		this.linea = linea;
 		this.ramal = ramal;
@@ -35,7 +37,7 @@ public class EstacionDeColectivo extends Poi {
 	}
 
 	@Override
-	public boolean estaCerca(Point ubicacion) {
+	public boolean estaCerca(PointWrapper ubicacion) {
 		return this.getUbicacion().distance(ubicacion) < 0.1; // 0.1 km = 100 m = 1 cuadra;
 	}
 	

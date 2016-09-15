@@ -23,11 +23,12 @@ import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
+import tpAnual.utils.PointWrapper;
 
 public class TestProcesoBajaPoi {
 	
 	protected static Set<String> tags = new HashSet<String>();
-	protected static Point ubicacion = new Point(54, 10);
+	protected static PointWrapper ubicacion = new PointWrapper(54, 10);
 	protected static Banco banco = new Banco(ubicacion,"Santander rio",new HashSet<String>());
 	
 	protected static Poi poi;

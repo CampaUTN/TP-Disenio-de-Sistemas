@@ -18,13 +18,14 @@ import javax.persistence.ManyToMany;
 import org.uqbar.geodds.Point;
 
 import tpAnual.Servicio;
+import tpAnual.utils.PointWrapper;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class PoiConServicios extends Poi{	
 	
-	public PoiConServicios(Point ubicacion, String nombre, Set<String> tags) {
+	public PoiConServicios(PointWrapper ubicacion, String nombre, Set<String> tags) {
 		super(ubicacion, nombre, tags);
 		// TODO Auto-generated constructor stub
 	}
@@ -81,7 +82,7 @@ public abstract class PoiConServicios extends Poi{
 	
 	//Así las subclases pueden sobreescribirlo.
 	@Override
-	public boolean estaCerca(Point ubicacion) {
+	public boolean estaCerca(PointWrapper ubicacion) {
 		return super.estaCerca(ubicacion);
 	}
 }	

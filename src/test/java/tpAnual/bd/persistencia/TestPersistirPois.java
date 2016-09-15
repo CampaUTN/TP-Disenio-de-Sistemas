@@ -20,12 +20,13 @@ import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.utils.PointWrapper;
 
 public class TestPersistirPois {
 	
 	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
 	
-	private static Point punto = new Point(10,10);
+	private static PointWrapper punto = new PointWrapper(10,10);
 	private static Set<String> tags = new HashSet<String>();
 	private static List<Poi> poisBd = new ArrayList<Poi>();
 	static long id1, id2;

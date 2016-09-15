@@ -15,11 +15,12 @@ import tpAnual.POIs.Poi;
 import tpAnual.acciones.RepositorioRegistros;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.utils.PointWrapper;
 
 public class TestSetup {
 	
 	protected Set<String> tags = new HashSet<String>();
-	protected Point ubicacion = new Point(54, 10);
+	protected PointWrapper ubicacion = new PointWrapper(54, 10);
 	
 	protected Poi poi = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
 	protected Poi poi2 = new EstacionDeColectivo(ubicacion, "108", tags,0,"");

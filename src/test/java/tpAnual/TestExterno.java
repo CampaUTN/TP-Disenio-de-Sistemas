@@ -12,6 +12,7 @@ import org.junit.*;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.utils.PointWrapper;
 
 public class TestExterno {
 	private BancoAdapter adapterBanco = new BancoAdapter();
@@ -47,8 +48,8 @@ public class TestExterno {
 		
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		
-		Point ubicacion = bancosExterno.get(0).getUbicacion();
-		Point ubicacionEsperada = new Point(-35.9338322,72.348353);
+		PointWrapper ubicacion = bancosExterno.get(0).getUbicacion();
+		PointWrapper ubicacionEsperada = new PointWrapper(-35.9338322,72.348353);
 		Assert.assertEquals(ubicacionEsperada.longitude(), ubicacion.longitude(),0.1);
 		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0.1);
 		
@@ -97,7 +98,7 @@ public class TestExterno {
 		
 		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 	
-		Point ubicacion = cgpsExternos.get(0).getUbicacion();
+		PointWrapper ubicacion = cgpsExternos.get(0).getUbicacion();
 		Double posX = -35.9345681;
 		Double posY = 72.344546;
 		

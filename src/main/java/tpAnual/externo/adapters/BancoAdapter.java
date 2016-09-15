@@ -19,6 +19,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoExterno;
 import tpAnual.externo.sistemasExternos.Consultora;
+import tpAnual.utils.PointWrapper;
 
 
 public class BancoAdapter implements Consultora {
@@ -56,7 +57,7 @@ public class BancoAdapter implements Consultora {
 	public Poi bancoExternoToPOI(BancoExterno bancoExterno){
 		Double posX = Double.parseDouble(bancoExterno.getX());
 		Double posY = Double.parseDouble(bancoExterno.getY());
-		Point ubicacion = new Point(posX,posY);
+		PointWrapper ubicacion = new PointWrapper(posX,posY);
 		String nombre = bancoExterno.getBanco();
 		Set<String> servicios = new HashSet<String>(Arrays.asList(bancoExterno.getServicios()));
 		

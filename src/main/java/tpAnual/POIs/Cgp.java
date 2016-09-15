@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 
 import org.uqbar.geodds.*;
 
-import tpAnual.utils.Polygon;
+import tpAnual.utils.PointWrapper;
 
 @Entity
 @DiscriminatorValue("nro_cgp")
@@ -29,15 +29,15 @@ public class Cgp extends PoiConServicios {
 
 	public Cgp(){super();}
 	
-	public Cgp(Point ubicacion, String nombre, Set<String> tags, List<Point> puntosComuna) {
+	public Cgp(PointWrapper ubicacion, String nombre, Set<String> tags, List<Point> puntosComuna) {
 		super(ubicacion, nombre, tags);
 		comuna =new Polygon(puntosComuna);
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
-	public boolean estaCerca(Point ubicacion) {
-		return comuna.isInside(ubicacion) && comuna.isInside(this.getUbicacion());
+	public boolean estaCerca(PointWrapper ubicacion) {
+		return comuna.isInside(ubicacion.toPoint()) && comuna.isInside(this.getUbicacion().toPoint());
 	}
 
 	public long getNumero() {

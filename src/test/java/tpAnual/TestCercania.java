@@ -11,6 +11,7 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.utils.PointWrapper;
 
 public class TestCercania extends TestSetup{
 	private Point puntoComunaA = new Point(0,0);
@@ -19,12 +20,12 @@ public class TestCercania extends TestSetup{
 	private List<Point> puntosComuna =  new ArrayList<Point>();
 	
 	private Set<String> tags = new HashSet<String>();
-	private Point ubicacionPoi = new Point(20, 10);
+	private PointWrapper ubicacionPoi = new PointWrapper(20, 10);
 	
 
-	private Point puntoDeBusqueda = new Point(20.003,10.003);
-	private Point puntoDeBusquedaColect = new Point (20.0006,10.0003);
-	private Point puntoDeBusquedaNegocio = new Point(54.0008,10.0002);
+	private PointWrapper puntoDeBusqueda = new PointWrapper(20.003,10.003);
+	private PointWrapper puntoDeBusquedaColect = new PointWrapper (20.0006,10.0003);
+	private PointWrapper puntoDeBusquedaNegocio = new PointWrapper(54.0008,10.0002);
 	
 	private Poi poiColectivo = new EstacionDeColectivo(ubicacionPoi,"60",tags,0,"");
 	private Poi poiColectivo2 = new EstacionDeColectivo(puntoDeBusquedaColect,"47",tags,0,"");

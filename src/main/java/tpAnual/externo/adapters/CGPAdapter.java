@@ -17,6 +17,7 @@ import tpAnual.externo.mocks.MockSistemaCGP;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
+import tpAnual.utils.PointWrapper;
 
 public class CGPAdapter implements Consultora{
 	
@@ -40,7 +41,7 @@ public class CGPAdapter implements Consultora{
 	
 	private Poi centroToPOI(CentroDTO centro){
 		//TODO HACER UNA LISTA DE COMUNAS ASOCIADAS CON SU RECTANGULO PARA TRABSFORMAR NUMERO DE COMUNA A RECTANGGULO
-		Point ubicacion = new Point(-35.9345681,72.344546); 
+		PointWrapper ubicacion = new PointWrapper(-35.9345681,72.344546); 
 		String nombre = centro.getDirector();
 		Set<String> tags = centro.getZonas();
 		List<Point> comuna = new ArrayList<Point>();

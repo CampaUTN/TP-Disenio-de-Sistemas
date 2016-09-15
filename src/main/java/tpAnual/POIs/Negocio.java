@@ -16,6 +16,7 @@ import javax.persistence.Transient;
 import org.uqbar.geodds.*;
 
 import tpAnual.Horario;
+import tpAnual.utils.PointWrapper;
 
 @Entity
 @DiscriminatorValue("radio_cercania")
@@ -33,10 +34,10 @@ public class Negocio extends Poi {
 	
 	public Negocio(){super();}
 	
-	public Negocio(Point ubicacion, String nombre, Set<String> tags, String rubro, int radioCercania) {
+	public Negocio(PointWrapper ubicacion, String nombre, Set<String> tags, String rubro, int radioCercania) {
 		super(ubicacion, nombre, tags);
 		this.rubro = rubro;
-		horarios = new ArrayList<>();
+		this.horarios = new ArrayList<>();
 		this.radioCercania = radioCercania;
 	}
 	
@@ -59,7 +60,7 @@ public class Negocio extends Poi {
 	
 	//Cercania
 	@Override
-	public boolean estaCerca(Point ubicacion) {
+	public boolean estaCerca(PointWrapper ubicacion) {
 		return this.getUbicacion().distance(ubicacion) < radioCercania;
 	}
 
