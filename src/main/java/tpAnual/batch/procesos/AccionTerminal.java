@@ -2,10 +2,13 @@ package tpAnual.batch.procesos;
 
 import java.util.Set;
 
+import javax.persistence.Entity;
+
 import tpAnual.Terminal;
 
-public interface AccionTerminal {
+@Entity
+public abstract class AccionTerminal {
 	
-	public void realizarAccion(Set<Terminal> terminales);
+	public abstract void realizarAccion(Set<Terminal> terminales);
 	
 }

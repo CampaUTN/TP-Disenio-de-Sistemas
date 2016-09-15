@@ -15,11 +15,23 @@
     	<class>tpAnual.POIs.EstacionDeColectivo</class>
     	<class>tpAnual.POIs.Negocio</class>
     	<class>tpAnual.POIs.PoiConServicio</class>
+    		<!-- <class>tpAnual.POIs.Polygon</class> -->
     	
        	<class>tpAnual.Busqueda</class>
        	<class>tpAnual.Horario</class>
        	<class>tpAnual.Servicio</class>
        	<class>tpAnual.Terminal</class>
+       	
+       	<!--
+       		<class>tpAnual.batch.procesos.AccionTerminal</class>
+       		<class>tpAnual.batch.procesos.ActivacionEnTodas</class>
+       		<class>tpAnual.batch.procesos.ActivacionSeleccion</class>
+       		<class>tpAnual.batch.procesos.ActivacionPorComuna</class>
+       		<class>tpAnual.batch.procesos.ActivarMails</class>
+       		<class>tpAnual.batch.procesos.DesactivarMails</class>
+       		<class>tpAnual.batch.procesos.ActivarRegistros</class>
+       		<class>tpAnual.batch.procesos.DesactivarRegistros</class>
+       	-->
        	
        	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>
@@ -32,12 +44,12 @@
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         
         
-        <!-- Base de datos posta 
+        <!-- Base de datos posta
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/pois" /> 
             <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="" /> 
-		  -->
+            <property name="hibernate.connection.password" value="campa" /> 
+	-->		  
 
 
 

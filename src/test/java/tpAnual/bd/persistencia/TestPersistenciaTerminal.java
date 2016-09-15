@@ -47,8 +47,6 @@ public class TestPersistenciaTerminal {
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){
 		Assert.assertEquals(numTerminal2, numTerminal1+1, 0);
-		
-		
 	}
 	
 }

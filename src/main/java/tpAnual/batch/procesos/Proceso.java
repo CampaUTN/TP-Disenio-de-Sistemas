@@ -10,6 +10,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import tpAnual.batch.accionesPostEjecucion.Accion;
 import tpAnual.batch.accionesPostEjecucion.LoggerProcesos;
@@ -27,6 +28,8 @@ public abstract class Proceso{
 	
 	@OneToMany
 	private List<Accion> accionesPostFallo;
+	
+	@Transient
 	private FinEjecucion estado;
 	
 	
