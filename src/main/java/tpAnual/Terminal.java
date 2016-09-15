@@ -17,16 +17,22 @@ import tpAnual.busquedas.emailSenderBusqueda.IEmailSenderBusqueda;
 @Entity 
 @Table(name= "Terminal")
 public class Terminal {
+	
 	@Id @GeneratedValue
 	private long numeroTerminal;
+	
 	@Column (name="nombre_terminal")
 	private String nombre;
+	
 	@Transient
 	private IEmailSenderBusqueda sender = EmailSenderBusqueda.getInstance(); //Esta parametrizado en vez de usar siempre el singleton para que se pueda testear con mockito
+	
 	@Column (name="registros_activados")
 	private boolean tieneRegistrosActivados = true;
+	
 	@Column (name="mails_activados")
 	private boolean tieneMailsActivados = true;
+	
 	private Integer numeroComuna;
 
 	public boolean equals(Terminal terminal) {

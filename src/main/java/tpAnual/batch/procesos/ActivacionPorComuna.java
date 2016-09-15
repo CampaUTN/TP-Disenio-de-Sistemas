@@ -14,9 +14,9 @@ import tpAnual.Terminal;
 public class ActivacionPorComuna extends Proceso{
 	
 	@OneToMany
-	Set<Terminal> terminales = new HashSet<Terminal>();
+	private Set<Terminal> terminales = new HashSet<Terminal>();
 	
-	Integer comuna;
+	private Integer comuna;
 	
 	@OneToMany
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();

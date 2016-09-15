@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.SingletonReseter;
+import tpAnual.Terminal;
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
@@ -28,22 +29,24 @@ public class TestPersistirPois {
 	private static Set<String> tags = new HashSet<String>();
 	static long id1, id2;
 	
+	private static Poi poiPrueba;
+	private static Poi poiPrueba2;
+	
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
 		entityManager.getTransaction().begin();
 		
 		tags.add("cole");
-		Poi poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
-		Poi poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
+		poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
+		poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		
-
 		entityManager.persist(poiPrueba);
 		entityManager.persist(poiPrueba2);
 
-		
 		id1 = poiPrueba.getId();
-		id2 = poiPrueba2.getId();		
+		id2 = poiPrueba2.getId();	
+
 	}
 	
 	@AfterClass
@@ -53,7 +56,7 @@ public class TestPersistirPois {
 	
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){
-		Assert.assertEquals(id2, id1+1, 0);
+		Assert.assertEquals(id2, id1+1);
 	}
 	
 	@Test
@@ -106,4 +109,14 @@ public class TestPersistirPois {
 		
 		Assert.assertTrue(poisBd.isEmpty());
 	}	
+
+	@Test
+	public void buscoPoiPorID(){
+		
+		List<Poi> busquedas = entityManager.createQuery("FROM Poi where id= :unId ", Poi.class).
+			setParameter("unId", id1).getResultList();
+	
+		Assert.assertEquals(poiPrueba,busquedas.get(0));
+	}
+
 }

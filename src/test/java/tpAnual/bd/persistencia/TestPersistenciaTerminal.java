@@ -11,15 +11,14 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Terminal;
+import tpAnual.busquedas.Busqueda;
 
 public class TestPersistenciaTerminal {
 	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	
 	static long numTerminal1, numTerminal2;
 	static Integer numComuna;
-	
-//	private static List<Terminal> terminalBd = new ArrayList<Terminal>();
-	
+		
 	private static Terminal terminalPrueba1 = new Terminal();
 	private static Terminal terminalPrueba2 = new Terminal();
 		
@@ -72,11 +71,14 @@ public class TestPersistenciaTerminal {
 	}
 	
 	@Test
-	public void lasIdsNoSeRepiten(){
-		List<Terminal> terminales = entityManager.createQuery("FROM Terminal where id= :unId", Terminal.class)
-				.setParameter("unId", 1l).getResultList();
-			
-		Assert.assertEquals(terminales.size(),1);
+	public void buscoTerminalPorID(){
+		
+		long id1 = terminalPrueba1.getNumeroTerminal();
+		
+		List<Terminal> busquedas = entityManager.createQuery("FROM Terminal where numeroTerminal= :unId ", Terminal.class).
+				setParameter("unId", id1).getResultList();
+		
+		Assert.assertEquals(terminalPrueba1,busquedas.get(0));
 	}
 
 }

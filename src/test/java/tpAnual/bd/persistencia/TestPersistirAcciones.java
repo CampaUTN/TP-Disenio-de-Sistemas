@@ -1,6 +1,7 @@
 package tpAnual.bd.persistencia;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -18,18 +19,22 @@ import tpAnual.batch.procesos.AccionTerminal;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivacionSeleccion;
 import tpAnual.batch.procesos.DesactivarMails;
+import tpAnual.batch.procesos.Proceso;
 
 public class TestPersistirAcciones {
-	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
+	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	static long id1;
 	static long id2;
 	
+	private static ActivacionPorComuna activadorComuna;
+	private static ActivacionSeleccion activadorSeleccion;
+
 	private static Terminal terminal = new Terminal(1);
 	
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
 		terminal.desactivarMails();
 		Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
@@ -38,11 +43,11 @@ public class TestPersistirAcciones {
 		terminales.add(terminal);
 		Mapa.getInstance().agregarTerminal(terminal);
 		
-		ActivacionPorComuna activadorComuna = new ActivacionPorComuna(1,acciones);
-		ActivacionSeleccion activadorSeleccion = new ActivacionSeleccion(terminales, acciones);
+		activadorComuna = new ActivacionPorComuna(1,acciones);
+		activadorSeleccion = new ActivacionSeleccion(terminales, acciones);
 		
-		em.persist(activadorComuna);
-		em.persist(activadorSeleccion);
+		entityManager.persist(activadorComuna);
+		entityManager.persist(activadorSeleccion);
 		
 		id1 = activadorComuna.getId();
 		id2 = activadorSeleccion.getId();
@@ -50,13 +55,53 @@ public class TestPersistirAcciones {
 		
 	@AfterClass
 	public static void clear() {
-		em.getTransaction().rollback();
+		entityManager.getTransaction().rollback();
 	}
-	
-	
+		
 	@Test
-	public void testId2(){
-		Assert.assertEquals(id1+1, id2, 0);
+	public void lasIdsSonIncrementales(){		
+		long id1 = activadorComuna.getId();
+		long id2 = activadorSeleccion.getId();
+		
+		Assert.assertEquals(id1+1, id2);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test 
+	public void sePersisteUnaAccion(){
+		List<Proceso> busquedas = entityManager.createQuery("FROM Proceso").getResultList();
+		
+		Assert.assertFalse(busquedas.isEmpty());	
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void obtengoDistintosTiposDeAcciones(){
+		List<Proceso> busquedas = entityManager.createQuery("FROM Proceso").getResultList();
+		
+		Assert.assertEquals(busquedas.size(),2);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Test
+	public void buscoAccionPorID(){
+		
+		long id = activadorComuna.getId();		
+		
+		List<Proceso> acciones = entityManager.createQuery("FROM Proceso WHERE id= :unId ").
+				setParameter("unId", id).getResultList();
+		
+		Assert.assertEquals(activadorComuna,acciones.get(0));
+	}
+
+	@Test
+	public void buscoAccionInexistente(){
+			
+		@SuppressWarnings("unchecked")
+		List<ActivacionPorComuna> acciones = entityManager.createQuery("FROM Proceso WHERE id= :unId ").
+				setParameter("unId", 1500l).getResultList();
+		
+		Assert.assertTrue(acciones.isEmpty());
+	}
+
 }

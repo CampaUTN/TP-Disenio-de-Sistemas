@@ -22,45 +22,72 @@ import tpAnual.util.wrapper.PointWrapper;
  	
 public class TestPersistirBusquedas {
 	
-	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
-	static long id1;
-	static long id2;
+	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	
 	private static List<Poi> result = new ArrayList<Poi>();
 	private static PointWrapper punto = new PointWrapper(10,10);
 	private static Set<String> tags = new HashSet<String>();
 	private static Terminal terminal = new Terminal(1);
-//	private static BuscadorTexto buscador = new BuscadorTexto();
+	
+	private static Busqueda busqueda1;
+	private static Busqueda busqueda2;
+
 	
 	@BeforeClass
 	public static void init() {
 		SingletonReseter.resetAll();
-		em.getTransaction().begin();
+		entityManager.getTransaction().begin();
 		
 		terminal.desactivarMails();
 		tags.add("cole");
 		Poi poi= new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		result.add(poi);
 
-		Busqueda busqueda1 = new Busqueda("colectivo",result);
-		Busqueda busqueda2 = new Busqueda("colectivo",result);
+		busqueda1 = new Busqueda("colectivo",result);
+		busqueda2 = new Busqueda("colectivo",result);
 
-		em.persist(busqueda1);
-		em.persist(busqueda2); 
-		
-		id1 = busqueda1.getId();
-		id2 = busqueda2.getId();
+		entityManager.persist(busqueda1);
 	}
 	
 	@AfterClass
 	public static void clear() {
-		em.getTransaction().rollback();
+		entityManager.getTransaction().rollback();
 	}
-		
 	
 	@Test
-	public void testId2(){
+	public void lasIdsSonIncrementales(){
+		long id1 = busqueda1.getId();
+		long id2 = busqueda2.getId();
+		
 		Assert.assertEquals(id1+1, id2, 0);
 	}
+
+	@Test
+	public void sePersistenLasBusquedas(){
+		entityManager.persist(busqueda2); 
+		
+		List<Busqueda> busquedas = entityManager.createQuery("FROM Busqueda", Busqueda.class).getResultList();
+		
+		Assert.assertFalse(busquedas.isEmpty());
+	}
 	
+	@Test
+	public void obtengoBusquedaPorID(){		
+		
+		long id1 = busqueda1.getId();
+		
+		List<Busqueda> busquedas = entityManager.createQuery("FROM Busqueda where busq_id= :unId ", Busqueda.class).
+				setParameter("unId", id1).getResultList();
+		
+		Assert.assertEquals(busqueda1,busquedas.get(0));
+	}
+	
+	@Test
+	public void buscoIDInexistenteYTengoListaVacia(){
+		List<Busqueda> busquedas = entityManager.createQuery("FROM Busqueda where busq_id= :unId ", Busqueda.class).
+				setParameter("unId", 250l).getResultList();
+		
+		Assert.assertTrue(busquedas.isEmpty());
+	}
+
 }
