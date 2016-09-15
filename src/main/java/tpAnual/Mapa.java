@@ -15,7 +15,8 @@ import tpAnual.util.wrapper.PointWrapper;
 
 public class Mapa {
 	
-	private Set<Terminal> terminales = new HashSet<Terminal>();
+	private List<Poi> pois = new ArrayList<Poi>();
+	private List<Terminal> terminales = new ArrayList<Terminal>();
 	@SuppressWarnings("unused")
 	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
@@ -37,13 +38,13 @@ public class Mapa {
 	
 	//Altas y bajas
 	public void alta(Poi poi){
-		//pois.add(poi);
-		entityManager.persist(poi);
+		pois.add(poi);
+		//em.persist(poi);
 	}
 	
 	public void baja(Poi poi){
-		//pois.remove(poi);
-		entityManager.remove(entityManager.contains(poi) ? poi : entityManager.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
+		pois.remove(poi);
+		//em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
 	private static void eliminarTodosLosPois(){
@@ -67,13 +68,12 @@ public class Mapa {
 	
 	// Manejo de lista de pois
 	public List<Poi> getPois(){
-		//return pois;
-		// TODO descomentar al desbugear todo:
-		return entityManager.createQuery("FROM Poi").getResultList();
+		return pois;
+		// TODO descomentar al desbugear todo: return em.createQuery("FROM Poi").getResultList();
 	}
 
 	public int cantidadPois() {
-		return getPois().size();
+		return pois.size();
 	}
 	
 	// Setters y getters
@@ -81,16 +81,16 @@ public class Mapa {
 		this.terminales.add(terminal);
 	}
 	
-	public Set<Terminal> terminales(){
-		return this.terminales;
-	}
-	
-	public Set<Terminal> getTerminales() {
+	public List<Terminal> getTerminales() {
 		return terminales;
 	}
 
-	public void setTerminales(Set<Terminal> terminales) {
+	public void setTerminales(List<Terminal> terminales) {
 		this.terminales = terminales;
+	}
+
+	public void setPois(List<Poi> pois) {
+		this.pois = pois;
 	}
 
 	public Poi poisPendientesDeModificar(String nombre){
