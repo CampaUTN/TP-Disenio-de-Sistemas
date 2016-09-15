@@ -20,8 +20,8 @@ public class ActivacionSeleccion extends Proceso {
 	@Column(name = "proc_activ_seleccion")
 	private long numeroProceso;
 	
-//	@OneToMany
-	@Transient
+//	@Transient
+	@OneToMany
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 	@OneToMany
 	Set<Terminal> terminalesSeleccion = new HashSet<Terminal>();

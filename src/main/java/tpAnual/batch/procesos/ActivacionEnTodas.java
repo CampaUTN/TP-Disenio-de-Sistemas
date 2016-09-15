@@ -23,8 +23,8 @@ public class ActivacionEnTodas extends Proceso{
 	
 	@OneToMany
 	Set<Terminal> terminales = new HashSet<Terminal>();
-//	@OneToMany
-	@Transient
+//	@Transient
+	@OneToMany
 	Set<AccionTerminal> acciones= new HashSet<AccionTerminal>();
 	
 	public ActivacionEnTodas(Set<AccionTerminal> acciones){

@@ -29,13 +29,13 @@
        		<class>tpAnual.batch.procesos.ProcesoBajaPoi</class>
        		<class>tpAnual.batch.procesos.ProcesoActualizarLocales</class>
        		
-       	<!-- -
+       	<!-- 	-->
        		<class>tpAnual.batch.procesos.AccionTerminal</class>
        		<class>tpAnual.batch.procesos.ActivarMails</class>
        		<class>tpAnual.batch.procesos.DesactivarMails</class>
        		<class>tpAnual.batch.procesos.ActivarRegistros</class>
        		<class>tpAnual.batch.procesos.DesactivarRegistros</class>
-       	-->
+       	
        	
        	<!-- Converters -->
        	<class> tpAnual.bd.PointToDoubleConverter </class>
