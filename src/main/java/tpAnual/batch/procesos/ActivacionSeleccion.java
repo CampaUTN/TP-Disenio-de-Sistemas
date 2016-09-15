@@ -8,6 +8,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import tpAnual.Terminal;
 
@@ -19,7 +20,8 @@ public class ActivacionSeleccion extends Proceso {
 	@Column(name = "proc_activ_seleccion")
 	private long numeroProceso;
 	
-	@OneToMany
+//	@OneToMany
+	@Transient
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 	@OneToMany
 	Set<Terminal> terminalesSeleccion = new HashSet<Terminal>();

@@ -8,6 +8,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
@@ -22,7 +23,8 @@ public class ActivacionEnTodas extends Proceso{
 	
 	@OneToMany
 	Set<Terminal> terminales = new HashSet<Terminal>();
-	@OneToMany
+//	@OneToMany
+	@Transient
 	Set<AccionTerminal> acciones= new HashSet<AccionTerminal>();
 	
 	public ActivacionEnTodas(Set<AccionTerminal> acciones){

@@ -1,7 +1,6 @@
 package tpAnual.batch.procesos;
 
 import java.util.Set;
-
 import javax.persistence.Entity;
 
 import tpAnual.Terminal;

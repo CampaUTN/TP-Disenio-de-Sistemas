@@ -9,6 +9,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
@@ -24,7 +25,8 @@ public class ActivacionPorComuna extends Proceso{
 	@OneToMany
 	Set<Terminal> terminales = new HashSet<Terminal>();
 	Integer comuna;
-	@OneToMany
+//	@OneToMany
+	@Transient
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
  	
  	public ActivacionPorComuna(Integer numeroComuna,Set<AccionTerminal> acciones){

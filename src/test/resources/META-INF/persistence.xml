@@ -22,11 +22,13 @@
        	<class>tpAnual.Servicio</class>
        	<class>tpAnual.Terminal</class>
        	
-       	<!--
-       		<class>tpAnual.batch.procesos.AccionTerminal</class>
+       	<!-- -
        		<class>tpAnual.batch.procesos.ActivacionEnTodas</class>
        		<class>tpAnual.batch.procesos.ActivacionSeleccion</class>
        		<class>tpAnual.batch.procesos.ActivacionPorComuna</class>
+       		<class>tpAnual.batch.procesos.Proceso</class>
+       		
+       		<class>tpAnual.batch.procesos.AccionTerminal</class>
        		<class>tpAnual.batch.procesos.ActivarMails</class>
        		<class>tpAnual.batch.procesos.DesactivarMails</class>
        		<class>tpAnual.batch.procesos.ActivarRegistros</class>
