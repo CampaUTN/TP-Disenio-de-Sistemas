@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -27,16 +28,18 @@ import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class ElementoReporte {
-	
 	@Id @GeneratedValue @Column (name="cod_elemento")
 	private long numeroElemento;
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDate fecha;
 	private Integer cantidadBusquedas=0;
+	@Transient // TODO rompe
 	private Terminal terminal;
 	private Integer cantidadPoisEncontrados=0;
 	@ElementCollection @Cascade({CascadeType.ALL})
 	private List<Integer> busquedasParciales = new ArrayList<Integer>();
+	
+	private ElementoReporte(){}
 	
 	public boolean esDeLaFecha(LocalDate fecha){
 		return this.fecha.toString().equals(fecha.toString());

@@ -28,8 +28,9 @@
        	<class>tpAnual.batch.procesos.DesactivarMails</class>
        	<class>tpAnual.batch.procesos.ActivarRegistros</class>
        	<class>tpAnual.batch.procesos.DesactivarRegistros</class>
-       	<class>tpAnual.acciones.RepositorioRegistros</class>
-       	<class>tpAnual.acciones.reportes.RegistroBusqueda</class>
+       	
+       	<class>tpAnual.Terminal</class>
+       	<!-- rompe: <class>tpAnual.acciones.reportes.RegistroBusqueda</class>   -->
        	<class>tpAnual.acciones.reportes.ElementoReporte</class>
        		
        	

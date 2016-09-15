@@ -23,19 +23,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-@Entity
-@Table (name="registros")
+
 public class RepositorioRegistros{
-	@Id @GeneratedValue
-	private long numeroRegistro;
-	
 	private List<RegistroBusqueda> registros = new ArrayList<RegistroBusqueda>();
-	@Transient
 	private static RepositorioRegistros instance = null;
 	
-	private RepositorioRegistros(){
-		//Para evitar que sea instanciada esta clase.
-	}
+	private RepositorioRegistros(){}
 	
 	public static RepositorioRegistros getInstance(){
 		if(instance==null){
@@ -63,14 +56,6 @@ public class RepositorioRegistros{
 	
 	public static void resetSingleton(){
 	    instance = null;
-	}
-
-	public long getNumeroRegistro() {
-		return numeroRegistro;
-	}
-
-	public void setNumeroRegistro(long numeroRegistro) {
-		this.numeroRegistro = numeroRegistro;
 	}
 
 	public void setRegistros(List<RegistroBusqueda> registros) {
