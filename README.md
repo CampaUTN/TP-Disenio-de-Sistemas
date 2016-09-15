@@ -47,6 +47,10 @@ En eclipse, estando con Package explore, ir a la flechita hacia abajo que aparec
 
 De esa forma las cosas, segun el orden que les puse, se ven como corresponde y quedan en subcarpetas, en vez de verse en forma rara.
 
+
+
+
+
 # Tercera Entrega
 ### Diagrama de clases 3ra entrega y solucion alternativa con decorator
 https://1drv.ms/f/s!Av0vPKTcwzssgTbfFJSb1x_Q5v76
@@ -69,14 +73,15 @@ Tambien separamos la responsabilidad de buscar en los pois locales en una nueva 
 Tambien convertimos la clase Mapa en un singleton para asegurar la unicidad de los datos
 
 
+
+
+
 #Cuarta Entrega
 ###Diagrama de clases cuarta entrega
 
 Solucion 1 (Elegida)
 https://onedrive.live.com/?cid=2c3bc3dca43c2ffd&id=2C3BC3DCA43C2FFD%21182&authkey=!ALsbFENhYlbBuOM
 ![alt tag]()
-
-
 
 
 
@@ -111,3 +116,18 @@ Hace mas cohesiva la clase proceso, ya que no se encarga de manejar sus fallos s
 En vez de tener clases que se ocupan de las activaciones/desactivaciones correspondientes, podrian ser metodos, y ser interpretadas como strings para luego parsearlas en un Map. 
 La desventaja de esta solucion es que el proceso que activa deberia conocer todos los metodos que le podrian llegar (para instanciarlos en el Map). 
 En la solucion elegida no pasa esto y hace mucho mas cohesivo y extensible el proceso. Agregar nuevas acciones no repercute en otras clases.
+
+
+
+
+# Entrega 5
+## Pre-Entrega
+
+#### DER POIs
+![alt tag](http://i.imgur.com/y71A0Og.png)
+
+#### DER Búsquedas
+![alt tag](http://i.imgur.com/EICqbzw.png)
+
+#### DER Acciones
+![alt tag](http://i.imgur.com/xUnV6Rh.png)
