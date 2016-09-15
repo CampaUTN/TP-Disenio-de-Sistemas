@@ -11,6 +11,8 @@ import javax.persistence.Transient;
 
 import org.uqbar.geodds.*;
 
+import tpAnual.utils.Polygon;
+
 @Entity
 @DiscriminatorValue("nro_cgp")
 public class Cgp extends PoiConServicios {
