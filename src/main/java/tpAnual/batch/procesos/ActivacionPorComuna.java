@@ -4,27 +4,20 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
 
 @Entity
-@DiscriminatorValue("proc_activ_comuna")
 public class ActivacionPorComuna extends Proceso{
-	
-	@GeneratedValue
-	@Column(name = "proc_activ_comuna")
-	private long numeroProceso;
 	
 	@OneToMany
 	Set<Terminal> terminales = new HashSet<Terminal>();
+	
 	Integer comuna;
-//	@Transient
+	
 	@OneToMany
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
  	
@@ -45,14 +38,6 @@ public class ActivacionPorComuna extends Proceso{
  		return terminales.stream()
  				.filter(terminal -> terminal.getNumeroComuna().equals(comuna)).collect(Collectors.toSet());
  	}
-
-	public long getNumeroProceso() {
-		return numeroProceso;
-	}
-
-	public void setNumeroProceso(long numeroProceso) {
-		this.numeroProceso = numeroProceso;
-	}
 
 	public Set<Terminal> getTerminales() {
 		return terminales;

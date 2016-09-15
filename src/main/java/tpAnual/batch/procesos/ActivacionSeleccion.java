@@ -3,23 +3,14 @@ package tpAnual.batch.procesos;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
 
 import tpAnual.Terminal;
 
 @Entity
-@DiscriminatorValue("proc_activ_seleccion")
 public class ActivacionSeleccion extends Proceso {
 	
-	@GeneratedValue
-	@Column(name = "proc_activ_seleccion")
-	private long numeroProceso;
-	
-//	@Transient
 	@OneToMany
 	Set<AccionTerminal> acciones = new HashSet<AccionTerminal>();
 	@OneToMany
@@ -32,14 +23,6 @@ public class ActivacionSeleccion extends Proceso {
 	
 	public void ejecutar(){
 		acciones.forEach(accion -> accion.realizarAccion(terminalesSeleccion));
-	}
-
-	public long getNumeroProceso() {
-		return numeroProceso;
-	}
-
-	public void setNumeroProceso(long numeroProceso) {
-		this.numeroProceso = numeroProceso;
 	}
 
 	public Set<AccionTerminal> getAcciones() {
