@@ -19,6 +19,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -32,10 +33,9 @@ import javax.persistence.Transient;
 public abstract class Poi {
 	
 	@Id @GeneratedValue
-	//@Column(name = "poi_id")
+	@Column(name = "poi_id", unique = true)
 	private long id;
 	
-
 	@Embedded
 	private PointWrapper ubicacion;
 	
@@ -114,8 +114,6 @@ public abstract class Poi {
 		return this.nombre;
 	}
 	
-	
-
 	public PointWrapper getUbicacion() {
 		return ubicacion;
 	}
@@ -144,8 +142,7 @@ public abstract class Poi {
 	// TODO: solo para testear, habria que sacarlo y usar las IDs autogeneradas
 	public void setId(long id) {
 		this.id = id;
-	}
-	
+	}	
 	
 	//agregado:
 	public abstract boolean cumpleBusqueda(List<String> palabras);
