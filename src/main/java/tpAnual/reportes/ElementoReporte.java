@@ -1,12 +1,8 @@
 package tpAnual.reportes;
 
 import java.time.LocalDate;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import tpAnual.Terminal;
-import tpAnual.util.bd.LocalDateConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -18,6 +14,9 @@ import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
+import tpAnual.Terminal;
+import tpAnual.util.bd.LocalDateConverter;
 
 @Entity
 public class ElementoReporte {

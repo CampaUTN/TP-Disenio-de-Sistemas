@@ -1,7 +1,8 @@
-package tpAnual;
+package tpAnual.util;
 
+import tpAnual.Mapa;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.errorCatch.LoggerProcesos;
+import tpAnual.batch.postEjecucionProceso.LoggerProcesos;
 import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.busquedas.RepositorioRegistros;
 

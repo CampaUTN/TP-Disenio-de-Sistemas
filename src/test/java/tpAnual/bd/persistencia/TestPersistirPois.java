@@ -13,12 +13,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
-import tpAnual.SingletonReseter;
-import tpAnual.Terminal;
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.util.SingletonReseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistirPois {

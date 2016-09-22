@@ -1,4 +1,4 @@
-package tpAnual.batch.errorCatch;
+package tpAnual.batch.postEjecucionProceso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import tpAnual.batch.procesos.Proceso;
 /**
  * Dado que tiene la lista de resultados, me importa que sea singleton.
  */
-public class LoggerProcesos implements Accion{
+public class LoggerProcesos implements PostEjecucionProceso{
 	private static LoggerProcesos instance = null;
 	private List<ResultadoEjecucionProceso> resultados;
 	

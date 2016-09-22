@@ -1,9 +1,10 @@
 package tpAnual.util.bd;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import java.time.LocalDate;
-import java.sql.Date;
 
 @Converter
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date>{

@@ -8,11 +8,10 @@ import java.util.Set;
 import org.junit.*;
 import org.mockito.Mockito;
 
-import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.errorCatch.IEmailSenderFallo;
-import tpAnual.batch.errorCatch.ReLanzador;
+import tpAnual.batch.postEjecucionProceso.IEmailSenderFallo;
+import tpAnual.batch.postEjecucionProceso.ReLanzador;
 import tpAnual.batch.procesos.AccionTerminal;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
@@ -21,6 +20,7 @@ import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
+import tpAnual.util.SingletonReseter;
 
 public class testManejadorDeErrores {
 	private Set<Terminal> terminales;

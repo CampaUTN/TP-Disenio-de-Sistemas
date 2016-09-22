@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Horario;
-import tpAnual.SingletonReseter;
+import tpAnual.util.SingletonReseter;
 
 
 public class TestPersistenciaHorarios {

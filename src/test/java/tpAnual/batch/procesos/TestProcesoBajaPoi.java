@@ -13,13 +13,13 @@ import org.junit.Test;
 import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.Mapa;
-import tpAnual.SingletonReseter;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
+import tpAnual.util.SingletonReseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoBajaPoi {

@@ -14,6 +14,7 @@ import org.uqbar.geodds.Point;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.util.SingletonReseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestExterno {

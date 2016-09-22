@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.util.SingletonReseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPoi {

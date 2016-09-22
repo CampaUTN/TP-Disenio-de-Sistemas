@@ -10,7 +10,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.AccionTerminal;
@@ -20,6 +19,7 @@ import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
+import tpAnual.util.SingletonReseter;
 
 public class TestLanzador{
 	private Lanzador lanzador;	

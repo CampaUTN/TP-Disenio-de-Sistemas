@@ -11,8 +11,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import tpAnual.batch.errorCatch.Accion;
-import tpAnual.batch.errorCatch.LoggerProcesos;
+import tpAnual.batch.postEjecucionProceso.LoggerProcesos;
+import tpAnual.batch.postEjecucionProceso.PostEjecucionProceso;
 
 @Entity
 @Table(name="Proceso")
@@ -25,16 +25,16 @@ public abstract class Proceso{
 	
 	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
 	
-//	@OneToMany
+//	@OneToMany // TODO QUE ONDA CON ESTO?
 	@Transient
-	private List<Accion> accionesPostFallo;
+	private List<PostEjecucionProceso> accionesPostFallo;
 	
 	@Transient
 	private FinEjecucion estado;
 	
 	
 	protected Proceso(){
-		accionesPostFallo = new ArrayList<Accion>();
+		accionesPostFallo = new ArrayList<PostEjecucionProceso>();
 		estado = FinEjecucion.CORRECTO;
 	}
 	
@@ -52,9 +52,9 @@ public abstract class Proceso{
 		}
 		LoggerProcesos.getInstance().accionar(this);
 	}
-	// El logger se ejecuta siempre, aunque al tener la misma interface que las demas acciones,
-	// podria agregarlo a la lista de observers si en un futuro quisieran solo registrarse fallos,
-	// tambien sería facil hacer un logger modificado que registre ciertos datos extras en caso de fallo.
+	/* El logger se ejecuta siempre, aunque al tener la misma interface que las demas acciones,
+	podria agregarlo a la lista de observers si en un futuro quisieran solo registrarse fallos,
+	tambien sería facil hacer un logger modificado que registre ciertos datos extras en caso de fallo. */
 	
 	
 	/**
@@ -66,7 +66,7 @@ public abstract class Proceso{
 	 * Mediante la GUI se agregarian observadores como el envio de mail si falla, que se reejecute
 	 * si falla, o cualquier otra accion que en un futuro se defina.
 	 */
-	public void agregarAccionPostFallo(Accion accion){
+	public void agregarAccionPostFallo(PostEjecucionProceso accion){
 		accionesPostFallo.add(accion);
 	}
 	
@@ -84,12 +84,12 @@ public abstract class Proceso{
 	}
 
 
-	public List<Accion> getAccionesPostFallo() {
+	public List<PostEjecucionProceso> getAccionesPostFallo() {
 		return accionesPostFallo;
 	}
 
 
-	public void setAccionesPostFallo(List<Accion> accionesPostFallo) {
+	public void setAccionesPostFallo(List<PostEjecucionProceso> accionesPostFallo) {
 		this.accionesPostFallo = accionesPostFallo;
 	}
 

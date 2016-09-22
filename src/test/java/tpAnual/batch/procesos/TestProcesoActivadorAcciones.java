@@ -1,24 +1,21 @@
 package tpAnual.batch.procesos;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Mapa;
-import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
+import tpAnual.util.SingletonReseter;
 
 public class TestProcesoActivadorAcciones {
-	private List<Terminal> terminales = new ArrayList<Terminal>();
 	private List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 	
 	private Terminal terminal0 = new Terminal(0);

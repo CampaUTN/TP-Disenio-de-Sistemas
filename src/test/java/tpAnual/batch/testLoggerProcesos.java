@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 import org.junit.*;
 
-import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.Lanzador;
-import tpAnual.batch.errorCatch.LoggerProcesos;
-import tpAnual.batch.errorCatch.ReLanzador;
+import tpAnual.batch.postEjecucionProceso.LoggerProcesos;
+import tpAnual.batch.postEjecucionProceso.ReLanzador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.Proceso;
+import tpAnual.util.SingletonReseter;
 
 public class testLoggerProcesos {
 	private Set<Terminal> terminales;

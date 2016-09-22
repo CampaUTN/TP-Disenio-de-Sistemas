@@ -1,7 +1,6 @@
 package tpAnual.busquedas;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import tpAnual.Terminal;

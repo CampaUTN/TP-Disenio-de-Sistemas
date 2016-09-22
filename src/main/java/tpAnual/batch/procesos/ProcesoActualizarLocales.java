@@ -16,7 +16,6 @@ public class ProcesoActualizarLocales extends Proceso{
 	@Transient
 	LocalComercialAdapter localAdapter = new LocalComercialAdapter("src/test/resources/localesComerciales.txt");
 
-	@Override
 	public void ejecutar(){
 		List<LocalComercialExternoDTO> locales = localAdapter.consultar();
 		locales.forEach(local->cambiarLocalComercial(local));

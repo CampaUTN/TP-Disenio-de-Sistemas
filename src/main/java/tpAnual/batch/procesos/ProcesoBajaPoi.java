@@ -1,18 +1,16 @@
 package tpAnual.batch.procesos;
 
 import java.util.ArrayList;
-
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 import tpAnual.Mapa;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
-
-import java.util.stream.Collectors;
-
-import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class ProcesoBajaPoi extends Proceso {
@@ -27,7 +25,6 @@ public class ProcesoBajaPoi extends Proceso {
 		poisExternos = bajaPoiAdapter.consultar();
 	}
 	
-	@Override
 	public void ejecutar(){ //Command para el lanzador
 		 poisExternos.forEach(poi -> this.eliminarPoi(poi.getId()));
 	}

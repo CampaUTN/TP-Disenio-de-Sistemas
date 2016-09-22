@@ -1,4 +1,4 @@
-package tpAnual.batch.errorCatch;
+package tpAnual.batch.postEjecucionProceso;
 
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.util.com.EmailSender;

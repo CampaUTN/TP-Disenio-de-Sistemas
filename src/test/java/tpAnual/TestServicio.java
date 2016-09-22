@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import tpAnual.util.SingletonReseter;
+
 public class TestServicio {
 	private Servicio rentas = new Servicio("Rentas");
 	

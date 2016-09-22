@@ -1,4 +1,4 @@
-package tpAnual.batch.errorCatch;
+package tpAnual.batch.postEjecucionProceso;
 
 import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.Proceso;
@@ -7,7 +7,7 @@ import tpAnual.batch.procesos.Proceso;
  * Rejecuta un proceso una cierta cantidad de veces hasta
  * que se ejecute correctamente o se alcance el limite configurado para dicho proceso.
  */
-public class ReLanzador implements Accion{
+public class ReLanzador implements PostEjecucionProceso{
 	private int cantidadMaximaIntentos;
 	private int vecesConsecutivasQueFallo;
 

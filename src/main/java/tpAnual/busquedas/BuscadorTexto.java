@@ -1,14 +1,13 @@
 package tpAnual.busquedas;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;

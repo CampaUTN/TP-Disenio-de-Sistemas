@@ -4,12 +4,11 @@ package tpAnual.externo.adapters;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
-import tpAnual.externo.sistemasExternos.UrlExterna;
-
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
+import tpAnual.externo.sistemasExternos.UrlExterna;
 
 
 

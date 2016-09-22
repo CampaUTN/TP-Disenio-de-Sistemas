@@ -8,6 +8,7 @@ import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
+import tpAnual.util.SingletonReseter;
 
 public class TestRepositorioBuscador {
 	

@@ -8,11 +8,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tpAnual.Mapa;
-import tpAnual.SingletonReseter;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
+import tpAnual.util.SingletonReseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoActualizacionLocales {

@@ -1,7 +1,7 @@
 package tpAnual.externo.sistemasExternos;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 public class LocalComercialExternoDTO {
 	

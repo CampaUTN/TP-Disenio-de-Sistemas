@@ -1,9 +1,7 @@
 package tpAnual.bd.persistencia;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -14,13 +12,13 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Mapa;
-import tpAnual.SingletonReseter;
 import tpAnual.Terminal;
 import tpAnual.batch.procesos.AccionTerminal;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivacionSeleccion;
 import tpAnual.batch.procesos.DesactivarMails;
 import tpAnual.batch.procesos.Proceso;
+import tpAnual.util.SingletonReseter;
 
 public class TestPersistirAcciones {
 	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();

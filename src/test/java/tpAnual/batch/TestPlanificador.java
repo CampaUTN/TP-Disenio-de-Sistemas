@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.junit.*;
 
-import tpAnual.SingletonReseter;
 import tpAnual.batch.PlanificacionProceso;
 import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
+import tpAnual.util.SingletonReseter;
 
 public class TestPlanificador{
 

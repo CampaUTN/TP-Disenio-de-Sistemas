@@ -1,11 +1,11 @@
-package tpAnual.batch.errorCatch;
+package tpAnual.batch.postEjecucionProceso;
 
 import tpAnual.batch.procesos.Proceso;
 
 /**
  * Interface para que el manejador se comunique con sus observadores
  */
-public interface Accion {
+public interface PostEjecucionProceso {
 	
 	/**
 	 * Le informa el resultado de una ejecucucion para cierto proceso a los observador que implementen este metodo

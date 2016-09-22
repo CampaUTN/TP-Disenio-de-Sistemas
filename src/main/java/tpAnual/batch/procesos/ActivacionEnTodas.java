@@ -1,9 +1,7 @@
 package tpAnual.batch.procesos;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
