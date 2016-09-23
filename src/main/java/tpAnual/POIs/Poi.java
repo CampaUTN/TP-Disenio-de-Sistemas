@@ -35,7 +35,7 @@ public abstract class Poi {
 	private PointWrapper ubicacion;
 	
 	@ElementCollection @Cascade({CascadeType.ALL})
-	private Set<String> tagsPoi = new HashSet<String>();
+	private Set<String> tags = new HashSet<String>();
 	
 	@Column(name = "poi_nombre")
 	private String nombre;
@@ -48,7 +48,7 @@ public abstract class Poi {
 	public Poi(PointWrapper ubicacion, String nombre, Set<String> tags) {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;
-		this.tagsPoi = tags;
+		this.tags = tags;
 	}
 	
 	public boolean cumpleCondicionBusqueda(List<String> palabras){
@@ -87,7 +87,7 @@ public abstract class Poi {
 	}
 
 	public void agregarTag(String nuevoTag) {
-		tagsPoi.add(nuevoTag.toLowerCase());
+		tags.add(nuevoTag.toLowerCase());
 	}
 	
 	// Setters:
@@ -123,7 +123,7 @@ public abstract class Poi {
 	}
 
 	public Set<String> getTags() {
-		return tagsPoi;
+		return tags;
 	}
 
 	public String getCalle() {
@@ -143,7 +143,7 @@ public abstract class Poi {
 	}
 
 	public void setTags(Set<String> tagsPoi) {
-		this.tagsPoi = tagsPoi;
+		this.tags = tagsPoi;
 	}
 
 	public void setCalle(String calle) {
