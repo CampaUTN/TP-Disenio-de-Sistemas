@@ -14,11 +14,11 @@ public class MongoDatastoreSingleton {
 	private static Morphia morphiaSingleton = null;
 	private static Datastore datastoreSingleton = null;
 	
-	private static MongoClient getMongoClient() throws UnknownHostException {
+	private static MongoClient getMongoClient(String nombreBD) throws UnknownHostException {
 		if (mongoSingleton == null) {
 			synchronized (MongoDatastoreSingleton.class) {
 				if (mongoSingleton == null) {
-					ResourceBundle bundle = ResourceBundle.getBundle("mongodb");
+					ResourceBundle bundle = ResourceBundle.getBundle(nombreBD);
 					String host = bundle.getString("host");
 					int port = Integer.parseInt(bundle.getString("port"));
 
@@ -38,7 +38,7 @@ public class MongoDatastoreSingleton {
 	
 	public static Datastore getDatastore(String nombreBD) throws UnknownHostException{
 		if(datastoreSingleton==null){
-			datastoreSingleton = getMorphia().createDatastore(getMongoClient(), nombreBD);
+			datastoreSingleton = getMorphia().createDatastore(getMongoClient(nombreBD), nombreBD);
 		}
 		return datastoreSingleton;
 	}
