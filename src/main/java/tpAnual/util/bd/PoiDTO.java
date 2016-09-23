@@ -5,12 +5,14 @@ import java.util.Set;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class PoiDTO {
+	@Id //TODO . pregunta, esto bindea la ID al campo _ID del JSON. Pero, no deberia autogenerarlas al persistir!
 	private long id;
 	
 	@Embedded
