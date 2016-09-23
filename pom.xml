@@ -1,33 +1,33 @@
 <project>
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>TPAnual</groupId>
-  <artifactId>TPAnual</artifactId>
-  <version>1</version>
-  <packaging>jar</packaging>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-        
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencies>
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-      </dependency>
-      
-      <!-- Start: JPA Persistence Dependencies -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>TPAnual</groupId>
+	<artifactId>TPAnual</artifactId>
+	<version>1</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+
+		<!-- Start: JPA Persistence Dependencies -->
 		<dependency>
 			<groupId>org.uqbar-project</groupId>
 			<artifactId>jpa-java8-extras</artifactId>
@@ -48,57 +48,73 @@
 			<artifactId>hsqldb</artifactId>
 			<version>2.2.8</version>
 		</dependency>
-      <!-- End: JPA Persistence Dependencies -->
+		<!-- End: JPA Persistence Dependencies -->
 
-      <dependency>
-        <groupId>org.uqbar-project</groupId>
-        <artifactId>geodds-xtend</artifactId>
-        <version>1.0.0</version>
-      </dependency>
+		<dependency>
+			<groupId>org.uqbar-project</groupId>
+			<artifactId>geodds-xtend</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
-      <dependency>
-    	<groupId>com.googlecode.json-simple</groupId>
-    	<artifactId>json-simple</artifactId>
-    	<version>1.1.1</version>
-      </dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
 
-	<dependency>
-	  <groupId>com.google.code.gson</groupId>
-  	  <artifactId>gson</artifactId>
-  	  <version>2.6.2</version>
-	  </dependency>
-	
-	<dependency>
-	    <groupId>org.codehaus.jackson</groupId>
-	    <artifactId>jackson-mapper-asl</artifactId>
-    	    <version>1.9.13</version>
-	</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
 
-	<dependency>
-   	    <groupId>com.sun.jersey</groupId>
-   	    <artifactId>jersey-client</artifactId>
-   	    <version>1.19.1</version>
-	</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 
-	<dependency>
-	    <groupId>org.mockito</groupId>
-	    <artifactId>mockito-all</artifactId>
-	    <version>1.9.5</version>
-	</dependency>
-	
-	<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
-	<dependency>
-   	 	<groupId>javax.mail</groupId>
-    	<artifactId>mail</artifactId>
-    	<version>1.4.7</version>
-	</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.19.1</version>
+		</dependency>
 
-	<dependency>
-  		<groupId>commons-io</groupId>
- 		 <artifactId>commons-io</artifactId>
- 		 <version>2.5</version>
-	</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+		</dependency>
 
-  </dependencies>
+		<!-- http://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.3.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.mongodb.morphia/morphia -->
+		<dependency>
+			<groupId>org.mongodb.morphia</groupId>
+			<artifactId>morphia</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+	</dependencies>
 </project>
 

@@ -15,10 +15,10 @@ public class BuscadorTexto{
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
 		RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
+		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		
 		Long timerInicio = System.currentTimeMillis();
 		
-		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		List<String> palabras = separaLaBusqueda(palabrasIngresadas);
 		
 		HashSet<Consultora> consultoras = repositorio.getConsultoras();
@@ -28,9 +28,14 @@ public class BuscadorTexto{
 		
 		terminal.informarBusqueda(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
 		
-		//Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
+		this.registrarBusqueda(palabrasIngresadas, poisDeTodosOrigenes);
 		
 		return poisDeTodosOrigenes;
+	}
+	
+	private void registrarBusqueda(String palabrasIngresadas, List<Poi> poisDeTodosOrigenes){
+		Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
+		// TODO: aca decirle al 'entity manager de morphia' que persista la busqueda.
 	}
 	
 	private List<String> separaLaBusqueda(String Busqueda) {

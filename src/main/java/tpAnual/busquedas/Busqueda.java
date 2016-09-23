@@ -3,47 +3,40 @@ package tpAnual.busquedas;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+
 import tpAnual.POIs.Poi;
 
-
+@Entity
 public class Busqueda {
-	long id;
+	private String palabrasBuscadas;
 	
-	String parametros;
-	
-	List<Poi> resultado = new ArrayList<Poi>();
+	@Embedded
+	private List<Poi> pois = new ArrayList<Poi>();
 	
 	@SuppressWarnings("unused")
 	private Busqueda(){}
 	
-	public Busqueda(String parametros, List<Poi> resultado){
-		this.parametros=parametros;
-		this.resultado.addAll(resultado);
-	}
-	
-	
-	public long getId(){
-		return this.id;
+	public Busqueda(String palabrasBuscadas, List<Poi> pois){
+		this.palabrasBuscadas=palabrasBuscadas;
+		this.pois.addAll(pois);
 	}
 	
 	public String getParametros() {
-		return parametros;
+		return palabrasBuscadas;
 	}
 
 	public void setParametros(String parametros) {
-		this.parametros = parametros;
+		this.palabrasBuscadas = parametros;
 	}
 
 	public List<Poi> getResultado() {
-		return resultado;
+		return pois;
 	}
 
 	public void setResultado(List<Poi> resultado) {
-		this.resultado = resultado;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.pois = resultado;
 	}
 	
 }
