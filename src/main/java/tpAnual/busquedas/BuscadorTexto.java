@@ -5,10 +5,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
@@ -16,12 +12,9 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 public class BuscadorTexto{
 	
-	private RepositorioBuscador repositorio; 
-//	private static EntityManager em = PerThreadEntityManagers.getEntityManager();
-	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
-		repositorio = RepositorioBuscador.getInstance();
+		RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
 		
 		Long timerInicio = System.currentTimeMillis();
 		
@@ -35,9 +28,7 @@ public class BuscadorTexto{
 		
 		terminal.informarBusqueda(poisDeTodosOrigenes, palabras, timerFin - timerInicio);
 		
-		Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
-		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-		entityManager.persist(busqueda); 
+		//Busqueda busqueda = new Busqueda(palabrasIngresadas,poisDeTodosOrigenes);
 		
 		return poisDeTodosOrigenes;
 	}
@@ -45,9 +36,4 @@ public class BuscadorTexto{
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}
-	
-	public RepositorioBuscador getRepositorio(){
-		return repositorio;
-	}
-	
 }

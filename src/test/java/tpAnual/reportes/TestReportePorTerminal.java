@@ -9,7 +9,6 @@ import org.junit.Test;
 import tpAnual.Terminal;
 import tpAnual.TestSetup;
 import tpAnual.busquedas.RepositorioRegistros;
-import tpAnual.reportes.ElementoReporte;
 
 public class TestReportePorTerminal extends TestSetup{
 	private Terminal otraTerminal = new Terminal(1);	

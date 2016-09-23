@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tpAnual.Terminal;
-import tpAnual.batch.Lanzador;
 import tpAnual.batch.procesos.AccionTerminal;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivarMails;

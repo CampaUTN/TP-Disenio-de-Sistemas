@@ -4,10 +4,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
-import tpAnual.batch.PlanificacionProceso;
-import tpAnual.batch.Planificador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
