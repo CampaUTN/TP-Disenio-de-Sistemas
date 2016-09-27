@@ -18,11 +18,12 @@ public class MongoDatastoreSingleton {
 		if (mongoSingleton == null) {
 			synchronized (MongoDatastoreSingleton.class) {
 				if (mongoSingleton == null) {
-					ResourceBundle bundle = ResourceBundle.getBundle(nombreBD);
-					String host = bundle.getString("host");
-					int port = Integer.parseInt(bundle.getString("port"));
+//					ResourceBundle bundle = ResourceBundle.getBundle(nombreBD);
+//					String host = bundle.getString("host");
+//					int port = Integer.parseInt(bundle.getString("port"));
 
-					mongoSingleton = new MongoClient(host, port);
+//					mongoSingleton = new MongoClient(host, port);
+					mongoSingleton = new MongoClient("localhost", 27017);
 				}
 			}
 		}
