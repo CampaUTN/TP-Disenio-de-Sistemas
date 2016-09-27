@@ -155,6 +155,6 @@ public abstract class Poi {
 	}
 
 	public void removerTags() {
-		this.tags.removeAll(tags);
+		this.tags.clear();
 	}
 }

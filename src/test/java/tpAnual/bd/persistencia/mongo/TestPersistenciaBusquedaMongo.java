@@ -23,16 +23,20 @@ import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistenciaBusquedaMongo {
 	
+//	private static Datastore datastore = morphia.createDatastore(mongo, DB_Name);
+
 	private static Datastore datastore;
-	private Set<String> tags = new HashSet<String>();
-	private PointWrapper ubicacion = new PointWrapper(54, 10);
-	private Poi poi1 = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
-	private Poi poi2 = new EstacionDeColectivo(ubicacion, "106", tags,0,"");
 	
+	private Set<String> tags1 = new HashSet<String>();
+	private Set<String> tags2 = new HashSet<String>();
+	private PointWrapper ubicacion = new PointWrapper(54, 10);
+	
+	private Poi poi1;
+	private Poi poi2;
 	private PoiDTO poiDto1;
 	private PoiDTO poiDto2;
 	
-	Query<PoiDTO> query = datastore.createQuery(PoiDTO.class);
+//	Query<PoiDTO> query = datastore.createQuery(PoiDTO.class);
 	
 	@BeforeClass
 	public static void initClass() throws UnknownHostException{
@@ -42,7 +46,13 @@ public class TestPersistenciaBusquedaMongo {
 	@Before
 	public void init() {
 		SingletonReseter.resetAll();
+		
+		poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
+		poi2 = new EstacionDeColectivo(ubicacion, "106", tags2,0,"");
+		
 		poi1.removerTags();
+		poi2.removerTags();
+		
 		poi1.agregarTag("mejor");
 		poi1.agregarTag("colectivo");
 		poi2.agregarTag("chocador");
@@ -62,7 +72,9 @@ public class TestPersistenciaBusquedaMongo {
 	@Test
 	public void testDePrueba01(){
 		datastore.save(poiDto1);
-		PoiDTO poiEncontrado = query.filter("nombre =","107").asList().get(0);
+		PoiDTO poiEncontrado = datastore.createQuery(PoiDTO.class)
+								.filter("nombre","107").asList().get(0);
+		
 		Assert.assertEquals(2, poiEncontrado.getTagsPoi().size(),0);
 	}
 	
@@ -70,9 +82,10 @@ public class TestPersistenciaBusquedaMongo {
 	@Test
 	public void testDePrueba02(){
 		datastore.save(poiDto2);
-		PoiDTO poiEncontrado = query.filter("nombre =","106").asList().get(0);
-		Assert.assertEquals(1, poiEncontrado.getTagsPoi().size(),0);
+		PoiDTO poiEncontra = datastore.createQuery(PoiDTO.class)
+								.filter("nombre","106").asList().get(0);
 		
+		Assert.assertEquals(1, poiEncontra.getTagsPoi().size(),0);
 	}
 	
 }
