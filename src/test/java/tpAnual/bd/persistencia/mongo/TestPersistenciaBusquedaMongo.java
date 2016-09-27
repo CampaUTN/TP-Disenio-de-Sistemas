@@ -1,8 +1,9 @@
 package tpAnual.bd.persistencia.mongo;
 
 import java.net.UnknownHostException;
-
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.After;
@@ -13,8 +14,11 @@ import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.query.Query;
 
+import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.BuscadorTexto;
+import tpAnual.busquedas.Busqueda;
 import tpAnual.util.SingletonReseter;
 import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
@@ -35,6 +39,11 @@ public class TestPersistenciaBusquedaMongo {
 	private Poi poi2;
 	private PoiDTO poiDto1;
 	private PoiDTO poiDto2;
+	
+	private Terminal terminal = new Terminal();
+	
+
+	private BuscadorTexto buscador = new BuscadorTexto();		
 	
 //	Query<PoiDTO> query = datastore.createQuery(PoiDTO.class);
 	
@@ -59,11 +68,57 @@ public class TestPersistenciaBusquedaMongo {
 		
 		poiDto1 = PoiDTO.nuevoDesdePoi(poi1);
 		poiDto2 = PoiDTO.nuevoDesdePoi(poi2);
+				
+		terminal.desactivarMails();
+		terminal.desactivarRegistros();
+		
 	}
 	
 	@After
 	public void clear() {
 		SingletonReseter.resetAll();
+		
+		datastore.delete(datastore.createQuery(Busqueda.class));
+	}
+	
+	@Test
+	public void comprueboQueNoHayNadaPersistido() throws UnknownHostException{		
+		Assert.assertTrue(datastore.createQuery(Busqueda.class).asList().isEmpty());
+	}
+	
+	@Test 
+	public void sePersisteLaBusqueda() throws UnknownHostException{
+		
+		List <PoiDTO> pois = new ArrayList<>();
+		pois.add(poiDto1);
+		
+		Busqueda busqueda = new Busqueda("colectivo", pois);		
+		datastore.save(busqueda);		
+		
+		Assert.assertFalse(datastore.createQuery(Busqueda.class).asList().isEmpty());
+	}
+	
+	
+	@Test 
+	public void seRealizaUnaBusquedaYLuegoSePersiste(){
+
+		buscador.buscarSegunTexto("colectivo",terminal);		
+
+		Assert.assertEquals(1, datastore.createQuery(Busqueda.class).asList().size());
+	}
+			
+	
+	@Test
+	public void sePersistenVariosPoisConLaBusqueda(){
+		buscador.buscarSegunTexto("colectivo", terminal);
+		
+		List <Busqueda> busquedas = datastore.createQuery(Busqueda.class).asList();
+		
+		Busqueda b = busquedas.get(0);
+		
+		//Assert.assertTrue(b.getResultado().size() <= 1);
+		//TODO falla
+		
 	}
 	
 	

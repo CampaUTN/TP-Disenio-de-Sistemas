@@ -7,18 +7,19 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 
 import tpAnual.POIs.Poi;
+import tpAnual.util.bd.PoiDTO;
 
 @Entity
 public class Busqueda {
 	private String palabrasBuscadas;
 	
 	@Embedded
-	private List<Poi> pois = new ArrayList<Poi>();
+	private List<PoiDTO> pois = new ArrayList<PoiDTO>();
 	
 	@SuppressWarnings("unused")
 	private Busqueda(){}
 	
-	public Busqueda(String palabrasBuscadas, List<Poi> pois){
+	public Busqueda(String palabrasBuscadas, List<PoiDTO> pois){
 		this.palabrasBuscadas=palabrasBuscadas;
 		this.pois.addAll(pois);
 	}
@@ -31,11 +32,11 @@ public class Busqueda {
 		this.palabrasBuscadas = parametros;
 	}
 
-	public List<Poi> getResultado() {
+	public List<PoiDTO> getResultado() {
 		return pois;
 	}
 
-	public void setResultado(List<Poi> resultado) {
+	public void setResultado(List<PoiDTO> resultado) {
 		this.pois = resultado;
 	}
 	
