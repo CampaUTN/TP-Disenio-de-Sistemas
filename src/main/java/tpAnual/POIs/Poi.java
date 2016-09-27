@@ -153,4 +153,8 @@ public abstract class Poi {
 	public void setDireccion(Integer direccion) {
 		this.direccion = direccion;
 	}
+
+	public void removerTags() {
+		this.tags.removeAll(tags);
+	}
 }

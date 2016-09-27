@@ -16,6 +16,7 @@ import org.mongodb.morphia.query.Query;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.util.SingletonReseter;
+import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
@@ -27,7 +28,11 @@ public class TestPersistenciaBusquedaMongo {
 	private PointWrapper ubicacion = new PointWrapper(54, 10);
 	private Poi poi1 = new EstacionDeColectivo(ubicacion, "107", tags,0,"");
 	private Poi poi2 = new EstacionDeColectivo(ubicacion, "106", tags,0,"");
-	Query<Poi> query = datastore.createQuery(Poi.class);
+	
+	private PoiDTO poiDto1;
+	private PoiDTO poiDto2;
+	
+	Query<PoiDTO> query = datastore.createQuery(PoiDTO.class);
 	
 	@BeforeClass
 	public static void initClass() throws UnknownHostException{
@@ -37,9 +42,13 @@ public class TestPersistenciaBusquedaMongo {
 	@Before
 	public void init() {
 		SingletonReseter.resetAll();
+		poi1.removerTags();
 		poi1.agregarTag("mejor");
 		poi1.agregarTag("colectivo");
 		poi2.agregarTag("chocador");
+		
+		poiDto1 = PoiDTO.nuevoDesdePoi(poi1);
+		poiDto2 = PoiDTO.nuevoDesdePoi(poi2);
 	}
 	
 	@After
@@ -50,19 +59,20 @@ public class TestPersistenciaBusquedaMongo {
 	
 	//Saque las queries de aca http://mongodb.github.io/morphia/1.0/guides/querying/
 	
-//	@Test
-//	public void testDePrueba01(){
-//		datastore.save(poi1);
-//		Poi poiEncontrado = query.filter("id =","107").asList().get(0);
-//		Assert.assertEquals(2, poiEncontrado.getTags().size(),0);
-//		
-//	}
-//	
-//	@Test
-//	public void testDePrueba02(){
-//		datastore.save(poi1);
-//		Poi poiEncontrado = query.filter("tags =","chocador").asList().get(0);
-//		Assert.assertEquals(1, poiEncontrado.getTags().size(),0);
-//		
-//	}
+	@Test
+	public void testDePrueba01(){
+		datastore.save(poiDto1);
+		PoiDTO poiEncontrado = query.filter("nombre =","107").asList().get(0);
+		Assert.assertEquals(2, poiEncontrado.getTagsPoi().size(),0);
+	}
+	
+	
+	@Test
+	public void testDePrueba02(){
+		datastore.save(poiDto2);
+		PoiDTO poiEncontrado = query.filter("nombre =","106").asList().get(0);
+		Assert.assertEquals(1, poiEncontrado.getTagsPoi().size(),0);
+		
+	}
+	
 }

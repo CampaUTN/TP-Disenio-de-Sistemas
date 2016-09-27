@@ -26,7 +26,7 @@ public class PoiDTO {
 	private String calle;
 	private Integer direccion;
 
-	protected PoiDTO(){}
+	private PoiDTO(){}
 	
 	public PoiDTO(PointWrapper ubicacion, String nombre, Set<String> tags, String calle, Integer direccion) {
 		this.ubicacion = ubicacion;
