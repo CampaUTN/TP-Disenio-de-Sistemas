@@ -1,4 +1,4 @@
-package tpAnual.bd.persistencia;
+package tpAnual.bd.persistencia.mysql;
 
 import java.util.List;
 
@@ -39,6 +39,7 @@ public class TestPersistenciaTerminal {
 	public static void clear() {
 		entityManager.getTransaction().rollback();
 	}
+	
 	
 	@Test
 	public void sePersisteLaTerminal(){

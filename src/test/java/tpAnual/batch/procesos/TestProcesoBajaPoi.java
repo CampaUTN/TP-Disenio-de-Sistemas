@@ -19,7 +19,7 @@ import tpAnual.externo.adapters.BajaPoiAdapter;
 import tpAnual.externo.mocks.MockBajaPoi;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoBajaPoi {
@@ -42,7 +42,7 @@ public class TestProcesoBajaPoi {
 	
 	@BeforeClass
 	public static void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 
 		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
 		poi2 = new Banco(ubicacion, "", tags);

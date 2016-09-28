@@ -1,4 +1,4 @@
-package tpAnual.bd.persistencia;
+package tpAnual.bd.persistencia.mysql;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Horario;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 
 public class TestPersistenciaHorarios {
@@ -28,7 +28,7 @@ public class TestPersistenciaHorarios {
 
 	@BeforeClass
 	public static void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		entityManager.getTransaction().begin();
 		
 		entityManager.persist(horarioUnico);
@@ -39,6 +39,7 @@ public class TestPersistenciaHorarios {
 	public static void clear() {
 		entityManager.getTransaction().rollback();
 	}
+	
 	
 	@Test
 	public void testLosIdsSonIncrementales(){

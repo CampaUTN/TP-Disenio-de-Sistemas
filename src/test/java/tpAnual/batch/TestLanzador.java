@@ -18,7 +18,7 @@ import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestLanzador{
 	private Lanzador lanzador;	
@@ -31,7 +31,7 @@ public class TestLanzador{
 			
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		lanzador = Lanzador.getInstance();
 		
 		terminales.add(new Terminal(0));

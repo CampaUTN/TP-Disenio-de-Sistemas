@@ -8,7 +8,7 @@ import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestRepositorioBuscador {
 	
@@ -17,7 +17,7 @@ public class TestRepositorioBuscador {
 	private RepositorioBuscador repositorio;
 	@Before
 	public void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		repositorio = RepositorioBuscador.getInstance();
 		
 		repositorio.agregarConsultora(bancoAdapter);

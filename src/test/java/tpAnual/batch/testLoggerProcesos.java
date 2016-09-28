@@ -14,7 +14,7 @@ import tpAnual.batch.postEjecucionProceso.ReLanzador;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.Proceso;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class testLoggerProcesos {
 	private Set<Terminal> terminales;
@@ -25,7 +25,7 @@ public class testLoggerProcesos {
 	
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();

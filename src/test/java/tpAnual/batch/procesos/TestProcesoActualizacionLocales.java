@@ -12,7 +12,7 @@ import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.LocalComercialAdapter;
 import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestProcesoActualizacionLocales {
@@ -22,7 +22,7 @@ public class TestProcesoActualizacionLocales {
 	
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 	}
 	
 	@Test

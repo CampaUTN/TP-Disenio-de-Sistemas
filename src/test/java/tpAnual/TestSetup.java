@@ -14,7 +14,7 @@ import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestSetup {
@@ -37,7 +37,7 @@ public class TestSetup {
 	
 	@Before
 	public void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		
 		terminal = new Terminal(0);
 		terminal.desactivarMails();

@@ -12,14 +12,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.query.Query;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
@@ -54,7 +53,7 @@ public class TestPersistenciaBusquedaMongo {
 	
 	@Before
 	public void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		
 		poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
 		poi2 = new EstacionDeColectivo(ubicacion, "106", tags2,0,"");
@@ -76,10 +75,10 @@ public class TestPersistenciaBusquedaMongo {
 	
 	@After
 	public void clear() {
-		SingletonReseter.resetAll();
-		datastore.getDB().dropDatabase();
-		datastore.delete(datastore.createQuery(Busqueda.class));
+		Reseter.resetSingletons();
+		Reseter.resetDatastore(datastore);
 	}
+	
 	
 	@Test
 	public void comprueboQueNoHayNadaPersistido() throws UnknownHostException{		

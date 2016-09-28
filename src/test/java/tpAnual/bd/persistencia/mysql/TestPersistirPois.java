@@ -1,4 +1,4 @@
-package tpAnual.bd.persistencia;
+package tpAnual.bd.persistencia.mysql;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +17,7 @@ import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistirPois {
@@ -33,7 +33,7 @@ public class TestPersistirPois {
 	
 	@BeforeClass
 	public static void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		entityManager.getTransaction().begin();
 		
 		tags.add("cole");
@@ -51,8 +51,9 @@ public class TestPersistirPois {
 	@AfterClass
 	public static void clear() {
 		entityManager.getTransaction().rollback();
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 	}	
+	
 	
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){

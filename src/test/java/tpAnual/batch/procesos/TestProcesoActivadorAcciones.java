@@ -13,7 +13,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Mapa;
 import tpAnual.Terminal;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestProcesoActivadorAcciones {
 	private List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
@@ -27,7 +27,7 @@ public class TestProcesoActivadorAcciones {
 	
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		entityManager.getTransaction().begin();
 		mapa = Mapa.getInstance();
 

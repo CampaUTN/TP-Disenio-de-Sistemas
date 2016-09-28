@@ -12,7 +12,7 @@ import org.junit.Test;
 import tpAnual.batch.procesos.ActivacionEnTodas;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestPlanificador{
 
@@ -30,7 +30,7 @@ public class TestPlanificador{
 	@Before
 	public void init(){
 
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		proceso1 = new ActivacionEnTodas(null);
 		proceso2 = new ProcesoActualizarLocales();
 		fechaYHora = LocalDateTime.parse("2016-05-05T10:30");			

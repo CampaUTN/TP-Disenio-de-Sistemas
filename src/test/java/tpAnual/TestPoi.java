@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPoi {
@@ -20,7 +20,7 @@ public class TestPoi {
 	
 	@Before
 	public void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		poi.agregarTag("mejor");
 		poi.agregarTag("colectivo");
 	}

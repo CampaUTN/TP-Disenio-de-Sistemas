@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestServicio {
 	private Servicio rentas = new Servicio("Rentas");
 	
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 	}
 	
 	@Test

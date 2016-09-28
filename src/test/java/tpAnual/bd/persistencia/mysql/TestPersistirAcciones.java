@@ -1,4 +1,4 @@
-package tpAnual.bd.persistencia;
+package tpAnual.bd.persistencia.mysql;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import tpAnual.batch.procesos.ActivacionPorComuna;
 import tpAnual.batch.procesos.ActivacionSeleccion;
 import tpAnual.batch.procesos.DesactivarMails;
 import tpAnual.batch.procesos.Proceso;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class TestPersistirAcciones {
 	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
@@ -32,7 +32,7 @@ public class TestPersistirAcciones {
 	
 	@BeforeClass
 	public static void init() {
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		entityManager.getTransaction().begin();
 		
 		terminal.desactivarMails();
@@ -56,7 +56,8 @@ public class TestPersistirAcciones {
 	public static void clear() {
 		entityManager.getTransaction().rollback();
 	}
-		
+	
+	
 	@Test
 	public void lasIdsSonIncrementales(){		
 		long id1 = activadorComuna.getId();

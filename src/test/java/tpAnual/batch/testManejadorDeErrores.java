@@ -22,7 +22,7 @@ import tpAnual.batch.procesos.DesactivarRegistros;
 import tpAnual.batch.procesos.FinEjecucion;
 import tpAnual.batch.procesos.Proceso;
 import tpAnual.batch.procesos.ProcesoActualizarLocales;
-import tpAnual.util.SingletonReseter;
+import tpAnual.util.Reseter;
 
 public class testManejadorDeErrores {
 	private Set<Terminal> terminales;
@@ -34,7 +34,7 @@ public class testManejadorDeErrores {
 	
 	@Before
 	public void init(){
-		SingletonReseter.resetAll();
+		Reseter.resetSingletons();
 		terminales = new HashSet<>();
 		activar = new HashSet<>();
 		desactivar = new HashSet<>();
