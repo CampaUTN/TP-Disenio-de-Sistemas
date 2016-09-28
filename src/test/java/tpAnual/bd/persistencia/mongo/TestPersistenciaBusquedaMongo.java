@@ -77,7 +77,7 @@ public class TestPersistenciaBusquedaMongo {
 	@After
 	public void clear() {
 		SingletonReseter.resetAll();
-		
+		datastore.getDB().dropDatabase();
 		datastore.delete(datastore.createQuery(Busqueda.class));
 	}
 	
