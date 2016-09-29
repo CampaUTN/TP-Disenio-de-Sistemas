@@ -1,5 +1,8 @@
 package tpAnual.externo.sistemasExternos;
 
+import org.mongodb.morphia.annotations.Embedded;
+
+@Embedded
 public class ServicioDTO {
 	private String nombre;
 	private int dia;

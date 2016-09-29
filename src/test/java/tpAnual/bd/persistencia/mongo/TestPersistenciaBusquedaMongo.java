@@ -18,6 +18,8 @@ import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
+import tpAnual.externo.sistemasExternos.BancoExterno;
+import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.Reseter;
 import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
@@ -79,6 +81,30 @@ public class TestPersistenciaBusquedaMongo {
 		Reseter.resetDatastore(datastore);
 	}
 	
+	@Test
+	public void sePersisteElBancoExterno(){
+		BancoExterno bancoExterno = new BancoExterno();
+		bancoExterno.setBanco("galicia");
+		String[] servicios = {"pago cheques", "consultas"};
+		bancoExterno.setServicios(servicios);
+		
+		datastore.save(bancoExterno);
+		
+		Assert.assertFalse(datastore.createQuery(BancoExterno.class).asList().isEmpty());
+	}
+	
+	@Test
+	public void sePersistenLosServiciosDelBancoExterno(){
+		BancoExterno bancoExterno = new BancoExterno();
+		bancoExterno.setBanco("galicia");
+		String[] servicios = {"pago cheques", "consultas"};
+		bancoExterno.setServicios(servicios);
+		
+		datastore.save(bancoExterno);
+		
+		Assert.assertEquals(2, datastore.createQuery(BancoExterno.class).asList().get(0).getServicios().length,0);
+	}
+	
 	
 	@Test
 	public void comprueboQueNoHayNadaPersistido() throws UnknownHostException{		
@@ -100,7 +126,6 @@ public class TestPersistenciaBusquedaMongo {
 	
 	@Test 
 	public void seRealizaUnaBusquedaYLuegoSePersiste(){
-
 		buscador.buscarSegunTexto("colectivo",terminal);		
 
 		Assert.assertEquals(1, datastore.createQuery(Busqueda.class).asList().size());

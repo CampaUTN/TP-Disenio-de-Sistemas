@@ -1,7 +1,10 @@
 package tpAnual.externo.sistemasExternos;
 
-public class BancoExterno
-{
+import org.mongodb.morphia.annotations.Entity;
+
+@Entity
+public class BancoExterno{
+	
     private String[] servicios;
     private String banco;
     private String y;
