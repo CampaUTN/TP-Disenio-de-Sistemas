@@ -2,6 +2,7 @@ package tpAnual.bd.persistencia.mongo;
 
 import java.net.UnknownHostException;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 
 import tpAnual.externo.sistemasExternos.BancoDTO;
+import tpAnual.util.Reseter;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 
 public class TestPersistenciaBancoExternoMongo {
@@ -28,6 +30,12 @@ public class TestPersistenciaBancoExternoMongo {
 		bancoExterno.setServicios(servicios);
 	}	
 	
+	@After
+	public void clear() {
+		Reseter.resetSingletons();
+		Reseter.resetDatastore(datastore);
+	}
+	
 	@Test
 	public void sePersisteElBancoExterno(){		
 		datastore.save(bancoExterno);
@@ -38,6 +46,6 @@ public class TestPersistenciaBancoExternoMongo {
 	@Test
 	public void sePersistenLosServiciosDelBancoExterno(){
 		datastore.save(bancoExterno);
-		Assert.assertNotEquals(0, datastore.createQuery(BancoDTO.class).asList().get(0).getServicios().length,0);
+		Assert.assertNotEquals(servicios, datastore.createQuery(BancoDTO.class).get().getServicios());
 	}
 }
