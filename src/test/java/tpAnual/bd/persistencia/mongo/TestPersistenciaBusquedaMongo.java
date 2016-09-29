@@ -13,11 +13,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 
+import tpAnual.Mapa;
 import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
+import tpAnual.busquedas.RepositorioBuscador;
 import tpAnual.externo.sistemasExternos.BancoExterno;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.Reseter;
@@ -36,14 +39,15 @@ public class TestPersistenciaBusquedaMongo {
 	private Set<String> tags2 = new HashSet<String>();
 	private PointWrapper ubicacion = new PointWrapper(54, 10);
 	
-	private Poi poi1;
-	private Poi poi2;
+	private Poi poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
+	private Poi poi2 = new EstacionDeColectivo(ubicacion, "106", tags2,0,"");
+
 	private PoiDTO poiDto1;
 	private PoiDTO poiDto2;
 	
 	private Terminal terminal = new Terminal();
 	
-
+	private BuscadorLocal local = new BuscadorLocal();
 	private BuscadorTexto buscador = new BuscadorTexto();		
 	
 //	Query<PoiDTO> query = datastore.createQuery(PoiDTO.class);
@@ -73,6 +77,10 @@ public class TestPersistenciaBusquedaMongo {
 		terminal.desactivarMails();
 		terminal.desactivarRegistros();
 		
+		RepositorioBuscador.getInstance().agregarConsultora(local);
+		
+		Mapa.getInstance().alta(poi1);
+		Mapa.getInstance().alta(poi2);
 	}
 	
 	@After
@@ -133,18 +141,14 @@ public class TestPersistenciaBusquedaMongo {
 			
 	
 	@Test
-	public void sePersistenVariosPoisConLaBusqueda(){
-		buscador.buscarSegunTexto("colectivo", terminal);
+	public void sePersistenVariosPoisLocalesConLaBusqueda(){		
+		poi2.agregarTag("colectivo");
+		List<Poi> pois = buscador.buscarSegunTexto("colectivo", terminal);	
 		
-		List <Busqueda> busquedas = datastore.createQuery(Busqueda.class).asList();
-		
-		Busqueda b = busquedas.get(0);
-		
-		//Assert.assertTrue(b.getResultado().size() <= 1);
-		//TODO falla
-		
+		long cantidadPois = datastore.find(Busqueda.class).get().getResultado().size();
+			
+		Assert.assertEquals(pois.size(),cantidadPois);
 	}
-	
 	
 	//Saque las queries de aca http://mongodb.github.io/morphia/1.0/guides/querying/
 	
