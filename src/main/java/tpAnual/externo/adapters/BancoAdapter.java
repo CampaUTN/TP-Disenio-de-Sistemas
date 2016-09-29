@@ -2,14 +2,12 @@ package tpAnual.externo.adapters;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
@@ -21,15 +19,17 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoExterno;
-import tpAnual.externo.sistemasExternos.CentroDTO;
+import tpAnual.externo.sistemasExternos.Buscador;
 import tpAnual.externo.sistemasExternos.Consultora;
-import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class BancoAdapter implements Consultora {
+public class BancoAdapter extends Buscador implements Consultora{
 
 	private MockSistemaBancario sistemaBancoExterno = new MockSistemaBancario();
 
+	public BancoAdapter(){
+		this.base = "Bancos";
+	}
 	// TODO para evitar la repeticion, puedo hacer una abstract, aunque primero
 	// tener todo andando.
 	public List<Poi> consultar(List<String> palabras) {
@@ -46,7 +46,8 @@ public class BancoAdapter implements Consultora {
 	}
 
 	private List<Poi> bancosConServicio(String servicio) {
-		return this.convertirAPois(MongoDatastoreSingleton.getDatastore("Bancos")
+		return this.convertirAPois(
+					this.getDataBase()
 					.createQuery(BancoExterno.class)
 					.field("servicios")
 					.containsIgnoreCase(servicio)
@@ -54,7 +55,8 @@ public class BancoAdapter implements Consultora {
 	}
 	
 	private List<Poi> bancosConNombre(String nombre) {
-		return this.convertirAPois(MongoDatastoreSingleton.getDatastore("Bancos")
+		return this.convertirAPois(
+					this.getDataBase()
 					.createQuery(BancoExterno.class)
 					.field("nombre")
 					.equalIgnoreCase(nombre)
@@ -65,12 +67,6 @@ public class BancoAdapter implements Consultora {
 		return this.convertirAPois(adaptar(sistemaBancoExterno.consultar("")));
 	}
 	
-	public void actualizarTodos() {
-		this.getPois()
-			.stream()
-			.collect(Collectors.toSet())
-			.forEach(poi -> MongoDatastoreSingleton.getDatastore("Bancos").save(poi));;
-	}
 
 	public List<BancoExterno> adaptar(File reader) {
 		String contenido;

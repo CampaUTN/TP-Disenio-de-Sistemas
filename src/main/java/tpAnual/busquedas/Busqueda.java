@@ -6,7 +6,6 @@ import java.util.List;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 
-import tpAnual.POIs.Poi;
 import tpAnual.util.bd.PoiDTO;
 
 @Entity

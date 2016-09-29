@@ -1,13 +1,10 @@
 package tpAnual.busquedas;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.mongodb.morphia.Datastore;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
@@ -46,19 +43,8 @@ public class BuscadorTexto{
 														.collect(Collectors.toList());
 		
 		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
-		
-		Datastore datastore;
-		try {
-			datastore = MongoDatastoreSingleton.getDatastore("busquedas");
 
-			datastore.save(busqueda);
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-		
-		// TODO: aca decirle al 'entity manager de morphia' que persista la busqueda.
+		MongoDatastoreSingleton.getDatastore("busquedas").save(busqueda);
 	}
 	
 	private List<String> separaLaBusqueda(String Busqueda) {

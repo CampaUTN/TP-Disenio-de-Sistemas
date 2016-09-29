@@ -6,6 +6,4 @@ import tpAnual.POIs.Poi;
 
 public interface Consultora {
 	public List<Poi> consultar(List<String> palabras);
-	
-	public List<Poi> getPois();
 }
