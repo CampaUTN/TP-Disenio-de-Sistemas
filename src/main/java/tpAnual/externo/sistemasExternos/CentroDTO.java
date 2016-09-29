@@ -5,11 +5,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+
+@Entity
 public class CentroDTO {
 	private int numeroComuna;
 	private Set<String> zonas = new HashSet<String>();
 	private String nombreDirector;
 	private String domicilio;
+	@Embedded
 	private List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
 	
 	
