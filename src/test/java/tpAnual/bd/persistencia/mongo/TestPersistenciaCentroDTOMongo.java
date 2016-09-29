@@ -63,6 +63,6 @@ public class TestPersistenciaCentroDTOMongo {
 		
 		datastore.save(centro);
 
-		Assert.assertEquals(1, datastore.createQuery(CentroDTO.class).asList().get(0).getServicios().size(),0);
+		Assert.assertNotEquals(0, datastore.createQuery(CentroDTO.class).asList().get(0).getServicios().size(),0);
 	}
 }
