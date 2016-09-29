@@ -29,7 +29,7 @@ public class TestExterno {
 	@Test
 	public void testDevuelveListaExternaBanco(){
 		List<String> palabras = new ArrayList<String>();
-		palabras.add("aasas");
+		palabras.add("Banco de la Plaza");
 		
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		Assert.assertEquals(2,bancosExterno.size(),0); //Porque el mock devuelve dos bancos, sin importar que texto se pase.
@@ -62,17 +62,6 @@ public class TestExterno {
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
-//		Set<String> servicios = bancosExterno.get(0).getTags();
-//		
-//		Set<String> serviciosEsperados = new HashSet<String>();
-//		serviciosEsperados.add("");
-//		serviciosEsperados.add("extracciones");
-//		serviciosEsperados.add("transferencias");
-//		serviciosEsperados.add("cobro cheques");
-//		serviciosEsperados.add("depósitos");
-//		serviciosEsperados.add("créditos");
-//		
-//		Assert.assertEquals(serviciosEsperados,servicios);
 		Assert.assertNotEquals(0,bancosExterno.size());
 	}	
 	
@@ -83,43 +72,4 @@ public class TestExterno {
 	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
 		Assert.assertEquals(2,cgpsExternos.size());
 		}
-	
-	@Test
-	public void testDevuelveListaExternaCgp(){
-		List<String> palabras = new ArrayList<String>();
-		palabras.add("aasas");
-		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-		Assert.assertEquals(2,cgpsExternos.size(),0);
-	}
-		
-//	@Test
-//	public void testCgpMismoNombre(){  me van a hacer llorar con estos test
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("aasas");
-//		
-//		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);	
-//		String nombre = cgpsExternos.get(0).getNombre();
-//		Assert.assertTrue(nombre == null);
-//	}
-	
-//	@Test
-//	public void testCgpMismaUbicacion(){
-//		List<String> palabras = new ArrayList<String>();
-//		palabras.add("Banco de la Plaza");
-//		
-//		List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-//	
-//		PointWrapper ubicacion = cgpsExternos.get(0).getUbicacion();
-//		
-//		Double posX = -35.9345681;
-//		Double posY = 72.344546;
-//		
-//		Point ubicacionEsperada = new Point(posX,posY);
-//		
-//		Assert.assertEquals(ubicacionEsperada.longitude(), ubicacion.longitude(),0);
-//		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0);	
-//	}
-		
-
-
 }
