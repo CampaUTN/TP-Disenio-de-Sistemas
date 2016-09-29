@@ -27,7 +27,7 @@ public class RepositorioBuscador {
 	}
 	
 	public void agregarConsultora(Consultora adapter){
-		if(adapter != null){
+		if(adapter != null){ //TODO que hace esta verificacion aca?
 			consultoras.add(adapter);
 		}
 	}

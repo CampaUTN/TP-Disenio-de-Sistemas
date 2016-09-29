@@ -1,5 +1,6 @@
 package tpAnual.externo.adapters;
 
+import java.net.UnknownHostException;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,19 +16,29 @@ import tpAnual.externo.mocks.MockSistemaCGP;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
+import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class CGPAdapter implements Consultora{
 	
 	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
 		
-		
-	// Consultar es un metodo de la interface externa que me da el JSON que esto debe adaptar
+
 	public List<Poi> consultar(List<String> palabras){
 		List<Poi> pois = new ArrayList<Poi>();
-		palabras.forEach(palabra-> pois.addAll(this.adaptar(cpoExterno.consultar(palabra))));
+
+			pois = this.adaptar(
+					MongoDatastoreSingleton.getDatastore("CGPs")
+					.createQuery(CentroDTO.class)
+					.asList());
+
 		return pois;
 	}
+	
+	public List<Poi> getPois(){
+		return this.adaptar(cpoExterno.consultar(""));
+	}
+	
 	
 	private List<Poi> adaptar(List<CentroDTO> centros){
 		return centros

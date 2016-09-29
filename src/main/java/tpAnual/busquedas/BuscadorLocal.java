@@ -14,4 +14,10 @@ public class BuscadorLocal implements Consultora{
 				.filter(poi-> poi.cumpleCondicionBusqueda(palabras))
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Poi> getPois() {
+		// TODO 
+		return null;
+	}
 }
