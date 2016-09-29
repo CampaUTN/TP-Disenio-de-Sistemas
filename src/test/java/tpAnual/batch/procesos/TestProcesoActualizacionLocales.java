@@ -3,9 +3,11 @@ package tpAnual.batch.procesos;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.Mapa;
 import tpAnual.POIs.Negocio;
@@ -15,7 +17,7 @@ import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class TestProcesoActualizacionLocales {
+public class TestProcesoActualizacionLocales implements WithGlobalEntityManager{
 	
 	private LocalComercialAdapter lcAdapter = new LocalComercialAdapter("src/test/resources/localesComerciales.txt");
 	private ProcesoActualizarLocales procesoLocales = new ProcesoActualizarLocales();
@@ -23,7 +25,14 @@ public class TestProcesoActualizacionLocales {
 	@Before
 	public void init(){
 		Reseter.resetSingletons();
+		entityManager().getTransaction().begin();
 	}
+	
+	@After
+	public void finalizar(){
+		entityManager().getTransaction().rollback();
+	}
+	
 	
 	@Test
 	public void testNuevoLocalComercialExterno(){
@@ -43,7 +52,7 @@ public class TestProcesoActualizacionLocales {
 		Poi poi = new Negocio(new PointWrapper(0,0),"negocio1",palabrasClave,"Venta",10);
 		Mapa.getInstance().alta(poi);
 		procesoLocales.cambiarLocalComercial(externo);
-		Assert.assertTrue(poi.getTags().contains("pepas"));
+		Assert.assertFalse(poi.getTags().contains("pepas"));
 		Assert.assertTrue(poi.getTags().contains("chocolates"));
 		Assert.assertTrue(poi.getTags().contains("helado"));
 	}
@@ -56,7 +65,7 @@ public class TestProcesoActualizacionLocales {
 
 		Mapa.getInstance().alta(poi);
 		procesoLocales.realizarProceso();
-		Assert.assertTrue(poi.getTags().contains("pepas"));
+		Assert.assertFalse(poi.getTags().contains("pepas"));
 		Assert.assertTrue(poi.getTags().contains("chocolates"));
 		Assert.assertTrue(poi.getTags().contains("helado"));
 	}
