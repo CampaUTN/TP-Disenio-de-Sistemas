@@ -74,7 +74,6 @@ public class BancoAdapter extends Buscador implements Consultora{
 		
 		//Borro todos
 		datastore.getDB().getCollection("BancoDTO").drop();
-
 		
 		//Los traigo
 		List<BancoDTO> bancosDto = new ArrayList<BancoDTO>();

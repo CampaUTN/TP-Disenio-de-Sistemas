@@ -77,6 +77,20 @@ public class TestExterno {
 	}	
 	
 	@Test
+	public void testCgpMismoServicios(){
+		List<String> palabras = new ArrayList<String>();
+//		Set<String> servicios = new HashSet<String>();
+//		Set<String> servicioEsperado = new HashSet<String>();
+		palabras.add("Banco de la Plaza");
+//		servicioEsperado.add("Tramites");
+//		servicioEsperado.add("Cheques");
+////		
+	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
+//	    servicios = cgpsExternos.get(0).getTags();
+		Assert.assertNotEquals(0,cgpsExternos.size());
+		}
+	
+	@Test
 	public void testDevuelveListaExternaCgp(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("aasas");
@@ -112,18 +126,6 @@ public class TestExterno {
 //		Assert.assertEquals(ubicacionEsperada.latitude(),ubicacion.latitude(),0);	
 //	}
 		
-	@Test
-	public void testCgpMismoServicios(){
-		List<String> palabras = new ArrayList<String>();
-		Set<String> servicios = new HashSet<String>();
-		Set<String> servicioEsperado = new HashSet<String>();
-		palabras.add("Banco de la Plaza");
-//		servicioEsperado.add("Tramites");
-//		servicioEsperado.add("Cheques");
-////		
-	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-//	    servicios = cgpsExternos.get(0).getTags();
-		Assert.assertNotEquals(0,cgpsExternos.size());
-		}
+
 
 }
