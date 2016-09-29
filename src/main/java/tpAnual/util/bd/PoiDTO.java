@@ -12,7 +12,7 @@ import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class PoiDTO {
-	@Id //TODO . pregunta, esto bindea la ID al campo _ID del JSON. Pero, no deberia autogenerarlas al persistir!
+	@Id
 	private long id;
 	
 	@Embedded
@@ -26,6 +26,7 @@ public class PoiDTO {
 	private String calle;
 	private Integer direccion;
 
+	
 	private PoiDTO(){}
 	
 	public PoiDTO(PointWrapper ubicacion, String nombre, Set<String> tags, String calle, Integer direccion) {

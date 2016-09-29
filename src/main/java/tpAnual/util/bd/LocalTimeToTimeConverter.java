@@ -11,11 +11,11 @@ public class LocalTimeToTimeConverter implements AttributeConverter<LocalTime, T
 
 	@Override
 	public Time convertToDatabaseColumn(LocalTime time) {
-		return Time.valueOf(time);
+		return time == null? null : Time.valueOf(time);
 	}
 
 	@Override
 	public LocalTime convertToEntityAttribute(Time time) {
-		return time.toLocalTime();
+		return time == null? null : time.toLocalTime();
 	}
 }

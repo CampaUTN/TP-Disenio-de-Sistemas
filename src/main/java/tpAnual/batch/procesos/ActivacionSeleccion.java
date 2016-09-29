@@ -12,9 +12,10 @@ import tpAnual.Terminal;
 public class ActivacionSeleccion extends Proceso {
 	
 	@OneToMany
-	List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
+	private List<AccionTerminal> acciones = new ArrayList<AccionTerminal>();
 	@OneToMany
-	List<Terminal> terminalesSeleccion = new ArrayList<Terminal>();
+	private List<Terminal> terminalesSeleccion = new ArrayList<Terminal>();
+	
 	
 	public ActivacionSeleccion(List<Terminal> terminales,List<AccionTerminal> acciones){
 		this.acciones = acciones;

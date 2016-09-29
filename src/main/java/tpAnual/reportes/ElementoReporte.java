@@ -31,6 +31,7 @@ public class ElementoReporte {
 	@ElementCollection @Cascade({CascadeType.ALL})
 	private List<Integer> busquedasParciales = new ArrayList<Integer>();
 	
+	
 	private ElementoReporte(){}
 	
 	public boolean esDeLaFecha(LocalDate fecha){

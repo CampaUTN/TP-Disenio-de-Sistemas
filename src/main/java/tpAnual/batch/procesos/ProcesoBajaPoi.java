@@ -14,12 +14,12 @@ import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 
 @Entity
 public class ProcesoBajaPoi extends Proceso {
-	
 	@Transient
 	public List<PoiAEliminarDTO> poisExternos = new ArrayList<PoiAEliminarDTO>();
 	
 	@Transient
 	BajaPoiAdapter bajaPoiAdapter = new BajaPoiAdapter();
+	
 	
 	public ProcesoBajaPoi(){ //Cuando se instancia la clase se trae la ultima modificacion
 		poisExternos = bajaPoiAdapter.consultar();

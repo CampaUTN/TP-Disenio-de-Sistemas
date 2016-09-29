@@ -22,6 +22,7 @@ public class CGPAdapter extends Buscador implements Consultora{
 	
 	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
 		
+	
 	public CGPAdapter(){
 		this.base = "CGPs";
 	}

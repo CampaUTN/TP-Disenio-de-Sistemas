@@ -16,6 +16,7 @@ public class ResultadoEjecucionProceso {
 	@SuppressWarnings("unused")
 	private FinEjecucion estado;
 	
+	
 	public ResultadoEjecucionProceso(Proceso proceso){
 		this.proceso = proceso.getNombre();
 		this.fecha = LocalDate.now();

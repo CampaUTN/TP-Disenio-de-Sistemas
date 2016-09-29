@@ -8,6 +8,7 @@ public class LocalComercialExternoDTO {
 	private String nombre;
 	private Set<String> palabrasClave = new HashSet<String>();
 	
+	
 	public LocalComercialExternoDTO(String nombre,Set<String> palabrasClave){
 		this.nombre = nombre;
 		this.palabrasClave = palabrasClave;

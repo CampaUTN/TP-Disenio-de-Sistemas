@@ -18,12 +18,9 @@ public class Servicio {
 	@Id @GeneratedValue
 
 	@Column(name = "serv_id")
-	private long id;
+	private long id;	
 	
-	
-
 	@ManyToMany
-	//@Transient
 	private List <Horario> horarios = new ArrayList<Horario>(); 
 	
 	@Column(name = "serv_nombre")
@@ -49,11 +46,10 @@ public class Servicio {
 		horarios.add(unHorario);
 	}
 	
-	public String getNombre(){
+	public String getNombre() {
 		return this.nombre;
-		
-	
-		}
+
+	}
 
 	public long getId() {
 		return id;

@@ -35,6 +35,7 @@ public class Terminal {
 	
 	private Integer numeroComuna;
 
+	
 	public boolean equals(Terminal terminal) {
 		return this.numeroTerminal == terminal.getNumeroTerminal();
 	}

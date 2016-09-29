@@ -14,7 +14,7 @@ import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 public class ProcesoActualizarLocales extends Proceso{
 	
 	@Transient
-	LocalComercialAdapter localAdapter = new LocalComercialAdapter("src/test/resources/localesComerciales.txt");
+	private LocalComercialAdapter localAdapter = new LocalComercialAdapter("src/test/resources/localesComerciales.txt");
 
 	public void ejecutar(){
 		List<LocalComercialExternoDTO> locales = localAdapter.consultar();

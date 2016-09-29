@@ -13,10 +13,11 @@ import tpAnual.Terminal;
 public class ActivacionEnTodas extends Proceso{
 	
 	@OneToMany
-	List<Terminal> terminales = new ArrayList<Terminal>();
+	private List<Terminal> terminales = new ArrayList<Terminal>();
 
 	@OneToMany
-	List<AccionTerminal> acciones= new ArrayList<AccionTerminal>();
+	private List<AccionTerminal> acciones= new ArrayList<AccionTerminal>();
+	
 	
 	public ActivacionEnTodas(List<AccionTerminal> acciones){
 		this.acciones = acciones;

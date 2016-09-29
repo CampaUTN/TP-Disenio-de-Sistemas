@@ -15,12 +15,12 @@ import tpAnual.externo.sistemasExternos.LocalComercialExternoDTO;
 
 public class LocalComercialAdapter{
 	
-	String direccion;
+	private String direccion;
+	
 	
 	public LocalComercialAdapter(String direccion){
 		this.direccion = direccion;
 	}
-	
 	
 	public void setDireccion(String direccion){
 		this.direccion = direccion;

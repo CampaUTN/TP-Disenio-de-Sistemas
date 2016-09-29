@@ -6,12 +6,12 @@ import org.apache.commons.io.FileUtils;
 
 public class LocalComercialFileReader {
 
-	String direccion;
+	private String direccion;
+	
 	
 	public LocalComercialFileReader(String direccion){
 		this.direccion = direccion;
 	}
-	
 	
 	public void setDireccion(String direccion){
 		this.direccion = direccion;

@@ -10,9 +10,9 @@ import tpAnual.batch.procesos.Proceso;
 public class ReLanzador implements PostEjecucionProceso{
 	private int cantidadMaximaIntentos;
 	private int vecesConsecutivasQueFallo;
-
 	private IEmailSenderFallo sender;
 
+	
 	public void setSender(IEmailSenderFallo sender) {
 		this.sender = sender;
 	}

@@ -13,6 +13,7 @@ public class LoggerProcesos implements PostEjecucionProceso{
 	private static LoggerProcesos instance = null;
 	private List<ResultadoEjecucionProceso> resultados;
 	
+	
 	private LoggerProcesos(){
 		this.resultados = new ArrayList<ResultadoEjecucionProceso>();
 	}

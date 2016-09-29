@@ -14,8 +14,9 @@ import tpAnual.externo.sistemasExternos.UrlExterna;
 
 public class BajaPoiAdapter{
 	
-	public String url;
-	public String path;
+	private String url;
+	private String path;
+	
 	
 	public List<PoiAEliminarDTO> consultar(){
 		UrlExterna urlExterna = new UrlExterna(url, path);
@@ -23,18 +24,11 @@ public class BajaPoiAdapter{
 		
 	}
 	
-	
-	
 	 public List<PoiAEliminarDTO> jsonToPoiAEliminar(String contenido){
-		 
 		List<PoiAEliminarDTO> pois = new ArrayList<PoiAEliminarDTO>();
-		
 		Gson gson = new Gson();
-		
 		pois = gson.fromJson(contenido, new TypeToken<List<PoiAEliminarDTO>>() {}.getType());
-		
 		return pois;
-		
       }
 	 
 	 public void setUrl(String url){

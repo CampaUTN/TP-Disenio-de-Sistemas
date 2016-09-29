@@ -22,8 +22,7 @@ public abstract class Proceso{
 	@Id
 	@GeneratedValue
 	private long id;
-	
-	private String nombre; // necesito que tengan nombre para mandar el mensaje de error.
+	private String nombre;
 	
 //	@OneToMany // TODO QUE ONDA CON ESTO?
 	@Transient

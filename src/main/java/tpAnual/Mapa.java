@@ -4,19 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
 
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
 
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class Mapa {
+public class Mapa implements WithGlobalEntityManager{
 	
 	private List<Poi> pois = new ArrayList<Poi>();
 	private List<Terminal> terminales = new ArrayList<Terminal>();
-	@SuppressWarnings("unused")
-	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	private static Mapa instance = null;
 	
 
