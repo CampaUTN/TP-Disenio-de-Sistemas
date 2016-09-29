@@ -41,12 +41,14 @@ public class BancoAdapter extends Buscador implements Consultora{
 		List<Poi> poisConNombre = new ArrayList<Poi>();
 		palabras.forEach(palabra -> poisConServicio.addAll(this.bancosConServicio(palabra)));
 		palabras.forEach(palabra -> poisConNombre.addAll(this.bancosConNombre(palabra)));
-		return poisConServicio
-				.stream()
-				.filter(p -> poisConNombre.contains(p))
-				.collect(Collectors.toSet())
-				.stream()
-				.collect(Collectors.toList());
+//		return poisConServicio
+//				.stream()
+//				.filter(p -> poisConNombre.contains(p))
+//				.collect(Collectors.toSet())
+//				.stream()
+//				.collect(Collectors.toList());
+		poisConNombre.addAll(poisConServicio);
+		return poisConNombre;
 	}
 
 	private List<Poi> bancosConServicio(String servicio) {
