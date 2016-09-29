@@ -33,22 +33,34 @@ public class BancoAdapter implements Consultora {
 	// TODO para evitar la repeticion, puedo hacer una abstract, aunque primero
 	// tener todo andando.
 	public List<Poi> consultar(List<String> palabras) {
-		List<Poi> pois = new ArrayList<Poi>();
-		palabras.forEach(palabra -> pois.addAll(this.bancosConServicio(palabra)));
-		return pois;
+		List<Poi> poisConServicio = new ArrayList<Poi>();
+		List<Poi> poisConNombre = new ArrayList<Poi>();
+		palabras.forEach(palabra -> poisConServicio.addAll(this.bancosConServicio(palabra)));
+		palabras.forEach(palabra -> poisConNombre.addAll(this.bancosConNombre(palabra)));
+		return poisConServicio
+				.stream()
+				.filter(p -> poisConNombre.contains(p))
+				.collect(Collectors.toSet())
+				.stream()
+				.collect(Collectors.toList());
 	}
 
 	private List<Poi> bancosConServicio(String servicio) {
-		List<Poi> bancos = new ArrayList<Poi>();
-
-			bancos = this.convertirAPois(MongoDatastoreSingleton.getDatastore("Bancos")
+		return this.convertirAPois(MongoDatastoreSingleton.getDatastore("Bancos")
 					.createQuery(BancoExterno.class)
 					.field("servicios")
 					.containsIgnoreCase(servicio)
 					.asList());
-		return bancos;
 	}
-
+	
+	private List<Poi> bancosConNombre(String nombre) {
+		return this.convertirAPois(MongoDatastoreSingleton.getDatastore("Bancos")
+					.createQuery(BancoExterno.class)
+					.field("nombre")
+					.equalIgnoreCase(nombre)
+					.asList());
+	}
+	
 	public List<Poi> getPois() {
 		return this.convertirAPois(adaptar(sistemaBancoExterno.consultar("")));
 	}
