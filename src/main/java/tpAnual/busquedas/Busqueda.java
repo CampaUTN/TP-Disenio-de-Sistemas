@@ -1,5 +1,6 @@
 package tpAnual.busquedas;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class Busqueda {
 	
 	@Embedded
 	private List<PoiDTO> pois = new ArrayList<PoiDTO>();
+	@SuppressWarnings("unused")
+	private Date fecha = new Date();
 	
 	@SuppressWarnings("unused")
 	private Busqueda(){}
