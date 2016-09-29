@@ -3,7 +3,7 @@ package tpAnual;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.stream.Stream;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
@@ -81,11 +81,11 @@ public class Mapa implements WithGlobalEntityManager{
 	}
 
 	public Poi poisPendientesDeModificar(String nombre){
-		return this.getPois()
+		List<Poi> pois = this.getPois()
 				.stream()
 				.filter(poi->poi.getNombre().equals(nombre))
-				.collect(Collectors.toList())
-				.get(0);
+				.collect(Collectors.toList());
+		return pois.isEmpty()? null : pois.get(0);
 	}
 
 }

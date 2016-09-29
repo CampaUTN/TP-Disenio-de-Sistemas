@@ -43,7 +43,7 @@ public class TestProcesoActualizacionLocales {
 		Poi poi = new Negocio(new PointWrapper(0,0),"negocio1",palabrasClave,"Venta",10);
 		Mapa.getInstance().alta(poi);
 		procesoLocales.cambiarLocalComercial(externo);
-		Assert.assertFalse(poi.getTags().contains("pepas"));
+		Assert.assertTrue(poi.getTags().contains("pepas"));
 		Assert.assertTrue(poi.getTags().contains("chocolates"));
 		Assert.assertTrue(poi.getTags().contains("helado"));
 	}
@@ -56,7 +56,7 @@ public class TestProcesoActualizacionLocales {
 
 		Mapa.getInstance().alta(poi);
 		procesoLocales.realizarProceso();
-		Assert.assertFalse(poi.getTags().contains("pepas"));
+		Assert.assertTrue(poi.getTags().contains("pepas"));
 		Assert.assertTrue(poi.getTags().contains("chocolates"));
 		Assert.assertTrue(poi.getTags().contains("helado"));
 	}
