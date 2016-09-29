@@ -35,11 +35,10 @@ public class CGPAdapter extends Buscador implements Consultora{
 		
 		List<Poi> pois = cgpDeLaZona(palabras.get(0));
 		pois.addAll(cgpDeLaCalle(palabras.get(0)));
-//		return pois.stream()
-//				.collect(Collectors.toSet())
-//				.stream()
-//				.collect(Collectors.toList());
-		return pois;
+		return pois.stream()
+				.collect(Collectors.toSet())
+				.stream()
+				.collect(Collectors.toList());
 	}
 	
 	private List<Poi> cgpDeLaZona(String zona) {
