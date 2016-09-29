@@ -45,6 +45,7 @@ public class TestCercania extends TestSetup{
 
 	}
 
+	
 	@Test
 	public void cgpEstaCercaPorComuna() {
 		Assert.assertTrue(cgp.estaCerca(puntoDeBusqueda));

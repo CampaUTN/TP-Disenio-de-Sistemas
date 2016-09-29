@@ -47,6 +47,7 @@ public class TestDisponibilidad extends TestSetup {
 		negocio.agregarHorario(horarioTarde);
 	}
 	
+	
 	@Test
 	public void estaDentroDeLaFranjaHoraria(){
 		

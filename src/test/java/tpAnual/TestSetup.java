@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.After;
 import org.junit.Before;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
@@ -17,7 +19,7 @@ import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class TestSetup {
+public class TestSetup implements WithGlobalEntityManager{
 	
 	protected Set<String> tags = new HashSet<String>();
 	protected PointWrapper ubicacion = new PointWrapper(54, 10);
@@ -38,6 +40,7 @@ public class TestSetup {
 	@Before
 	public void init() {
 		Reseter.resetSingletons();
+		entityManager().getTransaction().begin();
 		
 		terminal = new Terminal(0);
 		terminal.desactivarMails();
@@ -54,6 +57,10 @@ public class TestSetup {
 		RepositorioBuscador.getInstance().agregarConsultora(local);
 		RepositorioBuscador.getInstance().agregarConsultora(new BancoAdapter());
 		RepositorioBuscador.getInstance().agregarConsultora(new CGPAdapter());
-		
+	}
+	
+	@After
+	public void finalizar(){
+		entityManager().getTransaction().rollback();
 	}
 }

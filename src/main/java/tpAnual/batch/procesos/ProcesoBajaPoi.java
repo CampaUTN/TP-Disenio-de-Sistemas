@@ -17,12 +17,9 @@ public class ProcesoBajaPoi extends Proceso {
 	@Transient
 	public List<PoiAEliminarDTO> poisExternos = new ArrayList<PoiAEliminarDTO>();
 	
-	@Transient
-	BajaPoiAdapter bajaPoiAdapter = new BajaPoiAdapter();
-	
 	
 	public ProcesoBajaPoi(){ //Cuando se instancia la clase se trae la ultima modificacion
-		poisExternos = bajaPoiAdapter.consultar();
+		poisExternos = new BajaPoiAdapter().consultar();
 	}
 	
 	public void ejecutar(){ //Command para el lanzador
@@ -30,10 +27,10 @@ public class ProcesoBajaPoi extends Proceso {
 	}
 	 
 	 public void eliminarPoi(long id){
-		Mapa mapa = Mapa.getInstance();
-		List<Poi> pois = mapa.getPois();
-		mapa.baja(pois.stream().filter(p -> p.esDeId(id)).collect(Collectors.toList()).get(0));
+		List<Poi> pois = Mapa.getInstance().getPois();
+		Mapa.getInstance().baja(pois.stream()
+				.filter(p -> p.esDeId(id))
+				.collect(Collectors.toList())
+				.get(0));
 	 }	
-	  
-
 }

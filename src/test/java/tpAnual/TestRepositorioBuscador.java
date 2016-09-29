@@ -15,6 +15,7 @@ public class TestRepositorioBuscador {
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
 	private RepositorioBuscador repositorio;
+	
 	@Before
 	public void init() {
 		Reseter.resetSingletons();
@@ -25,6 +26,7 @@ public class TestRepositorioBuscador {
 		repositorio.agregarConsultora(new BuscadorLocal());
 	}
 		
+	
 	@Test 
 	public void ElRepoAgregaAdaptersPolimorficamente(){
 		Assert.assertEquals(3, repositorio.getConsultoras().size(), 0);

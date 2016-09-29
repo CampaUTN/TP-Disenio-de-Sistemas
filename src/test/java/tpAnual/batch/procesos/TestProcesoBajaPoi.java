@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.IntStream;
 
+import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -22,7 +24,7 @@ import tpAnual.externo.sistemasExternos.UrlExterna;
 import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class TestProcesoBajaPoi {
+public class TestProcesoBajaPoi implements WithGlobalEntityManager{
 	
 	protected static Set<String> tags = new HashSet<String>();
 	protected static PointWrapper ubicacion = new PointWrapper(54, 10);
@@ -39,28 +41,23 @@ public class TestProcesoBajaPoi {
 	private MockBajaPoi mockbp = new MockBajaPoi();
 	
 	
-	
-	@BeforeClass
-	public static void init(){
+	@Before
+	public void init(){
 		Reseter.resetSingletons();
-
-		IntStream.range(0,121).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
+		entityManager().getTransaction().begin();
+		
+		IntStream.range(0,126).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
 		poi2 = new Banco(ubicacion, "", tags);
 		poi = new Banco(ubicacion, "", tags);
 		poi3 = new Banco(ubicacion, "", tags);
 		Mapa.getInstance().alta(poi);
 		Mapa.getInstance().alta(poi2);
 		Mapa.getInstance().alta(poi3);
-		
-
-		//TODO
-		//SI LE INTENTO PASAR LA URL, ROMPE. TAMBIEN ESTA COMENTADA LA ASIGNACION EN URLEXTERNA
-		//SI CAMBIO A LO CAVERNICOLA EN LA CLASE, EL STATUS RESPONSE DA DIFERENTE DE 200 COMO ES ESPERADO
-		//bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
-		//bpAdapter.setPath("pois");
-		//Url mala
-		//bpAdapter.setUrl("http://demo3537367.mockable.io/trash");
-		//bpAdapter.setPath("pois_bad");
+	}
+	
+	@After
+	public void finalizar(){
+		entityManager().getTransaction().rollback();
 	}
 	
 	
@@ -70,8 +67,6 @@ public class TestProcesoBajaPoi {
         Assert.assertEquals(response.getStatus(), 200,0);
 	}
 	
-// Solo con URL mala(?
-	
 	@Test 
 	public void testAndaMalLaUrl(){
 		ClientResponse response = urlExt.consultarUrl("", "");
@@ -79,9 +74,9 @@ public class TestProcesoBajaPoi {
 	}
 	
 	@Test
-	public void seEliminanPoisSobrantes(){
+	public void detectaPoisAEliminar(){
 		procesoBaja.realizarProceso();
-		Assert.assertEquals(124,Mapa.getInstance().cantidadPois(),0);
+		Assert.assertEquals(2,procesoBaja.poisExternos.size(),0);
 	}
 	
 	 @Test

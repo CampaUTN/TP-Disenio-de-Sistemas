@@ -9,7 +9,6 @@ import java.util.Set;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.uqbar.geodds.Point;
 
 import tpAnual.POIs.Poi;
 import tpAnual.externo.adapters.BancoAdapter;

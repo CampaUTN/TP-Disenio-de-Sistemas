@@ -17,6 +17,7 @@ public class TestBuscador extends TestSetup{
 		super.init();
 	}
 	
+	
 	@Test
 	public void testNoSeEncuentraEnPoisLocales(){ 
 		terminal.desactivarRegistros();
