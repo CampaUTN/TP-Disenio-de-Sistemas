@@ -64,7 +64,7 @@ public class CGPAdapter extends Buscador implements Consultora{
 		Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
 		
 		//Borro todos
-//		datastore.getDB().dropDatabase();
+		datastore.getDB().getCollection("CentroDTO").drop();
 		
 		//Los traigo
 		List<CentroDTO> centrosDto = new ArrayList<CentroDTO>();

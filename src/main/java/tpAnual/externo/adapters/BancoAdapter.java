@@ -73,7 +73,8 @@ public class BancoAdapter extends Buscador implements Consultora{
 		Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
 		
 		//Borro todos
-//		datastore.getDB().dropDatabase();
+		datastore.getDB().getCollection("BancoDTO").drop();
+
 		
 		//Los traigo
 		List<BancoDTO> bancosDto = new ArrayList<BancoDTO>();
