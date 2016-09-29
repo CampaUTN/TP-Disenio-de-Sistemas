@@ -70,8 +70,9 @@ public class TestPersistenciaPoisMongo {
 	
 	@Test
 	public void persistoDosPoiDistintos(){
-		datastore.save(poiDto1, poiDto2);		
-		//Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).getCollection().getCount());
+		datastore.save(poiDto1);		
+		datastore.save(poiDto2);
+		Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).getCollection().getCount());
 	}	
 	
 	@Test

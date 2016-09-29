@@ -11,6 +11,7 @@ import org.mongodb.morphia.annotations.Entity;
 @Entity
 public class CentroDTO {
 	private int numeroComuna;
+	@Embedded
 	private Set<String> zonas = new HashSet<String>();
 	private String nombreDirector;
 	private String domicilio;

@@ -1,10 +1,12 @@
 package tpAnual.externo.sistemasExternos;
 
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 
 @Entity
 public class BancoDTO{
 	
+	@Embedded
     private String[] servicios;
     private String banco;
     private String y;

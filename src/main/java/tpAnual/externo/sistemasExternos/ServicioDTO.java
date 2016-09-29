@@ -1,7 +1,10 @@
 package tpAnual.externo.sistemasExternos;
 
+import javax.persistence.Entity;
+
 import org.mongodb.morphia.annotations.Embedded;
 
+@Entity
 @Embedded
 public class ServicioDTO {
 	private String nombre;
@@ -12,8 +15,8 @@ public class ServicioDTO {
 	private int minutoCierre;
 	
 	
-	private ServicioDTO(){
-	}
+	@SuppressWarnings("unused")
+	private ServicioDTO(){}
 	
 	public ServicioDTO(String nombre, int dia, int horaApertura, int minApertura, int horaCierre, int minCierre){
 		this.nombre = nombre;
