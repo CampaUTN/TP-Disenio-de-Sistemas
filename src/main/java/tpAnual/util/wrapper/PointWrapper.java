@@ -42,7 +42,7 @@ public class PointWrapper {
 	}
 	
 	public boolean equals(PointWrapper punto){
-		return this.toPoint().equals(punto.toPoint());
+		return this.latitude==punto.getLatitude() && this.longitude==punto.getLongitude();
 	}
 
 	public double getLatitude() {

@@ -89,7 +89,7 @@ public class TestPersistenciaPoisMongo {
  		PoiDTO poiEncontrado = datastore.createQuery(PoiDTO.class).filter("nombre","107").asList().get(0);
  		
  		//TODO assertEquals tira false cuando deberia estar bien! D:
- 		//Assert.assertEquals(ubicacion, (PointWrapper)poiEncontrado.getUbicacion());
+ 		Assert.assertTrue((ubicacion.equals(poiEncontrado.getUbicacion())));
  	}
 
 }
