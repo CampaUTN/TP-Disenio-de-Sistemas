@@ -35,4 +35,10 @@ public class MongoDatastoreSingleton {
 		}
 		return datastoreSingleton;
 	}
+	
+//	@SuppressWarnings({ "unchecked", "rawtypes" })
+//	public static Query getQueryFor(String database, Class clase){
+//		return MongoDatastoreSingleton.getDatastore(database)
+//				.createQuery(clase);
+//	}
 }
