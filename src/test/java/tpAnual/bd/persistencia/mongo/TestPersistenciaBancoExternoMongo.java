@@ -38,6 +38,6 @@ public class TestPersistenciaBancoExternoMongo {
 	@Test
 	public void sePersistenLosServiciosDelBancoExterno(){
 		datastore.save(bancoExterno);
-		Assert.assertEquals(2, datastore.createQuery(BancoDTO.class).asList().get(0).getServicios().length,0);
+		Assert.assertEquals(8, datastore.createQuery(BancoDTO.class).asList().get(0).getServicios().length,0);
 	}
 }
