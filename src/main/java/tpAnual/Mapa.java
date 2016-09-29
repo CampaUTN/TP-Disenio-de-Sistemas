@@ -12,8 +12,6 @@ import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class Mapa implements WithGlobalEntityManager{
-	
-	private List<Poi> pois = new ArrayList<Poi>();
 	private List<Terminal> terminales = new ArrayList<Terminal>();
 	private static Mapa instance = null;
 	
@@ -34,13 +32,11 @@ public class Mapa implements WithGlobalEntityManager{
 	
 	//Altas y bajas
 	public void alta(Poi poi){
-		pois.add(poi);
-		//em.persist(poi);
+		entityManager().persist(poi);
 	}
 	
 	public void baja(Poi poi){
-		pois.remove(poi);
-		//em.remove(em.contains(poi) ? poi : em.merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
+		entityManager().remove(entityManager().contains(poi) ? poi : entityManager().merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
 	private static void eliminarTodosLosPois(){
@@ -64,12 +60,11 @@ public class Mapa implements WithGlobalEntityManager{
 	
 	// Manejo de lista de pois
 	public List<Poi> getPois(){
-		return pois;
-		// TODO descomentar al desbugear todo: return em.createQuery("FROM Poi").getResultList();
+		return entityManager().createQuery("FROM Poi").getResultList();
 	}
 
 	public int cantidadPois() {
-		return pois.size();
+		return this.getPois().size();
 	}
 	
 	// Setters y getters
@@ -85,16 +80,12 @@ public class Mapa implements WithGlobalEntityManager{
 		this.terminales = terminales;
 	}
 
-	public void setPois(List<Poi> pois) {
-		this.pois = pois;
-	}
-
 	public Poi poisPendientesDeModificar(String nombre){
-		Poi poiAModificar = this.getPois().stream()
+		return this.getPois()
+				.stream()
 				.filter(poi->poi.getNombre().equals(nombre))
 				.collect(Collectors.toList())
 				.get(0);
-		return poiAModificar;
 	}
 
 }
