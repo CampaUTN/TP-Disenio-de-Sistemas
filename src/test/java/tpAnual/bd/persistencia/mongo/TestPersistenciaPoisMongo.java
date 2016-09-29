@@ -43,7 +43,8 @@ public class TestPersistenciaPoisMongo {
 	@Before
 	public void init(){
 		Reseter.resetSingletons();
-			
+		datastore.getDB().getCollection("PoiDTO").drop();
+		
 		poiDto1 = PoiDTO.nuevoDesdePoi(poi1);
 		poiDto2 = PoiDTO.nuevoDesdePoi(poi2);
 		
@@ -69,9 +70,10 @@ public class TestPersistenciaPoisMongo {
 	
 	@Test
 	public void persistoDosPoiDistintos(){
+		
 		datastore.save(poiDto1);
 		datastore.save(poiDto2);
-		Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).getCollection().getCount());
+		Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).asList().size());
 	}	
 	
 	@Test

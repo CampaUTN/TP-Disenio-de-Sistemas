@@ -12,8 +12,6 @@ import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
 public class PoiDTO {
-	@Id
-	private long id;
 	
 	@Embedded
 	private PointWrapper ubicacion;
@@ -39,14 +37,6 @@ public class PoiDTO {
 	
 	public static PoiDTO nuevoDesdePoi(Poi poi){
 		return new PoiDTO(poi.getUbicacion(),poi.getNombre(),poi.getTags(),poi.getCalle(),poi.getDireccion());
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public PointWrapper getUbicacion() {
