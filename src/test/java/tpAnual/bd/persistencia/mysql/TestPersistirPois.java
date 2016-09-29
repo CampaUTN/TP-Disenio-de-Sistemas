@@ -31,6 +31,7 @@ public class TestPersistirPois {
 	private static Poi poiPrueba;
 	private static Poi poiPrueba2;
 	
+	
 	@BeforeClass
 	public static void init() {
 		Reseter.resetSingletons();
@@ -97,8 +98,9 @@ public class TestPersistirPois {
 	
 	@Test
 	public void lasIdsNoSeRepiten(){
+		
 		List<Poi> poisBd = entityManager.createQuery("FROM Poi where id= :unId", Poi.class)
-				.setParameter("unId", 1l).getResultList();
+				.setParameter("unId", poiPrueba.getId()).getResultList();
 		
 		Assert.assertEquals(1,poisBd.size());
 	}
