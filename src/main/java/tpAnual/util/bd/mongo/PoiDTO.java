@@ -1,4 +1,4 @@
-package tpAnual.util.bd;
+package tpAnual.util.bd.mongo;
 
 import java.util.HashSet;
 import java.util.Set;

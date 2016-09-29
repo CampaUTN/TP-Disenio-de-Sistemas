@@ -17,7 +17,7 @@ import org.hibernate.annotations.CascadeType;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
-import tpAnual.util.bd.LocalDateConverter;
+import tpAnual.util.bd.mysql.LocalDateConverter;
 
 @Entity
 public class RegistroBusqueda {

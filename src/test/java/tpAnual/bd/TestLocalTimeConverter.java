@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-import tpAnual.util.bd.LocalTimeToTimeConverter;
+import tpAnual.util.bd.mysql.LocalTimeToTimeConverter;
 
 public class TestLocalTimeConverter {
 	

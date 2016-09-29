@@ -1,4 +1,4 @@
-package tpAnual.util.bd;
+package tpAnual.util.bd.mysql;
 
 import java.sql.Time;
 import java.time.LocalTime;

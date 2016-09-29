@@ -16,7 +16,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import tpAnual.Terminal;
-import tpAnual.util.bd.LocalDateConverter;
+import tpAnual.util.bd.mysql.LocalDateConverter;
 
 @Entity
 public class ElementoReporte {

@@ -6,7 +6,7 @@ import java.util.List;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 
-import tpAnual.util.bd.PoiDTO;
+import tpAnual.util.bd.mongo.PoiDTO;
 
 @Entity
 public class Busqueda {

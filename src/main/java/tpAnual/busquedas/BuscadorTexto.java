@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
-import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
+import tpAnual.util.bd.mongo.PoiDTO;
 
 
 public class BuscadorTexto{

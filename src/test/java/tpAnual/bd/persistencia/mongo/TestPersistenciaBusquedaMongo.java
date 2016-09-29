@@ -25,8 +25,8 @@ import tpAnual.externo.sistemasExternos.BancoDTO;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.Reseter;
-import tpAnual.util.bd.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
+import tpAnual.util.bd.mongo.PoiDTO;
 import tpAnual.util.wrapper.PointWrapper;
 
 
