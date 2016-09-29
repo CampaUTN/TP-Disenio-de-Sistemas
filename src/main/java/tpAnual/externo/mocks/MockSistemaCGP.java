@@ -1,7 +1,9 @@
 package tpAnual.externo.mocks;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
@@ -16,6 +18,15 @@ public class MockSistemaCGP {
 	private ServicioDTO serv2 = new ServicioDTO("Tramites",3,11,00,15,00);
 	
 	public List<CentroDTO> consultar(String palabra){
+		Set<String> zonas = new HashSet<String>();
+		zonas.add("Palermo");
+		zonas.add("Belgrano");
+		dto1.setZonas(zonas);
+		dto1.setDomicilio("Medrano");
+		
+		dto2.setZonas(zonas);
+		dto2.setDomicilio("Mozart");
+		
 		servicios.add(serv1);
 		servicios.add(serv2);
 		dto1.setServicios(servicios);

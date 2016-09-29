@@ -77,17 +77,11 @@ public class TestExterno {
 	}	
 	
 	@Test
-	public void testCgpMismoServicios(){
+	public void testBuscaGgpsPorZona(){
 		List<String> palabras = new ArrayList<String>();
-//		Set<String> servicios = new HashSet<String>();
-//		Set<String> servicioEsperado = new HashSet<String>();
-		palabras.add("Banco de la Plaza");
-//		servicioEsperado.add("Tramites");
-//		servicioEsperado.add("Cheques");
-////		
+		palabras.add("Palermo");
 	    List<Poi> cgpsExternos = cgpAdapter.consultar(palabras);
-//	    servicios = cgpsExternos.get(0).getTags();
-		Assert.assertNotEquals(0,cgpsExternos.size());
+		Assert.assertEquals(2,cgpsExternos.size());
 		}
 	
 	@Test
