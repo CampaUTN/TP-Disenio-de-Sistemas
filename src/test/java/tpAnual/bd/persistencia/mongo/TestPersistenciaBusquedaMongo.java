@@ -19,6 +19,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
 import tpAnual.externo.sistemasExternos.BancoExterno;
+import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.Reseter;
 import tpAnual.util.bd.PoiDTO;
@@ -81,6 +82,8 @@ public class TestPersistenciaBusquedaMongo {
 		Reseter.resetDatastore(datastore);
 	}
 	
+	// ---- Banco externo -----
+	
 	@Test
 	public void sePersisteElBancoExterno(){
 		BancoExterno bancoExterno = new BancoExterno();
@@ -104,7 +107,37 @@ public class TestPersistenciaBusquedaMongo {
 		
 		Assert.assertEquals(2, datastore.createQuery(BancoExterno.class).asList().get(0).getServicios().length,0);
 	}
+	// -------
 	
+	// ---- Centro DTO -----
+	
+	@Test
+	public void sePersisteCentroDTO(){
+		CentroDTO centro = new CentroDTO();
+		List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
+		ServicioDTO unServicio = new ServicioDTO("consultas", 3, 10, 00, 18, 00);
+		servicios.add(unServicio);
+		centro.setServicios(servicios);
+		
+		datastore.save(centro);
+
+		Assert.assertFalse(datastore.createQuery(CentroDTO.class).asList().isEmpty());
+	}
+	
+	@Test
+	public void sePersistenLosServiciosDeCentroDTO(){
+		CentroDTO centro = new CentroDTO();
+		List<ServicioDTO> servicios = new ArrayList<ServicioDTO>();
+		ServicioDTO unServicio = new ServicioDTO("consultas", 3, 10, 00, 18, 00);
+		servicios.add(unServicio);
+		centro.setServicios(servicios);
+		
+		datastore.save(centro);
+
+		Assert.assertEquals(1, datastore.createQuery(CentroDTO.class).asList().get(0).getServicios().size(),0);
+	}
+	
+	//-------
 	
 	@Test
 	public void comprueboQueNoHayNadaPersistido() throws UnknownHostException{		

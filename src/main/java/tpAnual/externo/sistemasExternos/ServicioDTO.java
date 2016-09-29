@@ -11,6 +11,10 @@ public class ServicioDTO {
 	private int horaCierre;
 	private int minutoCierre;
 	
+	
+	private ServicioDTO(){
+	}
+	
 	public ServicioDTO(String nombre, int dia, int horaApertura, int minApertura, int horaCierre, int minCierre){
 		this.nombre = nombre;
 		this.dia = dia;
