@@ -24,11 +24,7 @@ import tpAnual.util.wrapper.PointWrapper;
 public class CGPAdapter extends Buscador implements Consultora{
 	
 	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
-		
 	
-	public CGPAdapter(){
-		this.base = "busquedas";
-	}
 	
 	public List<Poi> consultar(List<String> palabras){
 		this.persistirPoisExternos();

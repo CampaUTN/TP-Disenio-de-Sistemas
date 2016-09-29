@@ -9,11 +9,8 @@ import tpAnual.POIs.Poi;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 
 public abstract class Buscador implements Consultora {
-	
-	protected String base;
-	
 	protected Datastore getDataBase(){
-		return MongoDatastoreSingleton.getDatastore(base);
+		return MongoDatastoreSingleton.getDatastore("busquedas");
 	}
 	public abstract List<Poi> consultar(List<String> palabras);
 	
@@ -23,6 +20,6 @@ public abstract class Buscador implements Consultora {
 		this.getPois()
 			.stream()
 			.collect(Collectors.toSet())
-			.forEach(poi -> MongoDatastoreSingleton.getDatastore(base).save(poi));;
+			.forEach(poi -> MongoDatastoreSingleton.getDatastore("busquedas").save(poi));;
 	}
 }

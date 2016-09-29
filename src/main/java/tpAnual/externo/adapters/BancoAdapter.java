@@ -29,11 +29,7 @@ public class BancoAdapter extends Buscador implements Consultora{
 
 	private MockSistemaBancario sistemaBancoExterno = new MockSistemaBancario();
 
-	public BancoAdapter(){
-		this.base = "busquedas";
-	}
-	// TODO para evitar la repeticion, puedo hacer una abstract, aunque primero
-	// tener todo andando.
+
 	public List<Poi> consultar(List<String> palabras) {
 		this.persistirPoisExternos();
 		
