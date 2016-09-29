@@ -18,18 +18,6 @@ public class TestBuscador extends TestSetup{
 		List<String> palabras = Arrays.asList("zzzz".split(" "));
 		Assert.assertTrue(local.consultar(palabras).isEmpty());
 	}
-
-	@Test
-	public void testUnaBusquedaParaLosTresOrigenes(){ 
-		poisBusqueda = buscador.buscarSegunTexto("colectivo",terminal);
-		Assert.assertEquals(6, poisBusqueda.size(),0); //2 del init, 2 de bancos, 2 de cpos
-	}
-	
-	@Test
-	public void testFiltroSoloCGPs(){
-		List<Poi> pois = RepositorioBuscador.getInstance().obtenerCGPsConServicioExternos("Cheques");
-		Assert.assertEquals(2,pois.size(),0);
-	}
 	
 	@Test
 	public void encuentroRubroMuebleria(){
