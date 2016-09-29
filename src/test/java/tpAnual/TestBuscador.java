@@ -6,9 +6,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import tpAnual.POIs.Poi;
-import tpAnual.busquedas.RepositorioBuscador;
-
 public class TestBuscador extends TestSetup{
 	
 	

@@ -15,8 +15,8 @@ import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.util.Reseter;
-import tpAnual.util.bd.mongo.PoiDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
+import tpAnual.util.bd.mongo.PoiDTO;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistenciaPoisMongo {
