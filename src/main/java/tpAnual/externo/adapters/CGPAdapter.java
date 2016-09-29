@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.mongodb.morphia.Datastore;
+
 import tpAnual.Horario;
 import tpAnual.Servicio;
 import tpAnual.POIs.Cgp;
@@ -16,6 +18,7 @@ import tpAnual.externo.sistemasExternos.Buscador;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
+import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class CGPAdapter extends Buscador implements Consultora{
@@ -24,10 +27,12 @@ public class CGPAdapter extends Buscador implements Consultora{
 		
 	
 	public CGPAdapter(){
-		this.base = "CGPs";
+		this.base = "busquedas";
 	}
 	
 	public List<Poi> consultar(List<String> palabras){
+		this.persistirPoisExternos();
+		
 		List<Poi> pois = cgpDeLaZona(palabras.get(0));
 		pois.addAll(cgpDeLaCalle(palabras.get(0)));
 		return pois.stream()
@@ -52,7 +57,21 @@ public class CGPAdapter extends Buscador implements Consultora{
 				.field("domicilio")
 				.equalIgnoreCase(calle)
 				.asList());
-}
+	}
+	
+	public void persistirPoisExternos(){
+		Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
+		
+		//Borro todos
+//		datastore.getDB().dropDatabase();
+		
+		//Los traigo
+		List<CentroDTO> centrosDto = new ArrayList<CentroDTO>();
+		centrosDto.addAll(cpoExterno.consultar(null));
+		
+		//Los persisto
+		centrosDto.forEach(banco -> datastore.save(banco));
+	}
 	
 	public List<Poi> getPois(){
 		return this.adaptar(cpoExterno.consultar(""));

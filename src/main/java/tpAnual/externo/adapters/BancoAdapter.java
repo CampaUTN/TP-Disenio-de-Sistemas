@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.commons.io.FileUtils;
+import org.mongodb.morphia.Datastore;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -21,6 +22,7 @@ import tpAnual.externo.mocks.MockSistemaBancario;
 import tpAnual.externo.sistemasExternos.BancoDTO;
 import tpAnual.externo.sistemasExternos.Buscador;
 import tpAnual.externo.sistemasExternos.Consultora;
+import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class BancoAdapter extends Buscador implements Consultora{
@@ -28,11 +30,13 @@ public class BancoAdapter extends Buscador implements Consultora{
 	private MockSistemaBancario sistemaBancoExterno = new MockSistemaBancario();
 
 	public BancoAdapter(){
-		this.base = "Bancos";
+		this.base = "busquedas";
 	}
 	// TODO para evitar la repeticion, puedo hacer una abstract, aunque primero
 	// tener todo andando.
 	public List<Poi> consultar(List<String> palabras) {
+		this.persistirPoisExternos();
+		
 		List<Poi> poisConServicio = new ArrayList<Poi>();
 		List<Poi> poisConNombre = new ArrayList<Poi>();
 		palabras.forEach(palabra -> poisConServicio.addAll(this.bancosConServicio(palabra)));
@@ -61,6 +65,20 @@ public class BancoAdapter extends Buscador implements Consultora{
 					.field("banco")
 					.equalIgnoreCase(nombre)
 					.asList());
+	}
+	
+	public void persistirPoisExternos(){
+		Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
+		
+		//Borro todos
+//		datastore.getDB().dropDatabase();
+		
+		//Los traigo
+		List<BancoDTO> bancosDto = new ArrayList<BancoDTO>();
+		bancosDto.addAll(this.adaptar(sistemaBancoExterno.consultar(null)));
+		
+		//Los persisto
+		bancosDto.forEach(banco -> datastore.save(banco));
 	}
 	
 	public List<Poi> getPois() {
