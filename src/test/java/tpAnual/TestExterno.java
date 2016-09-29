@@ -28,6 +28,7 @@ public class TestExterno {
 	public void testDevuelveListaExternaBanco(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
+		palabras.add("depósitos");
 		
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		Assert.assertEquals(2,bancosExterno.size(),0); //Porque el mock devuelve dos bancos, sin importar que texto se pase.
@@ -37,6 +38,7 @@ public class TestExterno {
 	public void testBancoMismoNombre(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
+		palabras.add("depósitos");
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		Assert.assertTrue(bancosExterno.get(0).getNombre().equals("Banco de la Plaza"));
 	}
@@ -45,7 +47,7 @@ public class TestExterno {
 	public void testBancoMismaUbicacion(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
-		
+		palabras.add("extracciones");
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		
 		PointWrapper ubicacion = bancosExterno.get(0).getUbicacion();
@@ -59,6 +61,7 @@ public class TestExterno {
 	public void testBancoMismoServicios(){
 		List<String> palabras = new ArrayList<String>();
 		palabras.add("Banco de la Plaza");
+		palabras.add("extracciones");
 		List<Poi> bancosExterno = adapterBanco.consultar(palabras);
 		Assert.assertNotEquals(0,bancosExterno.size());
 	}	

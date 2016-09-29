@@ -24,16 +24,15 @@ public abstract class Proceso{
 	private long id;
 	private String nombre;
 	
-//	@OneToMany // TODO QUE ONDA CON ESTO?
 	@Transient
-	private List<PostEjecucionProceso> accionesPostFallo;
+	private List<PostEjecucionProceso> postEjecucion;
 	
 	@Transient
 	private FinEjecucion estado;
 	
 	
 	protected Proceso(){
-		accionesPostFallo = new ArrayList<PostEjecucionProceso>();
+		postEjecucion = new ArrayList<PostEjecucionProceso>();
 		estado = FinEjecucion.CORRECTO;
 	}
 	
@@ -47,7 +46,7 @@ public abstract class Proceso{
 			estado = FinEjecucion.CORRECTO;
 		}catch(Exception e){
 			estado = FinEjecucion.FALLIDO;
-			accionesPostFallo.forEach(obs->obs.accionar(this));
+			postEjecucion.forEach(obs->obs.accionar(this));
 		}
 		LoggerProcesos.getInstance().accionar(this);
 	}
@@ -66,7 +65,7 @@ public abstract class Proceso{
 	 * si falla, o cualquier otra accion que en un futuro se defina.
 	 */
 	public void agregarAccionPostFallo(PostEjecucionProceso accion){
-		accionesPostFallo.add(accion);
+		postEjecucion.add(accion);
 	}
 	
 	// Setters & getters
@@ -84,12 +83,12 @@ public abstract class Proceso{
 
 
 	public List<PostEjecucionProceso> getAccionesPostFallo() {
-		return accionesPostFallo;
+		return postEjecucion;
 	}
 
 
 	public void setAccionesPostFallo(List<PostEjecucionProceso> accionesPostFallo) {
-		this.accionesPostFallo = accionesPostFallo;
+		this.postEjecucion = accionesPostFallo;
 	}
 
 

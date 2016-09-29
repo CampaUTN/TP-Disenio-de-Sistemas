@@ -45,6 +45,9 @@ public abstract class Poi {
 
 	protected Poi(){}
 	
+	public boolean equals(Poi poi){
+		return this.getUbicacion().equals(poi.getUbicacion()) && this.getNombre().equalsIgnoreCase(poi.getNombre());
+	}
 	public Poi(PointWrapper ubicacion, String nombre, Set<String> tags) {
 		this.ubicacion = ubicacion;
 		this.nombre = nombre;

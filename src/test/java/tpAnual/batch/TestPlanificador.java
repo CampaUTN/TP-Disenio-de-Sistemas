@@ -20,10 +20,6 @@ public class TestPlanificador{
 	
 	private Proceso proceso1;
 	private ProcesoActualizarLocales proceso2;
-	
-//	private Set<String> procesosActivar = new HashSet<>();
-//	private Set<String> procesosDesactivar = new HashSet<>();
-	
 	private LocalDateTime fechaYHora;
 	private LocalTime hora;
 	
