@@ -58,7 +58,6 @@ public class TestPersistenciaPoisMongo {
 	@After
 	public void clear() {
 		Reseter.resetSingletons();
-		Reseter.resetDatastore(datastore);
 	}
 	 	
  	@Test
@@ -70,7 +69,8 @@ public class TestPersistenciaPoisMongo {
 	
 	@Test
 	public void persistoDosPoiDistintos(){
-		datastore.save(poiDto1);		
+		datastore.save(poiDto1);
+		datastore.delete(poiDto1);
 		datastore.save(poiDto2);
 		Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).getCollection().getCount());
 	}	
@@ -88,8 +88,6 @@ public class TestPersistenciaPoisMongo {
  	public void sePersisteLaUbicacionDelPoi(){
  		datastore.save(poiDto1);
  		PoiDTO poiEncontrado = datastore.createQuery(PoiDTO.class).filter("nombre","107").asList().get(0);
- 		
- 		//TODO assertEquals tira false cuando deberia estar bien! D:
  		Assert.assertTrue((ubicacion.equals(poiEncontrado.getUbicacion())));
  	}
 
