@@ -58,6 +58,7 @@ public class TestPersistenciaPoisMongo {
 	
 	@After
 	public void clear() {
+		Reseter.resetDatastore(datastore);
 		Reseter.resetSingletons();
 	}
 	 	
