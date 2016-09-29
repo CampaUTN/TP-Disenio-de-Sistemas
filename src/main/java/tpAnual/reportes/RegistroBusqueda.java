@@ -4,38 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
-import tpAnual.util.bd.mysql.LocalDateConverter;
 
-@Entity
+
 public class RegistroBusqueda {
-	@Id @GeneratedValue
-	@Column (name="cod_registro")
 	private long numeroRegistroBusqueda;
-	@ElementCollection @Cascade({CascadeType.ALL})
 	private List<String> palabrasUtilizadas = new ArrayList<String>();
-	@Column (name="tiempo_busqueda")
 	private Long tiempoBusqueda;
-	@Convert(converter = LocalDateConverter.class)
 	private LocalDate fecha;
 	private Integer cantidadPois;
-	@OneToOne
 	private Terminal terminal;
 	
-	@SuppressWarnings("unused")
-	private RegistroBusqueda(){}
 	
 	public RegistroBusqueda(List<Poi> pois, List<String> palabrasUtilizadas, Long tiempoBusqueda, Terminal terminal){
 		this.palabrasUtilizadas.addAll(palabrasUtilizadas);

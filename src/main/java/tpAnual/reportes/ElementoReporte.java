@@ -4,35 +4,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 import tpAnual.Terminal;
-import tpAnual.util.bd.mysql.LocalDateConverter;
 
-@Entity
+
 public class ElementoReporte {
-	@Id @GeneratedValue @Column (name="cod_elemento")
 	private long numeroElemento;
-	@Convert(converter = LocalDateConverter.class)
 	private LocalDate fecha;
 	private Integer cantidadBusquedas=0;
-	@OneToOne
 	private Terminal terminal;
 	private Integer cantidadPoisEncontrados=0;
-	@ElementCollection @Cascade({CascadeType.ALL})
 	private List<Integer> busquedasParciales = new ArrayList<Integer>();
 	
-	
-	private ElementoReporte(){}
 	
 	public boolean esDeLaFecha(LocalDate fecha){
 		return this.fecha.toString().equals(fecha.toString());

@@ -57,6 +57,7 @@ public class Mapa implements WithGlobalEntityManager{
 	}
 	
 	// Manejo de lista de pois
+	@SuppressWarnings("unchecked")
 	public List<Poi> getPois(){
 		return entityManager().createQuery("FROM Poi").getResultList();
 	}
