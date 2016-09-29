@@ -21,7 +21,7 @@ import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
 import tpAnual.busquedas.RepositorioBuscador;
-import tpAnual.externo.sistemasExternos.BancoExterno;
+import tpAnual.externo.sistemasExternos.BancoDTO;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.Reseter;
@@ -94,26 +94,26 @@ public class TestPersistenciaBusquedaMongo {
 	
 	@Test
 	public void sePersisteElBancoExterno(){
-		BancoExterno bancoExterno = new BancoExterno();
+		BancoDTO bancoExterno = new BancoDTO();
 		bancoExterno.setBanco("galicia");
 		String[] servicios = {"pago cheques", "consultas"};
 		bancoExterno.setServicios(servicios);
 		
 		datastore.save(bancoExterno);
 		
-		Assert.assertFalse(datastore.createQuery(BancoExterno.class).asList().isEmpty());
+		Assert.assertFalse(datastore.createQuery(BancoDTO.class).asList().isEmpty());
 	}
 	
 	@Test
 	public void sePersistenLosServiciosDelBancoExterno(){
-		BancoExterno bancoExterno = new BancoExterno();
+		BancoDTO bancoExterno = new BancoDTO();
 		bancoExterno.setBanco("galicia");
 		String[] servicios = {"pago cheques", "consultas"};
 		bancoExterno.setServicios(servicios);
 		
 		datastore.save(bancoExterno);
 		
-		Assert.assertEquals(2, datastore.createQuery(BancoExterno.class).asList().get(0).getServicios().length,0);
+		Assert.assertEquals(2, datastore.createQuery(BancoDTO.class).asList().get(0).getServicios().length,0);
 	}
 	// -------
 	

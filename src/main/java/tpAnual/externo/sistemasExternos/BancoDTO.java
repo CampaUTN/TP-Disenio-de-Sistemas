@@ -3,7 +3,7 @@ package tpAnual.externo.sistemasExternos;
 import org.mongodb.morphia.annotations.Entity;
 
 @Entity
-public class BancoExterno{
+public class BancoDTO{
 	
     private String[] servicios;
     private String banco;

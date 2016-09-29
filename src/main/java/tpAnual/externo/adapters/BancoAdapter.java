@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaBancario;
-import tpAnual.externo.sistemasExternos.BancoExterno;
+import tpAnual.externo.sistemasExternos.BancoDTO;
 import tpAnual.externo.sistemasExternos.Buscador;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.util.wrapper.PointWrapper;
@@ -48,7 +48,7 @@ public class BancoAdapter extends Buscador implements Consultora{
 	private List<Poi> bancosConServicio(String servicio) {
 		return this.convertirAPois(
 					this.getDataBase()
-					.createQuery(BancoExterno.class)
+					.createQuery(BancoDTO.class)
 					.field("servicios")
 					.containsIgnoreCase(servicio)
 					.asList());
@@ -57,8 +57,8 @@ public class BancoAdapter extends Buscador implements Consultora{
 	private List<Poi> bancosConNombre(String nombre) {
 		return this.convertirAPois(
 					this.getDataBase()
-					.createQuery(BancoExterno.class)
-					.field("nombre")
+					.createQuery(BancoDTO.class)
+					.field("banco")
 					.equalIgnoreCase(nombre)
 					.asList());
 	}
@@ -68,7 +68,7 @@ public class BancoAdapter extends Buscador implements Consultora{
 	}
 	
 
-	public List<BancoExterno> adaptar(File reader) {
+	public List<BancoDTO> adaptar(File reader) {
 		String contenido;
 		try {
 			contenido = FileUtils.readFileToString(reader, Charset.defaultCharset());
@@ -76,15 +76,15 @@ public class BancoAdapter extends Buscador implements Consultora{
 			throw new UnsupportedOperationException(e);
 		}
 
-		return new Gson().fromJson(contenido, new TypeToken<List<BancoExterno>>() {
+		return new Gson().fromJson(contenido, new TypeToken<List<BancoDTO>>() {
 		}.getType());
 	}
 
-	public List<Poi> convertirAPois(List<BancoExterno> bancosExternos) {
+	public List<Poi> convertirAPois(List<BancoDTO> bancosExternos) {
 		return bancosExternos.stream().map(banco -> bancoExternoToPOI(banco)).collect(Collectors.toList());
 	}
 
-	public Poi bancoExternoToPOI(BancoExterno bancoExterno) {
+	public Poi bancoExternoToPOI(BancoDTO bancoExterno) {
 		Double posX = Double.parseDouble(bancoExterno.getX());
 		Double posY = Double.parseDouble(bancoExterno.getY());
 		PointWrapper ubicacion = new PointWrapper(posX, posY);
