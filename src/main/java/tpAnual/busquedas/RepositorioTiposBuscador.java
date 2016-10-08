@@ -11,17 +11,17 @@ import tpAnual.externo.sistemasExternos.Consultora;
 /**
  * Repositorio con buscadores
  */
-public class RepositorioBuscador {
+public class RepositorioTiposBuscador {
 	private final HashSet<Consultora> consultoras = new HashSet<Consultora>();
-	private static RepositorioBuscador instance = null;
+	private static RepositorioTiposBuscador instance = null;
 	
-	private RepositorioBuscador(){
+	private RepositorioTiposBuscador(){
 		//Para evitar que sea instanciada esta clase.
 	}
 	
-	public static RepositorioBuscador getInstance(){
+	public static RepositorioTiposBuscador getInstance(){
 		if(instance==null){
-			instance = new RepositorioBuscador();
+			instance = new RepositorioTiposBuscador();
 		}
 		return instance;
 	}

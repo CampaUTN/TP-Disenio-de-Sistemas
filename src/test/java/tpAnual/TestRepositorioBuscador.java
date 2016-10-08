@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tpAnual.busquedas.BuscadorLocal;
-import tpAnual.busquedas.RepositorioBuscador;
+import tpAnual.busquedas.RepositorioTiposBuscador;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.util.Reseter;
@@ -14,12 +14,12 @@ public class TestRepositorioBuscador {
 	
 	private BancoAdapter bancoAdapter = new BancoAdapter();
 	private CGPAdapter cgpAdapter = new CGPAdapter();
-	private RepositorioBuscador repositorio;
+	private RepositorioTiposBuscador repositorio;
 	
 	@Before
 	public void init() {
 		Reseter.resetSingletons();
-		repositorio = RepositorioBuscador.getInstance();
+		repositorio = RepositorioTiposBuscador.getInstance();
 		
 		repositorio.agregarConsultora(bancoAdapter);
 		repositorio.agregarConsultora(cgpAdapter);
@@ -35,8 +35,8 @@ public class TestRepositorioBuscador {
 	
 	@Test
     public void prueboQueTodasLasInstanciasSeanLaMisma() {
-       	RepositorioBuscador instance1 = RepositorioBuscador.getInstance();
-    	RepositorioBuscador instance2 = RepositorioBuscador.getInstance();
+       	RepositorioTiposBuscador instance1 = RepositorioTiposBuscador.getInstance();
+    	RepositorioTiposBuscador instance2 = RepositorioTiposBuscador.getInstance();
         Assert.assertEquals(instance1,instance2);
     }
 

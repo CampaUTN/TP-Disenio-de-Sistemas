@@ -17,7 +17,7 @@ public class BuscadorTexto{
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
-		RepositorioBuscador repositorio = RepositorioBuscador.getInstance();
+		RepositorioTiposBuscador repositorio = RepositorioTiposBuscador.getInstance();
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		
 		Long timerInicio = System.currentTimeMillis();
