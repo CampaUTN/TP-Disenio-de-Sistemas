@@ -4,18 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
-import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
-import tpAnual.util.bd.mongo.PoiDTO;
 
 
 public class BuscadorTexto{
-	
 	private RepositorioBusqueda repositorio = new RepositorioPersistente();
+	
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
@@ -39,21 +36,14 @@ public class BuscadorTexto{
 	}
 	
 	private void registrarBusqueda(String palabrasIngresadas, List<Poi> poisDeTodosOrigenes){
-		
-		List <PoiDTO> pois = poisDeTodosOrigenes.stream()
-														.map( poi -> PoiDTO.nuevoDesdePoi(poi))
-														.collect(Collectors.toList());
-		
-		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
-
-		MongoDatastoreSingleton.getDatastore("busquedas").save(busqueda);
+		repositorio.registrarBusqueda(palabrasIngresadas,poisDeTodosOrigenes);
 	}
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
 	}
 	
-	public void setRepoBusqueda(RepositorioBusqueda repo){
-		this.repositorio = repo;
+	public void setRepositorio(RepositorioBusqueda repositorio) {
+		this.repositorio = repositorio;
 	}
 }
