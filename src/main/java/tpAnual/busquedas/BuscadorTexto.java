@@ -15,6 +15,8 @@ import tpAnual.util.bd.mongo.PoiDTO;
 
 public class BuscadorTexto{
 	
+	RepoBusqueda repositorio = new RepositorioBusquedasBD();
+	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
 		RepositorioTiposBuscador repositorio = RepositorioTiposBuscador.getInstance();
@@ -49,5 +51,9 @@ public class BuscadorTexto{
 	
 	private List<String> separaLaBusqueda(String Busqueda) {
 		return Arrays.asList(Busqueda.split(" "));
+	}
+	
+	public void setRepoBusqueda(RepoBusqueda repo){
+		this.repositorio = repo;
 	}
 }
