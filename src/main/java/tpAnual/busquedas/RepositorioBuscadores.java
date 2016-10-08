@@ -11,17 +11,17 @@ import tpAnual.externo.sistemasExternos.Consultora;
 /**
  * Repositorio con buscadores
  */
-public class RepositorioTiposBuscador {
+public class RepositorioBuscadores {
 	private final HashSet<Consultora> consultoras = new HashSet<Consultora>();
-	private static RepositorioTiposBuscador instance = null;
+	private static RepositorioBuscadores instance = null;
 	
-	private RepositorioTiposBuscador(){
+	private RepositorioBuscadores(){
 		//Para evitar que sea instanciada esta clase.
 	}
 	
-	public static RepositorioTiposBuscador getInstance(){
+	public static RepositorioBuscadores getInstance(){
 		if(instance==null){
-			instance = new RepositorioTiposBuscador();
+			instance = new RepositorioBuscadores();
 		}
 		return instance;
 	}
@@ -39,7 +39,6 @@ public class RepositorioTiposBuscador {
 	}
 	
 	public List<Poi> obtenerCGPsConServicioExternos(String servicio){
-		
 		List <String> palabras = Arrays.asList(servicio.split(" "));
 		return (new CGPAdapter()).consultar(palabras);
 	}

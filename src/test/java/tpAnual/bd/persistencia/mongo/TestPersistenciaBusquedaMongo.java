@@ -20,7 +20,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.busquedas.Busqueda;
-import tpAnual.busquedas.RepositorioTiposBuscador;
+import tpAnual.busquedas.RepositorioBuscadores;
 import tpAnual.util.Reseter;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.bd.mongo.PoiDTO;
@@ -69,7 +69,7 @@ public class TestPersistenciaBusquedaMongo {
 		terminal.desactivarMails();
 		terminal.desactivarRegistros();
 		
-		RepositorioTiposBuscador.getInstance().agregarConsultora(local);
+		RepositorioBuscadores.getInstance().agregarConsultora(local);
 		
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);

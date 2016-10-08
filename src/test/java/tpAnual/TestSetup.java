@@ -13,7 +13,7 @@ import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.BuscadorLocal;
 import tpAnual.busquedas.BuscadorTexto;
-import tpAnual.busquedas.RepositorioTiposBuscador;
+import tpAnual.busquedas.RepositorioBuscadores;
 import tpAnual.externo.adapters.BancoAdapter;
 import tpAnual.externo.adapters.CGPAdapter;
 import tpAnual.util.Reseter;
@@ -54,9 +54,9 @@ public class TestSetup implements WithGlobalEntityManager{
 		Mapa.getInstance().alta(poi2);
 				
 
-		RepositorioTiposBuscador.getInstance().agregarConsultora(local);
-		RepositorioTiposBuscador.getInstance().agregarConsultora(new BancoAdapter());
-		RepositorioTiposBuscador.getInstance().agregarConsultora(new CGPAdapter());
+		RepositorioBuscadores.getInstance().agregarConsultora(local);
+		RepositorioBuscadores.getInstance().agregarConsultora(new BancoAdapter());
+		RepositorioBuscadores.getInstance().agregarConsultora(new CGPAdapter());
 	}
 	
 	@After

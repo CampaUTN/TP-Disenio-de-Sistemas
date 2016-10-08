@@ -7,7 +7,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.bd.mongo.PoiDTO;
 
-public class RepositorioBusquedasBD implements RepoBusqueda {
+public class RepositorioPersistente implements RepositorioBusqueda {
 	
 public void registrarBusqueda(String palabrasIngresadas, List<Poi> poisDeTodosOrigenes){
 		

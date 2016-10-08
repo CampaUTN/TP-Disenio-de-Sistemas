@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
 
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;

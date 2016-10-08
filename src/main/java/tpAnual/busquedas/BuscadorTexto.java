@@ -15,11 +15,11 @@ import tpAnual.util.bd.mongo.PoiDTO;
 
 public class BuscadorTexto{
 	
-	RepoBusqueda repositorio = new RepositorioBusquedasBD();
+	private RepositorioBusqueda repositorio = new RepositorioPersistente();
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){
 		
-		RepositorioTiposBuscador repositorio = RepositorioTiposBuscador.getInstance();
+		RepositorioBuscadores repositorio = RepositorioBuscadores.getInstance();
 		List<Poi> poisDeTodosOrigenes = new ArrayList<Poi>();
 		
 		Long timerInicio = System.currentTimeMillis();
@@ -53,7 +53,7 @@ public class BuscadorTexto{
 		return Arrays.asList(Busqueda.split(" "));
 	}
 	
-	public void setRepoBusqueda(RepoBusqueda repo){
+	public void setRepoBusqueda(RepositorioBusqueda repo){
 		this.repositorio = repo;
 	}
 }

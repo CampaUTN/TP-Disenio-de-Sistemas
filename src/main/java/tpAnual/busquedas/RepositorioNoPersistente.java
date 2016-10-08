@@ -2,19 +2,20 @@ package tpAnual.busquedas;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import tpAnual.POIs.Poi;
 
-public class RepositorioBusquedasMemoria implements RepoBusqueda {
+public class RepositorioNoPersistente implements RepositorioBusqueda {
 	
 	private static List<BusquedaParaMemoria> busquedas = new ArrayList<BusquedaParaMemoria>();
-	private static RepositorioBusquedasMemoria instance = null;
+	private static RepositorioNoPersistente instance = null;
 	
 
-	private RepositorioBusquedasMemoria() {}
+	private RepositorioNoPersistente() {}
 	
-	public static RepositorioBusquedasMemoria getInstance(){
+	public static RepositorioNoPersistente getInstance(){
 		if(instance==null){
-			instance = new RepositorioBusquedasMemoria();
+			instance = new RepositorioNoPersistente();
 		}
 		return instance;
 	}
