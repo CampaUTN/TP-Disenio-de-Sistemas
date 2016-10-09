@@ -16,7 +16,6 @@ import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.util.Reseter;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
-import tpAnual.util.bd.mongo.PoiDTO;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistenciaPoisMongo {
@@ -31,9 +30,6 @@ public class TestPersistenciaPoisMongo {
 	
 	private Poi poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
 	private Poi poi2 = new Negocio(ubicacion2,"donPepe", tags2,"cosas",2);
-
-	private PoiDTO poiDto1;
-	private PoiDTO poiDto2;
 	
 	@BeforeClass
 	public static void initClass() throws UnknownHostException{
@@ -43,10 +39,7 @@ public class TestPersistenciaPoisMongo {
 	@Before
 	public void init(){
 		Reseter.resetSingletons();
-		datastore.getDB().getCollection("PoiDTO").drop();
-		
-		poiDto1 = PoiDTO.nuevoDesdePoi(poi1);
-		poiDto2 = PoiDTO.nuevoDesdePoi(poi2);
+		datastore.getDB().getCollection("poi").drop();
 		
 		poi1.removerTags();
 		poi2.removerTags();
@@ -64,32 +57,32 @@ public class TestPersistenciaPoisMongo {
 	 	
  	@Test
  	public void persistoUnPoi(){
- 		datastore.save(poiDto2);
+ 		datastore.save(poi2);
  		
- 		Assert.assertEquals(1, datastore.createQuery(PoiDTO.class).asList().size());
+ 		Assert.assertEquals(1, datastore.createQuery(Poi.class).asList().size());
  	}
 	
 	@Test
 	public void persistoDosPoiDistintos(){
 		
-		datastore.save(poiDto1);
-		datastore.save(poiDto2);
-		Assert.assertEquals(2, datastore.createQuery(PoiDTO.class).asList().size());
+		datastore.save(poi1);
+		datastore.save(poi2);
+		Assert.assertEquals(2, datastore.createQuery(Poi.class).asList().size());
 	}	
 	
 	@Test
  	public void sePersistenLosTagsDelPoi(){
- 		datastore.save(poiDto1);
- 		PoiDTO poiEncontrado = datastore.createQuery(PoiDTO.class)
+ 		datastore.save(poi1);
+ 		Poi poiEncontrado = datastore.createQuery(Poi.class)
  								.filter("nombre","107").asList().get(0);
  		
- 		Assert.assertEquals(2, poiEncontrado.getTagsPoi().size());
+ 		Assert.assertEquals(2, poiEncontrado.getTags().size());
  	}
 	
 	@Test
  	public void sePersisteLaUbicacionDelPoi(){
- 		datastore.save(poiDto1);
- 		PoiDTO poiEncontrado = datastore.createQuery(PoiDTO.class).filter("nombre","107").asList().get(0);
+ 		datastore.save(poi1);
+ 		Poi poiEncontrado = datastore.createQuery(Poi.class).filter("nombre","107").asList().get(0);
  		Assert.assertTrue((ubicacion.equals(poiEncontrado.getUbicacion())));
  	}
 

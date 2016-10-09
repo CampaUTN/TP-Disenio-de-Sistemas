@@ -23,7 +23,6 @@ import tpAnual.busquedas.Busqueda;
 import tpAnual.busquedas.RepositorioBuscadores;
 import tpAnual.util.Reseter;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
-import tpAnual.util.bd.mongo.PoiDTO;
 import tpAnual.util.wrapper.PointWrapper;
 
 
@@ -37,8 +36,6 @@ public class TestPersistenciaBusquedaMongo {
 	
 	private Poi poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
 	private Poi poi2 = new EstacionDeColectivo(ubicacion, "106", tags2,0,"");
-
-	private PoiDTO poiDto1;
 	
 	private Terminal terminal = new Terminal();
 	
@@ -63,8 +60,6 @@ public class TestPersistenciaBusquedaMongo {
 		poi1.agregarTag("mejor");
 		poi1.agregarTag("colectivo");
 		poi2.agregarTag("chocador");
-		
-		poiDto1 = PoiDTO.nuevoDesdePoi(poi1);
 				
 		terminal.desactivarMails();
 		terminal.desactivarRegistros();
@@ -89,8 +84,8 @@ public class TestPersistenciaBusquedaMongo {
 	@Test 
 	public void sePersisteLaBusqueda() throws UnknownHostException{
 		
-		List <PoiDTO> pois = new ArrayList<>();
-		pois.add(poiDto1);
+		List <Poi> pois = new ArrayList<>();
+		pois.add(poi1);
 		
 		Busqueda busqueda = new Busqueda("colectivo", pois);		
 		datastore.save(busqueda);		

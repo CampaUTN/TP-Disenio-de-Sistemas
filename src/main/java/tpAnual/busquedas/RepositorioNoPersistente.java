@@ -3,7 +3,9 @@ package tpAnual.busquedas;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.util.bd.mongo.PoiDTO;
+import tpAnual.POIs.Poi;
+
+
 
 public class RepositorioNoPersistente extends RepositorioBusqueda {
 	
@@ -24,7 +26,7 @@ public class RepositorioNoPersistente extends RepositorioBusqueda {
 	    instance = null;
 	}
 
-	protected void guardar(String palabrasIngresadas, List<PoiDTO> pois){
+	protected void guardar(String palabrasIngresadas, List<Poi> pois){
 		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
 		busquedas.add(busqueda);
 	}
