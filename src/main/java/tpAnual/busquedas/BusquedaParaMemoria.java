@@ -16,5 +16,4 @@ public class BusquedaParaMemoria {
 		this.poisEncontrados = pois;
 		this.palabrasIngresadas = palabras;
 	}
-	
 }

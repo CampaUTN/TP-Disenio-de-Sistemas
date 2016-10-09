@@ -3,11 +3,11 @@ package tpAnual.busquedas;
 import java.util.ArrayList;
 import java.util.List;
 
-import tpAnual.POIs.Poi;
+import tpAnual.util.bd.mongo.PoiDTO;
 
-public class RepositorioNoPersistente implements RepositorioBusqueda {
+public class RepositorioNoPersistente extends RepositorioBusqueda {
 	
-	private static List<BusquedaParaMemoria> busquedas = new ArrayList<BusquedaParaMemoria>();
+	private static List<Busqueda> busquedas = new ArrayList<Busqueda>();
 	private static RepositorioNoPersistente instance = null;
 	
 
@@ -21,15 +21,11 @@ public class RepositorioNoPersistente implements RepositorioBusqueda {
 	}
 	
 	public static void resetSingleton(){
-		busquedas.clear();
 	    instance = null;
 	}
 
-	@Override
-	public void registrarBusqueda(String palabrasIngresadas, List<Poi> poisDeTodosOrigenes) {
-		BusquedaParaMemoria busqueda = new BusquedaParaMemoria(poisDeTodosOrigenes,palabrasIngresadas);
+	protected void guardar(String palabrasIngresadas, List<PoiDTO> pois){
+		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
 		busquedas.add(busqueda);
 	}
-
-	
 }

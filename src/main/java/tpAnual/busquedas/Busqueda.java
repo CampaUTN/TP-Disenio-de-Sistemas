@@ -41,5 +41,4 @@ public class Busqueda {
 	public void setResultado(List<PoiDTO> resultado) {
 		this.pois = resultado;
 	}
-	
 }
