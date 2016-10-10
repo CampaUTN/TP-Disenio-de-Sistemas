@@ -39,7 +39,6 @@ public class TestPersistenciaPoisMongo {
 	@Before
 	public void init(){
 		Reseter.resetSingletons();
-		datastore.getDB().getCollection("poi").drop();
 		
 		poi1.removerTags();
 		poi2.removerTags();
@@ -57,7 +56,7 @@ public class TestPersistenciaPoisMongo {
 	 	
  	@Test
  	public void persistoUnPoi(){
- 		datastore.save(poi2);
+ 		datastore.save((Poi)poi2);
  		
  		Assert.assertEquals(1, datastore.createQuery(Poi.class).asList().size());
  	}

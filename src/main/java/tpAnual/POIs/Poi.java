@@ -22,14 +22,14 @@ import org.hibernate.annotations.CascadeType;
 
 import tpAnual.util.wrapper.PointWrapper;
 
-@org.mongodb.morphia.annotations.Entity
+@org.mongodb.morphia.annotations.Entity(value = "pois")
 @Entity
 @Table(name="Poi")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Poi {
 	
 	@Id @GeneratedValue
-	@Column(name = "poi_id", unique = true)
+	@Column(name = "poi_id", unique = true)	
 	private long id;
 	
 	@org.mongodb.morphia.annotations.Embedded

@@ -7,8 +7,10 @@ import java.util.Set;
 
 import javax.persistence.EntityManager;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
@@ -22,53 +24,54 @@ import tpAnual.util.wrapper.PointWrapper;
 
 public class TestPersistirPois {
 	
-	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 	
-	private static PointWrapper punto = new PointWrapper(10,10);
-	private static Set<String> tags = new HashSet<String>();
-	static long id1, id2;
+	private PointWrapper punto = new PointWrapper(10,10);
+	private  Set<String> tags = new HashSet<String>();
+	long id1, id2;
 	
-	private static Poi poiPrueba;
-	private static Poi poiPrueba2;
+	private Poi poiPrueba;
+	private Poi poiPrueba2;
 	
 	
-	@BeforeClass
-	public static void init() {
+	@Before
+	public void init() {
 		Reseter.resetSingletons();
+
 		entityManager.getTransaction().begin();
-		
+				
 		tags.add("cole");
 		poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		
-		entityManager.persist(poiPrueba);
+		
+		entityManager.persist(poiPrueba);		
 		entityManager.persist(poiPrueba2);
-
+		
 		id1 = poiPrueba.getId();
 		id2 = poiPrueba2.getId();	
 
 	}
 	
-	@AfterClass
-	public static void clear() {
+	@After
+	public void clear() {
 		entityManager.getTransaction().rollback();
 		Reseter.resetSingletons();
 	}	
-	
 	
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){
 		Assert.assertEquals(id2, id1+1);
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Test
 	public void todosLosPoisSePersisten(){
-		@SuppressWarnings("unchecked")
 		List<Poi> poisBd = entityManager.createQuery("FROM Poi").getResultList();
-		Assert.assertEquals(2,poisBd.size(),0);
+		Assert.assertEquals(2,poisBd.size());
 	}
 	
-	//@Test
+	@Test
 	public void losPoisConServicioSePersisten(){
 		Poi negocio = new Negocio(punto,"mueblesSA",tags,"muebleria",10);
 		
