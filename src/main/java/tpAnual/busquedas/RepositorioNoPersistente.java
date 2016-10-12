@@ -26,7 +26,7 @@ public class RepositorioNoPersistente extends RepositorioBusqueda {
 	    instance = null;
 	}
 
-	protected void guardar(String palabrasIngresadas, List<Poi> pois){
+	public void registrarBusqueda(String palabrasIngresadas, List<Poi> pois){
 		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
 		busquedas.add(busqueda);
 	}

@@ -56,7 +56,7 @@ public class TestPersistenciaPoisMongo {
 	 	
  	@Test
  	public void persistoUnPoi(){
- 		datastore.save((Poi)poi2);
+ 		datastore.save(poi2);
  		
  		Assert.assertEquals(1, datastore.createQuery(Poi.class).asList().size());
  	}
