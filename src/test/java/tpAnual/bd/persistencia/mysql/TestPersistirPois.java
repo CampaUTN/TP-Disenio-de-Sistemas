@@ -5,27 +5,18 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
-
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class TestPersistirPois {
-	
-	private EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-	
+public class TestPersistirPois extends TestPersistenciaRelacional{
+		
 	private PointWrapper punto = new PointWrapper(10,10);
 	private  Set<String> tags = new HashSet<String>();
 	long id1, id2;
@@ -36,29 +27,21 @@ public class TestPersistirPois {
 	
 	@Before
 	public void init() {
-		Reseter.resetSingletons();
-
-		entityManager.getTransaction().begin();
+		super.init();
 				
 		tags.add("cole");
 		poiPrueba = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		poiPrueba2 = new EstacionDeColectivo(punto,"Parada del 60",tags,60, "pilar");
 		
 		
-		entityManager.persist(poiPrueba);		
-		entityManager.persist(poiPrueba2);
+		entityManager().persist(poiPrueba);		
+		entityManager().persist(poiPrueba2);
 		
 		id1 = poiPrueba.getId();
 		id2 = poiPrueba2.getId();	
 
 	}
-	
-	@After
-	public void clear() {
-		entityManager.getTransaction().rollback();
-		Reseter.resetSingletons();
-	}	
-	
+		
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){
 		Assert.assertEquals(id2, id1+1);
@@ -67,7 +50,7 @@ public class TestPersistirPois {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void todosLosPoisSePersisten(){
-		List<Poi> poisBd = entityManager.createQuery("FROM Poi").getResultList();
+		List<Poi> poisBd = entityManager().createQuery("FROM Poi").getResultList();
 		Assert.assertEquals(2,poisBd.size());
 	}
 	
@@ -87,22 +70,22 @@ public class TestPersistirPois {
 		
 		Poi cgp = new Cgp(punto, "Asistencia social", tags,puntosComuna);
 		
-		entityManager.persist(negocio);
-		entityManager.persist(cgp);
+		entityManager().persist(negocio);
+		entityManager().persist(cgp);
 		
 		@SuppressWarnings("unchecked")
-		List<Poi> poisBd2 = entityManager.createQuery("FROM Poi").getResultList();
+		List<Poi> poisBd2 = entityManager().createQuery("FROM Poi").getResultList();
 		
 		Assert.assertEquals(4,poisBd2.size(),0);
 		
-		entityManager.remove(entityManager.contains(negocio) ? negocio : entityManager.merge(negocio));
-		entityManager.remove(entityManager.contains(cgp) ? cgp : entityManager.merge(cgp));
+		entityManager().remove(entityManager().contains(negocio) ? negocio : entityManager().merge(negocio));
+		entityManager().remove(entityManager().contains(cgp) ? cgp : entityManager().merge(cgp));
 	}
 	
 	@Test
 	public void lasIdsNoSeRepiten(){
 		
-		List<Poi> poisBd = entityManager.createQuery("FROM Poi where id= :unId", Poi.class)
+		List<Poi> poisBd = entityManager().createQuery("FROM Poi where id= :unId", Poi.class)
 				.setParameter("unId", poiPrueba.getId()).getResultList();
 		
 		Assert.assertEquals(1,poisBd.size());
@@ -110,7 +93,7 @@ public class TestPersistirPois {
 	
 	@Test
 	public void buscoPoiInexistenteYGeneraListaVacia(){
-		List<Poi> poisBd = entityManager.createQuery("FROM Poi where poi_id= :unId", Poi.class)
+		List<Poi> poisBd = entityManager().createQuery("FROM Poi where poi_id= :unId", Poi.class)
 				.setParameter("unId", 56l).getResultList();
 		
 		Assert.assertTrue(poisBd.isEmpty());
@@ -119,7 +102,7 @@ public class TestPersistirPois {
 	@Test
 	public void buscoPoiPorID(){
 		
-		List<Poi> busquedas = entityManager.createQuery("FROM EstacionDeColectivo where poi_id= :unId ", Poi.class).
+		List<Poi> busquedas = entityManager().createQuery("FROM EstacionDeColectivo where poi_id= :unId ", Poi.class).
 			setParameter("unId", id1).getResultList();
 	
 		Assert.assertEquals(poiPrueba,busquedas.get(0));

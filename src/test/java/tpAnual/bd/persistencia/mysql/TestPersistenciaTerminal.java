@@ -1,29 +1,22 @@
 package tpAnual.bd.persistencia.mysql;
 
 import java.util.List;
-
-import javax.persistence.EntityManager;
-
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import tpAnual.Terminal;
 
-public class TestPersistenciaTerminal {
-	private static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+public class TestPersistenciaTerminal extends TestPersistenciaRelacional{
 	
-	static long numTerminal1, numTerminal2;
-	static Integer numComuna;
+	private long numTerminal1, numTerminal2;
 		
-	private static Terminal terminalPrueba1 = new Terminal();
-	private static Terminal terminalPrueba2 = new Terminal();
+	private Terminal terminalPrueba1 = new Terminal();
+	private Terminal terminalPrueba2 = new Terminal();
 		
-	@BeforeClass
-	public static void init() {
-		entityManager.getTransaction().begin();
+	@Before
+	public void init() {
+		super.init();
 		
 		terminalPrueba1.activarRegistros();
 		terminalPrueba1.activarMails();
@@ -31,20 +24,13 @@ public class TestPersistenciaTerminal {
 		terminalPrueba2.activarRegistros();
 		terminalPrueba2.activarMails();		
 		
-
-		entityManager.persist(terminalPrueba1);
+		entityManager().persist(terminalPrueba1);
 	}
-	
-	@AfterClass
-	public static void clear() {
-		entityManager.getTransaction().rollback();
-	}
-	
-	
+			
 	@Test
 	public void sePersisteLaTerminal(){
 		@SuppressWarnings("unchecked")
-		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
+		List<Terminal> terminales = entityManager().createQuery("FROM Terminal").getResultList();
 	
 		Assert.assertFalse(terminales.isEmpty());
 		
@@ -52,9 +38,9 @@ public class TestPersistenciaTerminal {
 	
 	@Test
 	public void sePersisteMasDeUnaTerminal(){
-		entityManager.persist(terminalPrueba2);
+		entityManager().persist(terminalPrueba2);
 		@SuppressWarnings("unchecked")
-		List<Terminal> terminales = entityManager.createQuery("FROM Terminal").getResultList();
+		List<Terminal> terminales = entityManager().createQuery("FROM Terminal").getResultList();
 	
 		Assert.assertEquals(terminales.size(),2);		
 	}
@@ -62,7 +48,7 @@ public class TestPersistenciaTerminal {
 	
 	@Test
 	public void lasIdsSeAutogeneranSecuencialmente(){
-		entityManager.persist(terminalPrueba2);
+		entityManager().persist(terminalPrueba2);
 		
         numTerminal1 = terminalPrueba1.getNumeroTerminal();
 		numTerminal2 = terminalPrueba2.getNumeroTerminal();
@@ -75,10 +61,9 @@ public class TestPersistenciaTerminal {
 		
 		long id1 = terminalPrueba1.getNumeroTerminal();
 		
-		List<Terminal> busquedas = entityManager.createQuery("FROM Terminal where numeroTerminal= :unId ", Terminal.class).
+		List<Terminal> busquedas = entityManager().createQuery("FROM Terminal where numeroTerminal= :unId ", Terminal.class).
 				setParameter("unId", id1).getResultList();
 		
 		Assert.assertEquals(terminalPrueba1,busquedas.get(0));
 	}
-
 }
