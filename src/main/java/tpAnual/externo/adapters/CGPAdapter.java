@@ -3,6 +3,7 @@ package tpAnual.externo.adapters;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -21,42 +22,19 @@ import tpAnual.externo.sistemasExternos.ServicioDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class CGPAdapter extends Buscador implements Consultora{
+public class CGPAdapter implements Consultora{
 	
 	private MockSistemaCGP cpoExterno = new MockSistemaCGP();
 	
 	
 	public List<Poi> consultar(List<String> palabras){
-		List<Poi> pois = cgpDeLaZona(palabras.get(0));
-		pois.addAll(cgpDeLaCalle(palabras.get(0)));
+		List<Poi> pois = new ArrayList<Poi>();
+		palabras.forEach(palabra->pois.addAll(this.adaptar(cpoExterno.consultar(palabra))));
 		return pois.stream()
 				.collect(Collectors.toSet())
 				.stream()
 				.collect(Collectors.toList());
 	}
-	
-	private List<Poi> cgpDeLaZona(String zona) {
-		return this.adaptar(
-					this.getDataBase()
-					.createQuery(CentroDTO.class)
-					.field("zonas")
-					.containsIgnoreCase(zona)
-					.asList());
-	}
-	
-	private List<Poi> cgpDeLaCalle(String calle) {
-		return this.adaptar(
-				this.getDataBase()
-				.createQuery(CentroDTO.class)
-				.field("domicilio")
-				.equalIgnoreCase(calle)
-				.asList());
-	}
-	
-	public List<Poi> getPois(){
-		return this.adaptar(cpoExterno.consultar(""));
-	}
-	
 	
 	private List<Poi> adaptar(List<CentroDTO> centros){
 		return centros
