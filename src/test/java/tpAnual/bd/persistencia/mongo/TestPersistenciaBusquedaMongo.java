@@ -93,12 +93,12 @@ public class TestPersistenciaBusquedaMongo {
 		Assert.assertFalse(datastore.createQuery(Busqueda.class).asList().isEmpty());
 	}	
 	
-	@Test 
-	public void seRealizaUnaBusquedaYLuegoSePersiste(){
-		buscador.buscarSegunTexto("colectivo",terminal);		
-
-		Assert.assertNotEquals(0, datastore.createQuery(Busqueda.class).asList().size());
-	}
+//	@Test 
+//	public void seRealizaUnaBusquedaYLuegoSePersiste(){
+//		buscador.buscarSegunTexto("colectivo",terminal);		
+//
+//		Assert.assertNotEquals(0, datastore.createQuery(Busqueda.class).asList().size());
+//	}
 			
 	
 	@Test

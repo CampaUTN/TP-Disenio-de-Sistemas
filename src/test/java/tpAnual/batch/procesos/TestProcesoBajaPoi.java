@@ -64,13 +64,13 @@ public class TestProcesoBajaPoi implements WithGlobalEntityManager{
 	@Test
 	public void testAndaBienLaUrl(){
 		ClientResponse response = urlExt.consultarUrl("", "");
-        Assert.assertEquals(response.getStatus(), 200,0);
+        Assert.assertEquals(200,response.getStatus(),0);
 	}
 	
 	@Test 
 	public void testAndaMalLaUrl(){
 		ClientResponse response = urlExt.consultarUrl("", "");
-        Assert.assertNotEquals(response.getStatus(), 400,0);
+        Assert.assertNotEquals(400, response.getStatus(),0);
 	}
 	
 	@Test
@@ -82,31 +82,31 @@ public class TestProcesoBajaPoi implements WithGlobalEntityManager{
 	 @Test
 	    public void consultarConFiltro() {
 	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.get(0).getId(),123,0);
+	        Assert.assertEquals(123,poisAEliminar.get(0).getId(),0);
 	    }
 	 
 	 @Test
 	    public void consultarConFiltro2() {
 	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.get(1).getId(),122,0);
+	        Assert.assertEquals(122,poisAEliminar.get(1).getId(),0);
 	    }
 	 
 	 @Test
 	    public void consultarConFiltro3() throws Exception {
 	        poisAEliminar = bpAdapter.consultar();
-	        Assert.assertEquals(poisAEliminar.size(),2,0);
+	        Assert.assertEquals(2,poisAEliminar.size(),0);
 	    }
 	
 	 @Test
 	 public void testConMock(){
 		 poisAEliminar = mockbp.consultar();
-		 Assert.assertEquals(poisAEliminar.size(),1,0);
+		 Assert.assertEquals(1,poisAEliminar.size(),0);
 	 }
 	 
 	 @Test
 	 public void testConMock2(){
 		 poisAEliminar = mockbp.consultar();
-		 Assert.assertEquals(poisAEliminar.get(0).getId(),1,0);
+		 Assert.assertEquals(1,poisAEliminar.get(0).getId(),0);
 	 }
 	 
 
