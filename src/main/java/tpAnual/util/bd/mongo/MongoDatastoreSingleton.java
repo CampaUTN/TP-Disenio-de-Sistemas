@@ -1,7 +1,5 @@
 package tpAnual.util.bd.mongo;
 
-import java.net.UnknownHostException;
-
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
@@ -17,12 +15,7 @@ public class MongoDatastoreSingleton {
 		if (mongoSingleton == null) {
 			synchronized (MongoDatastoreSingleton.class) {
 				if (mongoSingleton == null) {
-					try {
-						mongoSingleton = new MongoClient("localhost", 27017);
-					} catch (UnknownHostException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					mongoSingleton = new MongoClient("localhost", 27017);
 				}
 			}
 		}

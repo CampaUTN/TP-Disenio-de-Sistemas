@@ -1,4 +1,6 @@
 package tpAnual.externo.adapters;
+
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,10 +10,13 @@ import com.google.gson.reflect.TypeToken;
 import tpAnual.externo.sistemasExternos.PoiAEliminarDTO;
 import tpAnual.externo.sistemasExternos.UrlExterna;
 
+
+
 public class BajaPoiAdapter{
 	
 	private String url;
 	private String path;
+	
 	
 	public List<PoiAEliminarDTO> consultar(){
 		UrlExterna urlExterna = new UrlExterna(url, path);

@@ -107,11 +107,4 @@ public class BancoAdapter extends Buscador implements Consultora{
 
 		return new Banco(ubicacion, nombre, servicios);
 	}
-	
-	protected void actualizarTodos() {
-		this.getPois()
-			.stream()
-			.collect(Collectors.toSet())
-			.forEach(poi -> MongoDatastoreSingleton.getDatastore("busquedas").save(poi));;
-	}
 }

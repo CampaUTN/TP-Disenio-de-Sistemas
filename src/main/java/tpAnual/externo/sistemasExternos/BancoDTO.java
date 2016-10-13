@@ -3,28 +3,15 @@ package tpAnual.externo.sistemasExternos;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
-public class BancoDTO {
-
-	@Embedded
-	private String[] servicios;
-	private String banco;
-	private String y;
-	private String x;
-
-	@JsonCreator
-    BancoDTO(@JsonProperty("servicios") String[] servicios, @JsonProperty("banco") String banco,
-    		@JsonProperty("y") String y, @JsonProperty("x") String x) {
-        this.x = x;
-        this.y = y;
-        this.servicios = servicios;
-        this.banco = banco;
-	}
+public class BancoDTO{
 	
-	public BancoDTO(){}
+	@Embedded
+    private String[] servicios;
+    private String banco;
+    private String y;
+    private String x;
+
 	public String[] getServicios() {
 		return servicios;
 	}
