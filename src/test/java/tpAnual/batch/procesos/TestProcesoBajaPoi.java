@@ -7,12 +7,8 @@ import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-
-import com.sun.jersey.api.client.ClientResponse;
 
 import tpAnual.Mapa;
 import tpAnual.POIs.Banco;
