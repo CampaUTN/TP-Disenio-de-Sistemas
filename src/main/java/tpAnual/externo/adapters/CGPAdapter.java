@@ -3,18 +3,23 @@ package tpAnual.externo.adapters;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import org.mongodb.morphia.Datastore;
 
 import tpAnual.Horario;
 import tpAnual.Servicio;
 import tpAnual.POIs.Cgp;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.mocks.MockSistemaCGP;
+import tpAnual.externo.sistemasExternos.Buscador;
 import tpAnual.externo.sistemasExternos.CentroDTO;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.externo.sistemasExternos.ServicioDTO;
+import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class CGPAdapter implements Consultora{

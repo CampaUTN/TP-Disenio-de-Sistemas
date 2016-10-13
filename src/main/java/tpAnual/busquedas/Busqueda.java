@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Transient;
 
 import tpAnual.POIs.Poi;
 
@@ -19,7 +18,6 @@ public class Busqueda {
 	@Embedded
 	private List<Poi> pois = new ArrayList<Poi>();
 	@SuppressWarnings("unused")
-	@Transient
 	private Date fecha = new Date();
 	
 	@SuppressWarnings("unused")
