@@ -30,10 +30,7 @@ public class CGPAdapter implements Consultora{
 	public List<Poi> consultar(List<String> palabras){
 		List<Poi> pois = new ArrayList<Poi>();
 		palabras.forEach(palabra->pois.addAll(this.adaptar(cpoExterno.consultar(palabra))));
-		return pois.stream()
-				.collect(Collectors.toSet())
-				.stream()
-				.collect(Collectors.toList());
+		return pois;
 	}
 	
 	private List<Poi> adaptar(List<CentroDTO> centros){
