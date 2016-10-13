@@ -50,6 +50,7 @@ public class TestPersistenciaBusquedaMongo {
 	@Before
 	public void init() {
 		Reseter.resetSingletons();
+		Reseter.resetDatastore(datastore);
 		
 		poi1 = new EstacionDeColectivo(ubicacion, "107", tags1,0,"");
 		poi2 = new EstacionDeColectivo(ubicacion, "106", tags2,0,"");
