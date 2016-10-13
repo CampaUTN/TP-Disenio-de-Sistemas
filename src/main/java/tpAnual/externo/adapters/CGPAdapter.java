@@ -27,8 +27,6 @@ public class CGPAdapter extends Buscador implements Consultora{
 	
 	
 	public List<Poi> consultar(List<String> palabras){
-		this.persistirPoisExternos();
-		
 		List<Poi> pois = cgpDeLaZona(palabras.get(0));
 		pois.addAll(cgpDeLaCalle(palabras.get(0)));
 		return pois.stream()
@@ -53,20 +51,6 @@ public class CGPAdapter extends Buscador implements Consultora{
 				.field("domicilio")
 				.equalIgnoreCase(calle)
 				.asList());
-	}
-	
-	public void persistirPoisExternos(){
-		Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
-		
-		//Borro todos
-		datastore.getDB().getCollection("CentroDTO").drop();
-		
-		//Los traigo
-		List<CentroDTO> centrosDto = new ArrayList<CentroDTO>();
-		centrosDto.addAll(cpoExterno.consultar(null));
-		
-		//Los persisto
-		centrosDto.forEach(banco -> datastore.save(banco));
 	}
 	
 	public List<Poi> getPois(){
