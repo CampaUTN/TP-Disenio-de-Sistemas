@@ -107,12 +107,18 @@
 			<artifactId>mongo-java-driver</artifactId>
 			<version>3.3.0</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.mongodb.morphia/morphia -->
 		<dependency>
 			<groupId>org.mongodb.morphia</groupId>
 			<artifactId>morphia</artifactId>
 			<version>1.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.flapdoodle.embed</groupId>
+			<artifactId>de.flapdoodle.embed.mongo</artifactId>
+			<version>1.50.5</version>
 		</dependency>
 
 	</dependencies>
