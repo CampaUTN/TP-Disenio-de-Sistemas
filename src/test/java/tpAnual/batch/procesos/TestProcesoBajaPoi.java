@@ -44,6 +44,7 @@ public class TestProcesoBajaPoi implements WithGlobalEntityManager{
 	@Before
 	public void init(){
 		Reseter.resetSingletons();
+		entityManager().clear();
 		entityManager().getTransaction().begin();
 		
 		IntStream.range(0,126).forEach(i -> Mapa.getInstance().alta(new Banco(ubicacion, "", tags)));
