@@ -7,8 +7,6 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import tpAnual.util.Reseter;
 
 public abstract class TestPersistenciaRelacional implements WithGlobalEntityManager{
-	//protected static EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-	
 	@Before
 	public void init() {
 		Reseter.resetSingletons();
