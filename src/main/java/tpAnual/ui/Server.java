@@ -10,7 +10,7 @@ public class Server {
 		configurarSpark();
 		
 		 //Cuando recibe una request a esa ruta (/), ejecuta la lambda.
-		Spark.get("/", (request, response) -> { return estilizar("<html><body><h1>hola mundo!</h1></body></html>");} );
+		//Spark.get("/", (request, response) -> { return estilizar("<html><body><h1>hola mundo!</h1></body></html>");} );
 		 
 		//localhost:4567/nombre?=Juan
 		/* Spark.get("/",(request, response) -> {
@@ -27,7 +27,7 @@ public class Server {
 	
 	
 	public static void configurarSpark(){
-		Spark.port(4568);
+		Spark.port(4567);
 		Spark.staticFileLocation("/ui");
 	}
 	
