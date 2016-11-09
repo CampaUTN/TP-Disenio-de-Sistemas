@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<title>POIS</title>
+ </head>
+   
+  <body>
+	<h1>Resultado Busqueda</h1>
+
+	<table class="table table-stripped">
+		   <tr>
+		   	   <th>Nombre</th>
+			   <th>Direccion</th>
+			   <th>Calle</th>
+			   <th>Ubicacion</th>
+			   <th></th>
+		   </tr>
+	
+		   {{#each pois}}
+		   <tr>
+			   <td>{{nombre}}</td>
+			   <td>{{direccion}}</td>
+			   <td>{{calle}}</td>
+			   <td>{{ubicacion}}</td>
+		  </tr>
+	      {{/each}}
+	</table>
+  </body>
+</html>
