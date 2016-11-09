@@ -1,27 +1,40 @@
 /* -----------------------
 Autor: internet
 ------------------------*/
-
 body
 {
 	margin: 0;
 	padding: 0;
 	color: #333;
-	background-color: #eee;
+	background-color: #e3e0cc;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
+.passwd{
+        background-color: #f0f0f0;
+}
+ 
 div {
     width: 98%;
     padding: 0.5em;
     text-align: center;
 }
 
-h2,h3 {
+h1,h2,h3 {
     color: black;
     text-align: center;
 }
 
+.botonIngresar {
+    background-color: #008CBA; /* Blue */
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 
 h1,h2,h3,h4,h5,h6
 {

@@ -1,5 +1,7 @@
 package tpAnual.ui;
 
+import spark.Request;
+import spark.Response;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -8,6 +10,7 @@ public class Server {
 		
 		
 		configurarSpark();
+		Router.configure();
 		
 		 //Cuando recibe una request a esa ruta (/), ejecuta la lambda.
 		//Spark.get("/", (request, response) -> { return estilizar("<html><body><h1>hola mundo!</h1></body></html>");} );
@@ -34,5 +37,9 @@ public class Server {
 	public static String estilizar(String contenido){
 		return contenido;
 		//return "<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" media=\"screen\" />"+contenido;
+	}
+	
+	public static String paginaPrincipal(Request req, Response res){
+		return "hola";
 	}
 }
