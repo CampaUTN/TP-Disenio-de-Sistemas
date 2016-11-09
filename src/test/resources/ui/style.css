@@ -11,6 +11,18 @@ body
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
 }
 
+div {
+    width: 95%;
+    padding: 0.5em;
+    text-align: center;
+}
+
+h2,h3 {
+    color: black;
+    text-align: center;
+}
+
+
 h1,h2,h3,h4,h5,h6
 {
 	margin: 0 0 .5em;
