@@ -53,7 +53,7 @@ public class TerminalController {
 	
 	}
 	
-public static ModelAndView alta(Request req, Response res){
+	public static ModelAndView alta(Request req, Response res){
 		
 		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
 		
@@ -61,6 +61,17 @@ public static ModelAndView alta(Request req, Response res){
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
   		
   		return new ModelAndView(model, "altaTerminal.hbs");
+	
+	}
+	
+	public static ModelAndView modificar(Request req, Response res){
+		
+		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
+		
+		Map<String, List<Terminal>> model = new HashMap<>();
+  		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
+  		
+  		return new ModelAndView(model, "modificarTerminal.hbs");
 	
 	}
 	
