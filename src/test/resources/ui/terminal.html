@@ -27,39 +27,28 @@
 	
 	<div>
   		 <h2>RESULTADOS</h2>
-  		 <div class="wrapper">
-  	  	  <div class="table table-stripped">
-  	   	    <div class="row header">
-     	 	   <div class="cell">ID</div>
-     		   <div class="cell">Nombre</div>
-            </div>
-
-  	      <div class="row">
-              <div class="cell"> 0001 </div>
-    	      <div class="cell"> 25/03/2016 </div>
- 	 	 </div>
-		 
-		 <div class="row">
-              <div class="cell"> 0002 </div>
-    	      <div class="cell"> 08/07/2016 </div>
-
- 	 	 </div>
-		 
-		 
-		 
-		 <div class="row">
-              <div class="cell"> 0003 </div>
-    	      <div class="cell"> 10/11/2016 </div>
-
- 	 	 </div>
-		
-				 
-		 
-		 </div>
+  		 
+  		 <br>
+  		 <br>
+  		 
+  		 <table style="width:50%" id="tablaTerminales" align="center">
+		  <tr>
+		    <th>Terminal</th>
+		    <th>Nombre</th>
+		  </tr>
+		  <tr>
+		    <td>50</td>
+		    <td>Jill</td>
+		  </tr>
+		  <tr>
+		    <td>94</td>
+		    <td>Eve</td>
+		  </tr>
+		</table>
 		 
 		   <div>
   	
-    		<button class="botonAgregar" value="AGREGAR"/>AGREGAR</button>
+    		<button class="botonAgregar" value="AGREGAR" onClick=abrirAgregarTerminal()/>AGREGAR</button>
     		<button class="botonEditar" value="EDITAR"/>EDITAR</button>
    			<button class="botonEliminar" value="ELIMINAR"/>ELIMINAR</button>
    			
@@ -67,6 +56,30 @@
 		 
   </div>
   
+
+	
+	<script>
+	
+	var table = document.getElementById("tablaTerminales");
+  	var tablerows = table.rows;
+  	
+  	for (var i=0, n=tablerows.length;i<n;i++) {
+    tablerows[i].onclick=function() {
+      alert(tablerows[i].textContent?tablerows[i].textContent:tablerows[i].innerText)
+    }
+	
+	function abrirAgregarTerminal() {
+	    window.open("localhost:2345/agregarTerminal.html");
+	}
+	
+	function abrirEditarTerminal() {
+	    window.open("localhost:2345/modificarTerminal.html");
+	}
+	
+	function eliminarTerminal() {
+	    
+	}
+	</script>
 
   
   <footer class="footer">
