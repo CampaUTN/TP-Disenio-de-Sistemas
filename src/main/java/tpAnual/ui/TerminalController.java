@@ -8,6 +8,7 @@ import java.util.Map;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import tpAnual.Mapa;
 import tpAnual.Terminal;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
@@ -71,7 +72,11 @@ public class TerminalController {
 		Map<String, List<Terminal>> model = new HashMap<>();
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
   		
-  		return new ModelAndView(model, "modificarTerminal.hbs");
+//		Terminal terminal = Mapa.getInstance().buscarTerminalPorId(0);
+		Terminal terminal = new Terminal(0);
+		terminal.setNombre("termi");
+//  		return new ModelAndView(model, "modificarTerminal.hbs");
+		return new ModelAndView(terminal, "modificarTerminal.hbs");
 	
 	}
 	
