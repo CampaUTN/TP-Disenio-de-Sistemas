@@ -29,19 +29,19 @@
   		 <br>
   		 <br>
   		 
-  		 <table style="width:50%" id="tablaTerminales" align="center">
-		  <tr>
-		    <th>Terminal</th>
-		    <th>Nombre</th>
-		  </tr>
-		  <tr>
-		    <td>50</td>
-		    <td>Jill</td>
-		  </tr>
-		  <tr>
-		    <td>94</td>
-		    <td>Eve</td>
-		  </tr>
+  		 <table class="table table-stripped" align="center">
+			   <tr>
+			   	   <th>Terminal</th>
+				   <th>Nombre</th>
+				   <th></th>
+			   </tr>
+		
+			   {{#each terminales}}
+			   <tr>
+				   <td>{{numeroTerminal}}</td>
+				   <td>{{nombre}}</td>
+			  </tr>
+		      {{/each}}
 		</table>
 		 
 		   <div>
