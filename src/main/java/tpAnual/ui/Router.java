@@ -16,6 +16,7 @@ public static void configure() {
 		Spark.get("/", Server::paginaPrincipal);		
 		Spark.get("/poi", PoiController::get,engine);
 		Spark.get("/busqueda", PoiController::listar,engine);
+		Spark.get("/terminal", TerminalController::listar,engine);
 
 	//Spark.get("/conversor/resultado", ConversorController::showResultado,				engine);
 		//Spark.get("/persona", PersonaController::get, engine);
