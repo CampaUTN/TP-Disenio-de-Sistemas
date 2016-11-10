@@ -2,7 +2,6 @@ package tpAnual.ui;
 
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
-import spark.utils.SparkUtils;
 
 public class Router {
 
@@ -20,7 +19,7 @@ public static void configure() {
 		Spark.get("/altaTerminal", TerminalController::alta,engine);
 		Spark.get("/modificarTerminal", TerminalController::modificar,engine);
 		Spark.get("/historico-consultas", BusquedasController::listar,engine);
-
+		Spark.get("/administrar-pois", AdministrarPoiController::get,engine);
 
 	//Spark.get("/conversor/resultado", ConversorController::showResultado,				engine);
 		//Spark.get("/persona", PersonaController::get, engine);

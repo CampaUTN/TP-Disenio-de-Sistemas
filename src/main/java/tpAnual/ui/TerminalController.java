@@ -8,12 +8,7 @@ import java.util.Map;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import tpAnual.Mapa;
 import tpAnual.Terminal;
-import tpAnual.POIs.Banco;
-import tpAnual.POIs.Negocio;
-import tpAnual.POIs.Poi;
-import tpAnual.util.wrapper.PointWrapper;
 
 public class TerminalController {
 
