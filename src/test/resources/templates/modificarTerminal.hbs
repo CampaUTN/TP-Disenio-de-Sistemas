@@ -10,24 +10,26 @@
 
    <div>    </div>
    <div>    </div>
-  <h1>MODIFICAR TERMINAL</h1>  
+  <h1>MODIFICAR TERMINAL ID: {{numeroTerminal}}</h1>  
   <body>
   
   
     <div>
   	<h5> Realice los cambios y haga click en Guardar </h5>
     <br>
-    	Nombre: 
-	  <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
-	  <br>
-		Comuna: 	 
-	  <input class="filterComuna" type="text" id="textComuma" placeholder="comuna" size="25" max="10">
-	  <br>
+    	Nombre anterior: {{nombre}}
+	  	<br>
+	    Nombre nuevo: <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
+	  	<br>
+		Comuna anterior: {{numeroComuna}} 	 
+		<br>
+	  	Comuna nueva: <input class="filterComuna" type="text" id="textComuma" placeholder="comuna" size="25" max="10">
+	  	<br>
 	  	Mails Activados: 
-	  <input class="filterComuna" type="checkbox" id="checkMailsActivados" checked>
+	  <input class="filterComuna" type="checkbox" id="checkMailsActivados">
 	  <br>
 	  	Registros Activados: 
-	  <input class="filterComuna" type="checkbox" id="checkRegistrosActivados" checked>
+	  <input class="filterComuna" type="checkbox" id="checkRegistrosActivados">
 	<br>
 	<br>
     	<button class="botonGuardar" value="GUARDAR"/>GUARDAR</button>
