@@ -19,6 +19,8 @@ public static void configure() {
 		Spark.get("/terminal", TerminalController::listar,engine);
 		Spark.get("/altaTerminal", TerminalController::alta,engine);
 
+		Spark.get("/historico-consultas", BusquedasController::listar,engine);
+
 
 	//Spark.get("/conversor/resultado", ConversorController::showResultado,				engine);
 		//Spark.get("/persona", PersonaController::get, engine);

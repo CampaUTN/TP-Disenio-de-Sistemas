@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Transient;
 
 import tpAnual.POIs.Poi;
 
@@ -23,9 +24,13 @@ public class Busqueda {
 	@SuppressWarnings("unused")
 	private Busqueda(){}
 	
+	@Transient
+	private int cantidadPois;
+	
 	public Busqueda(String palabrasBuscadas, List<Poi> pois){
 		this.palabrasBuscadas=palabrasBuscadas;
 		this.pois.addAll(pois);
+		this.cantidadPois = pois.size();
 	}
 	
 	public String getParametros() {
@@ -43,4 +48,19 @@ public class Busqueda {
 	public void setResultado(List<Poi> resultado) {
 		this.pois = resultado;
 	}
+	
+	public void setFecha( Date fecha){
+		this.fecha = fecha;
+	}
+	
+	public Date getFecha(){
+		return fecha;
+	}
+	
+	public int getCantidadPois(){
+		return cantidadPois;
+	}
+
+	
+	
 }
