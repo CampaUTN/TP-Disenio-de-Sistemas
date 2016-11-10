@@ -39,18 +39,17 @@ public static ModelAndView listar(Request req, Response res){
 		pois.add(poi2);
 		
 		Busqueda b1 = new Busqueda("hola", pois);
-		b1.setFecha(Date.valueOf(LocalDate.now()));
+		//b1.setFecha(Date.valueOf(LocalDate.now()));
 		
 		//BORRAR ESTO DE PRUEBA
 		List<Busqueda> busquedas = new ArrayList<>();
 		
-		
+		busquedas.add(b1);
   		model.put("busqueda", busquedas);
+  		
   		return new ModelAndView(model, "historico-consultas.hbs");
 	
 	}
-	
-	
 	
 	
 }

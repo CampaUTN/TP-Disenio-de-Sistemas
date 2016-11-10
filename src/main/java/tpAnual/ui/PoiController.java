@@ -36,7 +36,7 @@ public class PoiController {
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
   		
 		//BORRAR ESTO DE PRUEBA
-		List<Poi> pois = new ArrayList<>();
+		List<Poi> pois = new ArrayList<Poi>();
 		
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
 		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
