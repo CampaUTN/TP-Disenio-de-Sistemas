@@ -20,6 +20,7 @@ public static void configure() {
 		Spark.get("/modificarTerminal", TerminalController::modificar,engine);
 		Spark.get("/historico-consultas", BusquedasController::listar,engine);
 		Spark.get("/administrar-pois", AdministrarPoiController::get,engine);
+		Spark.get("/administrar-pois/editar", AdministrarPoiController::editar,engine);
 
 	//Spark.get("/conversor/resultado", ConversorController::showResultado,				engine);
 		//Spark.get("/persona", PersonaController::get, engine);

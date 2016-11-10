@@ -55,7 +55,11 @@ public class AdministrarPoiController {
 	public static ModelAndView editar(Request req, Response res) {
 		Map<String, List<Poi>> model = new HashMap<>();
 		// List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-
-		return new ModelAndView(model, "editar-poi.hbs");
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		poi.setDireccion(1234);
+		poi.setCalle("Calle falsa");
+		return new ModelAndView(poi, "editar-poi.hbs");
 	}
 }
