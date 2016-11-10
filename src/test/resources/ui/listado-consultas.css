@@ -67,6 +67,8 @@ h1,h2,h3,h4,h5,h6
 	margin: 0 0 .5em;
 	font-weight: 500;
 	line-height: 1.1;
+        font-family: "Liberation Sans", "Verdana";
+        color: #333333;
 }
 
 h1 { font-size: 2.25em; } /* 36px */
@@ -102,7 +104,7 @@ hr
 a:link { color: royalblue; }
 a:visited { color: purple; }
 a:focus { color: black; }
-a:hover { color: green; }
+a:hover { color: green; font-style: italic;}
 a:active { color: red; }
 
 /* -----------------------
