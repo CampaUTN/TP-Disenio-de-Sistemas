@@ -4,29 +4,32 @@
 <!DOCTYPE html>
 <html>
  <head>
+ <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
  	<title>POIS</title>
  </head>
    
   <body>
 	<h1>Resultado Busqueda</h1>
 
+	<div class = "wrapper">
 	<table class="table table-stripped">
 		   <tr>
-		   	   <th>Nombre</th>
-			   <th>Direccion</th>
-			   <th>Calle</th>
-			   <th>Ubicacion</th>
-			   <th></th>
+		   	   <th class="row header">Nombre</th>
+			   <th class="row header">Direccion</th>
+			   <th class="row header">Calle</th>
+			   <th class="row header">Ubicacion</th>
+			   <th class="row header"></th>
 		   </tr>
 	
 		   {{#each pois}}
-		   <tr>
-			   <td>{{nombre}}</td>
-			   <td>{{direccion}}</td>
-			   <td>{{calle}}</td>
-			   <td>{{ubicacion}}</td>
+		    <tr class="row">
+			   <td class="cell">{{nombre}}</td>
+			   <td class="cell">{{direccion}}</td>
+			   <td class="cell">{{calle}}</td>
+			   <td class="cell">{{ubicacion}}</td>
 		  </tr>
 	      {{/each}}
 	</table>
+	</div>
   </body>
 </html>
