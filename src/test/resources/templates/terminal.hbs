@@ -40,7 +40,7 @@
 			   <tr>
 				   <td>{{numeroTerminal}}</td>
 				   <td>{{nombre}}</td>
-				   <td><input type="checkbox"></td>
+				   <td><input type="checkbox" id="checkSeleccion"></td>
 			  </tr>
 		      {{/each}}
 		</table>
@@ -68,11 +68,11 @@
     }
 	
 	function abrirAgregarTerminal() {
-	    window.open("localhost:4567/agregarTerminal.html");
+	    window.open("/nuevaTerminal.html");
 	}
 	
 	function abrirEditarTerminal() {
-	    window.open("localhost:4567/modificarTerminal.html");
+	    window.open("/modificarTerminal.html");
 	}
 	
 	function eliminarTerminal() {
