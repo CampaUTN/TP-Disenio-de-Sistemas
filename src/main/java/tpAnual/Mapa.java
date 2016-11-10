@@ -86,5 +86,9 @@ public class Mapa implements WithGlobalEntityManager{
 				.collect(Collectors.toList());
 		return pois.isEmpty()? null : pois.get(0);
 	}
+	
+	public Terminal buscarTerminalPorId(int id){
+		return terminales.stream().filter(t->t.getNumeroTerminal()==id).collect(Collectors.toList()).get(0);
+	}
 
 }
