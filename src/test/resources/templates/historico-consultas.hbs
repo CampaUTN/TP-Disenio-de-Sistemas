@@ -1,18 +1,12 @@
+{{>navBar.hbs}}
+
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
   <title>POIS</title>
 </head>
-  	<nav class = "navbar">
-     <ul class="main-menu ed-menu web-horizontal">
-		<li><a href="http://localhost:4567/">Inicio</a>
-		<a href="">Administrar Poi</a>
-		<a href="">Administrar Terminales</a>
-		<a href="">Historico de Consultas</a>
-		</li>
-	</ul>
-	</nav>
+  	
 
    <div>    </div>
    <div>    </div>
@@ -47,7 +41,7 @@
      	 	   <div class="cell">Pois&nbspEncontrados </div>
             </div>
 			
-			{{each busqueda}}
+			{{#each busqueda}}
   	      <div class="row">
     	      <div class="cell"> {{busqueda.fecha}}</div>
        		  <div class="cell"> {{busqueda.cantidadPois}} </div>
