@@ -2,6 +2,10 @@ package tpAnual.ui;
 
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
+import tpAnual.ui.controllers.AdministrarPoiController;
+import tpAnual.ui.controllers.BusquedasController;
+import tpAnual.ui.controllers.PoiController;
+import tpAnual.ui.controllers.TerminalController;
 
 public class Router {
 
@@ -12,7 +16,9 @@ public static void configure() {
 
 		Spark.staticFiles.location("/ui");
 		
-		Spark.get("/", Server::paginaPrincipal);		
+		Spark.get("/", Server::paginaPrincipal);
+		Spark.get("/perfil",PoiController::get,engine);
+		//Spark.get("perfil", PerfilController::mostrarOpciones,engine);
 		Spark.get("/poi", PoiController::get,engine);
 		Spark.get("/busqueda", PoiController::listar,engine);
 		Spark.get("/terminal", TerminalController::listar,engine);

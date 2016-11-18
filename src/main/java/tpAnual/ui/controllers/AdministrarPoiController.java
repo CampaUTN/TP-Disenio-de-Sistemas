@@ -1,4 +1,4 @@
-package tpAnual.ui;
+package tpAnual.ui.controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,5 +1,7 @@
-package tpAnual.ui;
+package tpAnual.ui.controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,32 +13,18 @@ import spark.Response;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.Busqueda;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class PoiController {
+public class BusquedasController {
 
-	public static ModelAndView get(Request req, Response res){
-		
-		Map<String, Object> viewModel = new HashMap<String, Object>();
-
-	 //TODO borrar
-		Poi poi = (Poi)new Negocio(null,"Negocio",null,"compras",5);
-		poi.setCalle("Strangford 1857");
-		
-		viewModel.put("poi", poi);
-		
-		return new ModelAndView(viewModel, "busqueda.hbs");
-	}
-	
-	public static ModelAndView listar(Request req, Response res){
+public static ModelAndView listar(Request req, Response res){
 		
 		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
 		
-		Map<String, List<Poi>> model = new HashMap<>();
+		Map<String, List<Busqueda>> model = new HashMap<>();
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-  		
-		//BORRAR ESTO DE PRUEBA
-		List<Poi> pois = new ArrayList<Poi>();
+		List<Poi> pois = new ArrayList<>();
 		
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
 		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
@@ -50,10 +38,18 @@ public class PoiController {
 		pois.add(poi1);
 		pois.add(poi2);
 		
-  		model.put("pois", pois);
-  		return new ModelAndView(model, "pois.hbs");
+		Busqueda b1 = new Busqueda("hola", pois);
+		//b1.setFecha(Date.valueOf(LocalDate.now()));
+		
+		//BORRAR ESTO DE PRUEBA
+		List<Busqueda> busquedas = new ArrayList<>();
+		
+		busquedas.add(b1);
+  		model.put("busqueda", busquedas);
+  		
+  		return new ModelAndView(model, "historico-consultas.hbs");
 	
 	}
 	
+	
 }
-
