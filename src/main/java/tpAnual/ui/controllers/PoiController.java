@@ -51,7 +51,7 @@ public class PoiController {
 		pois.add(poi2);
 		
   		model.put("pois", pois);
-  		return new ModelAndView(model, "listita.hbs");
+  		return new ModelAndView(model, "pois.hbs");
 	
 	}
 	
