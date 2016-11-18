@@ -4,6 +4,7 @@ import java.util.List;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.Terminal;
+import tpAnual.util.Reseter;
 
 
 public class RepositorioTerminales implements WithGlobalEntityManager{
@@ -28,17 +29,17 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		
 		Terminal terminalPrueba2 = new Terminal();
 		terminalPrueba2.setNombre("terminal DOT");
-		
+
+		Reseter.resetSingletons();
 		entityManager().getTransaction().begin();
 		entityManager().persist(terminalPrueba1);
 
 		entityManager().persist(terminalPrueba2);
 		
-		List<Terminal> terminales =  entityManager()
-										.createQuery("from Terminal", Terminal.class)
-										.getResultList();
+		List<Terminal> terminales =  entityManager().createQuery("from Terminal", Terminal.class).getResultList();
 		entityManager().getTransaction().rollback();
-		
+
+		Reseter.resetSingletons();
 		return terminales;
 	}
 	
