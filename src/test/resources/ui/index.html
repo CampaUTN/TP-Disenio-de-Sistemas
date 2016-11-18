@@ -9,19 +9,20 @@
   <div>
   	<h3> Bienvenido. Identif&iacute;quese para continuar</h3>
    
-    <div>
-	  <input class="passwd" type="text" id="username" placeholder="usuario" size="25" max="10">
-    </div> 
+   	<form action="/perfil" method="GET">	 
+     <div>
+	   <input class="passwd" type="text" name="usuario" placeholder="usuario" size="25" max="10">
+   	 </div> 
     
-    <div>
-      <input class="passwd" type="text" id="password" placeholder="contrasenia" size="25" max="10">
+     <div>
+      <input class="passwd" type="text" name="password" placeholder="contrasenia" size="25" max="10">
+     </div>
+    
+     <div>
+       <input class="botonIngresar" type="submit" value="INGRESAR">
+     </div>
+	</form>
 
-    </div>
-    
-    <div>
-    <button class="botonIngresar" value="Ingresar"/>INGRESAR</button>
-    </div>
-    
   </div>
   </body>
 </html>

@@ -4,6 +4,7 @@ import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import tpAnual.ui.controllers.AdministrarPoiController;
 import tpAnual.ui.controllers.BusquedasController;
+import tpAnual.ui.controllers.PerfilController;
 import tpAnual.ui.controllers.PoiController;
 import tpAnual.ui.controllers.TerminalController;
 
@@ -17,8 +18,8 @@ public static void configure() {
 		Spark.staticFiles.location("/ui");
 		
 		Spark.get("/", Server::paginaPrincipal);
-		Spark.get("/perfil",PoiController::get,engine);
-		//Spark.get("perfil", PerfilController::mostrarOpciones,engine);
+		//Spark.get("/perfil",PoiController::get,engine);
+		Spark.get("/perfil", PerfilController::mostrarPerfil,engine);
 		Spark.get("/poi", PoiController::get,engine);
 		Spark.get("/busqueda", PoiController::listar,engine);
 		Spark.get("/terminal", TerminalController::listar,engine);
