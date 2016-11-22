@@ -29,7 +29,8 @@ public class BusquedasController {
 	public static ModelAndView listar(Request req, Response res)
 	{
 		Map<String, List<Busqueda>> model = new HashMap<>();
-		//List<Busqueda> busquedas = RepositorioNoPersistente.getInstance().listar();
+//		List<Busqueda> busqueda = (new RepositorioPersistente()).listar();
+//		busqueda.addAll(RepositorioNoPersistente.getInstance().listar());
 		
 		List<Poi> pois = new ArrayList<>();
 		
