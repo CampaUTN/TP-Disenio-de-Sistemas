@@ -1,46 +1,42 @@
-
 {{>navBar.hbs}}
 
 <!DOCTYPE html>
 <html>
- <head>
- <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
- 	<title>POIS</title>
- </head>  
-   
+<head>
+  <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
+  <title>POISi</title>
+</head>
+  <div>    </div>
+   <div>    </div>
+  <h1>Editar Poi</h1>  
   <body>
-	<h1>Resultado Busqueda</h1>
-
-	<div class = "wrapper">
-	<table class="table">
-		   <tr class="row header">
-		   	   <th class="cell">Nombre</th>
-			   <th class="cell">Calle</th>
-			   <th class="cell">Direccion</th>
-			   <th class="cell">Ubicacion</th>
-		   </tr>
-	
-		   {{#each pois}}
-		    <tr class="row">
-			   <td class="cell">{{nombre}}</td>
-			    <td class="cell">{{calle}}</td>
-			   <td class="cell">{{direccion}}</td>
-			   <td class="cell">{{ubicacion}}</td>
-			   <td> <button class="botonBuscar"> Ver&nbspMas </button> </td>
-		  </tr>
-	      {{/each}}
-	</table>
-	</div>
-	
-	
-	
-   <footer class="footer">
+    <div>
+    	Nombre anterior: {{nombre}}
+    	<br>
+        <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
+        <br>
+        Direccion anterior: {{direccion}}
+    	<br>
+        <input class="filterComuna" type="text" id="textNombre" placeholder="direccion" size="25" max="10">
+        <br>
+        Latitud anterior: {{latitud}}
+    	<br>
+        <input class="filterComuna" type="text" id="textNombre" placeholder="latitud" size="25" max="10">
+        <br>
+        Longitud anterior: {{longitud}}
+    	<br>
+        <input class="filterComuna" type="text" id="textNombre" placeholder="longitud" size="25" max="10">
+        <br>
+    </div>
+     <div>
+        <button class="botonBuscar" value="Atras"/>Atras</button>
+        <button class="botonWarning" value="Confirmar"/>Confirmar</button>
+    </div>
+  <footer class="footer">
      <p class="text-center">
        &copy; 2016 UTN FRBA
      </p>
-  </footer>
-	
-  </body>
+ </footer>
   
-  
+ </body>
 </html>
