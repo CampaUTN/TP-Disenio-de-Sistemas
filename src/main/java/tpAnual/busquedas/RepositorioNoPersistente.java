@@ -30,4 +30,10 @@ public class RepositorioNoPersistente extends RepositorioBusqueda {
 		Busqueda busqueda = new Busqueda(palabrasIngresadas,pois);
 		busquedas.add(busqueda);
 	}
+	
+	public List<Busqueda> listar()
+	{
+		return busquedas;
+	}
+	
 }

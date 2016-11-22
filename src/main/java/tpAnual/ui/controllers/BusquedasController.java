@@ -1,6 +1,7 @@
 package tpAnual.ui.controllers;
 
 import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,14 +17,20 @@ import tpAnual.POIs.Poi;
 import tpAnual.busquedas.Busqueda;
 import tpAnual.util.wrapper.PointWrapper;
 
+import tpAnual.busquedas.RepositorioBusqueda;
+import tpAnual.busquedas.RepositorioPersistente;
+import tpAnual.busquedas.RepositorioNoPersistente;
+
+
 public class BusquedasController {
 
-public static ModelAndView listar(Request req, Response res){
-		
-		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
-		
+
+	
+	public static ModelAndView listar(Request req, Response res)
+	{
 		Map<String, List<Busqueda>> model = new HashMap<>();
-  		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
+		//List<Busqueda> busquedas = RepositorioNoPersistente.getInstance().listar();
+		
 		List<Poi> pois = new ArrayList<>();
 		
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
@@ -39,17 +46,17 @@ public static ModelAndView listar(Request req, Response res){
 		pois.add(poi2);
 		
 		Busqueda b1 = new Busqueda("hola", pois);
-		//b1.setFecha(Date.valueOf(LocalDate.now()));
+		b1.setFecha(Date.valueOf(LocalDate.now()));
 		
 		//BORRAR ESTO DE PRUEBA
-		List<Busqueda> busquedas = new ArrayList<>();
+		List<Busqueda> busqueda = new ArrayList<>();
+		busqueda.add(b1);
 		
-		busquedas.add(b1);
-  		model.put("busqueda", busquedas);
-  		
-  		return new ModelAndView(model, "historico-consultas.hbs");
-	
+		model.put("busqueda", busqueda);
+		return new ModelAndView(model, "historico-consultas.hbs");
 	}
+	
+	
 	
 	
 }

@@ -8,5 +8,6 @@ import tpAnual.POIs.Poi;
 public abstract class RepositorioBusqueda {
 	
 	public abstract void registrarBusqueda(String palabrasIngresadas, List<Poi> poisDeTodosOrigenes);
+	public abstract List<Busqueda> listar();
 	
 }
