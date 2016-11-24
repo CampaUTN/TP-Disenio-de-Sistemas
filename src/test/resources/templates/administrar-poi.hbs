@@ -26,25 +26,21 @@
     </div>
     <br>
     <div>
-        <center>
-        <table>
+        <table class="table table-stripped" align="center">
             <tr class="row header">
             <th class="cell" >Nombre</th>
             <th class="cell" >Direccion</th>
             <th class="cell" >Tipo<br></th>
         </tr>
+        
+        {{#each terminales}}
         <tr class="row" >
             <td class="cell" >UTN FRBA<br></td>
             <td class="cell" >Mozart 2300<br></td>
             <td class="cell" >La facu(?)<br></td>
         </tr>
-        <tr class="row" >
-            <td class="cell" >Colectivo 107<br></td>
-            <td class="cell" >Monroe 5250<br></td>
-            <td class="cell" >Estacion de colectivo<br></td>
-        </tr>
+        {{/each}}
         </table>
-        </cener>
     </div>
      <div>
         <button class="botonBuscar" value="Atras"/>Atras</button>
@@ -56,6 +52,7 @@
        &copy; 2016 UTN FRBA
      </p>
  </footer>
+  
   
  </body>
 </html>

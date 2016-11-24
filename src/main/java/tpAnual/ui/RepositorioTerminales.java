@@ -1,5 +1,6 @@
 package tpAnual.ui;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Assert;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
@@ -42,6 +43,10 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 
 		Reseter.resetSingletons();
 		return terminales;
+	}
+	
+	public List<Terminal> getTerminalesPorComuna(int comuna){
+		return this.listar().stream().filter(t->t.getNumeroTerminal()==comuna).collect(Collectors.toList());
 	}
 	
 	public Terminal buscarPorNombre(String nombre){
