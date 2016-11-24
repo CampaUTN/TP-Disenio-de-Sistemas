@@ -28,21 +28,33 @@
             <th class="cell" >Nombre</th>
             <th class="cell" >Direccion</th>
             <th class="cell" >Tipo<br></th>
+            <th class="cell" >Modificar<br></th>
+            <th class="cell" >Eliminar<br></th>
         </tr>
         
-        {{#each terminales}}
-        <tr class="row" >
-            <td class="cell" >UTN FRBA<br></td>
-            <td class="cell" >Mozart 2300<br></td>
-            <td class="cell" >La facu(?)<br></td>
-        </tr>
-        {{/each}}
+        {{#each pois}}
+			   <tr class="row">
+				   <td>{{nombre}}</td>
+				   <td>{{direccion}}</td>
+				   <td>{{tipo}}</td>
+				   <td>
+				   		<form action="/modificarTerminal" method="GET">
+				   			<input type="hidden" name=poiId value={{poiId}} >
+				   			<input type="submit" value="M">
+				   		</form>
+				   </td>
+				   <td>
+				   		<form action="/modificarTerminal" method="GET">
+				   			<input type="hidden" name=poiId value={{poiId}} >
+				   			<input type="submit" value="X">
+				   		</form>
+				   </td>
+			  </tr>
+		      {{/each}}
         </table>
     </div>
      <div>
-        <button class="botonBuscar" value="Atras"/>Atras</button>
-        <button class="botonBuscar" value="Editar"/>Editar</button>
-        <button class="botonWarning" value="Eliminar"/>Eliminar</button>
+        <button class="atras" value="Atras"/>Atras</button>
     </div>
   <footer class="footer">
      <p class="text-center">
