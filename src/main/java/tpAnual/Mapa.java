@@ -127,7 +127,7 @@ public class Mapa implements WithGlobalEntityManager{
 		return resultados;
 	}
 
-	public List<Poi> buscarPoi(String nombre, int id){
+	public Poi poiDeId(String poiId){
 		
 		// TODO sacar esto que es para testear!
 		Set<String> tags = new HashSet<String>();
@@ -147,16 +147,16 @@ public class Mapa implements WithGlobalEntityManager{
 		Mapa.getInstance().alta(poi2);
 		
 		
-		List<Poi> resultados = entityManager().createQuery("FROM Poi WHERE poi_nombre = :nombre and poi_id = :id", Poi.class)
-				.setParameter("nombre", nombre)
-				.setParameter("id", id)
-				.getResultList();
+		Poi poi = entityManager().createQuery("FROM Poi WHERE poi_id = :id", Poi.class)
+				.setParameter("id", poiId)
+				.getResultList()
+				.get(0);
 				
 		//TODO sacar
 		entityManager().getTransaction().rollback();
 
 		
 		Reseter.resetSingletons();
-		return resultados;
+		return poi;
 	}
 }

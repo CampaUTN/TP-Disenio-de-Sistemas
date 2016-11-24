@@ -10,6 +10,7 @@ import java.util.Set;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import tpAnual.Mapa;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
@@ -53,13 +54,12 @@ public class AdministrarPoiController {
 	}
 
 	public static ModelAndView editar(Request req, Response res) {
-		Map<String, List<Poi>> model = new HashMap<>();
-		// List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		poi.setDireccion(1234);
-		poi.setCalle("Calle falsa");
+		String poiId = req.queryParams("id");
+		
+		Map<String, Poi> viewModel = new HashMap<>();
+
+		Poi poi = Mapa.getInstance().poiDeId(poiId);
+		viewModel.put("poi", poi);
 		return new ModelAndView(poi, "editar-poi.hbs");
 	}
 }
