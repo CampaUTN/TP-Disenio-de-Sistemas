@@ -15,9 +15,10 @@
   	<body style="margin:50px 0; padding:0;text-align:center;">
   
     <div>
-	  <input class="filterComuna" type="text" id="comuna" placeholder="comuna" size="25" max="10">
-	  
-    	<button class="botonBuscar" value="BUSCAR"/>BUSCAR</button>
+    	<form action="/terminal" method="GET">	
+    		<input class="filterComuna" type="text" id="comuna" placeholder="comuna" size="25" max="10">
+	  		<input class="botonIngresar" type="submit" value="BUSCAR">
+	  	</form>
     </div> 
 	
 	<br>
@@ -41,7 +42,7 @@
 			   <tr class="row">
 				   <td>{{numeroTerminal}}</td>
 				   <td>{{nombre}}</td>
-				   <td>{{comuna}}</td>
+				   <td>{{numeroComuna}}</td>
 				   <td><input type="checkbox" id="checkSeleccion"></td>
 			  </tr>
 		      {{/each}}

@@ -28,7 +28,7 @@ public class TerminalController {
 	public static ModelAndView listar(Request req, Response res){
 		
 		int terminalBuscada = 0;
-//		terminalBuscada = Integer.parseInt(req.params("terminalBuscada"));
+		terminalBuscada = Integer.parseInt(req.queryParams("comuna"));
 		
 		Map<String, List<Terminal>> model = new HashMap<>();
 		
@@ -38,7 +38,7 @@ public class TerminalController {
   			terminales.addAll(RepositorioTerminales.instancia.listar());
   		}
   		else{
-  			terminales = RepositorioTerminales.instancia.getTerminalesPorComuna(terminalBuscada);
+  			terminales.addAll(RepositorioTerminales.instancia.getTerminalesPorComuna(terminalBuscada));
   		}
   		
   		model.put("terminales", terminales);
