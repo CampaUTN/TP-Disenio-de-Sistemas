@@ -47,7 +47,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		entityManager().persist(terminalPrueba1);
 		entityManager().persist(terminalPrueba2);
 		
-		List<Terminal> terminales =  entityManager().createQuery("from Terminal", Terminal.class).getResultList();
+		List<Terminal> terminales =  entityManager().createQuery("from Terminal where numeroTerminal<>null", Terminal.class).getResultList();
 //		entityManager().getTransaction().rollback();
 
 //		Reseter.resetSingletons();
