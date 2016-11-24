@@ -16,8 +16,6 @@ public class TerminalController {
 	public static ModelAndView get(Request req, Response res){
 		
 		Map<String, Object> viewModel = new HashMap<String, Object>();
-
-	 //TODO borrar
 		
 		Terminal terminal = new Terminal(12);
 		terminal.setNombre("test");
@@ -29,12 +27,22 @@ public class TerminalController {
 	
 	public static ModelAndView listar(Request req, Response res){
 		
-		Map<String, List<Terminal>> model = new HashMap<>();
-  		List<Terminal> terminales = RepositorioTerminales.instancia.listar();
+		int terminalBuscada = 0;
+//		terminalBuscada = Integer.parseInt(req.params("terminalBuscada"));
 		
+		Map<String, List<Terminal>> model = new HashMap<>();
+		
+		List<Terminal> terminales = new ArrayList<Terminal>();
+		
+  		if(terminalBuscada==0){
+  			terminales.addAll(RepositorioTerminales.instancia.listar());
+  		}
+  		else{
+  			terminales = RepositorioTerminales.instancia.getTerminalesPorComuna(terminalBuscada);
+  		}
+  		
   		model.put("terminales", terminales);
   		return new ModelAndView(model, "terminal.hbs");
-	
 	}
 	
 	public static ModelAndView alta(Request req, Response res){
