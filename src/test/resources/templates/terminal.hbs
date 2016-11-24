@@ -8,14 +8,14 @@
   <title>POIS</title>
 </head>
 
-   <div>    </div>
-   <div>    </div>
+	<br>
+	<br>
+	
   <h1>ADMINISTRACION DE TERMINALES</h1>  
-  <body>
+  	<body style="margin:50px 0; padding:0;text-align:center;">
   
     <div>
 	  <input class="filterComuna" type="text" id="comuna" placeholder="comuna" size="25" max="10">
-	  
 	  
     	<button class="botonBuscar" value="BUSCAR"/>BUSCAR</button>
     </div> 
@@ -23,23 +23,25 @@
 	<br>
 	<br>
 	
-	<div>
+	<div style="width:800px; margin:0 auto;">
   		 <h2>RESULTADOS</h2>
   		 
   		 <br>
   		 <br>
   		 
   		 <table class="table table-stripped" align="center">
-			   <tr class="tr header">
+			   <tr class="row header">
 			   	   <th>Terminal</th>
 				   <th>Nombre</th>
+				   <th>Comuna</th>
 				   <th>Seleccionar</th>
 			   </tr>
 		
 			   {{#each terminales}}
-			   <tr>
+			   <tr class="row">
 				   <td>{{numeroTerminal}}</td>
 				   <td>{{nombre}}</td>
+				   <td>{{comuna}}</td>
 				   <td><input type="checkbox" id="checkSeleccion"></td>
 			  </tr>
 		      {{/each}}
