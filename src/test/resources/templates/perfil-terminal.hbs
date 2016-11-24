@@ -1,34 +1,39 @@
+
 {{>navBar.hbs}}
 <!DOCTYPE html>
-
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
 <head>
    <title>POIS</title>
    
   		<h3>PERFIL : Terminal</h3>
-		<div> <h3>Nombre: {{terminal.nombre}} </h3>  <h3>Numero: {{terminal.numeroTerminal}} </h3> </div>
-  </head>
-  <body>
-		<div> </div>
+		<div> <h3>Nombre: {{terminal.nombre}} Numero: {{terminal.numeroTerminal}} </h3> </div>
+		</head>
+<body>
+	<div> </div>
 		 
-		<h1>Busqueda de pois</h1>  
+	<h1>Busqueda de pois</h1>  
 
-	<form action="/pois" method="GET">	 
-     <div>
+	<form action="/pois" method="GET" id="consulta">
+	    <div>
 	   <input class="passwd" type="text" name="nombre" placeholder="nombre" size="25" max="10">
-   	 </div> 
-    
-     <div>
-      <input class="passwd" type="text" name="tipo" placeholder="tipo" size="25" max="10">
-     </div>
-    
-     <div>
-       <input class="botonIngresar" type="submit" value="BUSCAR">
-     </div>
+   	 </div>   
 	</form>
 	
-
+	 <div>
+	  <select name = "tipo" form = "consulta" >
+  	  		  <option value="negocio">Negocio</option>
+  	 		  <option value="colectivo">Estacion de Colectivo</option>
+  	 		  <option value="banco">Banco</option>
+  			  <option value="CGP">CGP</option>
+  	 </select>
+	 </div>
+   
+     <div>
+       <input form = "consulta" class="botonBuscar" type="submit" value="BUSCAR">
+     </div>
+	</form>
+		 
 	
 	<div>
         <button class="botonBuscar" value="Atras"/>Atras</button>
