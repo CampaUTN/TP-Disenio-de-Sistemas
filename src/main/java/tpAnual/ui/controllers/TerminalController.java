@@ -16,7 +16,7 @@ import spark.Response;
 import tpAnual.Terminal;
 import tpAnual.ui.RepositorioTerminales;
 
-public class TerminalController implements WithGlobalEntityManager { // TransactionalOps
+public class TerminalController implements WithGlobalEntityManager, TransactionalOps { // TransactionalOps
 
 	public static ModelAndView get(Request req, Response res){
 		
@@ -66,13 +66,10 @@ public class TerminalController implements WithGlobalEntityManager { // Transact
 		terminalNueva.setNumeroComuna(comuna);
 		terminalNueva.setNombre(nombre);
 		
-		entityManager().getTransaction().begin();
-		entityManager().persist(terminalNueva);
-		
-		
-//		withTransaction(() ->{
+		withTransaction(() ->{
 			RepositorioTerminales.instancia.agregar(terminalNueva);
-//		});
+		});
+		
 		res.redirect("/terminal?comuna=0");
 		
 		return null;
