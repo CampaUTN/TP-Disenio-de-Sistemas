@@ -38,7 +38,9 @@ public class AdministrarPoiController {
 
 		Map<String, List<Poi>> model = new HashMap<>();
 
-		List<Poi> pois = nombrePoi==""? Mapa.getInstance().buscarPoi(nombrePoi): Mapa.getInstance().getPois();
+		List<Poi> pois = (nombrePoi=="" || nombrePoi==null)?
+				Mapa.getInstance().buscarPoi(nombrePoi)
+				:Mapa.getInstance().getPois();
 
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrar-pois.hbs");
