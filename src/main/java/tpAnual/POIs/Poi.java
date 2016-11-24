@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -26,6 +27,7 @@ import tpAnual.util.wrapper.PointWrapper;
 @Entity
 @Table(name="Poi")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="poi_tipo")
 public abstract class Poi {
 	
 	@Id @GeneratedValue
