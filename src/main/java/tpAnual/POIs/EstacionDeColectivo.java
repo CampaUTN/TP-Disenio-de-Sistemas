@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
+@DiscriminatorValue("Colectivo")
 public class EstacionDeColectivo extends Poi {
 	
 	@Column(name = "cole_linea")

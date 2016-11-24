@@ -3,6 +3,7 @@ package tpAnual.POIs;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
@@ -10,6 +11,7 @@ import tpAnual.util.wrapper.PointWrapper;
 import tpAnual.util.wrapper.PolygonWrapper;
 
 @Entity
+@DiscriminatorValue("CGP")
 public class Cgp extends PoiConServicios {
 
 	@Embedded

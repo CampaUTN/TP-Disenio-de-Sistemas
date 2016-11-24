@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
@@ -14,6 +15,7 @@ import tpAnual.Horario;
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
+@DiscriminatorValue("Negocio")
 public class Negocio extends Poi {
 	
 	@Column(name = "radio_cercania")

@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import tpAnual.Horario;
@@ -11,6 +12,7 @@ import tpAnual.Servicio;
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
+@DiscriminatorValue("Banco")
 public class Banco extends PoiConServicios {
 	
 	public Banco(){ 
