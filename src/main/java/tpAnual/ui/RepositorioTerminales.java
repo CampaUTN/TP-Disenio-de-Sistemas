@@ -19,7 +19,8 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 	}
 	
 	public void baja(Terminal terminal){
-		entityManager().remove(terminal);
+		entityManager().remove(entityManager().contains(terminal) ? terminal : entityManager().merge(terminal));
+		//entityManager().remove(terminal);
 	}
 	
 	public Terminal buscar(long id){

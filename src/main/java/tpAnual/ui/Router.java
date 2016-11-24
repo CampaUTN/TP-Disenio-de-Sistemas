@@ -1,6 +1,5 @@
 package tpAnual.ui;
 
-import spark.Redirect;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import tpAnual.ui.controllers.AdministrarPoiController;
