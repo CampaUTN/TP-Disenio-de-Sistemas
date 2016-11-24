@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.Terminal;
+import tpAnual.POIs.Poi;
 import tpAnual.util.Reseter;
 
 
@@ -17,9 +18,16 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		entityManager().persist(terminal);
 	}
 	
+	public void baja(Terminal terminal){
+		entityManager().remove(terminal); //em.merge(poi) retorna el poi que 'mergea'.
+	}
 	
 	public Terminal buscar(long id){
 		return entityManager().find(Terminal.class, id);
+	}
+	
+	public Terminal modificar(Terminal nuevo){
+		return entityManager().merge(nuevo);
 	}
 	
 	

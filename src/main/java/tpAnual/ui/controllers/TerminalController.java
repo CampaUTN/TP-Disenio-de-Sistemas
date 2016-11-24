@@ -83,7 +83,29 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		Terminal terminalAModificar = RepositorioTerminales.instancia.buscar(terminal);
 		
 		return new ModelAndView(terminalAModificar, "modificarTerminal.hbs");
+	}
 	
+	public Void guardarModificar(Request req, Response res){
+		
+		int numeroTerminal = Integer.parseInt(req.queryParams("numeroTerminal"));
+		String nombre = req.queryParams("nuevoNombre");
+		int comuna = Integer.parseInt(req.queryParams("nuevaComuna"));
+		
+		Terminal terminalViejo = RepositorioTerminales.instancia.buscar(numeroTerminal);
+		
+		Terminal terminalNuevo = new Terminal();
+		terminalNuevo.setNumeroTerminal(numeroTerminal);
+		terminalNuevo.setNombre(nombre);
+		terminalNuevo.setNumeroComuna(comuna);
+		
+		withTransaction(() ->{
+			RepositorioTerminales.instancia.baja(terminalViejo);
+//			RepositorioTerminales.instancia.agregar(terminalNuevo);
+		});
+		
+		res.redirect("/terminal?comuna=0");
+		
+		return null;
 	}
 	
 }

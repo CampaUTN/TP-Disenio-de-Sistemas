@@ -11,28 +11,53 @@
    <div>    </div>
    <div>    </div>
   <h1>MODIFICAR TERMINAL ID: {{numeroTerminal}}</h1>  
-  <body>
+  <body style="text-align:center">
   
   
     <div>
-  	<h5> Realice los cambios y haga click en Guardar </h5>
+  	<h5> Realice los cambios y haga click en Guardar (No me quedo mas fea la pantalla porque no tuve mas tiempo) </h5>
     <br>
-    	Nombre anterior: {{nombre}}
-	  	<br>
-	    Nombre nuevo: <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
-	  	<br>
-		Comuna anterior: {{numeroComuna}} 	 
-		<br>
-	  	Comuna nueva: <input class="filterComuna" type="text" id="textComuma" placeholder="comuna" size="25" max="10">
-	  	<br>
-	  	Mails Activados: 
-	  <input class="filterComuna" type="checkbox" id="checkMailsActivados">
-	  <br>
-	  	Registros Activados: 
-	  <input class="filterComuna" type="checkbox" id="checkRegistrosActivados">
-	<br>
-	<br>
-    	<button class="botonGuardar" value="GUARDAR"/>GUARDAR</button>
+    	<table align="center" cellspacing="10">
+	    	<tr>
+	    		<td>Nombre anterior</td>
+	    		<td> {{nombre}} </td>
+	    	</tr>
+	    	<tr>
+		  		<td>Comuna anterior</td>
+	    		<td> {{numeroComuna}} </td>
+		  	</tr>
+		  	<tr>
+		  		<td> 
+		  			Nombre nuevo 
+		  			<br>
+		  			<br>
+		  			Comuna nueva
+		  		</td>
+		    	
+		    	<td>
+			    	<form action="/modificarTerminal" method="POST"> 
+			    		<br>
+			    		<br>
+			    		<br>
+			    		<br>
+			    		<input type="hidden" name="numeroTerminal" value={{numeroTerminal}}>
+			    		
+					    <input class="filterComuna" type="text" name="nuevoNombre" id="textNombre" placeholder="nombre" size="25" max="10">
+						<br>
+					  	<input class="filterComuna" type="text" name="nuevaComuna" id="textComuma" placeholder="comuna" size="25" max="10">
+									  	<!--Mails Activados: 
+									  	<input class="filterComuna" type="checkbox" id="checkMailsActivados">
+									  		<br>
+									  	Registros Activados: 
+									  	<input class="filterComuna" type="checkbox" id="checkRegistrosActivados"> -->
+						<br>
+						<br>
+			    		<input class="botonIngresar" type="submit" value="GUARDAR">
+	    			</form>
+	    			
+	    		</td>
+    		</tr>
+    	</table>
     </div> 
 
   
