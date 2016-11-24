@@ -13,21 +13,22 @@
   <h1>Editar Poi</h1>  
   <body>
     <div>
+    	<form action="/modificarTerminal" method="POST"> 
     	Nombre anterior: {{nombre}}
     	<br>
-        <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
+        <input class="filterComuna" type="text" name="nuevoNombre" id="textNombre" placeholder="nombre" size="25" max="10">
         <br>
         Direccion anterior: {{direccion}}
     	<br>
-        <input class="filterComuna" type="text" id="textNombre" placeholder="direccion" size="25" max="10">
+        <input class="filterComuna" type="text" name="nuevaDireccion" id="textNombre" placeholder="direccion" size="25" max="10">
         <br>
         Latitud anterior: {{latitud}}
     	<br>
-        <input class="filterComuna" type="text" id="textNombre" placeholder="latitud" size="25" max="10">
+        <input class="filterComuna" type="text" name="nuevaLatitud" id="textNombre" placeholder="latitud" size="25" max="10">
         <br>
         Longitud anterior: {{longitud}}
     	<br>
-        <input class="filterComuna" type="text" id="textNombre" placeholder="longitud" size="25" max="10">
+        <input class="filterComuna" type="text" name="nuevaLongitud" id="textNombre" placeholder="longitud" size="25" max="10">
         <br>
     </div>
      <div>

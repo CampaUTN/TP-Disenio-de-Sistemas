@@ -135,7 +135,7 @@ public class Mapa implements WithGlobalEntityManager{
 		return resultados.stream().filter(t-> t.getClass().getSimpleName().equals(tipo)).collect(Collectors.toList());
 	}
 
-	public Poi poiDeId(String poiId){
+	public Poi poiDeId(long poiId){
 		
 		// TODO sacar esto que es para testear!
 		Set<String> tags = new HashSet<String>();

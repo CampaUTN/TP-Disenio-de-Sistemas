@@ -11,11 +11,13 @@ import tpAnual.util.wrapper.PolygonWrapper;
 
 @Entity
 public class Cgp extends PoiConServicios {
-	
+
 	@Embedded
 	private PolygonWrapper comuna;
-
-	public Cgp(){super();}
+	
+	public Cgp(){
+		super();
+	}
 	
 	public Cgp(PointWrapper ubicacion, String nombre, Set<String> tags, List<PointWrapper> puntosComuna) {
 		super(ubicacion, nombre, tags);
@@ -26,7 +28,7 @@ public class Cgp extends PoiConServicios {
 	public boolean estaCerca(PointWrapper ubicacion) {
 		return comuna.isInside(ubicacion) && comuna.isInside(this.getUbicacion());
 	}
-
+	
 	public PolygonWrapper getComuna() {
 		return comuna;
 	}

@@ -19,6 +19,7 @@ public static void configure() {
 		Spark.staticFiles.location("/ui");
 		
 		TerminalController terminalController = new TerminalController();
+		AdministrarPoiController administrarPoiController = new AdministrarPoiController();
 		
 		Spark.get("/", Server::paginaPrincipal);
 		//Spark.get("/perfil",PoiController::get,engine);
@@ -34,6 +35,7 @@ public static void configure() {
 		Spark.get("/historico-consultas", BusquedasController::listar,engine);
 		Spark.get("/administrar-pois", AdministrarPoiController::get,engine);
 		Spark.get("/administrar-pois/editar", AdministrarPoiController::editar,engine);
+		Spark.post("/administrar-pois/editar", administrarPoiController::guardar);
 
 	//Spark.get("/conversor/resultado", ConversorController::showResultado,				engine);
 		//Spark.get("/persona", PersonaController::get, engine);

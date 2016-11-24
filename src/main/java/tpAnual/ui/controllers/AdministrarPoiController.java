@@ -1,6 +1,5 @@
 package tpAnual.ui.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -48,12 +47,29 @@ public class AdministrarPoiController {
 	}
 
 	public static ModelAndView editar(Request req, Response res) {
-		String poiId = req.queryParams("id");
+		long poiId = Long.parseLong(req.queryParams("id"));
 		
 		Map<String, Poi> viewModel = new HashMap<>();
 
 		Poi poi = Mapa.getInstance().poiDeId(poiId);
 		viewModel.put("poi", poi);
 		return new ModelAndView(poi, "editar-poi.hbs");
+	}
+	
+	public Void guardar(Request req, Response res){
+		String nombre = req.queryParams("nuevoNombre");
+		double latitud = Double.parseDouble(req.queryParams("nuevaLatitud"));
+		double longitud = Double.parseDouble(req.queryParams("nuevaLongitud"));
+		int comuna = Integer.parseInt(req.queryParams("nuevaComuna"));
+		long id = Long.parseLong(req.queryParams("id"));
+		
+		Poi poi = Mapa.getInstance().poiDeId(id);
+		poi.setNombre(nombre);
+		poi.setUbicacion(new PointWrapper(latitud, longitud));
+		poi.setNumeroComuna(comuna);
+		
+		res.redirect("/administrar-pois");
+		
+		return null;
 	}
 }

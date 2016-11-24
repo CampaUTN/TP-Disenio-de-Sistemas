@@ -47,6 +47,15 @@ public abstract class Poi {
 	
 	private String calle;
 	private Integer direccion;
+	private int numeroComuna = 0;
+
+	public int getNumeroComuna() {
+		return numeroComuna;
+	}
+
+	public void setNumeroComuna(int numeroComuna) {
+		this.numeroComuna = numeroComuna;
+	}
 
 	protected Poi(){}
 	
