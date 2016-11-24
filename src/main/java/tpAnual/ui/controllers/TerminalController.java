@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
@@ -14,7 +16,7 @@ import spark.Response;
 import tpAnual.Terminal;
 import tpAnual.ui.RepositorioTerminales;
 
-public class TerminalController{ //implements  WithGlobalEntityManager, TransactionalOps
+public class TerminalController implements WithGlobalEntityManager { // TransactionalOps
 
 	public static ModelAndView get(Request req, Response res){
 		
@@ -55,7 +57,7 @@ public class TerminalController{ //implements  WithGlobalEntityManager, Transact
 	
 	}
 	
-	public static Void altaAgregar(Request req, Response res){
+	public Void altaAgregar(Request req, Response res){
 		
 		String nombre = req.queryParams("nombre");
 		int comuna = Integer.parseInt(req.queryParams("comuna"));
@@ -63,6 +65,9 @@ public class TerminalController{ //implements  WithGlobalEntityManager, Transact
 		Terminal terminalNueva = new Terminal();
 		terminalNueva.setNumeroComuna(comuna);
 		terminalNueva.setNombre(nombre);
+		
+		entityManager().getTransaction().begin();
+		entityManager().persist(terminalNueva);
 		
 		
 //		withTransaction(() ->{
