@@ -141,17 +141,18 @@ Layout styles
 .table {
   
   margin: 0 0 40px 0;
-  width: 90%;
+  width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: table;
   text-align: center;
+  border-collapse: collapse; 
 }
 
 tr:nth-child(even) {background-color: #f2f2f2}
 
 th, td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
 }
 
 .tr.header {

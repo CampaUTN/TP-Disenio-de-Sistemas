@@ -1,41 +1,41 @@
+
 {{>navBar.hbs}}
 
 <!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
-  <title>POISi</title>
+  <title>POIS</title>
 </head>
   <div>    </div>
-   <div>    </div>
-  <h1>Editar Poi</h1>  
+   <div>    </div> 
   <body>
     <h1>Resultado Busqueda</h1>
- -
- -	<div class = "wrapper">
- -	<table class="table">
- -		   <tr class="row header">
- -		   	   <th class="cell">Nombre</th>
- -			   <th class="cell">Calle</th>
- -			   <th class="cell">Direccion</th>
- -			   <th class="cell">Ubicacion</th>
- -		   </tr>
- -	
- -		   {{#each pois}}
- -		    <tr class="row">
- -			   <td class="cell">{{nombre}}</td>
- -			    <td class="cell">{{calle}}</td>
- -			   <td class="cell">{{direccion}}</td>
- -			   <td class="cell">{{ubicacion}}</td>
- -			   <td> <button class="botonBuscar"> Ver&nbspMas </button> </td>
- -		  </tr>
- -	      {{/each}}
- -	</table>
- -	</div>
- -	
- -	
- -	
- -   <footer class="footer">
+ 
+ 	<div class = "wrapper">
+ 	<table class="table">
+ 		   <tr class="row header">
+ 		   	   <th class="cell">Nombre</th>
+ 			   <th class="cell">Calle</th>
+ 			   <th class="cell">Direccion</th>
+ 			   <th class="cell">Ubicacion</th>
+ 		   </tr>
+ 	
+ 		   {{#each pois}}
+ 		    <tr class="row">
+ 			   <td class="cell">{{nombre}}</td>
+ 			    <td class="cell">{{calle}}</td>
+ 			   <td class="cell">{{direccion}}</td>
+ 			   <td class="cell">{{ubicacion}}</td>
+ 			   <td> <button class="botonBuscar"> Ver&nbspMas </button> </td>
+ 		  </tr>
+ 	      {{/each}}
+ 	</table>
+ 	</div>
+ 	
+ 	
+ 	
+    <footer class="footer">
      <p class="text-center">
        &copy; 2016 UTN FRBA
      </p>
@@ -43,3 +43,4 @@
   
  </body>
 </html>
+

@@ -5,41 +5,30 @@
 <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
 <head>
    <title>POIS</title>
+   
+  		<h3>PERFIL : Terminal</h3>
+		<div> <h3>Nombre: {{terminal.nombre}} </h3>  <h3>Numero: {{terminal.numeroTerminal}} </h3> </div>
   </head>
   <body>
-  		<h1>PERFIL : Terminal</h1>
-		<div> <h2>Nombre: {{terminal.nombre}} </h2></div>
-		<div> <h2>Numero: {{terminal.numeroTerminal}} </h2></div>
+		<div> </div>
 		 
 		<h1>Busqueda de pois</h1>  
-   <div>
-	  <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
-        <input class="filterComuna" type="text" id="textNombre" placeholder="tipo" size="25" max="10">
-    </div>
-    <div>
-        <button class="botonBuscar" value="BUSCAR"/>Buscar</button>
-    </div>
+
+	<form action="/pois" method="GET">	 
+     <div>
+	   <input class="passwd" type="text" name="nombre" placeholder="nombre" size="25" max="10">
+   	 </div> 
     
-   <div class = "wrapper">
-	<table class="table">
-		   <tr class="row header">
-		   	   <th class="cell">Nombre</th>
-			   <th class="cell">Calle</th>
-			   <th class="cell">Direccion</th>
-			   <th class="cell">Ubicacion</th>
-		   </tr>
+     <div>
+      <input class="passwd" type="text" name="tipo" placeholder="tipo" size="25" max="10">
+     </div>
+    
+     <div>
+       <input class="botonIngresar" type="submit" value="BUSCAR">
+     </div>
+	</form>
 	
-		   {{#each pois}}
-		    <tr class="row">
-			   <td class="cell">{{nombre}}</td>
-			    <td class="cell">{{calle}}</td>
-			   <td class="cell">{{direccion}}</td>
-			   <td class="cell">{{ubicacion}}</td>
-			   <td> <button class="botonBuscar"> Ver&nbspMas </button> </td>
-		  </tr>
-	      {{/each}}
-	</table>
-	</div>
+
 	
 	<div>
         <button class="botonBuscar" value="Atras"/>Atras</button>

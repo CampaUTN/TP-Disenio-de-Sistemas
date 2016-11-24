@@ -3,12 +3,16 @@ package tpAnual.ui;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
+import tpAnual.busquedas.BuscadorLocal;
+import tpAnual.busquedas.RepositorioBuscadores;
 import tpAnual.util.Reseter;
 
 public class Server {
 	public static void main(String[] args) {
 
 		Reseter.resetSingletons();
+
+		RepositorioBuscadores.getInstance().agregarConsultora( new BuscadorLocal());
 		configurarSpark();
 		Router.configure();
 
