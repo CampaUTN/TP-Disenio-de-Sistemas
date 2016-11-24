@@ -24,6 +24,9 @@ public class RepositorioRegistros{
 		return instance;
 	}
 	
+	public List<RegistroBusqueda> getBusquedas(){
+		return registros;
+	}
 	
 	public void agregarRegistro(List<Poi> listaPois, List<String> palabras, Long tiempoEmpleado, Terminal terminal) {
 		registros.add(new RegistroBusqueda(listaPois, palabras, tiempoEmpleado, terminal));

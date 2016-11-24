@@ -26,6 +26,14 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 			save(new Busqueda(palabrasIngresadas,pois));
 	}
 	
+	public List<Busqueda> getBusquedas(){
+		List<Busqueda> busquedas = new ArrayList<Busqueda>();
+//		busquedas = datastore.createQuery(Busqueda.class).asList();
+		busquedas.add(new Busqueda("palabras1", null));
+		busquedas.add(new Busqueda("palabras2", null));
+		return busquedas;
+	}
+	
 	public List<Busqueda> listar(String fechaDesde, String fechaHasta) {
 		
 		

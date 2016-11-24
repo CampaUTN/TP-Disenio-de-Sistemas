@@ -30,9 +30,6 @@ public class BusquedasController {
 	{
 		Map<String, List<Busqueda>> model = new HashMap<>();
 		
-		
-		
-		
 		List<Poi> pois = new ArrayList<>();
 		
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
@@ -54,10 +51,6 @@ public class BusquedasController {
 		List<Busqueda> busqueda = new ArrayList<>();
 		busqueda.add(b1);
 		
-		
-       
-		
-		
 		model.put("busqueda", busqueda);
 		return new ModelAndView(model, "historico-consultas.hbs");
 	}
@@ -73,7 +66,7 @@ public class BusquedasController {
 		
 		
 		List<Busqueda> busqueda = new ArrayList<Busqueda>();
-//		busqueda.addAll((new RepositorioPersistente()).listar(fechaDesde, fechaHasta));
+		busqueda.addAll(new RepositorioPersistente().getBusquedas());
 		//busqueda.addAll(RepositorioNoPersistente.getInstance().listar(fechaDesde,fechaHasta));
 		
 		
