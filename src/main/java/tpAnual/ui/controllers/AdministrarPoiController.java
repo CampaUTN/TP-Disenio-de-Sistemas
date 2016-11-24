@@ -34,19 +34,11 @@ public class AdministrarPoiController {
 
 	public static ModelAndView listar(Request req, Response res) {
 
-		// ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA
-		// BD Y LUEGO MOSTRARLOS
+		String nombrePoi = req.queryParams("nombre");
 
 		Map<String, List<Poi>> model = new HashMap<>();
-		// List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
 
-		// BORRAR ESTO DE PRUEBA
-		List<Poi> pois = new ArrayList<Poi>();
-
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		pois.add(poi);
+		List<Poi> pois = nombrePoi==""? Mapa.getInstance().buscarPoi(nombrePoi): Mapa.getInstance().getPois();
 
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrar-pois.hbs");
