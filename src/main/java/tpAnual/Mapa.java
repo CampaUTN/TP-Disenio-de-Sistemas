@@ -96,7 +96,7 @@ public class Mapa implements WithGlobalEntityManager{
 		return terminales.stream().filter(t->t.getNumeroTerminal()==id).collect(Collectors.toList()).get(0);
 	}
 	
-	public List<Poi> buscarPoi(String nombre){
+	public List<Poi> buscarPoi(String nombre, String tipo){
 		
 		// TODO sacar esto que es para testear!
 		Set<String> tags = new HashSet<String>();
@@ -124,7 +124,8 @@ public class Mapa implements WithGlobalEntityManager{
 
 		
 		Reseter.resetSingletons();
-		return resultados;
+
+		return resultados.stream().filter(t-> t.getClass().getSimpleName().equals(tipo)).collect(Collectors.toList());
 	}
 
 	public Poi poiDeId(String poiId){
