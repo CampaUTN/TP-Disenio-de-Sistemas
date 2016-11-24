@@ -5,13 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import tpAnual.Terminal;
 import tpAnual.ui.RepositorioTerminales;
 
-public class TerminalController {
+public class TerminalController{ //implements  WithGlobalEntityManager, TransactionalOps
 
 	public static ModelAndView get(Request req, Response res){
 		
@@ -46,27 +49,34 @@ public class TerminalController {
 	}
 	
 	public static ModelAndView alta(Request req, Response res){
-		
-		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
-		
 		Map<String, List<Terminal>> model = new HashMap<>();
-  		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
   		
   		return new ModelAndView(model, "altaTerminal.hbs");
 	
 	}
 	
+	public static Void altaAgregar(Request req, Response res){
+		
+		String nombre = req.queryParams("nombre");
+		int comuna = Integer.parseInt(req.queryParams("comuna"));
+		
+		Terminal terminalNueva = new Terminal();
+		terminalNueva.setNumeroComuna(comuna);
+		terminalNueva.setNombre(nombre);
+		
+		
+//		withTransaction(() ->{
+			RepositorioTerminales.instancia.agregar(terminalNueva);
+//		});
+		res.redirect("/terminal?comuna=0");
+		
+		return null;
+	}
+	
 	public static ModelAndView modificar(Request req, Response res){
-		
-		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
-		
 		Map<String, List<Terminal>> model = new HashMap<>();
-  		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-  		
-//		Terminal terminal = Mapa.getInstance().buscarTerminalPorId(0);
 		Terminal terminal = new Terminal(0);
 		terminal.setNombre("termi");
-//  		return new ModelAndView(model, "modificarTerminal.hbs");
 		return new ModelAndView(terminal, "modificarTerminal.hbs");
 	
 	}

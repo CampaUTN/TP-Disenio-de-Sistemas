@@ -26,24 +26,24 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 	public List<Terminal> listar() {
 		
 		//TODO borrar ejemplitos de prueba
-		Terminal terminalPrueba1 = new Terminal();
-		terminalPrueba1.setNombre("terminal Abasto");
-		terminalPrueba1.setNumeroComuna(1);
-		
-		Terminal terminalPrueba2 = new Terminal();
-		terminalPrueba2.setNombre("terminal DOT");
-		terminalPrueba2.setNumeroComuna(2);
-
-		Reseter.resetSingletons();
-		entityManager().getTransaction().begin();
-		entityManager().persist(terminalPrueba1);
-
-		entityManager().persist(terminalPrueba2);
+//		Terminal terminalPrueba1 = new Terminal();
+//		terminalPrueba1.setNombre("terminal Abasto");
+//		terminalPrueba1.setNumeroComuna(1);
+//		
+//		Terminal terminalPrueba2 = new Terminal();
+//		terminalPrueba2.setNombre("terminal DOT");
+//		terminalPrueba2.setNumeroComuna(2);
+//
+//		Reseter.resetSingletons();
+//		entityManager().getTransaction().begin();
+//		entityManager().persist(terminalPrueba1);
+//
+//		entityManager().persist(terminalPrueba2);
 		
 		List<Terminal> terminales =  entityManager().createQuery("from Terminal", Terminal.class).getResultList();
-		entityManager().getTransaction().rollback();
+//		entityManager().getTransaction().rollback();
 
-		Reseter.resetSingletons();
+//		Reseter.resetSingletons();
 		return terminales;
 	}
 	

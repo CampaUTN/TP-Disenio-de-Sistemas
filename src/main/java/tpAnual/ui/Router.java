@@ -1,5 +1,6 @@
 package tpAnual.ui;
 
+import spark.Redirect;
 import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import tpAnual.ui.controllers.AdministrarPoiController;
@@ -25,6 +26,7 @@ public static void configure() {
 		Spark.get("/busqueda", PoiController::listar,engine);
 		Spark.get("/terminal", TerminalController::listar,engine);
 		Spark.get("/altaTerminal", TerminalController::alta,engine);
+		Spark.post("/altaTerminal", TerminalController::altaAgregar);
 		Spark.get("/modificarTerminal", TerminalController::modificar,engine);
 		Spark.get("/historico-consultas", BusquedasController::listar,engine);
 		Spark.get("/administrar-pois", AdministrarPoiController::get,engine);
