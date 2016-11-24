@@ -94,17 +94,30 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		Terminal terminalViejo = RepositorioTerminales.instancia.buscar(numeroTerminal);
 		
 		Terminal terminalNuevo = new Terminal();
-		terminalNuevo.setNumeroTerminal(numeroTerminal);
+//		terminalNuevo.setNumeroTerminal(numeroTerminal);
 		terminalNuevo.setNombre(nombre);
 		terminalNuevo.setNumeroComuna(comuna);
 		
 		withTransaction(() ->{
 			RepositorioTerminales.instancia.baja(terminalViejo);
-//			RepositorioTerminales.instancia.agregar(terminalNuevo);
+			RepositorioTerminales.instancia.agregar(terminalNuevo);
 		});
 		
 		res.redirect("/terminal?comuna=0");
 		
+		return null;
+	}
+	
+	public Void baja(Request req, Response res){
+		
+		int numeroTerminal = Integer.parseInt(req.queryParams("nroTerminal"));
+		Terminal terminal = RepositorioTerminales.instancia.buscar(numeroTerminal);
+		
+		withTransaction(() ->{
+			RepositorioTerminales.instancia.baja(terminal);
+		});
+		
+		res.redirect("/terminal?comuna=0");
 		return null;
 	}
 	

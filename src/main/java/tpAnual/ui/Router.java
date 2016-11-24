@@ -31,6 +31,7 @@ public static void configure() {
 		Spark.post("/altaTerminal", terminalController::altaAgregar);
 		Spark.get("/modificarTerminal", TerminalController::modificar,engine);
 		Spark.post("/modificarTerminal", terminalController::guardarModificar);
+		Spark.post("/bajaTerminal", terminalController::baja);
 		Spark.get("/historico-consultas", BusquedasController::listar,engine);
 		Spark.get("/administrar-pois", AdministrarPoiController::get,engine);
 		Spark.get("/administrar-pois/editar", AdministrarPoiController::editar,engine);

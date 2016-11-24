@@ -48,6 +48,10 @@
 				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
 				   			<input type="submit" value="M">
 				   		</form>
+				   		<form action="/bajaTerminal" method="POST">
+				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
+				   			<input type="submit" value="E">
+				   		</form>
 				   </td>
 			  </tr>
 		      {{/each}}
@@ -55,11 +59,8 @@
 		 
 		   <div>
   			<form action="/altaTerminal" method="GET">	
-	  			<input class="botonIngresar" type="submit" value="ALTA">
+	  			<input class="botonIngresar" type="submit" value="ALTA TERMINAL">
     		</form>
-    		
-    		<button class="botonEditar" value="EDITAR"/>EDITAR</button>
-   			<button class="botonEliminar" value="ELIMINAR"/>ELIMINAR</button>
    			
  		  </div>
 		 

@@ -19,7 +19,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 	}
 	
 	public void baja(Terminal terminal){
-		entityManager().remove(terminal); //em.merge(poi) retorna el poi que 'mergea'.
+		entityManager().remove(terminal);
 	}
 	
 	public Terminal buscar(long id){
