@@ -77,9 +77,12 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 	
 	public static ModelAndView modificar(Request req, Response res){
 		Map<String, List<Terminal>> model = new HashMap<>();
-		Terminal terminal = new Terminal(0);
-		terminal.setNombre("termi");
-		return new ModelAndView(terminal, "modificarTerminal.hbs");
+		
+		int terminal = Integer.parseInt(req.queryParams("nroTerminal"));
+		
+		Terminal terminalAModificar = RepositorioTerminales.instancia.buscar(terminal);
+		
+		return new ModelAndView(terminalAModificar, "modificarTerminal.hbs");
 	
 	}
 	
