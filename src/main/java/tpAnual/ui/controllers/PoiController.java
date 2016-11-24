@@ -41,7 +41,7 @@ public class PoiController {
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
   		
 		String busqueda = nombre + " " + tipo;
-		List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre);
+		List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
 		
   		model.put("pois", resultado);
   		return new ModelAndView(model, "pois.hbs");
