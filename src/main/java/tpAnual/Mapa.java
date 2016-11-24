@@ -11,7 +11,6 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.busquedas.BuscadorTexto;
 import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
@@ -99,7 +98,7 @@ public class Mapa implements WithGlobalEntityManager{
 	
 	public List<Poi> buscarPoi(String nombre){
 		
-		
+		// TODO sacar esto que es para testear!
 		Set<String> tags = new HashSet<String>();
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
 		
@@ -120,6 +119,7 @@ public class Mapa implements WithGlobalEntityManager{
 		List<Poi> resultados = entityManager().createQuery("FROM Poi WHERE poi_nombre = :nombre", Poi.class).
 				setParameter("nombre", nombre).getResultList();
 				
+		//TODO sacar
 		entityManager().getTransaction().rollback();
 
 		
@@ -127,4 +127,36 @@ public class Mapa implements WithGlobalEntityManager{
 		return resultados;
 	}
 
+	public List<Poi> buscarPoi(String nombre, int id){
+		
+		// TODO sacar esto que es para testear!
+		Set<String> tags = new HashSet<String>();
+		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
+		
+		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
+		poi1.agregarTag("negocio");
+		poi1.agregarTag("compras");
+		poi1.setCalle("Strangford");
+		poi1.setDireccion(1857);
+		
+		poi2.setCalle("Avenida Rivadavia");
+		poi2.setDireccion(458);
+		Reseter.resetSingletons();
+		entityManager().getTransaction().begin();
+		Mapa.getInstance().alta(poi1);
+		Mapa.getInstance().alta(poi2);
+		
+		
+		List<Poi> resultados = entityManager().createQuery("FROM Poi WHERE poi_nombre = :nombre and poi_id = :id", Poi.class)
+				.setParameter("nombre", nombre)
+				.setParameter("id", id)
+				.getResultList();
+				
+		//TODO sacar
+		entityManager().getTransaction().rollback();
+
+		
+		Reseter.resetSingletons();
+		return resultados;
+	}
 }
