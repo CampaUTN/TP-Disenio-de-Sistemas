@@ -39,9 +39,16 @@ public class PoiController {
 		
 		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-  		
-		String busqueda = nombre + " " + tipo;
-		List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+  		List <Poi> resultado = new ArrayList<>();
+		if(nombre.length() == 0 && tipo == "Todos"){
+			System.out.println("ENTRE ACA");
+			resultado = Mapa.getInstance().getPois();
+		}else
+		{
+
+			resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+		}
+		 
 		
   		model.put("pois", resultado);
   		return new ModelAndView(model, "pois.hbs");
