@@ -13,7 +13,7 @@
 	<div> </div>
 		 
 	<h1>Busqueda de pois</h1>  
-
+	
 	<form action="/pois" method="GET" id="consulta">
 	    <div>
 	   <input class="passwd" type="text" name="nombre" placeholder="nombre" size="25" max="10">
@@ -21,23 +21,24 @@
 	</form>
 	
 	 <div>
-	  <select name = "tipo" form = "consulta" >
+	  <h4>Tipo: <select name = "tipo" form = "consulta" >
   	  		  <option value="negocio">Negocio</option>
   	 		  <option value="colectivo">Estacion de Colectivo</option>
   	 		  <option value="banco">Banco</option>
   			  <option value="CGP">CGP</option>
-  	 </select>
+  	 		  </select>
+	  </h4>
 	 </div>
    
      <div>
        <input form = "consulta" class="botonBuscar" type="submit" value="BUSCAR">
      </div>
 	</form>
-		 
-	
-	<div>
-        <button class="botonBuscar" value="Atras"/>Atras</button>
-	</div>
-	
+		 	<footer class="footer">
+     <p class="text-center">
+       &copy; 2016 UTN FRBA
+     </p>
+ </footer>
   </body>
+     
 </html>
