@@ -12,15 +12,13 @@
   <h1>Administar pois</h1>  
   <body style="margin:50px 0; padding:0;text-align:center;">
   
-    <div>
-	  <input class="filterComuna" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
 	  {{>selectorTipo.hbs}}
-    </div>
-    <div>
-    	<form action="/terminal" method="GET">	
+    
+    	<form action="/administrar-poi" method="GET">	
+	 		<input class="filterComuna" name="nombre" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
         	<input class="botonIngresar" type="submit" value="Buscar">
         </form>
-    </div>
+    
     <br>
     <div>
         <table class="table table-stripped" align="center">

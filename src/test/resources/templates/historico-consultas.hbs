@@ -7,33 +7,26 @@
   <title>POIS</title>
 </head>
   	
-
-   <div>    </div>
-   <div>    </div>
   <h1>HISTORICO CONSULTAS</h1>  
-  <body>
   
-    <div>
+  <body>
+
 	  <input class="filterFecha" type="text" id="fechaDesde" placeholder="desde" size="25" max="10">
 	  <input class="filterFecha" type="text" id="fechaHasta" placeholder="hasta" size="25" max="10">
-    </div> 
-    
-    <div>
+  
       <input class="num" type="text" id="numeroPois" placeholder="cantidad de pois" size="25" max="10">
-    </div>
-    
-	<div>
-      <input class="num" type="text" id="numeroPois" placeholder="terminal" size="25" max="10">
-    </div>
+
+      <input class="num" type="text" id="terminal" placeholder="terminal" size="25" max="10">
+ 
 	
-    <div>
+
     <form action="/historico-consulta" method="GET">	
-         	<input class="botonIngresar" type="submit" value="Buscar">
+    	<!-- ACA ADENTRO TIENEN QUE IR LOS VALORES Q VAYAN COMO PARAMETRO -->
+        <input class="botonIngresar" type="submit" value="Buscar">
     </form>
-    </div>
 	
-	<div>    </div>
-	<div>    </div>
+	<br><br>
+	
 	<div>
   		 <h2>RESULTADOS</h2>
   		 <div class="wrapper">
@@ -55,12 +48,6 @@
 		 </div>
   </div>
 
-  
-  <footer class="footer">
-     <p class="text-center">
-       &copy; 2016 UTN FRBA
-     </p>
- </footer>
   
  </body>
 </html>

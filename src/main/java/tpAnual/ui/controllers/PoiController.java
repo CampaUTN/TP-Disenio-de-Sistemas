@@ -20,30 +20,59 @@ public class PoiController {
 
 	public static ModelAndView get(Request req, Response res){
 		
-		Map<String, Object> viewModel = new HashMap<String, Object>();
-
-	 //TODO borrar
-		Poi poi = (Poi)new Negocio(null,"Negocio",null,"compras",5);
-		poi.setCalle("Strangford 1857");
+//		Map<String, Object> viewModel = new HashMap<String, Object>();
+//
+//	 //TODO borrar
+//		Poi poi = (Poi)new Negocio(null,"Negocio",null,"compras",5);
+//		poi.setCalle("Strangford 1857");
+//		
+//		viewModel.put("poi", poi);
+//		
+//		return new ModelAndView(viewModel, "busqueda.hbs");
 		
-		viewModel.put("poi", poi);
+		String nombre = req.queryParams("nombre");
 		
-		return new ModelAndView(viewModel, "busqueda.hbs");
+		
+		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
+  		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
+		Negocio negocio = new Negocio();
+		negocio.setNombre("EL NEGOCIO");
+		Mapa.getInstance().alta(negocio);
+		
+		if(nombre=="all"){
+			model.put("pois",Mapa.getInstance().getPois());
+		}else{
+//			String tipo = req.queryParams("tipo");
+//			String busqueda = nombre + " " + tipo;
+//			List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+//			model.put("pois", resultado);
+			model.put("pois",Mapa.getInstance().getPois());
+		}
+		
+  		return new ModelAndView(model, "pois.hbs");
 	}
 	
 	public static ModelAndView listar(Request req, Response res){
 		
 		//ACA DEBERIAMOS TENER EL REPO QUE SE ENCARGEU DE BUSCAR LOS POIS EN LA BD Y LUEGO MOSTRARLOS		
 		String nombre = req.queryParams("nombre");
-		String tipo = req.queryParams("tipo");
+		
 		
 		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
   		//List<Proyecto> proyectos = RepositorioProyectos.instancia.listar();
-  		
-		String busqueda = nombre + " " + tipo;
-		List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+		Negocio negocio = new Negocio();
+		Mapa.getInstance().alta(negocio);
 		
-  		model.put("pois", resultado);
+		if(nombre=="all"){
+			model.put("pois",Mapa.getInstance().getPois());
+		}else{
+//			String tipo = req.queryParams("tipo");
+//			String busqueda = nombre + " " + tipo;
+//			List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+//			model.put("pois", resultado);
+			model.put("pois",Mapa.getInstance().getPois());
+		}
+		
   		return new ModelAndView(model, "pois.hbs");
 	}
 	

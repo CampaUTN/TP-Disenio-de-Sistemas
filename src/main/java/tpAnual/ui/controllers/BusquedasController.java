@@ -65,16 +65,17 @@ public class BusquedasController {
 	public static ModelAndView listar (Request req, Response res)
 	{
 		Map<String, List<Busqueda>> model = new HashMap<>();
-		String fechaDesde = req.params("fechaDesde");
-		String fechaHasta = req.params("fechaHasta");
+//		String fechaDesde = req.params("fechaDesde");
+//		String fechaHasta = req.params("fechaHasta");
 		//String cantidadPois = req.params("cantidadPois");
 		//String terminal = req.params("terminal");
 		
 		
 		
 		List<Busqueda> busqueda = new ArrayList<Busqueda>();
-		busqueda.addAll((new RepositorioPersistente()).listar(fechaDesde, fechaHasta));
+//		busqueda.addAll((new RepositorioPersistente()).listar(fechaDesde, fechaHasta));
 		//busqueda.addAll(RepositorioNoPersistente.getInstance().listar(fechaDesde,fechaHasta));
+		
 		
 		model.put("busqueda", busqueda);
 		return new ModelAndView(model, "historico-consultas.hbs");
