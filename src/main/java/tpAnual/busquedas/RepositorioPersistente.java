@@ -35,8 +35,6 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 	}
 	
 	public List<Busqueda> listar(String fechaDesde, String fechaHasta) {
-		
-		
 		//Borrar esto de prueba
 		List<Poi> pois = new ArrayList<>();
 		
