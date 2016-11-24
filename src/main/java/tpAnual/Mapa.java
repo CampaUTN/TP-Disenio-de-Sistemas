@@ -96,6 +96,10 @@ public class Mapa implements WithGlobalEntityManager{
 		return terminales.stream().filter(t->t.getNumeroTerminal()==id).collect(Collectors.toList()).get(0);
 	}
 	
+	public List<Poi> buscarPoi(String nombre){
+		return this.buscarPoi(nombre, "");
+	}
+	
 	public List<Poi> buscarPoi(String nombre, String tipo){
 		
 		// TODO sacar esto que es para testear!
@@ -115,8 +119,10 @@ public class Mapa implements WithGlobalEntityManager{
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
 		
+		//TODO: ver tipo.
+		String query = "FROM Poi WHERE poi_nombre = :nombre " + tipo==""? "and poi_tipo = :tipo":"";
 		
-		List<Poi> resultados = entityManager().createQuery("FROM Poi WHERE poi_nombre = :nombre", Poi.class).
+		List<Poi> resultados = entityManager().createQuery(query, Poi.class).
 				setParameter("nombre", nombre).getResultList();
 				
 		//TODO sacar
