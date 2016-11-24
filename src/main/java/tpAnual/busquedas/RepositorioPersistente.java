@@ -28,6 +28,8 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 	
 	public List<Busqueda> listar(String fechaDesde, String fechaHasta) {
 		
+		
+		//Borrar esto de prueba
 		List<Poi> pois = new ArrayList<>();
 		
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
