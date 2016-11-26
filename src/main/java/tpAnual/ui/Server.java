@@ -1,5 +1,7 @@
 package tpAnual.ui;
 
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import spark.Request;
 import spark.Response;
 import spark.Spark;
@@ -15,7 +17,10 @@ public class Server {
 		RepositorioBuscadores.getInstance().agregarConsultora( new BuscadorLocal());
 		configurarSpark();
 		Router.configure();
-
+		Spark.after((req,res)-> {
+			PerThreadEntityManagers.getEntityManager().clear(); //si no va, poner close.
+		});
+		
 		Reseter.resetSingletons();
 	}
 	

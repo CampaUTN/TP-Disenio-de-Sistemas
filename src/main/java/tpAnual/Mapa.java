@@ -120,7 +120,7 @@ public class Mapa implements WithGlobalEntityManager{
 		Mapa.getInstance().alta(poi2);
 		
 		//TODO: ver tipo.
-		String query = "FROM Poi WHERE poi_nombre LIKE '%'+:nombre+'%' ";
+		String query = "FROM Poi WHERE poi_nombre LIKE CONCAT('%',:nombre,'%') ";
 		String extra = (tipo!="" && tipo!=null) ? "and poi_tipo = :tipo" : " ";
 		
 		List<Poi> resultados = entityManager().createQuery(query+extra, Poi.class).

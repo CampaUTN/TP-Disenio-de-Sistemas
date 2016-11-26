@@ -53,7 +53,7 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 		Busqueda b1 = new Busqueda("hola", pois);
 		b1.setFecha(Date.valueOf(LocalDate.now()));
 		
-		//BORRAR ESTO DE PRUEBA
+		//TODO BORRAR ESTO DE PRUEBA
 		List<Busqueda> busqueda = new ArrayList<>();
 		busqueda.add(b1);
 		
