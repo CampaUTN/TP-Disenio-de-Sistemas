@@ -1,7 +1,6 @@
 package tpAnual.ui.controllers;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
@@ -11,7 +10,6 @@ import spark.Request;
 import spark.Response;
 import tpAnual.Terminal;
 import tpAnual.ui.RepositorioTerminales;
-import tpAnual.util.Reseter;
 
 public class PerfilController implements WithGlobalEntityManager {
 

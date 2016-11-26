@@ -1,7 +1,6 @@
 package tpAnual.ui.controllers;
 
 import java.sql.Date;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,11 +14,8 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.Busqueda;
-import tpAnual.util.wrapper.PointWrapper;
-
-import tpAnual.busquedas.RepositorioBusqueda;
 import tpAnual.busquedas.RepositorioPersistente;
-import tpAnual.busquedas.RepositorioNoPersistente;
+import tpAnual.util.wrapper.PointWrapper;
 
 
 public class BusquedasController {

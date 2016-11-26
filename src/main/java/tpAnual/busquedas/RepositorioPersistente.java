@@ -5,15 +5,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mongodb.morphia.Datastore;
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.externo.sistemasExternos.BancoDTO;
 import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 import tpAnual.util.wrapper.PointWrapper;
-
-import org.mongodb.morphia.Datastore;
-import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 public class RepositorioPersistente extends RepositorioBusqueda implements WithGlobalEntityManager {
 	

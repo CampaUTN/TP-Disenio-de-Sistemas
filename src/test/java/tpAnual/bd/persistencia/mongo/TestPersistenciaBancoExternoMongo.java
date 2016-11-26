@@ -2,7 +2,6 @@ package tpAnual.bd.persistencia.mongo;
 
 import java.net.UnknownHostException;
 
-
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
