@@ -13,23 +13,22 @@ import tpAnual.ui.RepositorioTerminales;
 
 public class PerfilController implements WithGlobalEntityManager {
 
-	public static ModelAndView mostrarPerfil(Request req, Response res){
-		
+	public static ModelAndView mostrarPerfil(Request req, Response res) {
+
 		String nombre = req.queryParams("usuario");
 		String password = req.queryParams("password");
-		
+
 		Map<String, Object> viewModel = new HashMap<String, Object>();
-		
+
 		Terminal terminal = RepositorioTerminales.instancia.buscarPorNombre(nombre);
-		
-		viewModel.put("terminal",terminal);
-		
-		if(terminal != null){
+
+		viewModel.put("terminal", terminal);
+
+		if (terminal != null) {
 			return new ModelAndView(viewModel, "perfil-terminal.hbs");
-		}else
-		{
+		} else {
 			return new ModelAndView(viewModel, "perfil-acciones.hbs");
 		}
 	}
-	
+
 }

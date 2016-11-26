@@ -25,8 +25,8 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		return entityManager().find(Terminal.class, id);
 	}
 	
-	public Terminal modificar(Terminal nuevo){
-		return entityManager().merge(nuevo);
+	public void modificar(Terminal nuevo){
+		entityManager().refresh(nuevo);
 	}
 	
 	
