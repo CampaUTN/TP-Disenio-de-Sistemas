@@ -35,7 +35,8 @@
 			   	   <th>Terminal</th>
 				   <th>Nombre</th>
 				   <th>Comuna</th>
-				   <th>Seleccionar</th>
+				   <th>Modificar</th>
+				   <th>Eliminar</th>
 			   </tr>
 		
 			   {{#each terminales}}
@@ -48,9 +49,11 @@
 				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
 				   			<input type="submit" value="M">
 				   		</form>
+				   </td>
+				   <td>
 				   		<form action="/bajaTerminal" method="POST">
 				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
-				   			<input type="submit" value="E">
+				   			<input type="submit" value="X">
 				   		</form>
 				   </td>
 			  </tr>
