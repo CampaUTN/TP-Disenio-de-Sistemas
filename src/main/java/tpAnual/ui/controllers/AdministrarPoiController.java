@@ -1,5 +1,6 @@
 package tpAnual.ui.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -39,11 +40,16 @@ public class AdministrarPoiController implements WithGlobalEntityManager {
 
 		Map<String, List<Poi>> model = new HashMap<>();
 		
-		List<Poi> pois = (nombrePoi=="" || nombrePoi==null)
-				?Mapa.getInstance().getPois()
-				//:Mapa.getInstance().getPois();
-				:Mapa.getInstance().buscarPoi(nombrePoi);
+		List<Poi> pois = new ArrayList<Poi>();
+//				(nombrePoi=="" || nombrePoi==null)
+//				?Mapa.getInstance().getPois()
+//				:Mapa.getInstance().buscarPoi(nombrePoi);
 		
+		// testeo. TODO BORRAR
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		pois.add(poi);
 				
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrar-pois.hbs");
