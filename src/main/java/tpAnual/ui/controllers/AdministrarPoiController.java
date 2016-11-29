@@ -1,6 +1,5 @@
 package tpAnual.ui.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -26,7 +25,7 @@ public class AdministrarPoiController {
 		Set<String> tags = new HashSet<String>();
 		PointWrapper ubicacion = new PointWrapper(54, 10);
 		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-
+		Mapa.getInstance().alta(poi);
 		viewModel.put("poi", poi);
 
 		return new ModelAndView(viewModel, "administrar-poi.hbs");
@@ -37,12 +36,16 @@ public class AdministrarPoiController {
 		String nombrePoi = req.queryParams("nombre");
 
 		Map<String, List<Poi>> model = new HashMap<>();
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		Mapa.getInstance().alta(poi);
 		
-		List<Poi> pois = (nombrePoi=="" || nombrePoi==null)?
-				Mapa.getInstance().buscarPoi(nombrePoi)
-				:Mapa.getInstance().getPois();
+		List<Poi> pois = (nombrePoi=="" || nombrePoi==null)
+				?Mapa.getInstance().getPois()
+				:Mapa.getInstance().buscarPoi(nombrePoi);
 		
-				
+	
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrar-pois.hbs");
 

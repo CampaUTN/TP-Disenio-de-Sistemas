@@ -15,9 +15,11 @@
 	  {{>selectorTipo.hbs}}
     
     	<form action="/administrar-pois" method="GET">	
-	 		<input class="filterComuna" name="nombre" type="text" id="textNombre" placeholder="nombre" size="25" max="10">
+	 		<input class="passwd" type="text" id="nombre" value="nombre del POI" name="nombre" placeholder="nombre" size="25" max="10">
         	<input class="botonIngresar" type="submit" value="Buscar">
         </form>
+        
+        
     
     <br>
     <div>
@@ -36,14 +38,14 @@
 				   <td>{{direccion}}</td>
 				   <td>{{tipo}}</td>
 				   <td>
-				   		<form action="/modificarTerminal" method="GET">
+				   		<form action="/editar-poi" method="GET">
 				   			<input type="hidden" name=poiId value={{poiId}} >
 				   			<input type="submit" value="M">
 				   		</form>
 				   </td>
 				   <td>
-				   		<form action="/modificarTerminal" method="GET">
-				   			<input type="hidden" name=poiId value={{poiId}} >
+				   		<form action="/bajaTerminal" method="POST">
+				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
 				   			<input type="submit" value="X">
 				   		</form>
 				   </td>
@@ -51,11 +53,6 @@
 		      {{/each}}
         </table>
     </div>
-     <div>
-        <button class="atras" value="Atras"/>Atras</button>
-    </div>
-
-  
   
  </body>
 </html>
