@@ -133,20 +133,31 @@ public class Mapa implements WithGlobalEntityManager{
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
 		
+		List<Poi> resultados = new ArrayList<>();
+		
 		//TODO: ver tipo.
 		String query = "FROM Poi WHERE poi_nombre LIKE CONCAT('%',:nombre,'%') ";
-		String extra = (tipo!="" && tipo!=null) ? "and poi_tipo = :tipo" : " ";
+		System.out.println(tipo);
+		if( ! tipo.equals("Todos")){
+
+			String extra = "and poi_tipo = :tipo";
+
+			resultados = entityManager().createQuery(query+extra, Poi.class).
+					setParameter("nombre", nombre).setParameter("tipo", tipo).getResultList();
+		}else{
+			resultados = entityManager().createQuery(query, Poi.class).
+					setParameter("nombre", nombre).getResultList();
+		}
+
 		
-		List<Poi> resultados = entityManager().createQuery(query+extra, Poi.class).
-				setParameter("nombre", nombre).getResultList();
-				
+		
 		//TODO sacar
 		entityManager().getTransaction().rollback();
 
 		
 		Reseter.resetSingletons();
 
-		return resultados.stream().filter(t-> t.getClass().getSimpleName().equals(tipo)).collect(Collectors.toList());
+		return resultados;
 	}
 
 	public Poi poiDeId(long poiId){
