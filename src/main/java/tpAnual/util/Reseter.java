@@ -10,7 +10,7 @@ import tpAnual.busquedas.RepositorioRegistros;
 
 public class Reseter {
 	public static void resetSingletons(){
-		//Mapa.resetSingleton();
+		Mapa.resetSingleton();
 		RepositorioRegistros.resetSingleton();
 		RepositorioBuscadores.resetSingleton();
 		LoggerProcesos.resetSingleton();

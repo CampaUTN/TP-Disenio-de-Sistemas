@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -14,7 +16,7 @@ import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class AdministrarPoiController {
+public class AdministrarPoiController implements WithGlobalEntityManager {
 
 	public static ModelAndView get(Request req, Response res) {
 
@@ -36,16 +38,13 @@ public class AdministrarPoiController {
 		String nombrePoi = req.queryParams("nombre");
 
 		Map<String, List<Poi>> model = new HashMap<>();
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		Mapa.getInstance().alta(poi);
 		
 		List<Poi> pois = (nombrePoi=="" || nombrePoi==null)
 				?Mapa.getInstance().getPois()
+				//:Mapa.getInstance().getPois();
 				:Mapa.getInstance().buscarPoi(nombrePoi);
 		
-	
+				
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrar-pois.hbs");
 

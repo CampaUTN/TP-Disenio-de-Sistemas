@@ -1,14 +1,17 @@
 	package tpAnual;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.POIs.Banco;
+import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.util.Reseter;
@@ -63,8 +66,19 @@ public class Mapa implements WithGlobalEntityManager{
 	
 	// Manejo de lista de pois
 	@SuppressWarnings("unchecked")
-	public List<Poi> getPois(){
-		return entityManager().createQuery("FROM Poi").getResultList();
+	public List<Poi> getPois(){ //TODO BORRAR TODO MENOS LA LISTA Q ES LO Q HAY Q RETORNAR.
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		
+		entityManager().getTransaction().begin();
+		Mapa.getInstance().alta(poi);
+				
+		List<Poi> resultado = entityManager().createQuery("FROM Poi").getResultList();
+		
+		entityManager().getTransaction().rollback();
+		
+		return resultado;
 	}
 
 	public int cantidadPois() {
