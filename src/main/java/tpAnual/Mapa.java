@@ -192,4 +192,5 @@ public class Mapa implements WithGlobalEntityManager{
 		Reseter.resetSingletons();
 		return poi;
 	}
+	
 }

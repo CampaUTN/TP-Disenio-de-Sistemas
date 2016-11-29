@@ -9,46 +9,27 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import tpAnual.Mapa;
+import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.util.wrapper.PointWrapper;
 
 public class PoiController {
 
 	public static ModelAndView get(Request req, Response res){
+
+		String id = req.queryParams("id");
 		
-//		Map<String, Object> viewModel = new HashMap<String, Object>();
-//
-//	 //TODO borrar
-//		Poi poi = (Poi)new Negocio(null,"Negocio",null,"compras",5);
-//		poi.setCalle("Strangford 1857");
-//		
-//		viewModel.put("poi", poi);
-//		
-//		return new ModelAndView(viewModel, "busqueda.hbs");
+		Map<String, Object> viewModel = new HashMap<String, Object>();
 		
-		String nombre = req.queryParams("nombre");
-		
-		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
-		Negocio negocio = new Negocio();
-		negocio.setNombre("NEGOCIO");
-		negocio.setCalle("CALLE");
-		Mapa.getInstance().alta(negocio);
-		
-		List<Poi> pois = new ArrayList<Poi>();
-		pois.add(negocio);
-		model.put("pois", pois);
-		
-//		if(nombre=="all"){
-//			model.put("pois",Mapa.getInstance().getPois());
-//		}else{
-////			String tipo = req.queryParams("tipo");
-////			String busqueda = nombre + " " + tipo;
-////			List<Poi> resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
-////			model.put("pois", resultado);
-//			model.put("pois",Mapa.getInstance().getPois());
-//		}
-		
-  		return new ModelAndView(model, "pois.hbs");
+	 	 //TODO borrar
+		Poi poi = Mapa.getInstance().poiDeId(Long.parseLong(id));
+	
+		 		
+		viewModel.put("poi", poi);		 		
+		 	
+	
+		return new ModelAndView(viewModel, "poi.hbs");
 	}
 	
 	public static ModelAndView listar(Request req, Response res){

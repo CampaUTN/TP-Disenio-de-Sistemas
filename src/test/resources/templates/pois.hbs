@@ -1,5 +1,4 @@
 
-{{>navBar.hbs}}
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,7 @@
  		   	   <th class="cell">Nombre</th>
  			   <th class="cell">Calle</th>
  			   <th class="cell">Direccion</th>
- 			   <th class="cell">Ubicacion</th>
+			   <th class="cell"></th>
  		   </tr>
  	
  		   {{#each pois}}
@@ -26,8 +25,12 @@
  			   <td class="cell">{{nombre}}</td>
  			   <td class="cell">{{calle}}</td>
  			   <td class="cell">{{direccion}}</td>
- 			   <td class="cell">{{ubicacion}}</td>
- 			   <td> <button class="botonBuscar"> Ver&nbspMas </button> </td>
+ 			   <!--<td> <button class="botonBuscar"> Ver&nbspMas </button> </td> -->
+			   		   
+			  <form action="/poi" method="GET" id="detalle_poi">
+				   			<input type="hidden" name=id value=3 >									
+			  </form>
+			  <td><input form = "detalle_poi" class="botonBuscar" type="submit" value="VER MAS"></td>
  		  </tr>
  	      {{/each}}
  	</table>
