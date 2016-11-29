@@ -111,10 +111,10 @@ public class Mapa implements WithGlobalEntityManager{
 	}
 	
 	public List<Poi> buscarPoi(String nombre){
-		return this.buscarPoi(nombre, "");
+		return this.buscarPoi(nombre, "", "");
 	}
 	
-	public List<Poi> buscarPoi(String nombre, String tipo){
+	public List<Poi> buscarPoi(String nombre, String tipo, String calle){
 		
 		// TODO sacar esto que es para testear!
 		Set<String> tags = new HashSet<String>();
@@ -136,17 +136,17 @@ public class Mapa implements WithGlobalEntityManager{
 		List<Poi> resultados = new ArrayList<>();
 		
 		//TODO: ver tipo.
-		String query = "FROM Poi WHERE poi_nombre LIKE CONCAT('%',:nombre,'%') ";
+		String query = "FROM Poi WHERE poi_nombre LIKE CONCAT('%',:nombre,'%') AND calle LIKE CONCAT('%',:calle,'%')";
 		System.out.println(tipo);
 		if( ! tipo.equals("Todos")){
 
 			String extra = "and poi_tipo = :tipo";
 
 			resultados = entityManager().createQuery(query+extra, Poi.class).
-					setParameter("nombre", nombre).setParameter("tipo", tipo).getResultList();
+					setParameter("nombre", nombre).setParameter("calle", calle).setParameter("tipo", tipo).getResultList();
 		}else{
 			resultados = entityManager().createQuery(query, Poi.class).
-					setParameter("nombre", nombre).getResultList();
+					setParameter("nombre", nombre).setParameter("calle", calle).getResultList();
 		}
 
 		

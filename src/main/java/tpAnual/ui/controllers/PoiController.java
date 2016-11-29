@@ -36,6 +36,7 @@ public class PoiController {
 			
 		String nombre = req.queryParams("nombre");
 		String tipo = req.queryParams("tipo");
+		String calle = req.queryParams("calle");
 		
 		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
 		
@@ -46,7 +47,7 @@ public class PoiController {
 		}else
 		{
 
-			resultado = Mapa.getInstance().buscarPoi(nombre,tipo);
+			resultado = Mapa.getInstance().buscarPoi(nombre,tipo, calle);
 		}
 		 
 		
