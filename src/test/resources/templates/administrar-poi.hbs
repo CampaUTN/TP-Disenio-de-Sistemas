@@ -27,7 +27,7 @@
             <tr class="row header">
             <th class="cell" >Nombre</th>
             <th class="cell" >Direccion</th>
-            <th class="cell" >Tipo<br></th>
+            <!-- <th class="cell" >Tipo<br></th> -->
             <th class="cell" >Modificar<br></th>
             <th class="cell" >Eliminar<br></th>
         </tr>
@@ -36,16 +36,16 @@
 			   <tr class="row">
 				   <td>{{nombre}}</td>
 				   <td>{{direccion}}</td>
-				   <td>{{poi_tipo}}</td>
+				   <!-- <td>{{poi_tipo}}</td> -->
 				   <td>
-				   		<form action="/editar-poi" method="GET">
+				   		<form action="/modificarPoi" method="GET">
 				   			<input type="hidden" name=poiId value={{poiId}} >
 				   			<input type="submit" value="M">
 				   		</form>
 				   </td>
 				   <td>
-				   		<form action="/bajaTerminal" method="POST">
-				   			<input type="hidden" name=nroTerminal value={{numeroTerminal}} >
+				   		<form action="/bajaPoi" method="POST">
+				   			<input type="hidden" name=poiId value={{poiId}} >
 				   			<input type="submit" value="X">
 				   		</form>
 				   </td>

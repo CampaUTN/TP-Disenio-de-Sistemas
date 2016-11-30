@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -17,7 +18,7 @@ import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class AdministrarPoiController implements WithGlobalEntityManager {
+public class AdministrarPoiController  implements WithGlobalEntityManager, TransactionalOps {
 
 	public static ModelAndView get(Request req, Response res) {
 
@@ -52,7 +53,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager {
 		pois.add(poi);
 				
 		model.put("pois", pois);
-		return new ModelAndView(model, "administrar-pois.hbs");
+		return new ModelAndView(model, "administrar-poi.hbs");
 
 	}
 
@@ -63,7 +64,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager {
 
 		Poi poi = Mapa.getInstance().poiDeId(poiId);
 		viewModel.put("poi", poi);
-		return new ModelAndView(poi, "editar-poi.hbs");
+		return new ModelAndView(poi, "modificarPoi.hbs");
 	}
 	
 	public Void guardar(Request req, Response res){
@@ -80,6 +81,20 @@ public class AdministrarPoiController implements WithGlobalEntityManager {
 		
 		res.redirect("/administrar-pois");
 		
+		return null;
+	}
+	
+	
+	public Void baja(Request req, Response res){
+		
+		long poiId = Integer.parseInt(req.queryParams("poiId"));
+		Poi poi = Mapa.getInstance().poiDeId(poiId);
+		
+		withTransaction(() ->{
+			Mapa.getInstance().baja(poi);
+		});
+		
+		res.redirect("/administrar-pois");
 		return null;
 	}
 }
