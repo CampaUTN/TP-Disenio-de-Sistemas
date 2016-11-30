@@ -24,13 +24,14 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 
 		Map<String, Object> viewModel = new HashMap<String, Object>();
 
-		return new ModelAndView(viewModel, "administrar-poi.hbs");
+		return new ModelAndView(viewModel, "administrarPoi.hbs");
 	}
 
 	public static ModelAndView listar(Request req, Response res) {
 
-		String nombrePoi = req.queryParams("nombre");
-
+		String nombre = req.queryParams("nombre");
+		String tipo = req.queryParams("tipo");
+		
 		Map<String, List<Poi>> model = new HashMap<>();
 		
 		List<Poi> pois = new ArrayList<Poi>();
@@ -45,7 +46,7 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 		pois.add(poi);
 				
 		model.put("pois", pois);
-		return new ModelAndView(model, "administrar-poi.hbs");
+		return new ModelAndView(model, "administrarPoi.hbs");
 
 	}
 
@@ -71,7 +72,7 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 		poi.setUbicacion(new PointWrapper(latitud, longitud));
 		poi.setNumeroComuna(comuna);
 		
-		res.redirect("/administrar-pois");
+		res.redirect("/administrarPoi");
 		
 		return null;
 	}
@@ -86,7 +87,7 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 			Mapa.getInstance().baja(poi);
 		});
 		
-		res.redirect("/administrar-pois");
+		res.redirect("/administrarPoi");
 		return null;
 	}
 }
