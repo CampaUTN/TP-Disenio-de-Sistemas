@@ -24,14 +24,6 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 
 		Map<String, Object> viewModel = new HashMap<String, Object>();
 
-		// TODO borrar
-
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		Mapa.getInstance().alta(poi);
-		viewModel.put("poi", poi);
-
 		return new ModelAndView(viewModel, "administrar-poi.hbs");
 	}
 
