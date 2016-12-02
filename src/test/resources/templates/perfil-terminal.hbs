@@ -1,15 +1,10 @@
+{{#partial "titulo"}}
+ Terminal
+{{/partial}}
 
-{{>navBar.hbs}}
-<!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
-<head>
-   <title>POIS</title>
-   
-  		<div><h4>PERFIL : Terminal</h4></div>
-		<div> <h4>Nombre: {{terminal.nombre}} Numero: {{terminal.numeroTerminal}} </h4> </div>
-		</head>
-<body>
+{{#partial "principal"}}
+	<div><h4>PERFIL : Terminal</h4></div>
+	<div> <h4>Nombre: {{terminal.nombre}} Numero: {{terminal.numeroTerminal}} </h4> </div>
 	<div> </div>
 		 
 	<h1>Busqueda de pois</h1>  
@@ -22,20 +17,13 @@
 	    <div>
 	   <input class="passwd" type="text" name="nombre" placeholder="nombre" size="25" max="10">
 	   <input class="passwd" type="text" name="calle" placeholder="calle" size="25" max="10">
+	   <input type="hidden" name="terminal" value={{terminal.numeroTerminal}}>	
    	 </div>   
-	</form>
-	
-		{{>selectorTipo.hbs}}
-   
+	</form>	
+		{{>selectorTipo.hbs}}   
      <div>
        <input form = "consulta" class="botonBuscar" type="submit" value="BUSCAR">
      </div>
 	</form>
-		 	<footer class="footer">
-     <p class="text-center">
-       &copy; 2016 UTN FRBA
-     </p>
- </footer>
-  </body>
-     
-</html>
+{{/partial}}
+{{>layout.hbs}}

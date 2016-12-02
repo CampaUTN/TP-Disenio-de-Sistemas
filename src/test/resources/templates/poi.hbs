@@ -1,18 +1,11 @@
-{{>navBar.hbs}}
-<!DOCTYPE html>
-<html>
-  <head>
-    
-	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-	
-  <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
-    <title>POIS</title>
-	
-  </head>
-  <body>
+{{#partial "titulo"}}
+ Detalle de POI
+{{/partial}}	
   
-  <h2>POI</h2>
-  <div></div>
+{{#partial "principal"}}
+  
+  <h2>Detalle de POI</h2>
+  <h3> ID : {{poi.id}}</h3>
   <div></div>
   <div>
   <table class="table table-stripped" align="center">
@@ -36,5 +29,5 @@
 	</tr> 
 	</table> 
 	</div>
-  </body>
-</html>
+{{/partial}}
+{{>layout.hbs}}

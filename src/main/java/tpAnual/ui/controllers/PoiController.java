@@ -9,6 +9,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import tpAnual.Mapa;
+import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
@@ -37,20 +38,14 @@ public class PoiController {
 		String nombre = req.queryParams("nombre");
 		String tipo = req.queryParams("tipo");
 		String calle = req.queryParams("calle");
-		
-		Map<String, List<Poi>> model = new HashMap<String, List<Poi>>();
+		String numeroTerminal = req.queryParams("terminal");
+		Map<String, Object> model = new HashMap<String,Object>();
 		
   		List <Poi> resultado = new ArrayList<>();
-		if(nombre.length() == 0 && tipo == "Todos"){
-			System.out.println("ENTRE ACA");
-			resultado = Mapa.getInstance().getPois();
-		}else
-		{
-
-			resultado = Mapa.getInstance().buscarPoi(nombre,tipo, calle);
-		}
-		 
 		
+		resultado = Mapa.getInstance().buscarPoi(nombre,tipo, calle);
+		
+		model.put("terminal",new Terminal(Integer.parseInt(numeroTerminal)));		
   		model.put("pois", resultado);
   		return new ModelAndView(model, "pois.hbs");
 	}

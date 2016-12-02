@@ -1,17 +1,14 @@
+{{#partial "titulo"}}
+ Resultado de Busqueda
+{{/partial}}
 
-
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
-  <title>POIS</title>
-</head>
-  <div>    </div>
+{{#partial "principal"}}
+ <h1>Resultado Busqueda</h1>
+ <h2>Terminal : {{terminal.numeroTerminal}}</h2>
+		
+   <div>    </div>
    <div>    </div> 
-  <body>
-    <h1>Resultado Busqueda</h1>
- 
- 	<div class = "wrapper">
+  	<div class = "wrapper">
  	<table class="table">
  		   <tr class="row header">
  		   	   <th class="cell">Nombre</th>
@@ -35,16 +32,12 @@
  		  </tr>
  	      {{/each}}
  	</table>
- 	</div>
- 	
- 	
- 	
-    <footer class="footer">
-     <p class="text-center">
-       &copy; 2016 UTN FRBA
-     </p>
- </footer>
-  
- </body>
-</html>
+ 	</div>		   
+{{/partial}}
+{{>layout.hbs}}
+
+    
+ 
+
+
 
