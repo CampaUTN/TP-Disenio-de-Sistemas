@@ -5,7 +5,9 @@
 {{#partial "principal"}}
   
   <h2>Detalle de POI</h2>
-  <h3> ID : {{poi.id}}</h3>
+  <h3> ID : {{poi.id}}</h3>  
+  <h3> Tags : {{poi.tags}}</h3>
+  <h3> Tipo : {{poi.class}}</h3>
   <div></div>
   <div>
   <table class="table table-stripped" align="center">
@@ -28,6 +30,9 @@
 			   -->		
 	</tr> 
 	</table> 
+	
+	
+	
 	</div>
 {{/partial}}
 {{>layout.hbs}}

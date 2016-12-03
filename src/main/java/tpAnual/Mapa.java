@@ -125,9 +125,12 @@ public class Mapa implements WithGlobalEntityManager{
 		poi1.agregarTag("compras");
 		poi1.setCalle("Strangford");
 		poi1.setDireccion(1857);
+		poi1.setNumeroComuna(1);
 		
 		poi2.setCalle("Avenida Rivadavia");
 		poi2.setDireccion(458);
+		poi1.setNumeroComuna(2);
+		
 		Reseter.resetSingletons();
 		entityManager().getTransaction().begin();
 		Mapa.getInstance().alta(poi1);
@@ -171,9 +174,12 @@ public class Mapa implements WithGlobalEntityManager{
 		poi1.agregarTag("compras");
 		poi1.setCalle("Strangford");
 		poi1.setDireccion(1857);
+		poi1.setNumeroComuna(1);
 		
 		poi2.setCalle("Avenida Rivadavia");
 		poi2.setDireccion(458);
+		poi1.setNumeroComuna(3);
+		
 		Reseter.resetSingletons();
 		entityManager().getTransaction().begin();
 		Mapa.getInstance().alta(poi1);

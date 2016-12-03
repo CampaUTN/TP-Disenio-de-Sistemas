@@ -5,9 +5,11 @@
 {{#partial "principal"}}
  <h1>Resultado Busqueda</h1>
  <h2>Terminal : {{terminal.numeroTerminal}}</h2>
-		
+ 
    <div>    </div>
    <div>    </div> 
+		
+  {{#if pois}}		
   	<div class = "wrapper">
  	<table class="table">
  		   <tr class="row header">
@@ -32,7 +34,10 @@
  		  </tr>
  	      {{/each}}
  	</table>
- 	</div>		   
+ 	</div>	
+  {{else}}
+	 <h3>No se encontraron resultados.</h3>
+  {{/if}}  	   
 {{/partial}}
 {{>layout.hbs}}
 

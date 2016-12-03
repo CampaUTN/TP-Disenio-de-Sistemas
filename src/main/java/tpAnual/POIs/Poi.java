@@ -47,7 +47,7 @@ public abstract class Poi {
 	
 	private String calle;
 	private Integer direccion;
-	private int numeroComuna = 0;
+	private int numeroComuna;
 
 	public int getNumeroComuna() {
 		return numeroComuna;

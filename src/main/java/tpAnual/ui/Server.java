@@ -21,8 +21,7 @@ public class Server {
 		Spark.after((req,res)-> {
 			PerThreadEntityManagers.getEntityManager().clear(); //si no va, poner close.
 		});
-		// TODO
-		// Con esto deberia alcanzar. La dependencia esta.
+		
 		DebugScreen.enableDebugScreen();
 		Reseter.resetSingletons();
 	}
