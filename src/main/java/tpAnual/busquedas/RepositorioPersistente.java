@@ -53,11 +53,10 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 		b1.setFecha(Date.valueOf(LocalDate.now()));
 		
 		//TODO BORRAR ESTO DE PRUEBA
-		
-		datastore.save(b1);
+		registrarBusqueda("hola", pois);
 	    
 		List<Busqueda> busquedas = new ArrayList<>();
-		busquedas = datastore.createQuery(Busqueda.class).field("fecha").greaterThanOrEq(fechaDesde).field("fecha").lessThanOrEq(fechaHasta).asList();
+		busquedas = datastore.createQuery(Busqueda.class)/*.field("fecha").greaterThanOrEq(fechaDesde).field("fecha").lessThanOrEq(fechaHasta)*/.asList();
 //		List<Busqueda> busquedaConFiltro = datastore.createQuery(Busqueda.class).filter("age $gt", 18).asList();
 //		busquedas = datastore.createQuery(Busqueda.class).asList();
 		return busquedas;

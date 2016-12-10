@@ -9,44 +9,90 @@
   	
   <h1>HISTORICO CONSULTAS</h1>  
   
-  <body>
-
-	  <input class="filterFecha" type="text" id="fechaDesde" placeholder="desde" size="25" max="10">
-	  <input class="filterFecha" type="text" id="fechaHasta" placeholder="hasta" size="25" max="10">
-  
-      <input class="num" type="text" id="numeroPois" placeholder="cantidad de pois" size="25" max="10">
-
-      <input class="num" type="text" id="terminal" placeholder="terminal" size="25" max="10">
- 
-	
-
+  <body style="margin:50px 0; padding:0;text-align:center;">
+<br>
+<br>
+  <table align="center">
+  <tr>
+			   	   <th bgcolor="#13eac4" style="padding:0 15px 0 15px;">   <center> Buscar Por Fecha  </center>  </th>
+			   	   <th>&nbsp;&nbsp;&nbsp;&nbsp; </th>
+				   <th bgcolor="#13eac4" style="padding:0 15px 0 15px;">   <center>  Buscar Por Cantidad de Pois Encontrados </center>   </th>
+				   <th >&nbsp;&nbsp;&nbsp;&nbsp;</th>
+				   <th bgcolor="#13eac4" style="padding:0 15px 0 15px;">   <center> Buscar Por Terminal </center>   </th>
+  </tr>     
+   <tr>
+    <td style="padding:0 15px 0 15px;">
     <form action="/historico-consulta" method="GET">	
-    	<!-- ACA ADENTRO TIENEN QUE IR LOS VALORES Q VAYAN COMO PARAMETRO -->
+    	<br><br>
+    	<center>
+    	<input class="filterFecha" type="text" id="fechaDesde" placeholder="desde" size="25" max="10">
+	    <input class="filterFecha" type="text" id="fechaHasta" placeholder="hasta" size="25" max="10">
+        <br><br>
+     
         <input class="botonIngresar" type="submit" value="Buscar">
+        </center>
     </form>
-	
+    </td>
+   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+   <td style="padding:0 15px 0 15px;">
+   <br><br>
+    <form action="/historico-consulta" method="GET">	
+        <center>
+        <input class="num" type="text" id="numeroPois" placeholder="cantidad de pois" size="25" max="10">
+        <br><br>
+        <input class="botonIngresar" type="submit" value="Buscar">
+        </center>
+        
+    </form>
+    
+    </td>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="padding:0 15px 0 15px;">
+    <br><br>
+    <form action="/historico-consulta" method="GET">	
+    <center>
+    <input class="num" type="text" id="terminal" placeholder="terminal" size="25" max="10">
+    	<br><br>
+    <input class="botonIngresar" type="submit" value="Buscar">	
+    </center>
+    </form>
+    
+   </td>
+   </tr>
+	</table>
 	<br><br>
 	
-	<div>
+	<div style="width:800px; margin:0 auto;">
   		 <h2>RESULTADOS</h2>
-  		 <div class="wrapper">
-  	  	  <div class="table table-stripped">
-  	   	    <div class="row header">
-     		   <div class="cell"> Fecha</div>
-     	 	   <div class="cell">Pois&nbspEncontrados </div>
-            </div>
+  		 
+  		 <br>
+  		 <br>
+            
+            
+     <table class="table table-stripped" align="center">
+			   <tr class="row header">
+			   	   <th>Fecha</th>
+				   <th>Cantidad De Pois Encontrados</th>
+				   <th>Pois encontrados</th>
+			   </tr>       
 			
 			{{#each busqueda}}
-  	      <div class="row">
-    	      <div class="cell"> {{fecha}}</div>
-       		  <div class="cell"> {{cantidadPois}} </div>
- 	 	 </div>
+  	        <tr class="row">
+    	      <td> {{fecha}}</td>
+       		  <td> {{cantidadPois}} </td>
+       		  <td>
+				  <form action="/busqueda-pois" method="GET">
+				   			<input type="hidden" name=busqueda value={{pois}} >
+				   			<input type="submit" value="Ver Pois">
+				  </form>
+			  </td>
+ 	 	 
 		 {{/each}}
-		
+	 </table>	
 		 
 		 
 		 </div>
-  </div>
+  
 
   
  </body>

@@ -50,4 +50,5 @@ public class PoiController {
   		return new ModelAndView(model, "pois.hbs");
 	}
 	
+	
 }

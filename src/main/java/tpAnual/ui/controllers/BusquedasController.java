@@ -10,11 +10,13 @@ import java.util.Map;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import tpAnual.Terminal;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.Busqueda;
 import tpAnual.busquedas.RepositorioPersistente;
+import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
 
 
@@ -72,6 +74,21 @@ public class BusquedasController {
 	}
 	
 	
-	
+//	public static ModelAndView verPois(Request req, Response res){
+//        Map<String, List<Busqueda>> model = new HashMap<>();
+//		
+//		int terminal = Integer.parseInt(req.queryParams("nroTerminal"));
+//		
+//		Terminal terminalAModificar = RepositorioTerminales.instancia.buscar(terminal);
+//		
+//		return new ModelAndView(terminalAModificar, "modificarTerminal.hbs");
+//    }
+
+
+
+
+//    public static ModelAndView poisDeBusqueda(){
+//	  
+//    }
 	
 }

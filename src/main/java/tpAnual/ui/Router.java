@@ -32,7 +32,9 @@ public static void configure() {
 		Spark.get("/modificarTerminal", TerminalController::modificar,engine);
 		Spark.post("/modificarTerminal", terminalController::guardarModificar);
 		Spark.post("/bajaTerminal", terminalController::baja);
-		Spark.get("/historico-consultas", BusquedasController::listar,engine);
+		Spark.get("/historico-consultas", BusquedasController::listarHardcodeado,engine);
+		//Spark.get("/busqueda-pois", BusquedasController::verPois,engine);
+		//Spark.get("/busqueda-pois", BusquedasController::poisDeBusqueda);
 		Spark.get("/administrarPoi", AdministrarPoiController::get,engine);
 		Spark.get("/modificarPoi", AdministrarPoiController::editar,engine);
 		Spark.post("/modificarPoi", administrarPoiController::guardar);
