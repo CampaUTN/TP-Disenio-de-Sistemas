@@ -1,11 +1,13 @@
 package tpAnual.ui.controllers;
 
 import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -18,6 +20,9 @@ import tpAnual.busquedas.Busqueda;
 import tpAnual.busquedas.RepositorioPersistente;
 import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
+
+import org.mongodb.morphia.Datastore;
+import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 
 
 public class BusquedasController {
@@ -58,15 +63,38 @@ public class BusquedasController {
 		Map<String, List<Busqueda>> model = new HashMap<>();
 		String fechaDesde = req.params("fechaDesde");
 		String fechaHasta = req.params("fechaHasta");
-		//String cantidadPois = req.params("cantidadPois");
-		//String terminal = req.params("terminal");
+		String cantidadPois = req.params("cantidadPois");
+		String terminal = req.params("terminal");
 		
-		
-		
+	
 		List<Busqueda> busqueda = new ArrayList<Busqueda>();
-		//busqueda.addAll(new RepositorioPersistente().getBusquedas());
-		busqueda.addAll(new RepositorioPersistente().listar(fechaDesde,fechaHasta));
+
 		
+		//busqueda.addAll(new RepositorioPersistente().getBusquedas());
+		busqueda.addAll(new RepositorioPersistente().listar());
+		
+//		if(!fechaDesde.isEmpty()){
+//			LocalDate desdeTime = LocalDate.parse(req.queryParams(fechaDesde));
+//			busqueda = busqueda.stream()
+//					           .filter(res->res.esFechaPosterior(Date.valueOf(desdeTime)))
+//					           .collect(Collectors.toList());
+//		}
+//		
+//		if(!fechaDesde.isEmpty()){
+//			LocalDate hastaTime = LocalDate.parse(req.queryParams(fechaHasta));
+//			busqueda = busqueda.stream()
+//					           .filter(res->res.esFechaAnterior(Date.valueOf(hastaTime)))
+//					           .collect(Collectors.toList());
+//		
+//		
+//		
+//		if(!cantidadPois.isEmpty()){
+//			busqueda = busqueda.stream().filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois)).collect(Collectors.toList());
+//		}
+//		
+//		if(!cantidadPois.isEmpty()){
+//			busqueda = busqueda.stream().filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois)).collect(Collectors.toList());
+//		}
 		
 		model.put("busqueda", busqueda);
 		return new ModelAndView(model, "historico-consultas.hbs");

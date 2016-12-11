@@ -1,6 +1,7 @@
 package tpAnual.busquedas;
 
 import java.sql.Date;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 		return busquedas;
 	}
 	
-	public List<Busqueda> listar(String fechaDesde, String fechaHasta) {
+	public List<Busqueda> listar() {
 		//Borrar esto de prueba
 		List<Poi> pois = new ArrayList<>();
 		
@@ -56,9 +57,10 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 		registrarBusqueda("hola", pois);
 	    
 		List<Busqueda> busquedas = new ArrayList<>();
-		busquedas = datastore.createQuery(Busqueda.class)/*.field("fecha").greaterThanOrEq(fechaDesde).field("fecha").lessThanOrEq(fechaHasta)*/.asList();
-//		List<Busqueda> busquedaConFiltro = datastore.createQuery(Busqueda.class).filter("age $gt", 18).asList();
-//		busquedas = datastore.createQuery(Busqueda.class).asList();
+		busquedas = datastore.find(Busqueda.class).asList();
+		
+		
+		
 		return busquedas;
 	}
 	
