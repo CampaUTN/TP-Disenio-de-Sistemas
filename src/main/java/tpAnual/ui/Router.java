@@ -35,7 +35,7 @@ public static void configure() {
 		Spark.get("/historico-consultas", BusquedasController::listarHardcodeado,engine);
 		//Spark.get("/busqueda-pois", BusquedasController::verPois,engine);
 		//Spark.get("/busqueda-pois", BusquedasController::poisDeBusqueda);
-		Spark.get("/administrarPoi", AdministrarPoiController::get,engine);
+		Spark.get("/administrarPoi", AdministrarPoiController::listar,engine);
 		Spark.get("/modificarPoi", AdministrarPoiController::editar,engine);
 		Spark.post("/modificarPoi", administrarPoiController::guardar);
 		Spark.post("/bajaPoi", administrarPoiController::baja);

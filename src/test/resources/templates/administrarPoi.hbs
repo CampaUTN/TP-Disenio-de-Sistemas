@@ -14,7 +14,7 @@
   
 	  {{>selectorTipo.hbs}}
     
-    	<form action="/administrar-pois" method="GET">	
+    	<form action="/administrarPoi" method="GET">	
 	 		<input class="passwd" type="text" id="nombre" value="nombre del POI" name="nombre" placeholder="nombre" size="25" max="10">
         	<input class="botonIngresar" type="submit" value="Buscar">
         </form>
@@ -39,13 +39,13 @@
 				   <!-- <td>{{poi_tipo}}</td> -->
 				   <td>
 				   		<form action="/modificarPoi" method="GET">
-				   			<input type="hidden" name=poiId value={{poiId}} >
+				   			<input type="hidden" name=poiId value={{id}} >
 				   			<input type="submit" value="M">
 				   		</form>
 				   </td>
 				   <td>
 				   		<form action="/bajaPoi" method="POST">
-				   			<input type="hidden" name=poiId value={{poiId}} >
+				   			<input type="hidden" name=poiId value={{id}} >
 				   			<input type="submit" value="X">
 				   		</form>
 				   </td>

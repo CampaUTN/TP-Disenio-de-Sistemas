@@ -43,6 +43,7 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 		Set<String> tags = new HashSet<String>();
 		PointWrapper ubicacion = new PointWrapper(54, 10);
 		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		Mapa.getInstance().alta(poi);
 		pois.add(poi);
 				
 		model.put("pois", pois);
@@ -51,7 +52,7 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 	}
 
 	public static ModelAndView editar(Request req, Response res) {
-		long poiId = Long.parseLong(req.queryParams("id"));
+		long poiId = Long.parseLong(req.queryParams("poiId"));
 		
 		Map<String, Poi> viewModel = new HashMap<>();
 
