@@ -1,6 +1,7 @@
 package tpAnual.POIs;
 
 import java.time.DayOfWeek;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
@@ -74,7 +75,7 @@ public abstract class Poi {
 	
 	public abstract boolean estaDisponible(DayOfWeek dia, LocalTime hora);
 
-	public boolean estaDisponibleConServicio(String servicio,LocalDate fecha,LocalTime hora) {
+	public boolean estaDisponibleConServicio(String servicio, LocalDate fecha,LocalTime hora) {
 		DayOfWeek dia = fecha.getDayOfWeek();
 		return this.estaDisponibleConServicio(servicio, dia, hora);
 	}

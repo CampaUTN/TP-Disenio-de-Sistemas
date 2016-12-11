@@ -1,6 +1,7 @@
 package tpAnual.busquedas;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,14 @@ public class Busqueda {
 	public int getCantidadPois(){
 		return cantidadPois;
 	}
-
+    
+	public boolean esFechaAnterior(Date otraFecha){
+		return (fecha.compareTo(otraFecha) < 0);
+	}
+	
+	public boolean esFechaPosterior(Date otraFecha){
+		return (fecha.compareTo(otraFecha) > 0);
+	}
 	
 	
 }
