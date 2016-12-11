@@ -39,6 +39,7 @@ public class Mapa implements WithGlobalEntityManager{
 	//Altas y bajas
 	public void alta(Poi poi){
 		entityManager().persist(poi);
+		entityManager().merge(poi); // TODO o refresh?
 	}
 	
 	public void baja(Poi poi){
