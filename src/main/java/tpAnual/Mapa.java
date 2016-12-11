@@ -132,8 +132,6 @@ public class Mapa implements WithGlobalEntityManager{
 		poi2.setDireccion(458);
 		poi1.setNumeroComuna(2);
 		
-		Reseter.resetSingletons();
-		entityManager().getTransaction().begin();
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
 		
@@ -152,14 +150,6 @@ public class Mapa implements WithGlobalEntityManager{
 			resultados = entityManager().createQuery(query, Poi.class).
 					setParameter("nombre", nombre).setParameter("calle", calle).getResultList();
 		}
-
-		
-		
-		//TODO sacar
-		entityManager().getTransaction().rollback();
-
-		
-		Reseter.resetSingletons();
 
 		return resultados;
 	}
@@ -181,8 +171,6 @@ public class Mapa implements WithGlobalEntityManager{
 		poi2.setDireccion(458);
 		poi1.setNumeroComuna(3);
 		
-		Reseter.resetSingletons();
-		entityManager().getTransaction().begin();
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
 		
@@ -191,12 +179,7 @@ public class Mapa implements WithGlobalEntityManager{
 				.setParameter("id", poiId)
 				.getResultList()
 				.get(0);
-				
-		//TODO sacar
-		entityManager().getTransaction().rollback();
 
-		
-		Reseter.resetSingletons();
 		return poi;
 	}
 	
