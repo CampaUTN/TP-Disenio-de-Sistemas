@@ -16,6 +16,7 @@ import spark.Response;
 import tpAnual.Mapa;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
+import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class AdministrarPoiController  implements WithGlobalEntityManager, TransactionalOps {
@@ -68,10 +69,12 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 		int comuna = Integer.parseInt(req.queryParams("nuevaComuna"));
 		long id = Long.parseLong(req.queryParams("id"));
 		
-		Poi poi = Mapa.getInstance().poiDeId(id);
-		poi.setNombre(nombre);
-		poi.setUbicacion(new PointWrapper(latitud, longitud));
-		poi.setNumeroComuna(comuna);
+		withTransaction(() ->{
+			Poi poi = Mapa.getInstance().poiDeId(id);
+			poi.setNombre(nombre);
+			poi.setUbicacion(new PointWrapper(latitud, longitud));
+			poi.setNumeroComuna(comuna);
+		});
 		
 		res.redirect("/administrarPoi");
 		
@@ -82,9 +85,9 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 	public Void baja(Request req, Response res){
 		
 		long poiId = Integer.parseInt(req.queryParams("poiId"));
-		Poi poi = Mapa.getInstance().poiDeId(poiId);
 		
 		withTransaction(() ->{
+			Poi poi = Mapa.getInstance().poiDeId(poiId);
 			Mapa.getInstance().baja(poi);
 		});
 		
