@@ -76,7 +76,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 			poi.setNumeroComuna(comuna);
 		});
 		
-		res.redirect("/administrarPoi");
+		res.redirect("/administrarPoi?nombre=all");
 		
 		return null;
 	}
@@ -91,7 +91,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 			Mapa.getInstance().baja(poi);
 		});
 		
-		res.redirect("/administrarPoi");
+		res.redirect("/administrarPoi?nombre=all");
 		return null;
 	}
 }
