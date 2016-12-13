@@ -1,26 +1,17 @@
-{{>navBar.hbs}}
+{{#partial "titulo"}}
+Administrar POIs
+{{/partial}}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" type="text/css" href="listado-consultas.css" media="screen" />
-  <title>Administar pois</title>
-</head>
-
-	<br>
-	<br>
-  <h1>Administar pois</h1>  
-  <body style="margin:50px 0; padding:0;text-align:center;">
-  
+{{#partial "principal"}}
+ <h1>Administrar POIs</h1> 
 	  {{>selectorTipo.hbs}}
     
     	<form action="/administrarPoi" method="GET">	
-	 		<input class="passwd" type="text" id="nombre" value="nombre del POI" name="nombre" placeholder="nombre" size="25" max="10">
+	 		<input class="passwd" type="text" id="nombre" value="all" name="nombre" placeholder="nombre" size="25" max="10">
         	<input class="botonIngresar" type="submit" value="Buscar">
         </form>
         
         
-    
     <br>
     <div>
         <table class="table table-stripped" align="center">
@@ -53,6 +44,6 @@
 		      {{/each}}
         </table>
     </div>
-  
- </body>
-</html>
+{{/partial}}
+{{>layout.hbs}}
+

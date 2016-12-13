@@ -68,16 +68,18 @@ public class Mapa implements WithGlobalEntityManager{
 	// Manejo de lista de pois
 	@SuppressWarnings("unchecked")
 	public List<Poi> getPois(){ //TODO BORRAR TODO MENOS LA LISTA Q ES LO Q HAY Q RETORNAR.
-		//Set<String> tags = new HashSet<String>();
-		//PointWrapper ubicacion = new PointWrapper(54, 10);
-		//Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
 		
-		//entityManager().getTransaction().begin();
-		//Mapa.getInstance().alta(poi);
+		Mapa.getInstance().alta(poi);
 				
 		List<Poi> resultado = entityManager().createQuery("FROM Poi").getResultList();
-		
-		//entityManager().getTransaction().rollback();
+		resultado.add(poi); // TODO SIN ESTO NO SE AGREGA, NO SE POR QUE! LA QUERY DA SIEMPRE VACIA
+		// TODO
+		// TODO
+		// TODO
+		// TODO
 		
 		return resultado;
 	}

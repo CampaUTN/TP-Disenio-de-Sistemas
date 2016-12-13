@@ -35,17 +35,17 @@ public class AdministrarPoiController  implements WithGlobalEntityManager, Trans
 		
 		Map<String, List<Poi>> model = new HashMap<>();
 		
-		List<Poi> pois = new ArrayList<Poi>();
-//				(nombrePoi=="" || nombrePoi==null)
-//				?Mapa.getInstance().getPois()
-//				:Mapa.getInstance().buscarPoi(nombrePoi);
+		List<Poi> pois = 
+				(nombre.equals("all"))
+				?Mapa.getInstance().getPois()
+				:Mapa.getInstance().buscarPoi(nombre);
 		
 		// testeo. TODO BORRAR
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		Mapa.getInstance().alta(poi);
-		pois.add(poi);
+//		Set<String> tags = new HashSet<String>();
+//		PointWrapper ubicacion = new PointWrapper(54, 10);
+//		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+//		Mapa.getInstance().alta(poi);
+//		pois.add(poi);
 				
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrarPoi.hbs");
