@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.mail.Session;
+
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.EstacionDeColectivo;
@@ -17,39 +20,69 @@ import tpAnual.POIs.Poi;
 import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class Mapa implements WithGlobalEntityManager{
+public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	private List<Terminal> terminales = new ArrayList<Terminal>();
 	private static Mapa instance = null;
 	
 
 	private Mapa(){}
 	
+	// TODO sacar esto que es para testear!
+	public void agregarPoisPrueba(){
+		Set<String> tags = new HashSet<String>();
+		PointWrapper ubicacion = new PointWrapper(54, 10);
+		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
+		Mapa.getInstance().alta(poi);
+		
+		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
+		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
+		poi1.agregarTag("negocio");
+		poi1.agregarTag("compras");
+		poi1.setCalle("Strangford");
+		poi1.setDireccion(1857);
+		poi1.setNumeroComuna(1);
+		poi2.setCalle("Avenida Rivadavia");
+		poi2.setDireccion(458);
+		poi1.setNumeroComuna(2);
+		Mapa.getInstance().alta(poi1);
+		Mapa.getInstance().alta(poi2);
+	}
 	public static Mapa getInstance(){
 		if(instance==null){
 			instance = new Mapa();
+			instance.agregarPoisPrueba();
 		}
 		return instance;
 	}
 	
 	public static void resetSingleton(){
-		eliminarTodosLosPois();
+		Mapa.getInstance().eliminarTodosLosPois();
 	    instance = null;
 	}
 	
 	//Altas y bajas
 	public void alta(Poi poi){
 		entityManager().persist(poi);
-		entityManager().merge(poi); // TODO o refresh?
+		if(entityManager().getTransaction().isActive()){
+			entityManager().flush();			
+		}else{
+			entityManager().getTransaction().begin();
+			entityManager().flush();
+			entityManager().getTransaction().commit();
+		}
+		//entityManager().merge(poi); // TODO o refresh?
 	}
 	
 	public void baja(Poi poi){
 		entityManager().remove(entityManager().contains(poi) ? poi : entityManager().merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
 	}
 	
-	private static void eliminarTodosLosPois(){
-		List<Poi> poisAEliminar = new ArrayList<Poi>();
-		poisAEliminar.addAll(Mapa.getInstance().getPois());
-		poisAEliminar.forEach(poi -> Mapa.getInstance().baja(poi)); //Doy de baja los POIs de la BD
+	private void eliminarTodosLosPois(){
+		withTransaction(() ->{
+			List<Poi> poisAEliminar = new ArrayList<Poi>();
+			poisAEliminar.addAll(Mapa.getInstance().getPois());
+			poisAEliminar.forEach(poi -> Mapa.getInstance().baja(poi)); //Doy de baja los POIs de la BD
+		});
 	}
 	
 	// Cercania de poi
@@ -68,18 +101,8 @@ public class Mapa implements WithGlobalEntityManager{
 	// Manejo de lista de pois
 	@SuppressWarnings("unchecked")
 	public List<Poi> getPois(){ //TODO BORRAR TODO MENOS LA LISTA Q ES LO Q HAY Q RETORNAR.
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		
-		Mapa.getInstance().alta(poi);
 				
 		List<Poi> resultado = entityManager().createQuery("FROM Poi").getResultList();
-		resultado.add(poi); // TODO SIN ESTO NO SE AGREGA, NO SE POR QUE! LA QUERY DA SIEMPRE VACIA
-		// TODO
-		// TODO
-		// TODO
-		// TODO
 		
 		return resultado;
 	}
@@ -119,24 +142,6 @@ public class Mapa implements WithGlobalEntityManager{
 	
 	public List<Poi> buscarPoi(String nombre, String tipo, String calle){
 		
-		// TODO sacar esto que es para testear!
-		Set<String> tags = new HashSet<String>();
-		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
-		
-		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
-		poi1.agregarTag("negocio");
-		poi1.agregarTag("compras");
-		poi1.setCalle("Strangford");
-		poi1.setDireccion(1857);
-		poi1.setNumeroComuna(1);
-		
-		poi2.setCalle("Avenida Rivadavia");
-		poi2.setDireccion(458);
-		poi1.setNumeroComuna(2);
-		
-		Mapa.getInstance().alta(poi1);
-		Mapa.getInstance().alta(poi2);
-		
 		List<Poi> resultados = new ArrayList<>();
 		
 		//TODO: ver tipo.
@@ -157,32 +162,10 @@ public class Mapa implements WithGlobalEntityManager{
 	}
 
 	public Poi poiDeId(long poiId){
-		
-		// TODO sacar esto que es para testear!
-		Set<String> tags = new HashSet<String>();
-		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
-		
-		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
-		poi1.agregarTag("negocio");
-		poi1.agregarTag("compras");
-		poi1.setCalle("Strangford");
-		poi1.setDireccion(1857);
-		poi1.setNumeroComuna(1);
-		
-		poi2.setCalle("Avenida Rivadavia");
-		poi2.setDireccion(458);
-		poi1.setNumeroComuna(3);
-		
-		Mapa.getInstance().alta(poi1);
-		Mapa.getInstance().alta(poi2);
-		
-		
-		Poi poi = entityManager().createQuery("FROM Poi WHERE poi_id = :id", Poi.class)
+		return entityManager().createQuery("FROM Poi WHERE poi_id = :id", Poi.class)
 				.setParameter("id", poiId)
 				.getResultList()
 				.get(0);
-
-		return poi;
 	}
 	
 }

@@ -19,7 +19,7 @@ import tpAnual.POIs.Poi;
 import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
 
-public class AdministrarPoiController  implements WithGlobalEntityManager, TransactionalOps {
+public class AdministrarPoiController implements WithGlobalEntityManager, TransactionalOps {
 
 	public static ModelAndView get(Request req, Response res) {
 
