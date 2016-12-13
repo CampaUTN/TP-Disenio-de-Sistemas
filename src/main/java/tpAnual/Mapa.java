@@ -29,11 +29,7 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	
 	// TODO sacar esto que es para testear!
 	public void agregarPoisPrueba(){
-		Set<String> tags = new HashSet<String>();
-		PointWrapper ubicacion = new PointWrapper(54, 10);
-		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-		Mapa.getInstance().alta(poi);
-		
+		Set<String> tags = new HashSet<String>();	
 		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
 		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
 		poi1.agregarTag("negocio");
