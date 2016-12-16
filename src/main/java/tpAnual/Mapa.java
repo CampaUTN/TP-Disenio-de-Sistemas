@@ -1,23 +1,17 @@
 	package tpAnual;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.mail.Session;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import tpAnual.POIs.Banco;
-import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.util.Reseter;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
@@ -28,18 +22,21 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	private Mapa(){}
 	
 	// TODO sacar esto que es para testear!
-	public void agregarPoisPrueba(){
-		Set<String> tags = new HashSet<String>();	
-		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",tags,"muebleria",10);
-		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
+	public void agregarPoisPrueba(){	
+		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",new HashSet<String>(),"muebleria",10);
+		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , new HashSet<String>());
+		
 		poi1.agregarTag("negocio");
 		poi1.agregarTag("compras");
 		poi1.setCalle("Strangford");
 		poi1.setDireccion(1857);
 		poi1.setNumeroComuna(1);
+		
 		poi2.setCalle("Avenida Rivadavia");
 		poi2.setDireccion(458);
-		poi1.setNumeroComuna(2);
+		poi2.setNumeroComuna(2);
+		poi2.agregarTag("banco");
+		
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
 	}
