@@ -18,20 +18,19 @@
  			   <th class="cell">Direccion</th>
 			   <th class="cell"></th>
  		   </tr>
- 	
+			
  		   {{#each pois}}
  		    <tr class="row">
  			   <td class="cell">{{nombre}}</td>
  			   <td class="cell">{{calle}}</td>
  			   <td class="cell">{{direccion}}</td>
- 			   <!--<td> <button class="botonBuscar"> Ver&nbspMas </button> </td> -->
-			   		   
-			  <form action="/poi" method="GET" id="detalle_poi">
- 			   	  <!--input type="hidden" name=id value={{id}}-->
-				  <input type="hidden" name=id value=3 >									
-			  </form>
-			  <td><input form = "detalle_poi" class="botonBuscar" type="submit" value="VER MAS"></td>
- 		  </tr>
+ 			   <td class="cell"> 			   		   
+					<form action="/poi" method="GET">
+						<input type="hidden" name=id value={{id}}>
+						<input class="botonBuscar" type="submit" value="VER MAS">				  
+					</form>
+			   </td>
+ 		   </tr>
  	      {{/each}}
  	</table>
  	</div>	

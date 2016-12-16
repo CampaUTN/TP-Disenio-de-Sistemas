@@ -92,10 +92,9 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	}
 	
 	// Manejo de lista de pois
-	@SuppressWarnings("unchecked")
 	public List<Poi> getPois(){ //TODO BORRAR TODO MENOS LA LISTA Q ES LO Q HAY Q RETORNAR.
 				
-		List<Poi> resultado = entityManager().createQuery("FROM Poi").getResultList();
+		List<Poi> resultado = entityManager().createQuery("FROM Poi", Poi.class).getResultList();
 		
 		return resultado;
 	}
