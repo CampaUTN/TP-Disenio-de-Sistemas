@@ -10,8 +10,11 @@ import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
 import tpAnual.POIs.Banco;
+import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.BuscadorLocal;
+import tpAnual.ui.ParametroBusqueda;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
@@ -23,8 +26,9 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	
 	// TODO sacar esto que es para testear!
 	public void agregarPoisPrueba(){	
-		Poi poi1 = (Poi)new Negocio(new PointWrapper(54, 10),"mueblesSA",new HashSet<String>(),"muebleria",10);
-		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , new HashSet<String>());
+		Poi poi1 = new Negocio(new PointWrapper(54, 10),"mueblesSA",new HashSet<String>(),"muebleria",10);
+		Poi poi2 = new Banco(new PointWrapper(2, 2), "Banco Santander" , new HashSet<String>());
+		Poi poi3 = new EstacionDeColectivo(new PointWrapper(1, 132), "Parada 56", new HashSet<String>(),56, "Lugano");
 		
 		poi1.agregarTag("negocio");
 		poi1.agregarTag("compras");
@@ -37,8 +41,15 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 		poi2.setNumeroComuna(2);
 		poi2.agregarTag("banco");
 		
+		poi3.setCalle("Avenida La Plata");
+		poi3.setDireccion(458);
+		poi3.setNumeroComuna(3);
+		poi3.agregarTag("colectivo");
+		poi3.agregarTag("parada");		
+		
 		Mapa.getInstance().alta(poi1);
 		Mapa.getInstance().alta(poi2);
+		Mapa.getInstance().alta(poi3);
 	}
 	public static Mapa getInstance(){
 		if(instance==null){
@@ -152,6 +163,10 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 
 		return resultados;
 	}
+	
+	public List<Poi> buscar(ParametroBusqueda parametro){
+		return (new BuscadorLocal()).buscar(parametro);
+	}	
 
 	public Poi poiDeId(long poiId){
 		return entityManager().createQuery("FROM Poi WHERE poi_id = :id", Poi.class)

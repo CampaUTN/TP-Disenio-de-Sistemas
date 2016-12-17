@@ -15,7 +15,6 @@ public class Server {
 
 		Reseter.resetSingletons();
 
-		RepositorioBuscadores.getInstance().agregarConsultora( new BuscadorLocal());
 		configurarSpark();
 		Router.configure();
 		Spark.after((req,res)-> {
