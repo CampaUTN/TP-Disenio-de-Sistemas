@@ -12,17 +12,16 @@ import tpAnual.util.Reseter;
 
 public class Server {
 	public static void main(String[] args) {
-
+		PerThreadEntityManagers.getEntityManager().clear();
 		Reseter.resetSingletons();
-
+		
 		configurarSpark();
 		Router.configure();
 		Spark.after((req,res)-> {
-			PerThreadEntityManagers.getEntityManager().clear(); //si no va, poner close.
+			//PerThreadEntityManagers.getEntityManager().clear(); //si no va, poner close.
 		});
 		
 		DebugScreen.enableDebugScreen();
-		Reseter.resetSingletons();
 	}
 	
 	

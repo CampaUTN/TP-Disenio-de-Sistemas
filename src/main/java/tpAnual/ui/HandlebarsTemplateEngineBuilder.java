@@ -36,8 +36,6 @@ public class HandlebarsTemplateEngineBuilder {
 
 	public HandlebarsTemplateEngineBuilder withDefaultHelpers() {
 		StringHelpers.register(getHandlerbars());
-		//NumberHelper.register(getHandlerbars());
-		//HumanizeHelper.register(getHandlerbars());
 		withHelper("i18n", I18nHelper.i18n);
 		return this;
 	}

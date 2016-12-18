@@ -67,6 +67,14 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 	//Altas y bajas
 	public void alta(Poi poi){
 		entityManager().persist(poi);
+		actualizar(poi);
+	}
+	
+	public void baja(Poi poi){
+		entityManager().remove(entityManager().contains(poi) ? poi : entityManager().merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
+	}
+	
+	public void actualizar(Poi poi){
 		if(entityManager().getTransaction().isActive()){
 			entityManager().flush();			
 		}else{
@@ -74,11 +82,7 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 			entityManager().flush();
 			entityManager().getTransaction().commit();
 		}
-		//entityManager().merge(poi); // TODO o refresh?
-	}
-	
-	public void baja(Poi poi){
-		entityManager().remove(entityManager().contains(poi) ? poi : entityManager().merge(poi)); //em.merge(poi) retorna el poi que 'mergea'.
+		entityManager().merge(poi);
 	}
 	
 	private void eliminarTodosLosPois(){

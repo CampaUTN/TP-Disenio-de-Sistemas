@@ -74,6 +74,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 			poi.setNombre(nombre);
 			poi.setUbicacion(new PointWrapper(latitud, longitud));
 			poi.setNumeroComuna(comuna);
+			Mapa.getInstance().actualizar(poi);
 		});
 		
 		res.redirect("/administrarPoi?nombre=all");

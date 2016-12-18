@@ -41,7 +41,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 //		terminalPrueba2.setNombre("terminal DOT");
 //		terminalPrueba2.setNumeroComuna(2);
 
-		Reseter.resetSingletons();
+		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
 //		entityManager().getTransaction().begin();
 //		entityManager().persist(terminalPrueba1);
 //		entityManager().persist(terminalPrueba2);
@@ -65,7 +65,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		Terminal terminalPrueba2 = new Terminal();
 		terminalPrueba2.setNombre("dot");
 
-		Reseter.resetSingletons();
+		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
 		entityManager().getTransaction().begin();
 		entityManager().persist(terminalPrueba1);
 
@@ -76,7 +76,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		entityManager().getTransaction().rollback();
 
 				
-		Reseter.resetSingletons();
+		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
 		return resultado;
 		
 	}
