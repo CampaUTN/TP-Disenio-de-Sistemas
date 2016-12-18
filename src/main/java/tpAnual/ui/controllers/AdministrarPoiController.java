@@ -14,6 +14,7 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import tpAnual.Mapa;
+import tpAnual.Terminal;
 import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Poi;
 import tpAnual.ui.RepositorioTerminales;
@@ -58,7 +59,6 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 		Map<String, Poi> viewModel = new HashMap<>();
 
 		Poi poi = Mapa.getInstance().poiDeId(poiId);
-		viewModel.put("poi", poi);
 		return new ModelAndView(poi, "modificarPoi.hbs");
 	}
 	
@@ -67,7 +67,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 		double latitud = Double.parseDouble(req.queryParams("nuevaLatitud"));
 		double longitud = Double.parseDouble(req.queryParams("nuevaLongitud"));
 		int comuna = Integer.parseInt(req.queryParams("nuevaComuna"));
-		long id = Long.parseLong(req.queryParams("id"));
+		long id = Long.parseLong(req.queryParams("poiId"));
 		
 		withTransaction(() ->{
 			Poi poi = Mapa.getInstance().poiDeId(id);
