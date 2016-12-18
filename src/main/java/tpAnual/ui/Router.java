@@ -22,7 +22,7 @@ public static void configure() {
 		
 		Spark.get("/", Server::paginaPrincipal);
 		//Spark.get("/perfil",PoiController::get,engine);
-		Spark.get("/perfil", PerfilController::mostrarPerfil,engine);
+		Spark.post("/perfil", PerfilController::mostrarPerfil,engine);
 		Spark.get("/pois", PoiController::listar, engine);
 		Spark.get("/poi", PoiController::get,engine);
 		Spark.get("/busqueda", PoiController::listar,engine);
