@@ -39,5 +39,7 @@ public static void configure() {
 		Spark.get("/modificarPoi", AdministrarPoiController::editar,engine);
 		Spark.post("/modificarPoi", administrarPoiController::guardar);
 		Spark.post("/bajaPoi", administrarPoiController::baja);
+		Spark.get("/altaPoi", AdministrarPoiController::alta,engine);
+		Spark.post("/altaPoi", administrarPoiController::altaAgregar);
 	}
 }

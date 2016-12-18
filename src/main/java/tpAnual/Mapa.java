@@ -85,6 +85,10 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 		entityManager().merge(poi);
 	}
 	
+//	public void actualizar(Poi poi){
+//		entityManager().merge(poi);
+//	}
+	
 	private void eliminarTodosLosPois(){
 		withTransaction(() ->{
 			List<Poi> poisAEliminar = new ArrayList<Poi>();
