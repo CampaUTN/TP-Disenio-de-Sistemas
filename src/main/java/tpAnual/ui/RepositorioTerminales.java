@@ -66,9 +66,11 @@ public class RepositorioTerminales implements WithGlobalEntityManager, Transacti
 	public void agregarTerminalesPrueba(){	
 		Terminal terminalPrueba1 = new Terminal();
 		terminalPrueba1.setNombre("abasto");
+		terminalPrueba1.setNumeroComuna(0);
 		
 		Terminal terminalPrueba2 = new Terminal();
 		terminalPrueba2.setNombre("dot");
+		terminalPrueba2.setNumeroComuna(1);
 		
 		RepositorioTerminales.getInstance().agregar(terminalPrueba1);
 		RepositorioTerminales.getInstance().agregar(terminalPrueba2);	
