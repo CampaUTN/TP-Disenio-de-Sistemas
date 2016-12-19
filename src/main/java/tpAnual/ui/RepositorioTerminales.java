@@ -12,12 +12,24 @@ public class RepositorioTerminales implements WithGlobalEntityManager, Transacti
 	private static RepositorioTerminales instancia = null;
 
 	public void agregar(Terminal terminal) {
-		entityManager().persist(terminal);
+		entityManager().persist(terminal);		
+		actualizar(terminal);
 	}
 	
 	public void baja(Terminal terminal){
 		entityManager().remove(entityManager().contains(terminal) ? terminal : entityManager().merge(terminal));
 		//entityManager().remove(terminal);
+	}
+	
+	public void actualizar(Terminal terminal){
+		if(entityManager().getTransaction().isActive()){
+			entityManager().flush();			
+		}else{
+			entityManager().getTransaction().begin();
+			entityManager().flush();
+			entityManager().getTransaction().commit();
+		}
+		entityManager().merge(terminal);
 	}
 	
 	public Terminal buscarPorId(long id){
@@ -33,6 +45,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager, Transacti
 	public static RepositorioTerminales getInstance(){
 		if(instancia==null){
 			instancia = new RepositorioTerminales();
+			instancia.agregarTerminalesPrueba();
 		}
 		return instancia;
 	}
@@ -44,53 +57,31 @@ public class RepositorioTerminales implements WithGlobalEntityManager, Transacti
 	
 	public List<Terminal> listar() {
 		
-		//TODO borrar ejemplitos de prueba
-//		Terminal terminalPrueba1 = new Terminal();
-//		terminalPrueba1.setNombre("terminal Abasto");
-//		terminalPrueba1.setNumeroComuna(1);
-//		
-//		Terminal terminalPrueba2 = new Terminal();
-//		terminalPrueba2.setNombre("terminal DOT");
-//		terminalPrueba2.setNumeroComuna(2);
-
-		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
-//		entityManager().getTransaction().begin();
-//		entityManager().persist(terminalPrueba1);
-//		entityManager().persist(terminalPrueba2);
+		return entityManager().
+				createQuery("FROM Terminal WHERE numeroTerminal <> null", Terminal.class).
+				getResultList();
+}
+	
+	//TODO BORRAR!!
+	public void agregarTerminalesPrueba(){	
+		Terminal terminalPrueba1 = new Terminal();
+		terminalPrueba1.setNombre("abasto");
 		
-		List<Terminal> terminales =  entityManager().createQuery("from Terminal where numeroTerminal<>null", Terminal.class).getResultList();
-//		entityManager().getTransaction().rollback();
-
-//		Reseter.resetSingletons();
-		return terminales;
+		Terminal terminalPrueba2 = new Terminal();
+		terminalPrueba2.setNombre("dot");
+		
+		RepositorioTerminales.getInstance().agregar(terminalPrueba1);
+		RepositorioTerminales.getInstance().agregar(terminalPrueba2);	
 	}
 	
 	public List<Terminal> getTerminalesPorComuna(int comuna){
 		return this.listar().stream().filter(t->t.getNumeroComuna().equals(comuna)).collect(Collectors.toList());
 	}
 	
-	public Terminal buscarPorNombre(String nombre){
+	public Terminal buscarPorNombre(String nombre){		
 		
-		Terminal terminalPrueba1 = new Terminal();
-		terminalPrueba1.setNombre("abasto");
-		
-		Terminal terminalPrueba2 = new Terminal();
-		terminalPrueba2.setNombre("dot");
-
-		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
-		entityManager().getTransaction().begin();
-		entityManager().persist(terminalPrueba1);
-
-		entityManager().persist(terminalPrueba2);
-		
-		Terminal resultado =  entityManager().createQuery("FROM Terminal where nombre_terminal= :nombre ", Terminal.class).
+		return entityManager().createQuery("FROM Terminal WHERE nombre_terminal= :nombre ", Terminal.class).
 				setParameter("nombre", nombre).getResultList().get(0);
-		entityManager().getTransaction().rollback();
-
-				
-		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
-		return resultado;
-		
 	}
 	
 	private void eliminarTerminales(){
