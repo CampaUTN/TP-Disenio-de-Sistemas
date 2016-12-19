@@ -38,17 +38,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 		
 		Map<String, List<Poi>> model = new HashMap<>();
 		
-		List<Poi> pois = 
-				(nombre.equals("all"))
-				?Mapa.getInstance().getPois()
-				:Mapa.getInstance().buscarPoi(nombre);
-		
-		// testeo. TODO BORRAR
-//		Set<String> tags = new HashSet<String>();
-//		PointWrapper ubicacion = new PointWrapper(54, 10);
-//		Poi poi = new EstacionDeColectivo(ubicacion, "107", tags, 0, "");
-//		Mapa.getInstance().alta(poi);
-//		pois.add(poi);
+		List<Poi> pois = Mapa.getInstance().buscarPoi(nombre,tipo);
 				
 		model.put("pois", pois);
 		return new ModelAndView(model, "administrarPoi.hbs");
@@ -81,15 +71,12 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 		withTransaction(() ->{
 			Poi poi = Mapa.getInstance().poiDeId(id);
 			poi.setNombre(nombre);
-			
-			
 //			poi.setUbicacion(new PointWrapper(latitud, longitud));
-			
 //			poi.setNumeroComuna(comuna);
 			Mapa.getInstance().actualizar(poi);
 		});
 		
-		res.redirect("/administrarPoi?nombre=all");
+		res.redirect("/administrarPoi?tipo=Todos&nombre=all");
 		
 		return null;
 	}
@@ -104,7 +91,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 			Mapa.getInstance().baja(poi);
 		});
 		
-		res.redirect("/administrarPoi?nombre=all");
+		res.redirect("/administrarPoi?tipo=Todos&nombre=all");
 		return null;
 	}
 	
@@ -130,7 +117,7 @@ public class AdministrarPoiController implements WithGlobalEntityManager, Transa
 			Mapa.getInstance().alta(negocio);
 		});
 		
-		res.redirect("/administrarPoi?nombre=all");
+		res.redirect("/administrarPoi?tipo=Todos&nombre=all");
 		
 		return null;
 	}

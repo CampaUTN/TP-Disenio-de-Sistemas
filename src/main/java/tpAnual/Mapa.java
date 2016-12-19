@@ -151,8 +151,12 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 		return this.buscarPoi(nombre, "", "");
 	}
 	
+	public List<Poi> buscarPoi(String nombre, String tipo){
+		return this.buscarPoi(nombre, tipo, "");
+	}
+	
 	public List<Poi> buscarPoi(String nombre, String tipo, String calle){
-		
+		nombre=nombre.equals("All")?"":nombre;
 		List<Poi> resultados = new ArrayList<>();
 		
 		//TODO: ver tipo.

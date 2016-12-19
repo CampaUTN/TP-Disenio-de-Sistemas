@@ -5,7 +5,7 @@ Administrar POIs
 {{#partial "principal"}}
   <h1>Editar Poi</h1>  
     <div>
-    	<form action="/administrarPoi?nombre=all" method="POST"> 
+    	<form action="/administrarPoi?tipo=Todos&nombre=all" method="POST"> 
     	Nombre anterior: {{nombre}}
     	<br>
         <input class="filterComuna" type="text" name="nuevoNombre" id="textNombre" placeholder="nombre" size="25" max="10">
@@ -24,9 +24,9 @@ Administrar POIs
         <br>
     </div>
      <div>
-        <button class="botonBuscar" value="Atras"/>Atras</button>
-        <button class="botonWarning" value="Confirmar"/>Confirmar</button>
+		<input class="botonIngresar" type="submit" value="GUARDAR">
     </div>
+         </form>
 {{/partial}}
 {{>layout.hbs}}
 
