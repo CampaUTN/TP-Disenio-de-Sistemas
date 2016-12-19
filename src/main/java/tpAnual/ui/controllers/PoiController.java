@@ -1,6 +1,5 @@
 package tpAnual.ui.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +9,9 @@ import spark.Request;
 import spark.Response;
 import tpAnual.Mapa;
 import tpAnual.Terminal;
-import tpAnual.POIs.EstacionDeColectivo;
-import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.ui.ParametroBusqueda;
-import tpAnual.util.wrapper.PointWrapper;
+import tpAnual.ui.RepositorioTerminales;
 
 public class PoiController {
 
@@ -34,21 +31,20 @@ public class PoiController {
 		String nombre = req.queryParams("nombre");
 		String tipo = req.queryParams("tipo");
 		String calle = req.queryParams("calle");
-
 		String tags = req.queryParams("tags");
+		long nro = Long.parseLong(req.queryParams("terminal"));
 		
-		String numeroTerminal = req.queryParams("terminal");
+		Terminal terminal = RepositorioTerminales.getInstance().buscarPorId(nro);
+		
 		Map<String, Object> model = new HashMap<String,Object>();
 		
-  		List <Poi> resultado = new ArrayList<>();
-					
-		ParametroBusqueda parametro = new ParametroBusqueda(nombre, tipo, calle, tags);
-		resultado = Mapa.getInstance().buscar(parametro);
+		ParametroBusqueda parametro = new ParametroBusqueda(nombre, tipo, calle,terminal, tags);
 		
-		model.put("terminal",new Terminal(Integer.parseInt(numeroTerminal)));		
+		List <Poi> resultado = Mapa.getInstance().buscar(parametro);
+		
+		model.put("terminal",terminal);		
   		model.put("pois", resultado);
   		return new ModelAndView(model, "pois.hbs");
 	}
-	
 	
 }

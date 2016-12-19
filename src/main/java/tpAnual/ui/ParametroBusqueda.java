@@ -2,14 +2,13 @@ package tpAnual.ui;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.TypedQuery;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 
 public class ParametroBusqueda implements WithGlobalEntityManager{
@@ -17,33 +16,32 @@ public class ParametroBusqueda implements WithGlobalEntityManager{
 	private String tipo;
 	private String calle;
 	private String palabras;
+	private Terminal terminal;
 	
-	public String getPalabras() {
-		return palabras;
-	}
-
 	public void setPalabras(String palabras) {
 		this.palabras = palabras;
 	}
 
 	private List<String> tags = new ArrayList<>();
 	
-	public ParametroBusqueda(String nombre, String tipo, String calle, String tags){
+	public ParametroBusqueda(String nombre, String tipo, String calle, Terminal terminal, String tags){
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.calle = calle;	
 		this.palabras = tags;
+		this.terminal = terminal;
 
-		System.out.println(getTags().size());
 		if(tags.length() != 0){
 			this.tags =  Arrays.asList(tags.split(" "));
 		}
-
+	}	
+	
+	public static ParametroBusqueda tags(String tags){
+		return new ParametroBusqueda("", "", "", null, tags);
 	}
 	
-	
 	public static ParametroBusqueda busqueda(String tags){
-		return new ParametroBusqueda("","","",tags);
+		return new ParametroBusqueda("","","",null,tags);
 	}
 	
 	public TypedQuery<Poi> armarQuery(){
@@ -94,4 +92,11 @@ public class ParametroBusqueda implements WithGlobalEntityManager{
 		this.tags = tags;
 	}
 
+	public Terminal getTerminal() {
+		return terminal;
+	}
+
+	public String getPalabras() {
+		return palabras;
+	}
 }
