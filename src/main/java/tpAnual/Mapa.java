@@ -155,14 +155,14 @@ public class Mapa  implements WithGlobalEntityManager, TransactionalOps{
 		return this.buscarPoi(nombre, tipo, "");
 	}
 	
-	public List<Poi> buscarPoi(String nombre, String tipo, String calle){
-		nombre=nombre.equals("All")?"":nombre;
+	public List<Poi> buscarPoi(String filtroNombre, String tipo, String calle){
+		String nombre=filtroNombre.equalsIgnoreCase("All")?"":filtroNombre;
 		List<Poi> resultados = new ArrayList<>();
 		
 		//TODO: ver tipo.
 		String query = "FROM Poi WHERE poi_nombre LIKE CONCAT('%',:nombre,'%') AND calle LIKE CONCAT('%',:calle,'%')";
 		System.out.println(tipo);
-		if( ! tipo.equals("Todos")){
+		if( ! tipo.equalsIgnoreCase("Todos")){
 
 			String extra = "and poi_tipo = :tipo";
 

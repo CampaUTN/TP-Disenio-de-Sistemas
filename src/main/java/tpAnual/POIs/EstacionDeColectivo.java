@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import tpAnual.util.wrapper.PointWrapper;
 
 @Entity
-@DiscriminatorValue("Colectivo")
+@DiscriminatorValue("EstacionDeColectivo")
 public class EstacionDeColectivo extends Poi {
 	
 	@Column(name = "cole_linea")
