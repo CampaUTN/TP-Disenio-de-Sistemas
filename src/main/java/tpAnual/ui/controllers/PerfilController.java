@@ -20,7 +20,7 @@ public class PerfilController implements WithGlobalEntityManager {
 
 		Map<String, Object> viewModel = new HashMap<String, Object>();
 
-		Terminal terminal = RepositorioTerminales.instancia.buscarPorNombre(nombre);
+		Terminal terminal = RepositorioTerminales.getInstance().buscarPorNombre(nombre);
 
 		viewModel.put("terminal", terminal);
 

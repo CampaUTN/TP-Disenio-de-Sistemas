@@ -1,16 +1,15 @@
 package tpAnual.ui;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
-
+import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 import tpAnual.Terminal;
-import tpAnual.util.Reseter;
 
+public class RepositorioTerminales implements WithGlobalEntityManager, TransactionalOps{
 
-public class RepositorioTerminales implements WithGlobalEntityManager{
-
-	public static RepositorioTerminales instancia = new RepositorioTerminales();
+	private static RepositorioTerminales instancia = null;
 
 	public void agregar(Terminal terminal) {
 		entityManager().persist(terminal);
@@ -21,7 +20,7 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		//entityManager().remove(terminal);
 	}
 	
-	public Terminal buscar(long id){
+	public Terminal buscarPorId(long id){
 		return entityManager().find(Terminal.class, id);
 	}
 	
@@ -29,6 +28,19 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		entityManager().merge(nuevo);
 	}
 	
+	private RepositorioTerminales(){}
+	
+	public static RepositorioTerminales getInstance(){
+		if(instancia==null){
+			instancia = new RepositorioTerminales();
+		}
+		return instancia;
+	}
+	
+	public static void resetSingleton(){
+		RepositorioTerminales.getInstance().eliminarTerminales();
+		instancia = null;
+	}
 	
 	public List<Terminal> listar() {
 		
@@ -79,5 +91,13 @@ public class RepositorioTerminales implements WithGlobalEntityManager{
 		//Reseter.resetSingletons(); lo comento xq sino al ir a esta pantalla, se pierde lo hecho en otras.
 		return resultado;
 		
+	}
+	
+	private void eliminarTerminales(){
+		withTransaction(() ->{
+			List<Terminal> terminalesAEliminar = new ArrayList<Terminal>();
+			terminalesAEliminar.addAll(RepositorioTerminales.getInstance().listar());
+			terminalesAEliminar.forEach(terminal -> RepositorioTerminales.getInstance().baja(terminal)); //Doy de baja los POIs de la BD
+		});
 	}
 }

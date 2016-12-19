@@ -38,10 +38,10 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		List<Terminal> terminales = new ArrayList<Terminal>();
 		
   		if(terminalBuscada==0){
-  			terminales.addAll(RepositorioTerminales.instancia.listar());
+  			terminales.addAll(RepositorioTerminales.getInstance().listar());
   		}
   		else{
-  			terminales.addAll(RepositorioTerminales.instancia.getTerminalesPorComuna(terminalBuscada));
+  			terminales.addAll(RepositorioTerminales.getInstance().getTerminalesPorComuna(terminalBuscada));
   		}
   		
   		model.put("terminales", terminales);
@@ -65,7 +65,7 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		terminalNueva.setNombre(nombre);
 		
 		withTransaction(() ->{
-			RepositorioTerminales.instancia.agregar(terminalNueva);
+			RepositorioTerminales.getInstance().agregar(terminalNueva);
 		});
 		
 		res.redirect("/terminal?comuna=0");
@@ -78,7 +78,7 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		
 		int terminal = Integer.parseInt(req.queryParams("nroTerminal"));
 		
-		Terminal terminalAModificar = RepositorioTerminales.instancia.buscar(terminal);
+		Terminal terminalAModificar = RepositorioTerminales.getInstance().buscarPorId(terminal);
 		
 		return new ModelAndView(terminalAModificar, "modificarTerminal.hbs");
 	}
@@ -89,13 +89,13 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 		String nombre = req.queryParams("nuevoNombre");
 		int comuna = Integer.parseInt(req.queryParams("nuevaComuna"));
 		
-		Terminal terminal = RepositorioTerminales.instancia.buscar(numeroTerminal);
+		Terminal terminal = RepositorioTerminales.getInstance().buscarPorId(numeroTerminal);
 		
 		withTransaction(() ->{
 //			terminal.setNumeroTerminal(numeroTerminal);
 			terminal.setNombre(nombre);
 			terminal.setNumeroComuna(comuna);
-			RepositorioTerminales.instancia.modificar(terminal);
+			RepositorioTerminales.getInstance().modificar(terminal);
 		});
 		
 		res.redirect("/terminal?comuna=0");
@@ -106,10 +106,10 @@ public class TerminalController implements WithGlobalEntityManager, Transactiona
 	public Void baja(Request req, Response res){
 		
 		int numeroTerminal = Integer.parseInt(req.queryParams("nroTerminal"));
-		Terminal terminal = RepositorioTerminales.instancia.buscar(numeroTerminal);
+		Terminal terminal = RepositorioTerminales.getInstance().buscarPorId(numeroTerminal);
 		
 		withTransaction(() ->{
-			RepositorioTerminales.instancia.baja(terminal);
+			RepositorioTerminales.getInstance().baja(terminal);
 		});
 		
 		res.redirect("/terminal?comuna=0");
