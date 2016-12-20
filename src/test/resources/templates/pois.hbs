@@ -36,7 +36,14 @@
  	</div>	
   {{else}}
 	 <h3>No se encontraron resultados.</h3>
-  {{/if}}  	   
+  {{/if}}  	  
+
+	<form action="/perfil" method="POST">
+	  <input class="passwd" type="hidden" name="usuario" value ={{terminal.nombre}}>
+	  <input class="passwd" type="hidden" name="password" value="">
+      <input class="botonBuscar" type="submit" value="ATRAS">
+     
+	 </form>
 {{/partial}}
 {{>layout.hbs}}
 
