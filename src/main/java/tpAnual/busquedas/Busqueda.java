@@ -25,7 +25,6 @@ public class Busqueda {
 	@SuppressWarnings("unused")
 	private Busqueda(){}
 	
-	@Transient
 	private int cantidadPois;
 	
 	public Busqueda(String palabrasBuscadas, List<Poi> pois){
@@ -68,6 +67,10 @@ public class Busqueda {
 	
 	public boolean esFechaPosterior(Date otraFecha){
 		return (fecha.compareTo(otraFecha) > 0);
+	}
+
+	public void setCantidadPois(int cantidadPois) {
+		this.cantidadPois = cantidadPois;
 	}
 	
 	

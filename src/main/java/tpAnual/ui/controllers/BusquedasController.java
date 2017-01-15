@@ -70,30 +70,34 @@ public class BusquedasController {
 		List<Busqueda> busqueda = new ArrayList<Busqueda>();
 
 		
-		//busqueda.addAll(new RepositorioPersistente().getBusquedas());
+		busqueda.addAll(new RepositorioPersistente().getBusquedas());
 		busqueda.addAll(new RepositorioPersistente().listar());
 		
 //		if(!fechaDesde.isEmpty()){
-//			LocalDate desdeTime = LocalDate.parse(req.queryParams(fechaDesde));
+//			LocalDate desdeTime = LocalDate.parse(req.params(fechaDesde));
 //			busqueda = busqueda.stream()
 //					           .filter(res->res.esFechaPosterior(Date.valueOf(desdeTime)))
 //					           .collect(Collectors.toList());
 //		}
 //		
 //		if(!fechaDesde.isEmpty()){
-//			LocalDate hastaTime = LocalDate.parse(req.queryParams(fechaHasta));
+//			LocalDate hastaTime = LocalDate.parse(req.params(fechaHasta));
 //			busqueda = busqueda.stream()
 //					           .filter(res->res.esFechaAnterior(Date.valueOf(hastaTime)))
 //					           .collect(Collectors.toList());
 //		
-//		
-//		
-//		if(!cantidadPois.isEmpty()){
-//			busqueda = busqueda.stream().filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois)).collect(Collectors.toList());
 //		}
 //		
 //		if(!cantidadPois.isEmpty()){
-//			busqueda = busqueda.stream().filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois)).collect(Collectors.toList());
+//			busqueda = busqueda.stream()
+//					           .filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois))
+//					           .collect(Collectors.toList());
+//		}
+//		
+//		if(!terminal.isEmpty()){
+//			busqueda = busqueda.stream()
+//					           .filter(res->res.getTerminal()????.equals(terminal))
+//					           .collect(Collectors.toList());
 //		}
 		
 		model.put("busqueda", busqueda);
@@ -103,13 +107,7 @@ public class BusquedasController {
 	
 	
 //	public static ModelAndView verPois(Request req, Response res){
-//        Map<String, List<Busqueda>> model = new HashMap<>();
-//		
-//		int terminal = Integer.parseInt(req.queryParams("nroTerminal"));
-//		
-//		Terminal terminalAModificar = RepositorioTerminales.instancia.buscar(terminal);
-//		
-//		return new ModelAndView(terminalAModificar, "modificarTerminal.hbs");
+//      //ESTE METODO DEBERIA LLEVARME AL BUSQUEDA-POIS.HBS DONDE SE DEBERIAN MOSTRAR
 //    }
 
 

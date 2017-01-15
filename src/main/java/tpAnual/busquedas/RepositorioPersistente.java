@@ -36,25 +36,25 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 	
 	public List<Busqueda> listar() {
 		//Borrar esto de prueba
-		List<Poi> pois = new ArrayList<>();
-		
-		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
-		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
-		
-		poi1.setCalle("Strangford");
-		poi1.setDireccion(1857);
-		
-		poi2.setCalle("Avenida Rivadavia");
-		poi2.setDireccion(458);
-		
-		pois.add(poi1);
-		pois.add(poi2);
-		
-		Busqueda b1 = new Busqueda("hola", pois);
-		b1.setFecha(Date.valueOf(LocalDate.now()));
-		
-		//TODO BORRAR ESTO DE PRUEBA
-		registrarBusqueda("hola", pois);
+//		List<Poi> pois = new ArrayList<>();
+//		
+//		Poi poi1 = (Poi)new Negocio(new PointWrapper(0, 0),"Negocio",null,"compras",5);
+//		Poi poi2 = (Poi) new Banco(new PointWrapper(2, 2), "Banco Santander" , null);
+//		
+//		poi1.setCalle("Strangford");
+//		poi1.setDireccion(1857);
+//		
+//		poi2.setCalle("Avenida Rivadavia");
+//		poi2.setDireccion(458);
+//		
+//		pois.add(poi1);
+//		pois.add(poi2);
+//		
+//		Busqueda b1 = new Busqueda("hola", pois);
+//		b1.setFecha(Date.valueOf(LocalDate.now()));
+//		
+//		//TODO BORRAR ESTO DE PRUEBA
+//		registrarBusqueda("hola", pois);
 	    
 		List<Busqueda> busquedas = new ArrayList<>();
 		busquedas = datastore.find(Busqueda.class).asList();
