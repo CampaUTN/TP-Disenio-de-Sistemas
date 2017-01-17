@@ -31,7 +31,7 @@ public class RepositorioNoPersistente extends RepositorioBusqueda {
 		busquedas.add(busqueda);
 	}
 	
-	public List<Busqueda> listar(String fechaDesde, String fechaHasta)
+	public List<Busqueda> listar()
 	{
 		return busquedas;
 	}

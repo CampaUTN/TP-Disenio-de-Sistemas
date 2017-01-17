@@ -17,6 +17,7 @@ import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.Busqueda;
+import tpAnual.busquedas.RepositorioNoPersistente;
 import tpAnual.busquedas.RepositorioPersistente;
 import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
@@ -70,8 +71,9 @@ public class BusquedasController {
 		List<Busqueda> busqueda = new ArrayList<Busqueda>();
 
 		
-		busqueda.addAll(new RepositorioPersistente().getBusquedas());
+		
 		busqueda.addAll(new RepositorioPersistente().listar());
+		busqueda.addAll(RepositorioNoPersistente.getInstance().listar());
 		
 //		if(!fechaDesde.isEmpty()){
 //			LocalDate desdeTime = LocalDate.parse(req.params(fechaDesde));
@@ -106,15 +108,18 @@ public class BusquedasController {
 	}
 	
 	
-//	public static ModelAndView verPois(Request req, Response res){
-//      //ESTE METODO DEBERIA LLEVARME AL BUSQUEDA-POIS.HBS DONDE SE DEBERIAN MOSTRAR
-//    }
+public static ModelAndView verPois(Request req, Response res){
+      //ESTE METODO DEBERIA LLEVARME AL BUSQUEDA-POIS.HBS DONDE SE DEBERIAN MOSTRAR
+	    int busqueda = Integer.parseInt(req.queryParams("nroBusqueda"));
+	    Busqueda busquedaPoi = (new RepositorioPersistente().buscarPorId(busqueda)); //Y EL REPO NO PERSISTENTE????
+	    return new ModelAndView(busquedaPoi, "busqueda-pois.hbs");
+    }
 
 
 
 
-//    public static ModelAndView poisDeBusqueda(){
+//    public static ModelAndView poisDeBusqueda(Request req, Response res){
 //	  
-//    }
+//   }
 	
 }

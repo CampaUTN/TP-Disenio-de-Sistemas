@@ -9,6 +9,7 @@ import java.util.List;
 import org.mongodb.morphia.Datastore;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
+import tpAnual.Terminal;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
@@ -64,5 +65,8 @@ public class RepositorioPersistente extends RepositorioBusqueda implements WithG
 		return busquedas;
 	}
 	
+	public Busqueda buscarPorId(long id){
+		return datastore.get(Busqueda.class, id);
+	}
 	
 }
