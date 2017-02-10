@@ -65,7 +65,7 @@ public class BusquedasController {
 
 		
 		
-		busqueda.addAll(new RepositorioPersistente().listar());
+		busqueda.addAll(RepositorioPersistente.getInstance().listar());
 		busqueda.addAll(RepositorioNoPersistente.getInstance().listar());
 		
 //		if(!fechaDesde.isEmpty()){
@@ -104,7 +104,7 @@ public class BusquedasController {
 public static ModelAndView verPois(Request req, Response res){
       //ESTE METODO DEBERIA LLEVARME AL BUSQUEDA-POIS.HBS DONDE SE DEBERIAN MOSTRAR
 	    int busqueda = Integer.parseInt(req.queryParams("nroBusqueda"));
-	    Busqueda busquedaPoi = (new RepositorioPersistente().buscarPorId(busqueda)); //Y EL REPO NO PERSISTENTE????
+	    Busqueda busquedaPoi = (RepositorioPersistente.getInstance().buscarPorId(busqueda)); //Y EL REPO NO PERSISTENTE????
 	    return new ModelAndView(busquedaPoi, "busqueda-pois.hbs");
     }
 

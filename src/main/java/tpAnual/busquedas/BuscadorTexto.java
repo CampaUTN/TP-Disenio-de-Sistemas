@@ -11,7 +11,7 @@ import tpAnual.externo.sistemasExternos.Consultora;
 
 
 public class BuscadorTexto{
-	private RepositorioBusqueda repositorio = new RepositorioPersistente();
+	private RepositorioBusqueda repositorio = RepositorioPersistente.getInstance();
 	
 	
 	public List<Poi> buscarSegunTexto(String palabrasIngresadas, Terminal terminal){

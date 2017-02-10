@@ -12,6 +12,20 @@ import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 public class RepositorioPersistente extends RepositorioBusqueda implements WithGlobalEntityManager {
 	
 	private static Datastore datastore;
+	private static RepositorioPersistente instance = null;
+	
+
+	private RepositorioPersistente() {}
+	public static RepositorioPersistente getInstance(){
+		if(instance==null){
+			instance = new RepositorioPersistente();
+		}
+		return instance;
+	}
+	
+	public static void resetSingleton(){
+	    instance = null;
+	}
 	
 	public void registrarBusqueda(String palabrasIngresadas, List<Poi> pois){
 		
