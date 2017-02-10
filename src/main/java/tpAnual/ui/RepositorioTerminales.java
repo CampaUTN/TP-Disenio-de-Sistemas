@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
+
 import tpAnual.Terminal;
 
 public class RepositorioTerminales implements WithGlobalEntityManager, TransactionalOps{

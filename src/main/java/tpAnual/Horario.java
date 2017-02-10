@@ -1,7 +1,6 @@
 package tpAnual;
 
 import java.time.DayOfWeek;
-
 import java.time.LocalTime;
 
 import javax.persistence.Column;

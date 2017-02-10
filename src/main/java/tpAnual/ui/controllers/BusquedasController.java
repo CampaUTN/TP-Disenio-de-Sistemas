@@ -1,29 +1,22 @@
 package tpAnual.ui.controllers;
 
 import java.sql.Date;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import tpAnual.Terminal;
 import tpAnual.POIs.Banco;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
 import tpAnual.busquedas.Busqueda;
 import tpAnual.busquedas.RepositorioNoPersistente;
 import tpAnual.busquedas.RepositorioPersistente;
-import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
-
-import org.mongodb.morphia.Datastore;
-import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 
 
 public class BusquedasController {

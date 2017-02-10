@@ -6,8 +6,6 @@ import spark.Request;
 import spark.Response;
 import spark.Spark;
 import spark.debug.DebugScreen;
-import tpAnual.busquedas.BuscadorLocal;
-import tpAnual.busquedas.RepositorioBuscadores;
 import tpAnual.util.Reseter;
 
 public class Server {

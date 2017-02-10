@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 

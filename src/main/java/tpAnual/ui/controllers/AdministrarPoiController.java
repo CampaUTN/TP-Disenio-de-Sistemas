@@ -1,13 +1,9 @@
 package tpAnual.ui.controllers;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-import org.uqbar.geodds.Point;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 import org.uqbarproject.jpa.java8.extras.transaction.TransactionalOps;
 
@@ -15,11 +11,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import tpAnual.Mapa;
-import tpAnual.Terminal;
-import tpAnual.POIs.EstacionDeColectivo;
 import tpAnual.POIs.Negocio;
 import tpAnual.POIs.Poi;
-import tpAnual.ui.RepositorioTerminales;
 import tpAnual.util.wrapper.PointWrapper;
 
 public class AdministrarPoiController implements WithGlobalEntityManager, TransactionalOps {

@@ -1,13 +1,11 @@
 package tpAnual.busquedas;
 
 import java.util.ArrayList;
-
 import java.util.Date;
 import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Transient;
 
 import tpAnual.POIs.Poi;
 

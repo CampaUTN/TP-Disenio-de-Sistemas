@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.uqbarproject.jpa.java8.extras.WithGlobalEntityManager;
 
 import tpAnual.Mapa;
-import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
 import tpAnual.externo.sistemasExternos.Consultora;
 import tpAnual.ui.ParametroBusqueda;
