@@ -101,11 +101,11 @@ public abstract class Poi {
 	public boolean tieneTag(String clave) {
 		return this.getTags()
 				.stream()
-				.anyMatch(tag -> tag.contains(clave.toLowerCase()));
+				.anyMatch(tag -> tag.toLowerCase().contains(clave.toLowerCase()));
 	}
 
 	public void agregarTag(String nuevoTag) {
-		tags.add(nuevoTag.toLowerCase());
+		tags.add(nuevoTag);
 	}
 	
 	// Setters:
