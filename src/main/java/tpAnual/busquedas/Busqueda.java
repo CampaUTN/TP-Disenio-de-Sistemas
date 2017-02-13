@@ -13,11 +13,35 @@ import tpAnual.POIs.Poi;
 
 @Entity
 public class Busqueda {
+	public String getPalabrasBuscadas() {
+		return palabrasBuscadas;
+	}
+
+	public void setPalabrasBuscadas(String palabrasBuscadas) {
+		this.palabrasBuscadas = palabrasBuscadas;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Poi> getPois() {
+		return pois;
+	}
+
+	public void setPois(List<Poi> pois) {
+		this.pois = pois;
+	}
+
 	private String palabrasBuscadas;
-	
+	@SuppressWarnings("unused")
+	private int id;
 	@Embedded
 	private List<Poi> pois = new ArrayList<Poi>();
-	@SuppressWarnings("unused")
 	private Date fecha = new Date();
 	
 	@SuppressWarnings("unused")
@@ -25,10 +49,16 @@ public class Busqueda {
 	
 	private int cantidadPois;
 	
+	@SuppressWarnings("deprecation")
 	public Busqueda(String palabrasBuscadas, List<Poi> pois){
 		this.palabrasBuscadas=palabrasBuscadas;
 		this.pois.addAll(pois);
 		this.cantidadPois = pois.size();
+		this.fecha = new Date();
+		fecha.setHours(0);
+		fecha.setMinutes(0);
+		fecha.setSeconds(0);
+		id=this.hashCode();
 	}
 	
 	public String getParametros() {

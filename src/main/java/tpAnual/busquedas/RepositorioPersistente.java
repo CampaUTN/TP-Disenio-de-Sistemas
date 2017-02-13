@@ -11,7 +11,7 @@ import tpAnual.util.bd.mongo.MongoDatastoreSingleton;
 
 public class RepositorioPersistente extends RepositorioBusqueda implements WithGlobalEntityManager {
 	
-	private static Datastore datastore;
+	private static Datastore datastore = MongoDatastoreSingleton.getDatastore("busquedas");
 	private static RepositorioPersistente instance = null;
 	
 

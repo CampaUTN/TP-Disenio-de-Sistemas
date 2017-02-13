@@ -10,6 +10,9 @@ import spark.Response;
 import tpAnual.Mapa;
 import tpAnual.Terminal;
 import tpAnual.POIs.Poi;
+import tpAnual.busquedas.Busqueda;
+import tpAnual.busquedas.RepositorioBusqueda;
+import tpAnual.busquedas.RepositorioPersistente;
 import tpAnual.ui.ParametroBusqueda;
 import tpAnual.ui.RepositorioTerminales;
 
@@ -20,7 +23,6 @@ public class PoiController {
 		String id = req.queryParams("id");		
 		Map<String, Object> viewModel = new HashMap<String, Object>();
 		
-	 	 //TODO borrar
 		Poi poi = Mapa.getInstance().poiDeId(Long.parseLong(id));		 		
 		viewModel.put("poi", poi);	
 	
@@ -42,6 +44,7 @@ public class PoiController {
 		
 		List <Poi> resultado = Mapa.getInstance().buscar(parametro);
 		
+		RepositorioPersistente.getInstance().registrarBusqueda(tags, resultado);
 		model.put("terminal",terminal);		
   		model.put("pois", resultado);
   		return new ModelAndView(model, "pois.hbs");

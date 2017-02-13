@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import spark.ModelAndView;
 import spark.Request;
@@ -68,30 +69,30 @@ public class BusquedasController {
 		busqueda.addAll(RepositorioPersistente.getInstance().listar());
 		busqueda.addAll(RepositorioNoPersistente.getInstance().listar());
 		
-//		if(!fechaDesde.isEmpty()){
-//			LocalDate desdeTime = LocalDate.parse(req.params(fechaDesde));
-//			busqueda = busqueda.stream()
-//					           .filter(res->res.esFechaPosterior(Date.valueOf(desdeTime)))
-//					           .collect(Collectors.toList());
-//		}
-//		
-//		if(!fechaDesde.isEmpty()){
-//			LocalDate hastaTime = LocalDate.parse(req.params(fechaHasta));
-//			busqueda = busqueda.stream()
-//					           .filter(res->res.esFechaAnterior(Date.valueOf(hastaTime)))
-//					           .collect(Collectors.toList());
-//		
-//		}
-//		
-//		if(!cantidadPois.isEmpty()){
-//			busqueda = busqueda.stream()
-//					           .filter(res->res.getResultado().size() == Integer.parseInt(cantidadPois))
-//					           .collect(Collectors.toList());
-//		}
-//		
+		if(!fechaDesde.isEmpty()){
+			LocalDate desdeTime = LocalDate.parse(req.params(fechaDesde));
+			busqueda = busqueda.stream()
+					           .filter(b->b.esFechaPosterior(Date.valueOf(desdeTime)))
+					           .collect(Collectors.toList());
+		}
+		
+		if(!fechaDesde.isEmpty()){
+			LocalDate hastaTime = LocalDate.parse(req.params(fechaHasta));
+			busqueda = busqueda.stream()
+					           .filter(b->b.esFechaAnterior(Date.valueOf(hastaTime)))
+					           .collect(Collectors.toList());
+		
+		}
+		
+		if(!cantidadPois.isEmpty()){
+			busqueda = busqueda.stream()
+					           .filter(b->b.getResultado().size()==Integer.parseInt(cantidadPois))
+					           .collect(Collectors.toList());
+		}
+		
 //		if(!terminal.isEmpty()){
 //			busqueda = busqueda.stream()
-//					           .filter(res->res.getTerminal()????.equals(terminal))
+//					           .filter(b->b.getNumeroTerminal()==Integer.parseInt(terminal))
 //					           .collect(Collectors.toList());
 //		}
 		
@@ -103,7 +104,7 @@ public class BusquedasController {
 	
 public static ModelAndView verPois(Request req, Response res){
       //ESTE METODO DEBERIA LLEVARME AL BUSQUEDA-POIS.HBS DONDE SE DEBERIAN MOSTRAR
-	    int busqueda = Integer.parseInt(req.queryParams("nroBusqueda"));
+	    int busqueda = Integer.parseInt(req.queryParams("busqueda"));
 	    Busqueda busquedaPoi = (RepositorioPersistente.getInstance().buscarPorId(busqueda)); //Y EL REPO NO PERSISTENTE????
 	    return new ModelAndView(busquedaPoi, "busqueda-pois.hbs");
     }
